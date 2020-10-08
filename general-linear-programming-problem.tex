@@ -1,0 +1,52 @@
+
+\section{El Problema de Programación Lineal}
+\label{sec:lpp-problem}
+
+
+\begin{frame}{La Programación Lineal}
+  
+  Encontrar los valores $x_1, x_2, \ldots, x_n$ que maximizan o minimizan un función objetivo que es una función lineal de tal forma que:
+
+  \[ Z = c_1x_1 + c_2x_2 + \ldots + c_n x_n\]
+  sujeto a
+  \begin{align*}
+    a_{11}x_1 + a_{12}x_2 +  \ldots + a_{1n}x_n & \, (\leq, =, \geq)\, b_1\\
+    a_{21}x_1 + a_{22}x_2 +  \ldots + a_{2n}x_n &\, (\leq, =, \geq)\, b_2\\
+    \vdots   \quad\quad\quad \vdots   \quad\quad\quad  & \quad\quad \vdots\\
+    a_{m1}x_1 + a_{m2}x_2 + \ldots + a_{mn}x_n & \, (\leq, =, \geq)\, b_n
+  \end{align*}
+  con las restricciones de no-negatividad $x_1, x_2, \ldots, x_n \geq 0$
+\end{frame}
+
+\begin{frame}{Diferentes Representaciones de un Problema P.L.}
+  
+  \begin{block}<only@1>{Forma Compacta} \justifying
+      Maximizar o minimizar \[ Z = \sum_{j=1}^{n} c_jx_j\]
+      sujeto a \[ \sum_{j=1}^{n} a_{ij}x_j \,\; (\leq, =, \geq) \, b_i, \,\, i = 1, 2, \ldots, m \]
+      con $x_j \geq 0, \, j = 1, 2, \ldots, n$. \alert{En un problema P.L. $m < n$}
+    \end{block}
+    
+    \begin{block}<only@2>{Forma Matricial}\justifying
+      Minimizar o Maximizar \[Z = \bm{cx}\]
+      Sujeto a
+
+      \[ \bm{Ax} \, (\leq, =, \geq) \, \bm{b}\]
+      y \[ \bm{x} \geq \bm{0}\]
+      donde $\bm{A}$ es una matriz de $(m  \times n)$, $\bm{x}$ es un vector columna $(n \times 1)$, $\bm{b}$ es un vector columna $(m \times 1)$ y $\bm{c}$ es un vector fila $(1 \times n)$
+    \end{block}
+
+      \begin{block}<only@3>{Nueva Variable Irrestricta} \justifying
+      Maximizar o minimizar \[ Z = x_0\]
+      sujeto a
+      \begin{align*}
+        x_0 - \sum_{j=1}^{n} c_jx_j =& 0\\
+        \sum_{j=1}^{n} a_{ij}x_j \,\; (\leq, =, \geq)& \, b_i, \,\, i = 1, 2, \ldots, m
+      \end{align*}
+      con $x_j \geq 0, \, j = 1, 2, \ldots, n$. 
+    \end{block}
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides"
+%%% End:

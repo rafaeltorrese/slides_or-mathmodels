@@ -1,0 +1,85 @@
+
+\section{Forma Canónica y Estándar de un Problema P.L.}
+\label{sec:canonical-standard-form}
+
+\begin{frame}{Forma Canónica y Estándar}
+  \begin{columns}
+    \column{0.5\textwidth}
+      \begin{block}{Forma Canónica}
+  Maximizar \[ Z = \sum_{j=1}^{n} c_j x_j\] 
+  sujeto a
+  \begin{align*}
+    \sum a_{ij}x_j  & \leq b_i, \quad i = 1, 2, \ldots, m,\\
+    x_j  & \geq 0, \quad j = 1, 2, \ldots, n,\\
+  \end{align*}  
+\end{block}
+\column{0.5\textwidth}
+\begin{block}{Forma Estándar}
+    Maximizar \[ Z = \sum_{j=1}^{n} c_j x_j\] 
+  sujeto a
+  \begin{align*}
+    \sum a_{ij}x_j  & = b_i, \quad i = 1, 2, \ldots, m,\\
+    x_j  & \geq 0, \quad j = 1, 2, \ldots, n,\\
+  \end{align*}
+\end{block}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}{Forma Estándar Para P.P.L.}
+  \begin{onlyenv}<1>
+    
+    Para resolver un Problema de Programación Lineal (P.P.L.), éste se debe expresar en la forma estándar.\\
+
+    Maximizar \[ Z = \sum_{j=1}^{n} c_j x_j\] 
+  sujeto a
+  \begin{align*}
+    \sum a_{ij}x_j  & \leq  b_i, \, (\geq b_i), & i = 1, 2, \ldots, m,\\
+    x_j  & \geq 0, & j = 1, 2, \ldots, n,\\
+  \end{align*}
+\end{onlyenv}
+\begin{onlyenv}<2>
+  Expresado en forma estándar obtnemos\\
+
+  Maximizar \[ Z = \sum_{j=1}^{n} c_j x_j\] 
+  sujeto a
+  \begin{align*}
+    \sum a_{ij}x_j + s_i & =  b_i,  \,\, i = 1, 2, \ldots, m,\\
+    x_j  & \geq 0, \, \, j = 1, 2, \ldots, n,\\
+    s_i  & \geq 0, \, \, i = 1, 2, \ldots, m.\\
+  \end{align*}
+\end{onlyenv}
+\end{frame}
+
+
+\begin{frame}[t]{Ejemplos}
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{flalign*}
+    \max Z = 7x_1 + 5x_2&\\
+    \intertext{sujeto a}
+    2x_1 + 3x_2 & \leq 20\\
+    3x_1 + x_2 &\geq 10\\
+    x_1, x_2 & \geq 0
+  \end{flalign*}
+  \column{0.5\textwidth}
+  \begin{flalign*}
+    % EXAMPLE  2.12-2
+    \max Z = 3x_1 + 2x_2 + 5x_3&\\
+    \intertext{sujeto a}
+    2x_1 - 3x_2 & \leq 3\\
+    x_1 + 2x_2 + 3x_3 &\geq 5\\
+    3x_1 + 2x_3 &\leq 2\\
+    x_1, x_2 & \geq 0
+  \end{flalign*}
+  \end{columns}
+\end{frame}
+
+\input{example_standardform01.tex}
+\input{example_standardform02.tex}
+\input{act_standardform01.tex}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides"
+%%% End:

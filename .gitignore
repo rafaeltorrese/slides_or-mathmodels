@@ -1,0 +1,15 @@
+*~
+*.aux
+*.log
+*.nav
+*.out
+*.toc
+*.snm
+slides.pdf
+*.#
+*#
+*.synctex*
+#*
+*.vrb
+*.listing
+*.pyc
