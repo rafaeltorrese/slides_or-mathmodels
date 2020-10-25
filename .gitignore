@@ -6,6 +6,7 @@
 *.toc
 *.snm
 slides.pdf
+slides*.pdf
 *.#
 *#
 *.synctex*

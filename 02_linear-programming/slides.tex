@@ -16,24 +16,14 @@
 \usepackage{multirow}
 \usepackage{pgfpages} % for handouts
 \usepackage{graphicx} % for graphics and grapics path
-\usepackage{bm} % math bold symbols \bm{}
-% \usepackage{blkarray} % for block arrays, useful for markov chain (matrices)
-\usepackage{cancel}
 %
-% \usepackage{pygmentize}
-% \usepackage{minted}
-% \usemintedstyle[python]{friendly}
 \usepackage{import} 
 %
 %\pgfpagesuselayout{4 on 1}[letterpaper,landscape]
 \usepackage[font=scriptsize,labelfont=bf,justification=centerlast,format=hang]{caption} %To change the appearance of captions
 % tikz
 \usepackage{tikz} % for draw
-\usetikzlibrary{automata,
-  arrows,
-  positioning,
-  calc,
-  intersections}
+\usetikzlibrary{automata,arrows,positioning,calc}
 \graphicspath{{figs/}}
 
 
@@ -44,23 +34,16 @@
 
 \usepackage[T1]{fontenc}
 \usepackage{listings}
-\usepackage{subfiles}
+
 \definecolor{keywords}{RGB}{255,0,90}
 \definecolor{comments}{RGB}{60,179,113}
 \lstset{
-  %inputpath=contents,
-  language=python,
-  % basicstyle=\scriptsize\fontfamily{fvm}\selectfont,
-  basicstyle=\tiny\fontfamily{fvm}\selectfont,
-  %basicstyle=\footnotesize\ttfamily,
+  language=Python,
+  basicstyle=\footnotesize\fontfamily{fvm}\selectfont,
   keywordstyle=\color{keywords},
-  commentstyle=\color{comments}\emph,
-  stringstyle=\color{orange},
-  upquote=false,
-  showstringspaces=false
+  commentstyle=\color{comments}\emph
 }
-%%% Ipython Notebook Style
-%\input{ipythonnb_style}
+
 % ========================================
 \newenvironment<>{exercise}[1]
 {
@@ -94,7 +77,7 @@
 {
 \setbeamercolor{frametitle}{fg=white,bg=green!60!blue}
 \begin{frame} \justifying
-  \frametitle{Ejemplo - #1}
+  \frametitle{Ejemplo: #1}
   \framesubtitle{\insertsubsectionhead #2}
   
 }
@@ -137,8 +120,8 @@ progressbar=frametitle%
 ]{metropolis}
 %\usetheme{Boadilla}
 
-\title{Investigación De Operaciones.}
-\subtitle{Modelos Matemáticos.} % 6 hours. 2 sessions
+\title{Modelos Matemáticos}
+\subtitle{Asignatura: Optimización de Sistemas} % 6 hours. 2 sessions
 
 
 \institute{UNIVERSIDAD ANÁHUAC MÉXICO}
@@ -146,7 +129,13 @@ progressbar=frametitle%
 \date[Anáhuac México]{}
 
 
-
+ \AtBeginSection[] % Do nothing for \section* %
+{
+\begin{frame}<beamer> 
+  \frametitle{Agenda}
+  \tableofcontents[currentsection] 
+\end{frame}
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -158,24 +147,15 @@ progressbar=frametitle%
 \end{frame}
 
 
-\begin{frame}{Agenda}
-  \tableofcontents
-\end{frame}
- % ==============================
- % WRITE CONTENT  BELOW
- % %%%
+     \begin{frame}{Agenda}
+   \tableofcontents
+ \end{frame}
 
-%\input{examples/example_fluid-blending_gupta}
-%\input{contents/graphic-method.tex}
 
-\section{Método Simplex}
-\label{sec:simplex-method}
+\input{or-history}
+\input{taxonomy}
+\input{formulation}
 
-\subfile{03_simplex/slides_simplex}
-%\input{canonical}
-%\input{theory-simplex}
-
-% ==============================
 \begin{frame}
   \maketitle
 \end{frame}

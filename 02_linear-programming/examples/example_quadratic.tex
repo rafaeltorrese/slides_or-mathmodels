@@ -1,0 +1,92 @@
+\begin{frameExample}{Maximizar Utilidad}{}
+  \only<1>{%
+  Una compañía se enfrenta a la demanda de un producto. La demanda es una función del precio y ambos, el precio $p$ y la cantidad $q$ los decide la compañía. Se sabe que la relación precio-cantidad es $p = 10 - 0.01q$, lo que significa que a partir de \$10 por unidad, cada aumento unitario de la demanda disminuye el precio que todos los clientes están dispuestos a pagar por el producto en 1 centavo. Cuesta \$5 fabricar una unidad, y los costos generales independientes de la cantidad ascienden a \$ 500. La compañía quiere maximizar ganancias.%
+  }
+
+  \begin{onlyenv}<2>
+    \begin{align*}
+    \text{Precio} & = 10 - 0.01q\\
+    \text{Costo Variable} & = 5q \\
+    \text{Costo Fijo} & = 500\\[3mm]
+    \text{Ingresos} & = \text{Precio} * \text{Cantidad} = (10 - 0.01q)q\\
+    \text{Costos} &= \text{Costo Variable} + \text{Costo Fijo}\\[5mm]
+      \text{Ganancia} &=  \text{Ingresos} - \text{Costos}\\
+                  & = (10 - 0.01q)q - (5q + 500)\\
+      & = -0.01q^2 + 5q - 500\\
+  \end{align*}
+  \end{onlyenv}
+
+  \begin{alertblock}<only@3>{Descargar Anaconda Python} \justifying
+      Si aún no has descargado la \href{https://www.anaconda.com/products/individual}{Distribución Aconda Python}, puedes usar \href{https://colab.research.google.com/notebooks/intro.ipynb}{Google Colab} con una cuenta de Gmail.
+    \end{alertblock}
+    
+\end{frameExample}
+
+
+\begin{frame}[fragile]{Ejemplo. Uso de Python}
+
+  
+  \begin{lstlisting}
+import numpy as np
+from scipy.optimize import root, minimize
+from matplotlib import pyplot as plt
+
+q = np.linspace(100,400, 500)
+
+# Parameters
+p = 10
+w = 0.01
+# w = 0.005
+
+var_cost = 5
+# var_cost = 6
+
+fix_cost = 500
+# fix_cost = 500
+
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Python}
+
+  \begin{lstlisting}
+price = lambda a, b, q: a - b*q
+    
+def f(x, cost1=var_cost, cost2=fix_cost):
+    return (price(p, w, x))*x - (cost1 * x + cost2)
+
+P = f(q)
+plt.plot(q, P)
+plt.axhline(0, color='gray')
+plt.show()
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Python. Encontrar Raíces}
+
+  \begin{lstlisting}
+sol = root(f, [100, 400])
+print(f'Quantities {sol.x}')
+print(f'Price1: {price(p, w, sol.x[0])}')
+print(f'Price2: {price(p, w, sol.x[1])}')
+  \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{Python. Maximizar una función}
+
+  \begin{lstlisting}
+def f2(x):
+    return -f(x)
+
+max_result = minimize(f2, 300),
+print(-max_result[0]['fun'])
+print(max_result[0]['x'])
+  \end{lstlisting}
+\end{frame}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../slides"
+%%% End:

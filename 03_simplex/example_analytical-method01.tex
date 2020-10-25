@@ -1,0 +1,52 @@
+\begin{frameExample}{01. Método de Prueba y Error}{}
+  % EXAMPLE  2.15-2 Gupta Ebook
+  \begin{onlyenv}<1>
+    \begin{flalign*}
+    \max Z = x_1 + 3x_2 + 3x_3&\\
+    \intertext{Subject to}
+    x_1 + 2x_2 + 3x_3& = 4\\
+    2x_1 + 3x_2 + 5x_3& = 7\\[3mm]
+    x_1, x_2 & \geq 0\\
+    x_3 & \text{  irrestricta en signo}
+  \end{flalign*}
+\end{onlyenv}
+
+\begin{exampleblock}<only@2>{Planteamiento} \justifying
+
+  Existe una variable irrestricta $x_3$, por lo tanto hacemos  $ x_3 = x_4  - x_5 $
+  \begin{flalign*}
+    \max Z = x_1 + 3x_2 + 3x_4  - 3x_5&\\
+    \intertext{Subject to}
+    x_1 + 2x_2 + 3x_4 - 3x_5& = 4\\
+    2x_1 + 3x_2 + 5x_4 - 5x_5& = 7\\
+    x_1, x_2, x_4, x_5 & \geq 0
+  \end{flalign*}
+\end{exampleblock}
+\end{frameExample}
+
+\begin{frameExample}{02. Prueba y Error. Minimización}{}
+  \begin{columns}
+    \column{0.5\textwidth}
+  % EXAMPLE  2.09-7 Gupta Ebook
+   \begin{align*}
+     \min Z = -x_1 + 2x_2 & \\[5mm]
+     -x_1 + 3x_2 & \leq 10\\
+     x_1 + x_2 & \leq 6\\
+     x_1 - x_2 & \leq 2\\[5mm]
+     x_1, x_2 & \geq 0
+  \end{align*}
+  \column{0.5\textwidth}
+  \begin{align*}
+     \min Z = -x_1 + 2x_2 + 0s_1 + 0s_2 + 0s_3 & \\[5mm]
+     -x_1 + 3x_2 + s_1 & = 10\\
+     x_1 + x_2 + s_2& = 6\\
+     x_1 - x_2 + s_3& = 2\\[5mm]
+     x_1, x_2, s_1, s_2, s_3 & \geq 0
+  \end{align*}
+  \end{columns}
+\end{frameExample}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides"
+%%% End:
