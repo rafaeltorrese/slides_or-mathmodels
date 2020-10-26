@@ -1,0 +1,62 @@
+
+\section{Método Simplex}
+\label{sec:simplex-method}
+
+
+\begin{frame}{Algoritmo Simplex}
+  \begin{itemize} \parskip3mm \justifying
+  \item<only@1>   El método gráfico no se puede aplicar cuando el número de variables involucradas en el problema de LP es más de tres o más bien dos, ya que incluso \alert{con tres variables la solución gráfica se vuelve tediosa} ya que involucra la intersección de planos en tres dimensiones.
+
+  \item<only@1>   El método simplex, desarrollado por el profesor George B. Dantzig, se puede utilizar para resolver cualquier problema de LP (para el que existe la solución) que involucre cualquier número de variables y restricciones (cientos o incluso miles).
+  
+  \item<only@2>   El procedimiento computacional en el método simplex \alert{se basa en la propiedad fundamental de que la solución óptima a un problema de LP, si existe, ocurre solo en uno de los puntos de esquina de la región factible.} El método simplex siempre comienza con la solución factible básica inicial, es decir, el origen, que es uno de los puntos de esquina de la región factible.
+
+  \item<only@2>   A continuación, se prueba esta solución, es decir, \alert{se determina si es posible mejorar el valor de la función objetivo moviéndose al siguiente punto de esquina de la región factible.} Si es así, se obtiene la solución en este punto. Esta búsqueda del mejor punto de esquina se repite, hasta que después de un número finito de intentos, se obtiene la solución óptima, si existe.
+  \end{itemize}
+\end{frame}
+
+
+\input{example_simplex01}
+\input{example_reddy-mikks_taha}
+
+\begin{frameExample}{11. Producción}{}
+  % EXAMPLE 2.6-1 (Production Allocation Problem} Gupta ebook
+  Una empresa produce tres productos. Estos productos se procesan en tres máquinas diferentes. El tiempo requerido para fabricar una unidad de cada uno de los tres productos y la capacidad diaria de las tres máquinas se detallan en la tabla a continuación.
+
+  {\centering
+    \scalebox{0.8}{%
+      \begin{tabular}{ccccc}
+        \toprule
+        Máquina & \multicolumn{3}{l}{Tiempo por unidad (minutos)} & Capacidad       \\
+                &      Producto 1         &  Producto 2              &  Producto 3              & (Minutos / día) \\
+        \midrule
+        $M_1$   & 2             & 3              & 2              & 440             \\
+        $M_2$   & 4             & --            & 3              & 470             \\
+        $M_3$   & 2             & 5              & --             & 430\\
+        \bottomrule
+      \end{tabular}
+    }% scalebox
+    \par}
+  
+  
+
+   Se requiere determinar la cantidad diaria de unidades que se fabricarán para cada producto. El beneficio por unidad para el producto 1, 2 y 3 es de \$ 4, \$ 3 y \$ 6 respectivamente. Se supone que todas las cantidades producidas se consumen en el mercado. Formule el modelo matemático (L.P.) que maximizará la ganancia diaria.
+\end{frameExample}
+
+\begin{frameExample}{11. Producción}{}
+
+
+      \begin{align*}
+      \max Z = 4x_1 + 3x_2 + 6x_3 & \\[3mm]
+      \text{sujeto a } & \\[2mm]
+    2x_1 + 3x_2 + 2x_3 & \leq 440\\
+    4x_1 + 0x_2 + 3x_3 & \leq 470\\
+    2x_1 + 5x_2  + 0x_3& \leq 430\\[5mm]
+    x_1, x_2,x_3 & \geq 0
+  \end{align*}
+\end{frameExample}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_simplex"
+%%% End:
