@@ -1,0 +1,33 @@
+
+\section{Variables Artificiales}
+\label{sec:artificial-variables}
+
+
+\begin{frame}{Técnicas de Variable Artificial}
+  \begin{itemize} \parskip3mm \justifying
+  \item<only@1> En los problemas anteriores, las restricciones eran de tipo ($\leq$) (con lados derechos no negativos). La introducción de variables de holgura proporcionó fácilmente la solución factible básica inicial. 
+  \item<only@1> Existen  problemas de programación lineal en los que las \alert{variables de holgura no pueden proporcionar una solución factible básica inicial.} 
+  \item<only@1> En estos problemas, \alert{al menos una de las restricciones es de tipo ($\geq$) o ($=$)}. En tales casos, presentamos otro tipo de variables llamadas \alert{variables artificiales}. Estas variables son ficticias y no tienen significado físico. 
+  \item<only@1> Asumen el papel de \alert{variables de holgura en la primera iteración}, solo para ser \alert{reemplazadas en una iteración posterior. }
+  \item<only@2> Método de Penalización.
+  \item<only@2> Método Dos Fases.   
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Método de Penalización. Ejemplo}{}
+  \begin{align*}
+    \max Z = 2x_1 + 3x_2 & \\[5mm]
+    x_1 + x_2 & \leq 30\\
+    x_2 & \geq 3\\
+    x_2 & \leq 12\\
+    x_1 - x_2 & \geq 0\\
+    x_1  & \leq 20 \\[5mm]
+    x_1, x_2 & \geq 0
+  \end{align*}  
+\end{frame}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_simplex"
+%%% End:
