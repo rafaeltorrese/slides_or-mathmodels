@@ -18,171 +18,267 @@
 \begin{frame}{Método de Penalización. Ejemplo}{}
 
   \begin{onlyenv}<1>
-      \begin{columns}
-    \column{0.5\textwidth}
-  \begin{align*}
-    \max Z = 2x_1 + 3x_2 & \\[5mm]
-    x_1 + x_2 & \leq 30\\
-    x_2 & \geq 3\\
-    x_2 & \leq 12\\
-    x_1 - x_2 & \geq 0\\
-    x_1  & \leq 20 \\[5mm]
-    x_1, x_2 & \geq 0
-  \end{align*}
-  \column{0.5\textwidth}
-  \begin{align*}
-   \max Z = 2x_1 + 3x_2 - MA_2& \\[5mm]
-    x_1 + x_2 + s_1  & = 30\\
-    x_2  - s_2  + A_2 &= 3\\
-    x_2  + s_3 &= 12\\
-    -x_1 + x_2 + s_4 & =  0\\
-    x_1  + s_5& = 20 \\[5mm]
-    x_1, x_2, s_1, s_2, s_3, s_4, s_5, A_2 & \geq 0
-  \end{align*}
-  \end{columns}
-\end{onlyenv}
+    \begin{columns}
+      \column{0.5\textwidth}
+      \begin{align*}
+        \max Z = 2x_1 + 3x_2 & \\[5mm]
+        x_1 + x_2 & \leq 30\\
+        x_2 & \geq 3\\
+        x_2 & \leq 12\\
+        x_1 - x_2 & \geq 0\\
+        x_1  & \leq 20 \\[5mm]
+        x_1, x_2 & \geq 0
+      \end{align*}
+      \column{0.5\textwidth}
+      \begin{align*}
+        \max Z = 2x_1 + 3x_2 - MA_2& \\[5mm]
+        x_1 + x_2 + s_1  & = 30\\
+        x_2  - s_2  + A_2 &= 3\\
+        x_2  + s_3 &= 12\\
+        -x_1 + x_2 + s_4 & =  0\\
+        x_1  + s_5& = 20 \\[5mm]
+        x_1, x_2, s_1, s_2, s_3, s_4, s_5, A_2 & \geq 0
+      \end{align*}
+    \end{columns}
+  \end{onlyenv}
 
-\begin{onlyenv}<2>
+  \begin{onlyenv}<2>
 
-  \[ \max Z = 2x_1 + 3x_2 +0s_1 - 0s_2 + 0s_3 + 0s_4 + 0s_5 - MA_2 \]
-  Sujeto a \systeme[x_1x_2s_1s_2s_3s_4s_5A_2]{%
-    x_1 + x_2 + s_1 = 30,
-    x_2  - s_2  + A_2 = 3,
-    x_2  + s_3 = 12,
-  -x_1 + x_2 + s_4  =  0,
-  x_1  + s_5 = 20 }
+    \[ \max Z = 2x_1 + 3x_2 +0s_1 - 0s_2 + 0s_3 + 0s_4 + 0s_5 - MA_2 \]
+    Sujeto a \systeme[x_1x_2s_1s_2s_3s_4s_5A_2]{%
+      x_1 + x_2 + s_1 = 30,
+      x_2  - s_2  + A_2 = 3,
+      x_2  + s_3 = 12,
+      -x_1 + x_2 + s_4  =  0,
+      x_1  + s_5 = 20 }
 
-$x_1, x_2, s_1, s_2, s_3, s_4, s_5, A_2  \geq 0$
-\end{onlyenv}
+    $x_1, x_2, s_1, s_2, s_3, s_4, s_5, A_2  \geq 0$
+  \end{onlyenv}
+\end{frame}
+
+\begin{frame}{Método de Penalización. Ejemplo.}{}
+  Tabla Simplex Inicial
+
+  {\centering
+    \begin{tabular}{rc|rr|rrrrrr|r}
+      & $\max$ & 2 & 3 & 0 & $-M$ & 0 & 0 & 0 & 0 &  \\
+      \toprule
+      $\mathbf{Cb}$ & \textbf{basis} & $x_1$ & $x_2$ & $s_1$ & $A_2$ & $s_3$ & $s_4$ & $s_5$ & $s_2$ & RHS \\
+      \toprule
+      0 & $s_1$ & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 30 \\
+      $-M$ & $A_2$ & 0 & 1 & 0 & 1 & 0 & 0 & 0 & -1 & 3 \\
+      0 & $s_3$ & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 12 \\
+      0 & $s_4$ & -1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+      0 & $s_5$ & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 20\\
+      \bottomrule
+    \end{tabular}
+    \par}
+
 \end{frame}
 
 \begin{frame}{Método de Penalización. Ejemplo.}{}
   {\centering
-    \scalebox{0.8}{%
-\begin{tabular}{rc|rrrrrrrr|rr}
- & $\max Z$ & 2 & 3 & 0 & -1000 & 0 & 0 & 0 & 0 &  &  \\
-  Cb & basis & $x_1$ & $x_2$ & $s_1$ & $A_2$ & $s_3$ & $s_4$ & $s_5$ & $s_2$ & RHS & ratios \\
-  \midrule
-0 & $s_1$ & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 30 & 30 \\
--1000 & $A_2$ & 0 & 1 & 0 & 1 & 0 & 0 & 0 & -1 & 3 & 3 \\
-0 & $s_3$ & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 12 & 12 \\
-0 & $s_4$ & -1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
-  0 & $s_5$ & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 20 & \#DIV/0! \\
-  \midrule
-Iter & $Z_j$ & 0 & -1000 & 0 & -1000 & 0 & 0 & 0 & 1000 & -3000 &  \\
-1 & $c_j - Z_j$ & 2 & 1003 & 0 & 0 & 0 & 0 & 0 & -1000 &  & 
-\end{tabular}
+    \scalebox{0.85}{%
+      \begin{tabular}{rc|rrrrrrrr|rr}
+        & $\max $ & 2 & 3 & 0 & $-M$ & 0 & 0 & 0 & 0 &  &  \\
+        \toprule
+        $\mathbf{C_b}$ & \textbf{basis} & $x_1$ & $x_2$ & $s_1$ & $A_2$ & $s_3$ & $s_4$ & $s_5$ & $s_2$ & RHS & ratios \\
+        \toprule
+        \only<1>{%
+        0 & $s_1$ & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 30 & 30 \\
+        $-M$ & $A_2$ & 0 & 1 & 0 & 1 & 0 & 0 & 0 & -1 & 3 & 3 \\
+        0 & $s_3$ & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 12 & 12 \\
+        0 & $s_4$ & -1 & \cellcolor{yellow}{1} & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+        0 & $s_5$ & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 20 & \#DIV/0! \\
+        \midrule
+        Iter & $Z_j$ & 0 & $-M$ & 0 & $-M$ & 0 & 0 & 0 & $M$ & $-3M$ &  \\
+        1 & $c_j - Z_j$ & 2 & $M+3$ & 0 & 0 & 0 & 0 & 0 & $-M$ &  & \\
+        } % only
+        \only<2>{%
+        0 & $s_1$ & 2 & 0 & 1 & 0 & 0 & -1 & 0 & 0 & 30 &  \\
+        $-M$ & $A_2$ & 1 & 0 & 0 & 1 & 0 & -1 & 0 & -1 & 3 &  \\
+        0 & $s_3$ & 1 & 0 & 0 & 0 & 1 & -1 & 0 & 0 & 12 &  \\
+        3 & $x_2$ & -1 & \cellcolor{yellow}1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 &  \\
+        0 & $s_5$ & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 20 &  \\
+        \midrule
+        Iter & $Z_j$ & $-M-3$ & 3 & 0 & $-M$ & 0 & $M+3$ & 0 & $M$ & $-3M$ &  \\
+        1 & $c_j - Z_j$ & $M+5$ & 0 & 0 & 0 & 0 & $-M-3$ & 0 & $-M$ &  & \\
+        } % only
+        \only<3>{%
+        0 & $s_1$ & 2 & 0 & 1 & 0 & 0 & -1 & 0 & 0 & 30 & 15 \\
+        $-M$ & $A_2$ & \cellcolor{yellow}1 & 0 & 0 & 1 & 0 & -1 & 0 & -1 & 3 & 3 \\
+        0 & $s_3$ & 1 & 0 & 0 & 0 & 1 & -1 & 0 & 0 & 12 & 12 \\
+        3 & $x_2$ & -1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & -0 \\
+        0 & $s_5$ & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 20 & 20 \\
+        \midrule
+        Iter & $Z_j$ & $-M-3$ & 3 & 0 & $-M$ & 0 & $+M$ & 0 & $+M$ & $-3M$ &  \\
+        2 & $c_j - Z_j$ & $M + 5$ & 0 & 0 & 0 & 0 & $-M-3$ & 0 & $-M$ &  & 
+                                                                           } % only
+                                                                           \only<4>{%
+                                                                           0 & $s_1$ & 0 & 0 & 1 & -2 & 0 & 1 & 0 & 2 & 24 &  \\
+        2 & $x_1$ & \cellcolor{yellow}1 & 0 & 0 & 1 & 0 & -1 & 0 & -1 & 3 &  \\
+        0 & $s_3$ & 0 & 0 & 0 & -1 & 1 & 0 & 0 & 1 & 9 &  \\
+        3 & $x_2$ & 0 & 1 & 0 & 1 & 0 & 0 & 0 & -1 & 3 &  \\
+        0 & $s_5$ & 0 & 0 & 0 & -1 & 0 & 1 & 1 & 1 & 17 &  \\
+        \midrule
+        Iter & $Z_j$ & 2 & 3 & 0 & 5 & 0 & -2 & 0 & -5 & 15 &  \\
+        2 & $c_j - Z_j$ & 0 & 0 & 0 & $-M-5$ & 0 & 2 & 0 & 5 &  & 
+                                                                  } % only
+                                                                  \only<5>{%
+                                                                  0 & $s_1$ & 0 & 0 & 1 & -2 & 0 & 1 & 0 & 2 & 24 & 12 \\
+        2 & $x_1$ & 1 & 0 & 0 & 1 & 0 & -1 & 0 & -1 & 3 & -3 \\
+        0 & $s_3$ & 0 & 0 & 0 & -1 & 1 & 0 & 0 & \cellcolor{yellow}1 & 9 & 9 \\
+        3 & $x_2$ & 0 & 1 & 0 & 1 & 0 & 0 & 0 & -1 & 3 & -3 \\
+        0 & $s_5$ & 0 & 0 & 0 & -1 & 0 & 1 & 1 & 1 & 17 & 17 \\
+        \midrule
+        Iter & $Z_j$ & 2 & 3 & 0 & 5 & 0 & -2 & 0 & -5 & 15 &  \\
+        3 & $c_j - Z_j$ & 0 & 0 & 0 & $-M-5$ & 0 & 2 & 0 & 5 &  & 
+                                                                  } % only
+                                                                  \only<6>{%
+                                                                  0 & $s_1$ & 0 & 0 & 1 & 0 & -2 & 1 & 0 & 0 & 6 &  \\
+        2 & $x_1$ & 1 & 0 & 0 & 0 & 1 & -1 & 0 & 0 & 12 &  \\
+        0 & $s_2$ & 0 & 0 & 0 & -1 & 1 & 0 & 0 & \cellcolor{yellow}1 & 9 &  \\
+        3 & $x_2$ & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 12 &  \\
+        0 & $s_5$ & 0 & 0 & 0 & 0 & -1 & 1 & 1 & 0 & 8 &  \\
+        \midrule
+        Iter & $Z_j$ & 2 & 3 & 0 & 0 & 5 & -2 & 0 & 0 & 60 &  \\
+        3 & $c_j - Z_j$ & 0 & 0 & 0 & $-M$ & -5 & 2 & 0 & 0 &  & 
+                                                                 } % only
+                                                                 \only<7>{%
+                                                                 0 & $s_1$ & 0 & 0 & 1 & 0 & -2 & \cellcolor{yellow}1 & 0 & 0 & 6 & 6 \\
+        2 & $x_1$ & 1 & 0 & 0 & 0 & 1 & -1 & 0 & 0 & 12 & -12 \\
+        0 & $s_2$ & 0 & 0 & 0 & -1 & 1 & 0 & 0 & 1 & 9 & \#DIV/0! \\
+        3 & $x_2$ & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 12 & \#DIV/0! \\
+        0 & $s_5$ & 0 & 0 & 0 & 0 & -1 & 1 & 1 & 0 & 8 & 8 \\
+        \midrule
+        Iter & $Z_j$ & 2 & 3 & 0 & 0 & 5 & -2 & 0 & 0 & 60 &  \\
+        4 & $c_j - Z_j$ & 0 & 0 & 0 & $-M$ & -5 & 2 & 0 & 0 &  & 
+                                                                 } % only
+                                                                 \only<8>{%
+                                                                 0 & $s_4$ & 0 & 0 & 1 & 0 & -2 & \cellcolor{yellow}1 & 0 & 0 & 6 &  \\
+        2 & $x_1$ & 1 & 0 & 1 & 0 & -1 & 0 & 0 & 0 & 18 &  \\
+        0 & $s_2$ & 0 & 0 & 0 & -1 & 1 & 0 & 0 & 1 & 9 &  \\
+        3 & $x_2$ & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 12 &  \\
+        0 & $s_5$ & 0 & 0 & -1 & 0 & 1 & 0 & 1 & 0 & 2 &  \\
+        \midrule
+        Iter & $Z_j$ & 2 & 3 & 2 & 0 & 1 & 0 & 0 & 0 & 72 &  \\
+        4 & $c_j - Z_j$ & 0 & 0 & -2 & $-M$ & -1 & 0 & 0 & 0 &\textbf{END}  & 
+                                                                              } % only
+                                                                              % \bottomrule
+      \end{tabular}
     } % scalebox
-  \par}  
+    \par}  
 \end{frame}
+
+
 
 \begin{frame}{Método de las Dos Fases.}{}
 
   \begin{block}{Fase I} \justifying
-  \begin{itemize} \parskip3mm \justifying
-  \item Todas las variables artificiales se hacen cero. Esto se hace con una función objetivo artificial en la que se expresa la suma de variables artificiales.
-  \item La nueva \alert{función objetivo se minimiza}, sujeta a las restricciones del problema original.
-  \end{itemize}
-\end{block}
-\begin{block}{Fase II}\justifying
-  La tabla final de la Fase I es la tabla inicial de la Fase II. Las variables artificiales en la función objetivo se reemplazan  por las variables originales y se aplica el método simplex.
-\end{block}
+    \begin{itemize} \parskip3mm \justifying
+    \item Todas las variables artificiales se hacen cero. Esto se hace con una función objetivo artificial en la que se expresa la suma de variables artificiales.
+    \item La nueva \alert{función objetivo se minimiza}, sujeta a las restricciones del problema original.
+    \end{itemize}
+  \end{block}
+  \begin{block}{Fase II}\justifying
+    La tabla final de la Fase I es la tabla inicial de la Fase II. Las variables artificiales en la función objetivo se reemplazan  por las variables originales y se aplica el método simplex.
+  \end{block}
 \end{frame}    
 
 \begin{frame}{Método de las Dos Fases. Ejemplo}{}
   \begin{onlyenv}<1>
-      \begin{columns}
-    \column{0.3\textwidth}
-  \begin{align*}
-    \max Z = 2x_1 + 3x_2 & \\[5mm]
-    x_1 + x_2 & \leq 30\\
-    x_2 & \geq 3\\
-    x_2 & \leq 12\\
-    -x_1 + x_2 & \leq 0\\
-    x_1  & \leq 20 \\[5mm]
-    x_1, x_2 & \geq 0
-  \end{align*}  
-  \column{0.6\textwidth}
-\[ \max Z = 2x_1 + 3x_2\]
-  Sujeto a \systeme[x_1x_2s_1s_2s_3s_4s_5]{%
-    x_1 + x_2 + s_1 = 30,
-    x_2  - s_2  = 3,
-    x_2  + s_3 = 12,
-  -x_1 + x_2 + s_4  =  0,
-  x_1  + s_5 = 20 }
+    \begin{columns}
+      \column{0.3\textwidth}
+      \begin{align*}
+        \max Z = 2x_1 + 3x_2 & \\[5mm]
+        x_1 + x_2 & \leq 30\\
+        x_2 & \geq 3\\
+        x_2 & \leq 12\\
+        -x_1 + x_2 & \leq 0\\
+        x_1  & \leq 20 \\[5mm]
+        x_1, x_2 & \geq 0
+      \end{align*}  
+      \column{0.6\textwidth}
+      \[ \max Z = 2x_1 + 3x_2\]
+      Sujeto a \systeme[x_1x_2s_1s_2s_3s_4s_5]{%
+        x_1 + x_2 + s_1 = 30,
+        x_2  - s_2  = 3,
+        x_2  + s_3 = 12,
+        -x_1 + x_2 + s_4  =  0,
+        x_1  + s_5 = 20 }
 
-$x_1, x_2, s_1, s_2, s_3, s_4, s_5  \geq 0$ 
-\end{columns}
+      $x_1, x_2, s_1, s_2, s_3, s_4, s_5  \geq 0$ 
+    \end{columns}
   \end{onlyenv}
 
-\begin{onlyenv}<2>
+  \begin{onlyenv}<2>
     \[ \min W = 0x_1 + 0x_2 +0s_1 - 0s_2 + 0s_3 + 0s_4 + 0s_5 + A_2 \]
-  Sujeto a \systeme[x_1x_2s_1s_2s_3s_4s_5A_2]{%
-    x_1 + x_2 + s_1 = 30,
-    x_2  - s_2  + A_2 = 3,
-    x_2  + s_3 = 12,
-  -x_1 + x_2 + s_4  =  0,
-  x_1  + s_5 = 20 }
+    Sujeto a \systeme[x_1x_2s_1s_2s_3s_4s_5A_2]{%
+      x_1 + x_2 + s_1 = 30,
+      x_2  - s_2  + A_2 = 3,
+      x_2  + s_3 = 12,
+      -x_1 + x_2 + s_4  =  0,
+      x_1  + s_5 = 20 }
 
-$x_1, x_2, s_1, s_2, s_3, s_4, s_5, A_2  \geq 0$
-\end{onlyenv}
+    $x_1, x_2, s_1, s_2, s_3, s_4, s_5, A_2  \geq 0$
+  \end{onlyenv}
 \end{frame}
 
 \begin{frame}{Método de las Dos Fases. Ejemplo.}{}
   \begin{onlyenv}<1>
     \[ \min W = A_2 \]
-  Sujeto a \systeme[x_1x_2s_1s_2s_3s_4s_5A_2]{%
-    x_1 + x_2 + s_1 = 30,
-    x_2  - s_2  + A_2 = 3,
-    x_2  + s_3 = 12,
-  -x_1 + x_2 + s_4  =  0,
-  x_1  + s_5 = 20 }
+    Sujeto a \systeme[x_1x_2s_1s_2s_3s_4s_5A_2]{%
+      x_1 + x_2 + s_1 = 30,
+      x_2  - s_2  + A_2 = 3,
+      x_2  + s_3 = 12,
+      -x_1 + x_2 + s_4  =  0,
+      x_1  + s_5 = 20 }
 
-$x_1, x_2, s_1, s_2, s_3, s_4, s_5, A_2  \geq 0$
-\end{onlyenv}
+    $x_1, x_2, s_1, s_2, s_3, s_4, s_5, A_2  \geq 0$
+  \end{onlyenv}
 \end{frame}
 
 \begin{frame}{Método de las Dos Fases. Ejemplo Fase I.}{}
   {\centering
     \scalebox{1}{%
-      \begin{tabular}{rl|llllllll|rr}
-       & $\min$ & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 &  &  \\
+      \begin{tabular}{rc|llllllll|rr}
+        & $\min$ & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 &  &  \\
         \midrule
-        Cb & \textbf{basis} & $x_1$ & $x_2$ & $s_1$ & $A_2$ & $s_3$ & $s_4$ & $s_5$ & $s_2$ & RHS & ratios \\
+        $\mathbf{C_b}$ & \textbf{basis} & $x_1$ & $x_2$ & $s_1$ & $A_2$ & $s_3$ & $s_4$ & $s_5$ & $s_2$ & RHS & ratios \\
         \midrule
         \only<1>{
         0 & $s_1$ & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 30 & 30 \\
         1 & $A_2$ & 0 & 1 & 0 & 1 & 0 & 0 & 0 & -1 & 3 & 3 \\
         0 & $s_3$ & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 12 & 12 \\
-        0 & $s_4$ & -1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+        0 & $s_4$ & -1 & \cellcolor{yellow}1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
         0 & $s_5$ & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 20 & \#DIV/0! \\
         \midrule
-         Iter & $Z_j$ & 0 & 1 & 0 & 1 & 0 & 0 & 0 & -1 & 3 &  \\
+        Iter & $Z_j$ & 0 & 1 & 0 & 1 & 0 & 0 & 0 & -1 & 3 &  \\
         1& $c_j - Z_j$ & 0 & -1 & 0 & 0 & 0 & 0 & 0 & 1 &  & 
-                                                         }
-                                                         \only<2>{%
+                                                             }
+                                                             \only<2>{%
                                                              0 & $s_1$ & 2 & 0 & 1 & 0 & 0 & -1 & 0 & 0 & 30 &  \\
         1 & $A_2$ & 1 & 0 & 0 & 1 & 0 & -1 & 0 & -1 & 3 &  \\
         0 & $s_3$ & 1 & 0 & 0 & 0 & 1 & -1 & 0 & 0 & 12 &  \\
-        0 & $x_2$ & -1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 &  \\
+        0 & $x_2$ & -1 & \cellcolor{yellow}1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 &  \\
         0 & $s_5$ & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 20 &  \\
         \midrule
         Iter& $Z_j$ & 1 & 0 & 0 & 1 & 0 & -1 & 0 & -1 & 3 &  \\
         1& $c_j - Z_j$ & -1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 &&                                                  
-                                                          }
-                                                          \only<3>{
-                                                          0 & $s_1$ & 2 & 0 & 1 & 0 & 0 & -1 & 0 & 0 & 30 & 15 \\
-        1 & $A_2$ & 1 & 0 & 0 & 1 & 0 & -1 & 0 & -1 & 3 & 3 \\
+                                                           }
+                                                           \only<3>{
+                                                           0 & $s_1$ & 2 & 0 & 1 & 0 & 0 & -1 & 0 & 0 & 30 & 15 \\
+        1 & $A_2$ & \cellcolor{yellow}1 & 0 & 0 & 1 & 0 & -1 & 0 & -1 & 3 & 3 \\
         0 & $s_3$ & 1 & 0 & 0 & 0 & 1 & -1 & 0 & 0 & 12 & 12 \\
         0 & $x_2$ & -1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & -0 \\
         0 & $s_5$ & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 20 & 20 \\
         \midrule
         Iter& $Z_j $& 1 & 0 & 0 & 1 & 0 & -1 & 0 & -1 & 3 &  \\
         2& $c_j - Z_j$ & -1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 &  &
-                                                            }
-                                                            \only<4>{%
-                                                            0 & $s_1$ & 0 & 0 & 1 & -2 & 0 & 1 & 0 & 2 & 24 & 15 \\
-        0 & $x_1$ & 1 & 0 & 0 & 1 & 0 & -1 & 0 & -1 & 3 & 3 \\
+                                                             }
+                                                             \only<4>{%
+                                                             0 & $s_1$ & 0 & 0 & 1 & -2 & 0 & 1 & 0 & 2 & 24 & 15 \\
+        0 & $x_1$ & \cellcolor{yellow}1 & 0 & 0 & 1 & 0 & -1 & 0 & -1 & 3 & 3 \\
         0 & $s_3$ & 0 & 0 & 0 & -1 & 1 & 0 & 0 & 1 & 9 & 12 \\
         0 & $x_2$ & 0 & 1 & 0 & 1 & 0 & 0 & 0 & -1 & 3 &  \\
         0 & $s_5$ & 0 & 0 & 0 & -1 & 0 & 1 & 1 & 1 & 17 & 20 \\
@@ -196,36 +292,38 @@ $x_1, x_2, s_1, s_2, s_3, s_4, s_5, A_2  \geq 0$
 \end{frame}
 
 \begin{frame}{Método de las Dos Fases. Ejemplo Fase II.}{}
+Fase II
+  
   {\centering
     \begin{tabular}{rl|rrrrrrr|rr}
-  & $\max$ & 2 & 3 & 0 & 0 & 0 & 0 & 0 &  &  \\
-  \midrule
-  $\mathbf{C_b}$ & basis & $x_1$ & $x_2$ & $s_1$ & $s_3$ & $s_4$ & $s_5$ & $s_2$ & RHS & ratios \\
+      & $\max$ & 2 & 3 & 0 & 0 & 0 & 0 & 0 &  &  \\
+      \midrule
+      $\mathbf{C_b}$ & \textbf{basis} & $x_1$ & $x_2$ & $s_1$ & $s_3$ & $s_4$ & $s_5$ & $s_2$ & RHS & ratios \\
       \midrule
       % ==============================
       \only<1>{
       0 & $s_1$ & 0 & 0 & 1 & 0 & 1 & 0 & 2 & 24 & 12 \\
       2 & $x_1$ & 1 & 0 & 0 & 0 & -1 & 0 & -1 & 3 & -3 \\
-      0 & $s_3$ & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 9 & 9 \\
+      0 & $s_3$ & 0 & 0 & 0 & 1 & 0 & 0 & \cellcolor{yellow}1 & 9 & 9 \\
       3 & $x_2$ & 0 & 1 & 0 & 0 & 0 & 0 & -1 & 3 & -3 \\
       0 & $s_5$ & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 17 & 17 \\
       \midrule
       Iter& $Z_j$ & 2 & 3 & 0 & 0 & -2 & 0 & -5 & 15 &  \\
       3& $c_j - Z_j$ & 0 & 0 & 0 & 0 & 2 & 0 & 5 &  &    
-      }% only
-      %%%
-      \only<2>{
-      0 & $s_1$ & 0 & 0 & 1 & -2 & 1 & 0 & 0 & 6 &\\
+                                                      }% only
+                                                      %%% 
+                                                      \only<2>{
+                                                      0 & $s_1$ & 0 & 0 & 1 & -2 & 1 & 0 & 0 & 6 &\\
       2 & $x_1$ & 1 & 0 & 0 & 1 & -1 & 0 & 0 & 12 &\\
-      0 & $s_2$ & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 9 &\\
+      0 & $s_2$ & 0 & 0 & 0 & 1 & 0 & 0 & \cellcolor{yellow}1 & 9 &\\
       3 & $x_2$ & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 12 &\\
       0 & $s_5$ & 0 & 0 & 0 & -1 & 1 & 1 & 0 & 8 &\\\midrule
       Iter & $Z_j$ & 2 & 3 & 0 & 5 & -2 & 0 & 0 & 60 &\\
       3 & $c_j - Z_j$ & 0 & 0 & 0 & -5 & 2 & 0 & 0 &&
-      }%only
-      % ------
-      \only<3>{%
-      0 & $s_1$ & 0 & 0 & 1 & -2 & 1 & 0 & 0 & 6 & 6 \\
+                                                      }%only
+                                                      % ------
+                                                      \only<3>{%
+                                                      0 & $s_1$ & 0 & 0 & 1 & -2 & \cellcolor{yellow}1 & 0 & 0 & 6 & 6 \\
       2 & $x_1$ & 1 & 0 & 0 & 1 & -1 & 0 & 0 & 12 & -12 \\
       0 & $s_2$ & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 9 & \#DIV/0! \\
       3 & $x_2$ & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 12 & \#DIV/0! \\
@@ -233,18 +331,18 @@ $x_1, x_2, s_1, s_2, s_3, s_4, s_5, A_2  \geq 0$
       Iter & $Z_j$ & 2 & 3 & 0 & 5 & -2 & 0 & 0 & 60 &  \\
       4 & $c_j - Z_j$ & 0 & 0 & 0 & -5 & 2 & 0 & 0 &  &
                                                         } %
-      \only<4>{
-      0 & $s_4$ & 0 & 0 & 1 & -2 & 1 & 0 & 0 & 6 &  \\
+                                                        \only<4>{
+                                                        0 & $s_4$ & 0 & 0 & 1 & -2 & \cellcolor{yellow}1 & 0 & 0 & 6 &  \\
       2 & $x_1$ & 1 & 0 & 1 & -1 & 0 & 0 & 0 & 18 &  \\
       0 & $s_2$ & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 9 &  \\
       3 & $x_2$ & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 12 &  \\
       0 & $s_5$ & 0 & 0 & -1 & 1 & 0 & 1 & 0 & 2 &  \\\midrule
       Iter & $Z_j$ & 2 & 3 & 2 & 1 & 0 & 0 & 0 & 72 &  \\
-      4 & $c_j - Z_j$ & 0 & 0 & -2 & -1 & 0 & 0 & 0 &  & %//
-                                                         }
-     % =================================
-\end{tabular}
-  \par}
+      4 & $c_j - Z_j$ & 0 & 0 & -2 & -1 & 0 & 0 & 0 & \textbf{END} & %//
+                                                                     }
+                                                                     % =================================
+    \end{tabular}
+    \par}
 \end{frame}
 
 \begin{frameExample}{Dieta}{}
@@ -274,44 +372,44 @@ $x_1, x_2, s_1, s_2, s_3, s_4, s_5, A_2  \geq 0$
 
 \begin{frameExample}{Dieta}{}
   \begin{onlyenv}<1>
-              \[ \min Z = 45x_1 + 40x_2 + 85x_3 + 65x_4   \]
-      Sujeto a %
-      \scalebox{0.95}{%
-        \syssignspace{3pt}
-\systeme[x_1x_2x_3x_4]{%
-    3x_1 + 4x_2 + 8x_3 + 6x_4 \geq  800,
-    2x_1 + 2x_2 + 7x_3 + 5x_4 \geq 200,
-    6x_1  +4x_2 + 7x_3 + 4x_4 >= 700%
-  }
-}% scalebox
+    \[ \min Z = 45x_1 + 40x_2 + 85x_3 + 65x_4   \]
+    Sujeto a %
+    \scalebox{0.95}{%
+      \syssignspace{3pt}
+      \systeme[x_1x_2x_3x_4]{%
+        3x_1 + 4x_2 + 8x_3 + 6x_4 \geq  800,
+        2x_1 + 2x_2 + 7x_3 + 5x_4 \geq 200,
+        6x_1  +4x_2 + 7x_3 + 4x_4 >= 700%
+      }
+    }% scalebox
 
-$x_1, x_2, x_3, x_4 \geq 0$
+    $x_1, x_2, x_3, x_4 \geq 0$
   \end{onlyenv}
   
   \begin{onlyenv}<2>
-          \[ \min W = 0x_1 + 0x_2 + 0x_3 + 0x_4 - 0s_1 - 0s_2 - 0s_3  + A_1 + A_2 + A_3 \]
-      Sujeto a %
-      \scalebox{0.95}{%
-\systeme[x_1x_2x_3x_4s_1s_2s_3A_1A_2A_3]{%
-    3x_1 + 4x_2 + 8x_3 + 6x_4 - s_1 + A_1 = 800,
-    2x_1 + 2x_2 + 7x_3 + 5x_4 - s_2 + A_2 = 200,
-    6x_1  +4x_2 + 7x_3 + 4x_4 - s_3 + A_3 = 700, }
-}% scalebox
+    \[ \min W = 0x_1 + 0x_2 + 0x_3 + 0x_4 - 0s_1 - 0s_2 - 0s_3  + A_1 + A_2 + A_3 \]
+    Sujeto a %
+    \scalebox{0.95}{%
+      \systeme[x_1x_2x_3x_4s_1s_2s_3A_1A_2A_3]{%
+        3x_1 + 4x_2 + 8x_3 + 6x_4 - s_1 + A_1 = 800,
+        2x_1 + 2x_2 + 7x_3 + 5x_4 - s_2 + A_2 = 200,
+        6x_1  +4x_2 + 7x_3 + 4x_4 - s_3 + A_3 = 700, }
+    }% scalebox
 
-$x_1, x_2, x_3, x_4, s_1, s_2, s_3, A_1, A_2, A_3  \geq 0$
-\end{onlyenv}
-\begin{onlyenv}<3>
-        \[ \min W = A_1 + A_2 + A_3 \]
-      Sujeto a %
-      \scalebox{0.95}{%
-\systeme[x_1x_2x_3x_4s_1s_2s_3A_1A_2A_3]{%
-    3x_1 + 4x_2 + 8x_3 + 6x_4 - s_1 + A_1 = 800,
-    2x_1 + 2x_2 + 7x_3 + 5x_4 - s_2 + A_2 = 200,
-    6x_1  +4x_2 + 7x_3 + 4x_4 - s_3 + A_3 = 700, }
-}% scalebox
+    $x_1, x_2, x_3, x_4, s_1, s_2, s_3, A_1, A_2, A_3  \geq 0$
+  \end{onlyenv}
+  \begin{onlyenv}<3>
+    \[ \min W = A_1 + A_2 + A_3 \]
+    Sujeto a %
+    \scalebox{0.95}{%
+      \systeme[x_1x_2x_3x_4s_1s_2s_3A_1A_2A_3]{%
+        3x_1 + 4x_2 + 8x_3 + 6x_4 - s_1 + A_1 = 800,
+        2x_1 + 2x_2 + 7x_3 + 5x_4 - s_2 + A_2 = 200,
+        6x_1  +4x_2 + 7x_3 + 4x_4 - s_3 + A_3 = 700, }
+    }% scalebox
 
-$x_1, x_2, x_3, x_4, s_1, s_2, s_3, A_1, A_2, A_3  \geq 0$
-\end{onlyenv}
+    $x_1, x_2, x_3, x_4, s_1, s_2, s_3, A_1, A_2, A_3  \geq 0$
+  \end{onlyenv}
 \end{frameExample}
 %%% Local Variables:
 %%% mode: latex
