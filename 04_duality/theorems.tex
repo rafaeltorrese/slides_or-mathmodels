@@ -1,0 +1,39 @@
+
+\section{Teoremas de Dualidad}
+\label{sec:duality-theorems}
+
+\begin{frame}{Teoremas de Dualidad}
+  \begin{enumerate} \justifying \parskip4mm
+\item<only@1> El dual del dudal es el primal.
+\item<only@1> El valor de la función objetivo $Z$ para cualquier solución factible del primal es $\leq$ que el valor de la función objetivo $W$ para cualquier solución factible del dual $Z \leq W$.
+\item<only@1> Si el problema primal o dual no tienen solución acotada, entonces, la solución al otro problema (dual o primal) es infactible.
+\item<only@2> Si el problema primal y dual tiene soluciones factibles, entonces, la solución para ambos (dual y primal) es la misma, esto es, $\max Z = \min W$
+\item<only@2> Holgura complementaria.
+\end{enumerate}
+
+\begin{theorem}<only@3>[Holgura Complementaria]
+  \begin{enumerate} \justifying \parskip2mm
+  \item Si una variable primal es positiva, entonces, la restricción dual correspondiente es una ecuación en el óptimo.
+  \item Si la restricción primal es una desigualdad, entonces la variable dual correspondiente es cero en el óptimo.
+  \item Si una variable dual es positiva, entonces, la restricción primal correspondiente es una ecuación en el óptimo.
+  \item Si una restricción dual es una desigualdad, entonces, la variable primal correspondiente es cero en el óptimo.
+  \end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Correspondencia entre las Soluciones Primal--Dual}
+
+  \begin{enumerate} \justifying \parskip3mm
+  \item Valores de las variables no-básicas del primal se obtienen de la fila base en la solución dual, bajo las variables de holgura (si existen) ignorando el signo negativo y bajo las vraibles artificiales (si no hay variables de holgura en la restricción) ignorando el signo negativo después de borrar la constante $M$.
+  \item Los valores de las variables de holgura del problema primal se obtienen de la fila base ($c_j - Z_j$) bajo las variables no-básicas en la solución dual ignorando el signo negativo.
+  \item El valor de la función objetivo es el mismo en la solución primal y dual.
+  \end{enumerate}
+\end{frame}
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_duality"
+%%% End:

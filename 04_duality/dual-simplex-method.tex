@@ -1,0 +1,49 @@
+
+\section{The Dual Simplex Method}
+\label{sec:simplexdual-algorithm}
+
+
+\begin{frame}{The Dual Simplex Method}
+  \begin{itemize} \justifying \parskip3mm
+  \item The algorithm is designed to solve a class of L.P. models efficiently. It is used to solve problems which start dual feasible, i.e., whose primal  is optimal but infeasible .
+  \item   In this method \alert{the solution starts better than optimum but infeasible} and remains infeasible until the true optimum is reached at which the solution becomes feasible.
+  \item Thus, whereas \alert{the regular simplex method starts with a basic feasible but non-optimal solution} and works towards optimality, the dual simplex method starts with a basic infeasible but optimal solution and works towards feasibility.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Dual Simplex Algorithm}
+  \begin{description} \justifying \parskip3mm
+  \item<only@1>[Step 1.] \alert{Convert the problem into maximization problem} if it is initially in the minimization form.
+  \item<only@1>[Step 2.] Convert $\geq$ type constraints, if any, into $\leq$ type by multiplying both sides of such
+constraints by $-1$.
+\item<only@1>[Step 3.] Convert the inequality constraints into equalities by addition of slack variables and obtain the initial solution. Express the above information in the form of a \alert{table known as the dual simplex table}.
+\item<only@2>[Step 4.]  Compute $c_j - Z_j$ for every column. Three cases arise :
+  \begin{enumerate} \justifying 
+  \item  If all $c_j - Z_j$ are either negative or zero and all $b_i$ are non-negative, \alert{the solution obtained
+above is the optimal basic feasible solution.}
+\item If all $c_j - Z_j$ are either negative or zero and at least one $b_i$ is negative, then proceed to
+step 5.
+\item  If any $c_j - Z_j$ is positive, the method fails.
+  \end{enumerate}
+\item<only@2>[Step 5.]  Select the row that contains \alert{the most negative $b_i$}. This row is called the key row or
+the pivot row. The corresponding basic variable leaves the basis. This is called dual feasibility
+condition,
+\item<only@3>[Step 6.]  Look at the elements of the key row.
+  \begin{enumerate}[a)] \justifying
+  \item  \alert{If all elements are non-negative, the problem does not have a feasible solution}.
+  \item  \alert{If at least one element is negative}, find the ratios of the corresponding elements of row to these elements. \alert{Ignore the ratios associated with positive or zero elements of the key row}. Choose the smallest of these ratios. The corresponding column is the key column and the associated variable is the entering variable. This is called dual optimality condition. Mark the key element or the pivot element.
+  \end{enumerate}
+  \end{description}
+\end{frame}
+
+\begin{frame}{Dual Simplex Algorithm Flowchart}
+  \begin{tikzpicture}[node distance=2cm]
+    \node (start) [startstop] {Start};
+    \node (input1) [io, below of=start] {Input};
+  \end{tikzpicture}
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_duality"
+%%% End:

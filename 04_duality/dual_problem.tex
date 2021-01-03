@@ -124,6 +124,11 @@ y_1 >= 17,
 \end{block}
 \end{frameExample}
 
+
+\section{Transformación Dual para Problema Primal En Forma Estándar}
+\label{sec:standard-form}
+
+
 \begin{frameExample}{04. Primal - Dual}{}
   % EXAMPLE 6.1-2.1
    $  \max Z = 3x_1+ 10x_2 + 2x_3 $
@@ -153,6 +158,66 @@ $x_1, x_2, x_3  \geq 0 $
   $    y_1\geq 0 \, , y_2 \text{ irrestricta en signo}$
 \end{block}
 \end{frameExample}
+
+
+\begin{frameExample}{05. Dual con Igualdades en Problema Primal}
+  % Example 6.1-2.2 Gupta
+  
+  $\min Z = x_2 + 3x_3$
+
+  s.t.
+
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3]%
+  {%
+    2x_1 + x_2 \leq 3,
+    x_1 + 2x_2 + 6x_3 \geq 5,
+    -x_1 + x_2 + 2x_3 = 2,
+  }
+
+  $x_1, x_2, x_3 \geq 0$
+\end{frameExample}
+
+\begin{frameExample}{06. }
+  % Example 6.1-2.3 Gupta
+
+  $\max Z = 2x_1 + x_2 + x_3$
+
+  s.t.
+
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3]%
+  {%
+    x_1 + x_2 + x_3 \geq 6,
+    3x_1 - 2x_2 + 3x_3 = 3,
+    -4x_1 + 3x_2 - 6x_3 = 1
+  }
+
+  $x_1, x_2, x_3 \geq 0$
+
+  
+\end{frameExample}
+
+\begin{frameExample}{07. }
+  % Example 6.1-2.4 Gupta
+
+  $\min Z = 3x_1 - 2x_2 + x_3$
+
+  s.t.
+
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3]%
+  {%
+   2x_1 - 3x_2 + x_3 \leq 5,
+    4x_1 - 2x_2  \geq  9,
+    -8x_1 + 4x_2 + 3x_3 = 8
+  }
+
+  $x_1, x_2\geq 0, \, x_3 \text{  is unrestricted} $
+
+  
+\end{frameExample}
+
 
 %%% Local Variables:
 %%% mode: latex
