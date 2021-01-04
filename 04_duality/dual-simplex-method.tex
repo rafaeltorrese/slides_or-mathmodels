@@ -37,11 +37,90 @@ condition,
 \end{frame}
 
 \begin{frame}{Dual Simplex Algorithm Flowchart}
-  \begin{tikzpicture}[node distance=2cm]
-    \node (start) [startstop] {Start};
-    \node (input1) [io, below of=start] {Input};
-  \end{tikzpicture}
+
+  \begin{center}
+    \resizebox{7cm}{!}{%
+      \begin{tikzpicture}[node distance=2cm]
+        % \node (start) [startstop] {Start};
+        % \node (input1) [io, below of=start] {Input};
+        \node (pro1) [process] {Convert the minimization problem, if any, into the maximization problem};
+        \node (pro2) [process, below of=pro1] {Convert $\geq$ type constraints, if any, into $\leq$; type};
+        \node (pro3) [process, below of=pro2] {Convert $\leq$ type constraints, into equations and set up the initial dual simplex table};
+        \node (pro4) [process, text width=5cm, below of=pro3] {Compute $c_j - Z_j$ values};
+        \node (dec1) [decision, yshift=-1.2cm, below of=pro4] {Are all $c_j - Z_j \leq 0$ and all $b_i > 0$?};
+        \node (pro5) [process, text width=5cm, right of=dec1, xshift=5cm] {Optimal solution obtained};
+        \node (pro6) [process, below of=dec1, yshift=-2cm]{%
+          \begin{enumerate}[a)]
+          \item Select key row with the most negative $b_i$.
+          \item Find ratios of $c_j - Z_j$ elements to the negative elements of key row. Select key column with minimum ratio
+          \end{enumerate}%
+        };
+        \node (pro7) [process, below of=pro6, yshift=-0.7cm] {Mark the key element. Perform row operations as in regular simplex method};
+        % \node (pro2a) [process, below of=dec1, yshift=-0.5cm] {Process 2a};
+        % \node (pro2b) [process, right of=dec1, xshift=2cm] {Process 2b};
+        % \node (out1) [io, below of=pro2a] {Output};
+        % \node (stop)[startstop, below of=out1] {Stop};
+
+        \draw [arrow] (pro1) -- (pro2);
+        \draw [arrow] (pro2) -- (pro3);
+        \draw [arrow] (pro3) -- (pro4);
+        \draw [arrow] (pro4) -- (dec1);
+        \draw[arrow] (dec1) -- node[anchor=south] {yes}(pro5);
+        \draw[arrow] (dec1) -- node[anchor=east] {no} (pro6);
+        \draw[arrow] (pro6) -- (pro7);
+        \draw[arrow] (pro7.west) -- ++(-1,0) |- (pro4.west);
+        
+
+        % \draw[arrow] (pro2b) |- (proc1);
+        % \draw[arrow] (pro2a) -- (out1);
+        % \draw[arrow] (out1) -- (stop);
+      \end{tikzpicture}%
+    }
+  \end{center}
 \end{frame}
+
+\begin{frameExample}{08.}{}
+  \begin{columns}
+    \column{0.5\textwidth}
+\[\min Z = 2x_1 + 2x_2 + 4x_3  \]
+
+  s.t.
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3]{%
+      2x_1 + 3x_2 + 5x_3 \geq 2,
+    3x_1 + x_2 + 7x_3  \leq 3,
+    x_1 + 4x_2 + 6x_3  \leq 5,
+}% systeme
+
+$    x_1, x_2, x_3  \geq 0$
+\column{0.5\textwidth}
+ \[ \max G =  -Z = -2x_1 - 2x_2 - 4x_3 \]
+
+  s.t.
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3]{%
+      -2x_1 - 3x_2 - 5x_3 \leq -2,
+    3x_1 + x_2 + 7x_3  \leq 3,
+    x_1 + 4x_2 + 6x_3  \leq 5,
+}% systeme
+
+$    x_1, x_2, x_3  \geq 0$
+  \end{columns}
+\end{frameExample}
+
+\begin{frameExample}{08}{}
+  \[ \max G= -2x_1 - 2x_2 - 4x_3 + 0s_1 + 0s_2 + 0s_3 \]
+
+  s.t.
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3s_1s_2s_3]{%
+      -2x_1 - 3x_2 - 5x_3 + s_1 = -2,
+    3x_1 + x_2 + 7x_3  + s_2 =  3,
+    x_1 + 4x_2 + 6x_3  + s_3 = 5,
+}% systeme
+
+$    x_1, x_2, x_3, s_1, s_2, s_3  \geq 0$
+\end{frameExample}
 
 %%% Local Variables:
 %%% mode: latex
