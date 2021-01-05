@@ -122,6 +122,25 @@ $    x_1, x_2, x_3  \geq 0$
 $    x_1, x_2, x_3, s_1, s_2, s_3  \geq 0$
 \end{frameExample}
 
+\begin{frameExample}{08. Dual Simplex Table}{}
+  {\centering
+    \begin{tabular}{rrrrrrrrr}
+      \toprule
+      $\max$&$c_j$&-2&-2&-4&0&0&0\\
+      \midrule
+      $C_b$&Basis&$x_1$&$x_2$&$x_3$&$s_1$&$s_2$&$s_3$&$\mathbf{b}$\\
+      \midrule
+      0&$s_1$&-2&-3&-5&1&0&0&-2\\
+      0&$s_2$&3&1&7&0&1&0&3\\
+      0&$s_3$&1&4&6&0&0&1&5\\
+      \midrule
+      &$Z_j$&0&0&0&0&0&0&\textbf{0}\\
+      &$c_j - Z_j$&-2&-2&-4&0&0&0\\
+      \bottomrule
+    \end{tabular}
+  \par}
+\end{frameExample}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "slides_duality"

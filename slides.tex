@@ -31,14 +31,35 @@
 \usepackage[font=scriptsize,labelfont=bf,justification=centerlast,format=hang]{caption} %To change the appearance of captions
 % tikz
 \usepackage{tikz} % for draw
-\usetikzlibrary{automata,
+\usetikzlibrary{%
+  shapes.geometric,
+  automata,
   arrows,
   positioning,
   calc,
   intersections}
 \graphicspath{{figs/}}
-
-
+% flowchart with tikz library
+\tikzstyle{startstop}=[rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!30]
+%
+\tikzstyle{io}=[%
+trapezium, trapezium left angle=70, trapezium right angle=110,%
+minimum width=3cm, minimum height=1cm,%
+text centered, draw=black, fill=blue!30%
+]
+%
+\tikzstyle{process}=[%
+rectangle, minimum width=3cm, minimum height=1cm,%
+text centered,text width=8cm, draw=black, fill=orange!30%
+]
+%
+\tikzstyle{decision}=[%
+diamond, minimum width=2cm, minimum height=2cm,%
+text badly centered, text width=5em, draw=black, fill=green!30%
+]
+%
+\tikzstyle{arrow}=[thick, ->, >=stealth]
+%%%%%%%%%%%%%%%%%%%%
 \definecolor{tealsection}{RGB}{50,90,90}
 \hypersetup{colorlinks=true,
   urlcolor=red,
@@ -96,7 +117,7 @@
 {
 \setbeamercolor{frametitle}{fg=white,bg=green!60!blue}
 \begin{frame} \justifying
-  \frametitle{Ejemplo - #1}
+  \frametitle{Example - #1}
   \framesubtitle{\insertsubsectionhead #2}
   
 }
@@ -139,13 +160,13 @@ progressbar=frametitle%
 ]{metropolis}
 %\usetheme{Boadilla}
 
-\title{Investigación De Operaciones.}
-\subtitle{Modelos Matemáticos.} % 6 hours. 2 sessions
+\title{OPERATIONS RESEARCH.}
+\subtitle{Operations Research. \\ Mathematical Models.} 
 
 
-\institute{UNIVERSIDAD ANÁHUAC MÉXICO}
+% \institute{UNIVERSIDAD ANÁHUAC MÉXICO}
 \author{Rafael Torres Escobar, Ph.D.}
-\date[Anáhuac México]{}
+\date[OR]{}
 
 
 
