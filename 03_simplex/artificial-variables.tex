@@ -1,21 +1,172 @@
-\section{Variables Artificiales}
+\section{Artificial Variables Techniques}
 \label{sec:artificial-variables}
 
 
-\begin{frame}{Técnicas de Variable Artificial}
+\begin{frame}{Artificial Variables Techniques}
   \begin{itemize} \parskip3mm \justifying
-  \item<only@1> En los problemas anteriores, las restricciones eran de tipo ($\leq$) (con lados derechos no negativos). La introducción de variables de holgura proporcionó fácilmente la solución factible básica inicial. 
-  \item<only@1> Existen  problemas de programación lineal en los que las \alert{variables de holgura no pueden proporcionar una solución factible básica inicial.} 
-  \item<only@1> En estos problemas, \alert{al menos una de las restricciones es de tipo ($\geq$) o ($=$)}. En tales casos, presentamos otro tipo de variables llamadas \alert{variables artificiales}. Estas variables son ficticias y no tienen significado físico. 
-  \item<only@1> Asumen el papel de \alert{variables de holgura en la primera iteración}, solo para ser \alert{reemplazadas en una iteración posterior. }
-  \item<only@2> Método de Penalización.
-  \item<only@2> Método Dos Fases.   
+  \item<only@1> In the earlier problems, the constraints were of ($\leq$) type (with non-negative right hand sides). The introduction of slack variables readily provided the initial basic feasible solution.
+  \item<only@1> In problems where at least one of \alert{the constraints is of ($\geq$) or ($=$) type} we introduce another type of variables called \alert{artificial variables} 
+  \item<only@1> These variables are fictitious and have no physical meaning. They assume the role of slack variables of the first iteration, only to be replaced at a later iteration.
+  \item<only@2> Thus they are merely a device to get the starting basic feasible solution so that simplex algorithm be applied as usual to get optimal solution.
+  \item<only@2> There are two techniques available to solve such problems. They are: 
+    \begin{enumerate}
+    \item The big \emph{M-method} or \emph{M-technique} or \alert{method of penalties}.
+    \item \alert{The two-phase method}.
+    \end{enumerate}
   \end{itemize}
+\end{frame}
+
+\begin{frame}{The Method of Penalties (Big \emph{M-Method})}
+  \begin{description} \justifying \parskip4mm
+  \item[Step 1.] Express the linear programming problem in standard form by introducing slack variables.
+  \item[Step 2.] Add non-negative variables to the left-hand sides of all the constraints of \emph{initially} ($\geq$) or ($=$) type. These variables are called \alert{artificial variables}. We must get rid of these variables and must not allow them to appear in the final solution. To achieve this, these variables are assigned a very large per unit penalty in the objective function. This penalty is designated by \alert{$-M$ for maximization problems and $+M$ for minimization problems}, where $M > 0$.
+  \item[Step 3.] Solve the modified linear programming problem by the simplex method.
+  \end{description}
+\end{frame}
+
+\begin{frame}{The Method of Penalties (Big \emph{M-Method})}
+  While making iterations, using the simplex method, one of the following three cases may arise:
+  \begin{enumerate} \justifying \parskip5mm
+  \item If \alert{no artificial variable remains in the basis} and the optimality condition is satisfied, then \alert{the solution is an optimal feasible solution the the given problem}.
+  \item If at least one \alert{artificial variable appears in the basis at zero} level (with zero value in \emph{b}-column) and the optimality condition is satisfied, then \alert{the solution is optimal feasible (though degenerate)} solution to the given problem.
+  \item If at least \alert{one artificial variable appears in the basis at a non-zero level} (with positive value in \emph{b}-column) and the optimality condition is satisfied, then \alert{the original problem has no feasible solution}.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Method of Penalties. An Example}{}
+      Food $X$ contains 6 units of vitamin A per gram and 7 units of vitamin B per gram and costs \$12  per gram. Food $Y$ contains 8 units of vitamin A per gram and 12 units of vitamin B per gram and costs \$20  per gram. The daily minimum requirement of vitamin A and vitamin B is 100 units and 120 units respectively. Find the minimum cost of product mix by the simplex method.
+
+
+      \begin{block}{The Model} \justifying
+          $\min Z = 12x_1 + 20x_2$
+
+s.t.
+  \sysalign{r,r}%
+  \systeme[x_1x_2]{%
+      6x_1 + 8x_2   \geq 100,
+    7x_1 + 12x_2 \geq    120
+}% systeme
+
+$    x_1, x_2  \geq 0$
+      \end{block}
+\end{frame}
+
+\begin{frame}{Method of Penalties. An Example}{}
+
+
+  \begin{block}<only@1>{Model}
+    $\min Z = 12x_1 + 20x_2$
+
+s.t.
+  \sysalign{r,r}%
+  \systeme[x_1x_2]{%
+      6x_1 + 8x_2   \geq 100,
+    7x_1 + 12x_2 \geq    120
+}% systeme
+
+$    x_1, x_2  \geq 0$
+  \end{block}
+\begin{block}<only@1,2>{Step 1. Express The Problem in Standard Form} \justifying
+
+  $\min Z = 12x_1 + 20x_2 + 0s_1 + 0s_2$
+
+  s.t.
+  \sysalign{r,r}%
+  \systeme[x_1x_2s_1s_2]{%
+      6x_1 + 8x_2 - s_1  = 100,
+    7x_1 + 12x_2 - s_2   = 120
+}% systeme
+
+$    x_1, x_2, s_1, s_2  \geq 0$
+\end{block}
+
+\begin{block}<only@2>{Step 2. Find initial basic feasible solution} \justifying
+    $\min Z = 12x_1 + 20x_2 + 0s_1 + 0s_2 +MA_1 + MA_2$
+
+  s.t.
+  \sysalign{r,r}%
+  \systeme[x_1x_2s_1s_2A_1A_2]{%
+      6x_1 + 8x_2 - s_1 + A_1 = 100,
+    7x_1 + 12x_2 - s_2   + A_2= 120
+}% systeme
+
+$    x_1, x_2, s_1, s_2, A_1, A_2   \geq 0$
+\end{block}
+
+\begin{block}<only@3>{Step 3. Perform optimality test.} \justifying
+  {\centering
+    \scalebox{0.8}{%
+      \begin{tabular}{cccccccccc}
+        \toprule
+      $\min$ &$c_j$&12&20&0&0&$M$&$M$&& \\
+      $c_B$&Basis&$x_1$&\cellcolor{yellow}$x_2$&$s_1$&$s_2$&$A_1$&$A_2$&$b$&$\theta$\\
+      \midrule
+      $M$&$A_1$&6&8&-1&0&1&0&100&$\nicefrac{100}{8}=25/2$\\
+      $M$&\cellcolor{yellow}$A_2$&7&\cellcolor{orange}12&0&-1&0&1&120&$\nicefrac{120}{12}=10$ \textrightarrow\\
+      \midrule
+           &$Z_j$&$13M$&$20M$&$-M$&$-M$&$M$&$M$&\cellcolor{red!20}$220M$&\\
+           &$c_j - Z_j$&$12 - 13M$&$20-20M$&$M$&$M$&0&0&&\\
+        \bottomrule
+           &&&\textuparrow&&&&&&\\
+           &&&K&&&&&&\\
+    \end{tabular}
+    }%
+  \par}
+\end{block}
+
+\begin{block}<only@4>{Step 4. Iterate towards on optimal solution.} \justifying
+  {\centering
+    \scalebox{0.7}{%
+      \begin{tabular}{ccccccccc}
+        \toprule
+      $\min$ &$c_j$&12&20&0&0&$M$&& \\
+      $c_B$&Basis&\cellcolor{yellow}$x_1$&$x_2$&$s_1$&$s_2$&$A_1$&$b$&$\theta$\\
+      \midrule
+      $M$&\cellcolor{yellow}$A_1$&\cellcolor{orange}\nicefrac{4}{3}&0&-1&\nicefrac{2}{3}&1&20&15\textrightarrow\\
+      20&$x_2$&\nicefrac{7}{12}&1&0&\nicefrac{-1}{12}&0&10&\nicefrac{120}{7} \\
+      \midrule
+           &$Z_j$&$\frac{35}{3} + \frac{4}{3}M$&$20$&$-M$&$-\frac{5}{3} + \frac{2}{3}M$&$M$&\cellcolor{red!20}$200 + 20M$&\\[3mm]
+           &$c_j - Z_j$&$\frac{1}{3} - \frac{4}{3}M$&0&$M$&$\frac{5}{3} - \frac{2}{3}M$&0&&\\
+        \bottomrule
+           &&\textuparrow K&&&&&&\\
+           % &&&K&&&&&\\
+    \end{tabular}
+    }%
+    \par}
+
+  \begin{columns}
+    \column{0.6\textwidth}
+        \scalebox{0.7}{%
+      \begin{tabular}{ccccccc}
+        \toprule
+      $\min$ &$c_j$&12&20&0&0& \\
+      $c_B$&Basis&$x_1$&$x_2$&$s_1$&$s_2$&$b$\\
+      \midrule
+      12&$x_1$&1&0&-\nicefrac{3}{4}&\nicefrac{1}{2}&15\\
+      20&$x_2$&0&1&\nicefrac{7}{16}&-\nicefrac{3}{8}&\nicefrac{5}{4} \\
+      \midrule
+           &$Z_j$&12&20&-\nicefrac{1}{4}&-\nicefrac{3}{2}&205\\
+           &$c_j - Z_j$&\cellcolor{blue!30}0&\cellcolor{blue!30}0&\cellcolor{blue!30}\nicefrac{1}{4}&\cellcolor{blue!30}\nicefrac{3}{2}&\\
+        \bottomrule
+    \end{tabular}
+  }%
+  \column{0.4\textwidth}
+  Optimal solution found is
+  \begin{flalign*}
+    x_1 & = 15\\
+    x_2 & = \frac{5}{4}\\
+    Z_{\min} &= 205
+  \end{flalign*}
+  \end{columns}
+
+\end{block}
+
 \end{frame}
 
 
 
-\begin{frame}{Método de Penalización. Ejemplo}{}
+
+\begin{frame}{Method of Penalties. An Example}{}
 
   \begin{onlyenv}<1>
     \begin{columns}
