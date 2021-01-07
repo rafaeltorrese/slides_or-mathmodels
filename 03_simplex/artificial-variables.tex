@@ -322,21 +322,132 @@ $    x_1, x_2, s_1, s_2, A_1, A_2   \geq 0$
 \end{frame}
 
 
+\begin{frame}{The Two-Phase Method}
+  In the preceding  section we observed that it was frequently necessary to add artificial variables to the constraints to obtain an initial basic feasible solution to an L.P. problem. If the problem is to be solved, \alert{the artificial variables must be driven to zero}. The two-phase method is another method to handle these artificial variables. Here \alert{the L.P. problem is solved in two phases}.  
+\end{frame}
 
-\begin{frame}{Método de las Dos Fases.}{}
 
-  \begin{block}{Fase I} \justifying
-    \begin{itemize} \parskip3mm \justifying
-    \item Todas las variables artificiales se hacen cero. Esto se hace con una función objetivo artificial en la que se expresa la suma de variables artificiales.
-    \item La nueva \alert{función objetivo se minimiza}, sujeta a las restricciones del problema original.
-    \end{itemize}
+\begin{frame}{The Two-Phase Method. Phase I}
+  \begin{itemize} \justifying \parskip3mm
+  \item<only@1> An artificial objective function $(W)$ is created which is \alert{the sum of all the artificial variables}.
+  \item<only@1,2> \alert{The new objective function is then minimized}, subject to the \alert{constraints of the given (original) problem} using the simplex method. At the end of the phase I, three cases arise:
+    \begin{enumerate} \justifying
+    \item<only@2> If the \alert{minimum $W > 0$}, and at least one artificial variable appears in the basis at a positive level,  \alert{the given problem has no feasible solution} and the procedure terminates.
+    \item<only@2> If the minimum value of \alert{$W = 0$, and no artificial variable appears in the basis}, then \alert{a basic feasible solution to the given problem is obtained}.
+    \item<only@2> \alert{If the mimimum value of $W = 0$ and one or more artificial variables appear in the basis at zero level}, then a feasible solution to the original problem is obtained. However, \alert{we must take care of this artificial variable and see that it never becomres positive during phase II computations}. Zero cost coefficients is assigned to this artificial variable and it is retained in the initial table of phase II.
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{The Two-Phase Method. Phase II}
+  When phase I results in case 2 and 3, we go on to phase II to find optimum solution to the given L.P. problem. The basic feasible solution found at the end of phase I is now used as a starting solution for the original problem. In other words, \alert{the final table of phase I becomes the starting table of phase II in which the artificial (auxiliary) objective function is replaced by the original objective function. The simplex method is then applied to arrive at the optimum solution}. Artificial variables which do not appear in the basis may be deleted.
+\end{frame}
+
+
+\begin{frame}{The Two Phase Method. A First Example}
+  Use the two-phase method simplex method to
+
+  $\max Z = 5x_1 + 3x_2$
+
+  s.t.
+
+  \sysalign{r,r}%
+  \systeme[x_1x_2]{%
+    2x_1 + x_2 \leq 1,
+    x_1 + 4x_2 \geq 6
+  }
+
+  $x_1, x_2 \geq 0$
+\end{frame}
+
+\begin{frame}{The Two Phase Method. A First Example. Phase I}
+  \begin{block}<only@1>{Step 1. Set up the Problem in the Standard Form} \justifying
+    The original objective function $Z = 5x_1 + 3x_2$ is temporarily set aside during the phase I solution. The given constraints, after the introduction of slack, surplus and artificial variables take de the form:
+
+
+    s.t.
+
+    \sysalign{r,r}%
+    \systeme[x_1x_2s_1s_2A_1]{%
+      2x_1 + x_2 + s_1 = 1,
+      x_1 + 4x_2 - s_2 + A_1 = 6
+    }
+
+    \vspace{5mm}
+    The new objective function is \[ \min W = A \]
+    
   \end{block}
-  \begin{block}{Fase II}\justifying
-    La tabla final de la Fase I es la tabla inicial de la Fase II. Las variables artificiales en la función objetivo se reemplazan  por las variables originales y se aplica el método simplex.
-  \end{block}
-\end{frame}    
+  
+  \begin{block}<only@2>{Step 1. Set up the Problem in the Standard Form.} \justifying
 
-\begin{frame}{Método de las Dos Fases. Ejemplo}{}
+    The simplex method requires that a variable which appears in one equation appear in all the equations. This is done by proper placemente of a zero coefficient. Thus the problem for phase I in standard form becomes
+
+   $\min W = 0x_1 + 0x_2 + 0s_1 + 0s_2 + A_1$ 
+
+   s.t.
+   
+   \sysalign{r,r}%
+    \systeme[x_1x_2s_1s_2A_1]{%
+      2x_1 + x_2 + s_1 + 0s_2 + 0A_1 = 1,
+      x_1 + 4x_2 + 0s_1 - s_2 + A_1 = 6
+    }
+    
+    $x_1, x_2, s_1, s_2, A_1 \geq 0$
+    
+  \end{block}
+
+  \begin{block}<only@3>{Step 2. Find an Initial Basic Feasible Solution}
+
+    {\centering
+      \begin{tabular}{rcrrrrrrrl}
+        \toprule
+        &$c_j$&0&0&0&0&1&&&\\
+        $c_B$&Basis&$x_1$&\cellcolor{yellow}$x_2$&$s_1$&$s_2$&$A_1$&$b$&$\theta$&\\
+        \midrule
+        0&\cellcolor{yellow}$s_1$&2&\cellcolor{orange}1&0&1&0&1&1&\textrightarrow\\
+        1&$A_1$&1&4&-1&0&1&6&3/2&\\
+        \midrule
+        &$Z_j$&1&4&-1&0&1&\cellcolor{red!30}6&&\\
+        &$c_j -Z_j$&-1&-4&1&0&0&&&\\
+        \toprule
+        &&&\textuparrow&&&&&&\\
+      \end{tabular}
+    \par}
+    
+\end{block}
+
+\begin{block}<only@3>{Step 3. Perform Optimality Test} \justifying
+  Since $c_j - Z_j$ is negative under some columns (minimization problem), the preceding table is not optimal.
+\end{block}
+
+\begin{block}<only@4>{Step 4. Iterate Towards An Optimal Solution.} \justifying
+    {\centering
+      \begin{tabular}{rcrrrrrrrl}
+        \toprule
+        &$c_j$&0&0&0&0&1&&&\\
+        $c_B$&Basis&$x_1$&$x_2$&$s_1$&$s_2$&$A_1$&$b$&&\\
+        \midrule
+        0&$x_2$&2&1&0&1&0&1&&\\
+        
+        1&\cellcolor{yellow}$A_1$&-7&0&-1&-4&1&\cellcolor{yellow}2&&\\
+        \midrule
+        &$Z_j$&-7&0&-1&-4&1&\cellcolor{red!30}2&&\\
+        &$c_j -Z_j$&\cellcolor{blue!30}7&\cellcolor{blue!30}0&\cellcolor{blue!30}1&\cellcolor{blue!30}4&\cellcolor{blue!30}0&&&\\
+        \toprule
+      \end{tabular}
+      \par}
+    Optimal basic feasible solution for phase I problem
+  \end{block}
+
+  $c_j - Z_j$ is either positive or zero under all columns, an optimal basic feasible solution to hte auxiliary L.P.P. has been obtained.
+
+  However, since $W=A=2 (> 0)$ and artificial variable $A_1$ appears in the basis at a positive level ($A_1 = 2$), \alert{the given problem does not posses a feasible solution and the procedure stops}.
+\end{frame}
+
+
+
+\begin{frame}{The Two-Phase Method. An example.}{}
   \begin{onlyenv}<1>
     \begin{columns}
       \column{0.3\textwidth}
@@ -496,7 +607,7 @@ Fase II
     \par}
 \end{frame}
 
-\begin{frameExample}{Dieta}{}
+\begin{frameExample}{Diet Problem}{}
   % EXAMPLE 2.6-2 {Diet Problem} Gupta
   La persona quiere decidir los componentes de una dieta que cumpla con sus requerimientos diarios de proteínas, grasas y carbohidratos al costo mínimo. La elección debe hacerse a partir de cuatro tipos diferentes de alimentos. Los rendimientos por unidad de estos alimentos se dan en la tabla siguiente. Formule un modelo de programación lineal para el problema y resuelva por método simplex.
 
@@ -562,6 +673,10 @@ Fase II
     $x_1, x_2, x_3, x_4, s_1, s_2, s_3, A_1, A_2, A_3  \geq 0$
   \end{onlyenv}
 \end{frameExample}
+
+
+
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "slides_simplex"
