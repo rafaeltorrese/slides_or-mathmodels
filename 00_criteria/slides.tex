@@ -1,0 +1,154 @@
+\documentclass{beamer}
+
+\usepackage[spanish]{babel}
+\decimalpoint
+\usepackage[utf8]{inputenc}
+\usepackage{ragged2e} % este paquete es para justificar.
+\justifying
+\usepackage{booktabs}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{bm} % bold font greek letters. Use \boldsymbol{ }  and \pmb
+\usepackage{xfrac} % for slanted fractions   \sfrac{}{}
+\usepackage{nicefrac} % for small fractions in text or math mode   \nicefrac{}{}
+%\usepackage{blkarray} % for block arrays, useful for markov chains. Error with Metropolis Beamer Theme
+\usepackage{hhline} % hlines  but interacts with vertical lines
+\usepackage{multirow}
+\usepackage{pgfpages} % for handouts
+%
+\usepackage{import} 
+%
+%\pgfpagesuselayout{4 on 1}[letterpaper,landscape]
+\usepackage[font=scriptsize,labelfont=bf,justification=centerlast,format=hang]{caption} %To change the appearance of captions
+% tikz
+\usepackage{tikz} % for draw
+\usetikzlibrary{automata,arrows,positioning,calc}
+\graphicspath{{figs/}}
+
+
+\definecolor{tealsection}{RGB}{50,90,90}
+\hypersetup{colorlinks=true, urlcolor=red , linkcolor=tealsection}
+
+
+
+% ========================================
+\newenvironment<>{exercise}[1]
+{
+\setbeamercolor{block title}{fg=white,bg=orange!45!black}
+\begin{block}#2{Ejercicio #1}\justifying
+}
+{%
+\end{block}
+}%
+% ========================================
+\newenvironment<>{solution}[1]
+{
+\setbeamercolor{block title}{fg=white,bg=orange!65!black}
+\begin{block}#2{Ejercicio #1 (Solución)}\justifying
+}
+{
+\end{block}
+}
+% ========================================
+\newenvironment<>{example}[1]
+{
+\setbeamercolor{block title}{fg=white,bg=green!65!black}
+\begin{block}#2{Ejemplo #1}\justifying
+}
+% content
+{
+\end{block}
+}
+% ========================================
+\newenvironment<>{frameExample}[2]
+{
+\setbeamercolor{frametitle}{fg=white,bg=green!60!blue}
+\begin{frame} \justifying
+  \frametitle{Ejemplo #1}
+  \framesubtitle{ #2}
+  
+}
+% content
+{
+\end{frame}
+}
+% ========================================
+\newenvironment<>{framebb}[1] % for blackboard exercises
+{
+%\usebackgroundtemplate{\includegraphics[scale=0.3]{blackboard-logo.png}}
+\setbeamercolor{frametitle}{fg=white,bg=black!85}
+\begin{frame} \justifying
+  \frametitle{%
+  \includegraphics[scale=0.08]{blackboard-logo.png} \hspace{5mm} Contenidos y Materiales/Homework/hw\textunderscore #1
+  }
+%{\centering \includegraphics[scale=0.5]{BlackBoardSymbol.png}\par}
+%\vspace{5mm}
+Hacer actividad en Parejas. Cada alumno subirá la \alert{actividad a su cuenta individual} de Blackboard \\[5mm]
+}
+{
+\end{frame}
+}
+% ========================================
+\newenvironment<>{framemtb} % for Using Minitab
+{
+%\usebackgroundtemplate{\includegraphics[scale=0.3]{blackboard-logo.png}}
+\setbeamercolor{frametitle}{fg=white,bg=green!60!black}
+\begin{frame}\justifying
+\frametitle{\includegraphics[scale=0.1]{minitab-logo.png} \hspace{4mm} Minitab}
+%{\centering \includegraphics[scale=0.5]{BlackBoardSymbol.png}\par}
+%\vspace{5mm}
+
+}
+{
+\end{frame}
+}
+% ========================================
+%\graphicspath{}
+\usetheme[
+sectionpage=progressbar,
+numbering=none,
+progressbar=frametitle
+]{metropolis}
+
+% \usetheme{Boadilla}
+
+\title{Investigación De Operaciones \\ Modelos Matemáticos}
+\subtitle{Criterios de Evaluación} 
+
+
+\institute{UNIVERSIDAD ANÁHUAC MÉXICO}
+\author{Rafael Torres Escobar, Ph.D.}
+\date[Anáhuac México]{}
+
+
+ \AtBeginSection[] % Do nothing for \section* %
+{
+\begin{frame}<beamer> 
+  \frametitle{Agenda}
+  \tableofcontents[currentsection] 
+\end{frame}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  Hola
+\end{frame}
+
+
+     \begin{frame}{Agenda}
+   \tableofcontents
+ \end{frame}
+
+
+
+ %\input{course}
+ \input{evaluation}
+
+
+
+\end{document}
