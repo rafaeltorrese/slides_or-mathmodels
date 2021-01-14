@@ -5,8 +5,22 @@
   Una empresa de publicidad desea planificar su estrategia publicitaria en tres medios diferentes de televisión, radio y revistas. El objetivo de la publicidad es llegar al mayor número posible de clientes posibles. Se han obtenido los siguientes datos de una encuesta de mercado:%
   }
 
-    {\centering
-\includegraphics<1,2>[scale=0.5]{example_selection-media_gupta}
+  {\centering
+
+    \scalebox{0.7}{
+      \begin{tabular}{rrrrr}
+        \toprule
+        &Television&Radio&Magazine I&Magazine II \\
+        \toprule
+        Cost of and advertising unit&30,000&20,000&15,000&10,000 \\[3mm]
+        No. of potential customers&&&& \\
+        reached per unit&200,000&600,000&150,000&100,000 \\[3mm]
+        No. of female customers&&&& \\
+        reached per unit&150,000&400,000&70,000&50,000\\
+        \bottomrule
+      \end{tabular}
+    }     
+%\includegraphics<1,2>[scale=0.5]{example_selection-media_gupta}
 \par}
 
 \only<2>{%
@@ -27,5 +41,5 @@ Formular un modelo L.P. para el problema.%
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../slides"
+%%% TeX-master: "slides_linear-programming-intro"
 %%% End:

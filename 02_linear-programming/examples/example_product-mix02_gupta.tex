@@ -3,7 +3,19 @@
 Una empresa fabrica tres productos A, B y C. El tiempo para fabricar el producto A es el doble que para B y tres veces para C y si toda la mano de obra se dedica a la fabricación del producto A, se pueden producir 1,600 unidades de este producto. Estos productos deben producirse en una proporción de 3: 4: 5. Hay demanda de al menos 300, 250 y 200 unidades de productos A, B y C y el beneficio obtenido por unidad es de \$ 90, \$ 40 y \$ 30 respectivamente. Formule el problema como un problema de programación lineal.
 
 {\centering
-\includegraphics[scale=0.5]{example_product-mix02_gupta}
+  \scalebox{0.8}{%
+    \begin{tabular}{lm{1cm}m{1cm}m{1cm}r}
+      \toprule
+      &\multicolumn{3}{c}{Requirement per }&  \\
+      &\multicolumn{3}{c}{unit product (kg)}& Total \\
+      Raw material&$A$&$B$&$C$&avaiability (kg) \\
+      \midrule
+      $P$&6&5&2&5,000 \\
+      $Q$&4&7&3&6,000\\
+      \bottomrule
+    \end{tabular}
+  }
+%\includegraphics[scale=0.5]{example_product-mix02_gupta}
 \par}
 
 \end{frameExample}
@@ -32,5 +44,5 @@ Una empresa fabrica tres productos A, B y C. El tiempo para fabricar el producto
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../slides"
+%%% TeX-master: "slides_linear-programming-intro"
 %%% End:
