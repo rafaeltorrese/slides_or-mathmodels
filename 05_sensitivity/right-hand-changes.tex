@@ -1,0 +1,98 @@
+\section{Changes in The Right-Hand Side}
+\label{sec:changes-right-hand-side}
+
+\begin{frame}{Changes in The Right-Hand Side of The Constraints $b_i$}{}
+  \begin{itemize} \justifying \parskip3mm
+  \item Suppose that an optimal solution to a linear programming has already been found and it is desired to find the effect of increasing or decreasing some resource.
+  \item This will affect not only the objective function but also the solution.
+  \item Large changes in the limiting resources \alert{may even change the variables in the solution since one or more current basic variables become negative}.
+  \item Dual simplex method is used to remove infeasibility and to get a feasbile optimal solution.
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frameExample}{01.}{}
+
+  \begin{columns}
+    \column{0.4\textwidth}
+      $\max Z = 5x_1 + 12x_2 + 4x_3$
+
+      \vspace{5mm}
+
+      s.t.
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3]{%
+    x_1 + 2x_2 + x_3 \leq 5,
+    2x_1 - x_2 +3x_3 = 2  
+  }
+
+  \vspace{5mm}
+  
+  $x_1 , x_2, x_3 \geq 0$
+  \column{0.6\textwidth}
+  \begin{enumerate}[a)] \justifying \parskip4mm
+  \item Solve the problem.
+  \item Discuss the effect of changing the requirement vector from $%
+    \begin{bmatrix}
+      5\\
+      2\\
+    \end{bmatrix}
+    $%
+    to%
+    $
+    \begin{bmatrix}
+      7\\
+      2\\
+    \end{bmatrix}
+$
+\item Discuss the effect of changing the requirement vector from %
+  $
+  \begin{bmatrix}
+    5\\2\\
+  \end{bmatrix}
+  $
+  to%
+  $
+  \begin{bmatrix}
+    3\\9\\
+  \end{bmatrix}
+  $
+  \item Which resource should be increased and how much to achieve the best marginal increase in the value of the objective function?
+  \end{enumerate}
+  \end{columns}
+\end{frameExample}
+
+
+\begin{frameExample}{02.}{}
+\begin{columns}
+  \column{0.5\textwidth}
+  Given the following L.P. Problem:
+
+  \[ \max Z = -x_1 + 2x_2 - x_3 \]
+
+  \vspace{6mm}
+  s.t.
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3]%
+  {
+    3x_1 + x_2 - x_3 \leq 10,
+    -x_1 + 4x_2 + x_3 \geq 6,
+    x_2 + x_3 \leq 4
+  }
+
+  \vspace{6mm}
+
+  $x_1, x_2, x_3 \geq 0$
+  \column{0.5\textwidth}
+  \begin{enumerate}[a)] \justifying \parskip3mm
+  \item Find the optimal solution.
+  \item   Find the separate ranges $b_1, b_2 $ and $b_3$ consistent with the optimal solution.
+  \end{enumerate}
+\end{columns}  
+\end{frameExample}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_sensitivity"
+%%% End:
