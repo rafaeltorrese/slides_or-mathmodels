@@ -1,0 +1,24 @@
+
+\section{Addition of a New Constraint}
+\label{sec:addition-new-constraint}
+
+\begin{frame}{Addition of a New Constraint}
+  \begin{itemize} \justifying \parskip4mm
+  \item Addition of a new constraint may o may not affect the feasibility of the current optimal solution.
+  \item It is sufficient to check whether new constraint is satified by the current optimal solution or not.
+  \item If it is satisfied, the inclusion of the constraint has no effect on the current optimal solution \emph{i.e.,} it remains feasible as well as optimal. If, however, the constraint is not satified, the current \alert{optimal solution becomes infeasible. Dual simplex metho is then used to find the new optimal solution.}
+  \end{itemize}
+\end{frame}
+
+\begin{frameExample}{08.}{}
+  
+  \begin{enumerate}[label=\alph*)] \justifying \parskip4mm
+  \item In \hyperlink{example03}{example 03} an administrative constraint is added. Products $A, B$ and $C$ require 2, 3, and 2 hours of administrative services, while the total available administrative hours are 10. How does the optimal solution change?
+  \item \label{example08} If the total available administrative time is 4 hours, find the new optimal solution.
+  \end{enumerate}
+\end{frameExample}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_sensitivity"
+%%% End:
