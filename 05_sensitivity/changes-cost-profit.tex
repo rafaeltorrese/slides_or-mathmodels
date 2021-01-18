@@ -1,0 +1,97 @@
+
+\section{Changes in the Cost/Profit Coefficients $c_j$}
+\label{sec:changes-cost-profit}
+
+\begin{frame}{Changes in the Cost/Profit Coefficients $c_j$}
+  \begin{itemize}\justifying \parskip3mm
+    \item Changes in the coefficiets of the objective function may take place due to a change in cost or profit of either \alert{basic variables or non-basic variables}.
+    \item Each of these two cases will first be considered separately. The discussion, be followed by a combined case.
+  \end{itemize}
+\end{frame}
+
+\begin{frameExample}{03.}{}
+  % Example 6.6-2.1
+  A company wants to produce three products: $A, B, C$. THe unit profits on these products are \$ 4, 6, and 2 respectively. These products require two types of resources -- manpower and material. The following L.P. model is formulated for determining the optimal product mix
+
+  $\max Z = 4x_1 +6x_2 +2x_3$
+
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3]%
+  {
+    x_1 + x_2 + x_3 \leq 3@(manpower),
+    x_1 +4x_2 +7x_3 \leq 9@ (material)
+  }
+
+  $x_1, x_2, x_3 \geq 0$
+
+  Where   $x_1, x_2, x_3$ are the number of products $A, B $ and $C$ produced.
+\end{frameExample}
+
+\begin{frameExample}{03.}{}
+  \begin{enumerate}[label=\alph*)] \justifying \parskip3mm
+  \item Find the optimal product mix and the corresponding profit to the company.
+  \item Finde the range on the values of non-basic variable coefficient $c_3$ such that the current optimal product mix remains optimal.
+  \item What happens if $c_3$ is increased to \$ 12? What is the new optimal product mix in this case?
+  \item Find the range on basic variable coefficient $c_1$ such that the current optimal product mix remains optimal.
+  \item Find the effect when $c_1 = \$8$ on the optimal product mix.
+  \item Find the effect of changing the objective function to $Z = 2x_1 + 8x_2 + 4x_3$ on the current optimal product mix.
+  \end{enumerate}
+\end{frameExample}
+
+\begin{frameExample}{04.}{}
+  \begin{columns}
+    \column{0.5\textwidth}
+    Given the L.P. Problem:
+
+    $\max Z = -x_1 + 2x_2 - x_3$
+
+    
+    s.t.
+
+    \vspace{5mm}
+    \sysalign{r,r}%
+    \sysdelim..%
+    \systeme[x_1x_2x_3]%
+    {
+      3x_1 + x_2 - x_3 \leq 10,
+      -x_1 + 4x_2 + x_3 \geq 6,
+      x_2 + x_3 \leq 4 
+    }
+
+    \vspace{5mm}
+
+    $x_1,x_2,x_3 \geq 0$
+    \column{0.5\textwidth}
+
+    determine the effect of discrete changes in $c_j (j = 1,2,\ldots,6)$ on the optimal basic feasible solution.
+  \end{columns}
+\end{frameExample}
+
+\begin{frameExample}{04.}{}
+
+Consider the L.P. Problem:
+
+    \[ \max Z = 3x_1 + 5x_2 + 4x_3\]
+    
+    \begin{equation*}
+          \text{s.t.}
+      \sysalign{r,r}%
+    %\sysdelim..%
+    \systeme[x_1x_2x_3]%
+    {
+      2x_1 + 3x_2  \leq 8,
+      2x_2 + 5x_3 \leq 10,
+      3x_1 + 2x_2 + 4x_3 \leq 15 
+    }
+    \end{equation*}
+
+    \vspace{5mm}
+
+    $x_1,x_2,x_3 \geq 0$
+
+\end{frameExample}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_sensitivity"
+%%% End:
