@@ -1,0 +1,42 @@
+\begin{frameExample}{11. Production Planning}{}
+  % Example 2.6-11 Gupta ebook
+  \only<1>{%
+A company manufacturing air coolers has, at present, firm orders of the next 6 months. The company can schedule its production over the next 6 months to meet orders on either regular or overtime basis. The order size and production costs over the next six months are as follows:%
+  }
+
+  
+  \begin{onlyenv}<1,2>
+    {%
+    \centering
+    \scalebox{0.9}{%
+      \begin{tabular}{lrrrrrrr}
+        \toprule
+        &&\multicolumn{6}{c}{Month}\\
+        \cmidrule{3-8}
+      &&1&2&3&4&5&6\\
+      \midrule
+      Orders&:&640&660&700&750&550&650\\
+      Cost/unit(\$) for&& & & & & & \\
+      regular production&:&40&42&41&45&39&40\\
+      Cost/unit(\$) for& & & & & & & \\
+      overtimeproduction&:&52&50&53&50&45&43\\
+      \bottomrule
+    \end{tabular}
+    }% scalebox
+    \par
+  }
+  \end{onlyenv}
+  
+  
+
+  \only<2>{%
+    With 100 air coolers in stock at present, the company wishes to have at least 150 air coolers in stock at the end of 6 months. The regualr and overtime production in each month is not to exceed 600 and 400 units respectively. The inventory carrying cost for air coolers is \$12 per unit per month. Formulate the L.P. model to minimize the total cost.%
+  }
+\end{frameExample}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../slides_linear-programming-intro"
+%%% End:
