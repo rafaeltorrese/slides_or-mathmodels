@@ -23,8 +23,66 @@
 
 
 
-\input{formulation}
+%\input{formulation}
 
+
+\section{Estructura de los modelos matemáticos}
+\label{sec:formulations}
+
+\begin{frame}{Requerimientos}
+  \begin{enumerate} \parskip2mm \justifying
+  \item<only@1> Función objetivo bien definida para maximizar o minimizar (costo, utilidad, cantidades a producir, etc.) 
+  \item<only@1> Restricciones sobre la función objetivo. Estas restricciones se deben expresar como ecuaciones o desigualdades en términos de las variables.
+  \item<only@1> Deben existir alternativas de acción. Por ejemplo, un producto se puede fabricar en diferentes máquinas y se debe determinar la cantidad que se va a fabricar en cada una de ellas. 
+  \item<only@2> Las variables de decisión deben estar relacionadas y ser no negativas. La condición de no negatividad nos indica que estamos trabajando con problemas reales por lo que cantidades negativas serían ilógicas.
+  \item<only@2> Los recursos son escasos. Si una empresa fabrica grandes cantidades de un producto en particular, entonces sde deben fabricar cantidades menores de otros productos debido a que la capacidad de producción es limitada.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Supuestos}
+  \begin{enumerate} \parskip3mm \justifying
+  \item<only@1> Proporcionalidad. Si la ganancia es de \$ 10 por unidad de un producto, entonces por producir 12 unidades de ese producto se obtiene una utilidad total de $10 \times 12 = 120.$ De manera similar, si un producto tarda 5 horas en ser procesado, entonces, producir 10 unidades de ese producto, consumirá un total de 50 horas. 
+  \item<only@1> Aditividad. Si se consumen $t_1$ horas en máquina A para producir producto 1 y $t_2$ horas para producto 2, el tiempo total para los productos 1 y 2 en la máquina A será de $t_1 + t_2$ horas.
+  \item<only@1> Continuidad. Los valores de las variables de decisión puden tomar valores continuos (racionales no negativos).
+  \item<only@2> Certeza. Los valores de los parámetros, por ejemplo, los coeficientes en la función objetivo, coeficientes en las restricciones o requerimientos (lados derecho), son valores conocidos y no cambian a través del tiempo. Debido a esto, los problemas de Programación Lineal se consideran determinísticos.
+  \item<only@2> Opciones finitas. El administrador puede elegir entre un conjunto de alternativas finitas y las varaibles de decisión son no-negativas y relacionadas entre sí.
+  \end{enumerate}
+\end{frame}
+
+
+
+\begin{frame}{Estructura De Un Modelo Matemático}
+
+Todos los modelos de IO, incluido el de Programación Lineal (PL), constan de tres componentes básicos.
+
+  \begin{enumerate} \justifying 
+  \item Los \alert{parámetros} o variables externas que no están bajo nuestro control.
+  \item Las \alert{variables de decisión} que pretendemos determinar.
+  \item El \alert{objetivo} (la meta) que necesitamos optimizar (maximizar o minimizar).
+  \item Las \alert{restricciones} que la solución debe satisfacer.
+  \end{enumerate}
+   
+\end{frame}
+
+
+\section{Ejemplos de Modelado Matemático}
+\label{sec:model-examples}
+
+
+
+\input{examples/example_allocation_gupta.tex} 
+\input{examples/example_diet_gupta} % 
+\input{examples/example_blending_gupta}
+\input{examples/example_media-selection_gupta}
+\input{examples/example_inspection_gupta}
+\input{examples/example_product-mix01_gupta}
+\input{examples/example_product-mix02_gupta}
+\input{examples/example_trim-loss_gupta}
+\input{examples/example_production-planning_gupta}
+\input{examples/example_fluid-blending_gupta}
+
+\input{activities/act_anderson-07-22.tex}
+ 
 \begin{frame}
   \maketitle
 \end{frame}
