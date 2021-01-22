@@ -1,5 +1,5 @@
 
-\section{Forma Canónica y Estándar de un Problema P.L.}
+\section{Canonical and Standard Forms of L.P.P.}
 \label{sec:canonical-standard-form}
 
 \begin{frame}{Forma Canónica y Estándar}
@@ -52,7 +52,7 @@
 \end{frame}
 
 
-\begin{frame}[t]{Ejemplos}
+\begin{frameExample}{}{}
   \begin{columns}[t]
     \column{0.5\textwidth}
     \begin{flalign*}
@@ -73,13 +73,65 @@
     x_1, x_2 & \geq 0
   \end{flalign*}
   \end{columns}
-\end{frame}
+\end{frameExample}
 
-\input{example_standardform01.tex}
-\input{example_standardform02.tex}
+
+
+\begin{frameExample}{Variables Irrestrictas}{}
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{flalign*}
+      % Example 2.12-3 
+    \max Z = 3x_1 + 2x_2 + 5x_3&\\
+    \intertext{sujeto a}
+    2x_1 + 3x_2 - 2x_3& \leq 40\\
+    4x_1 - 2x_2 + x_3&\leq 24\\
+    x_1 - 5x_2 - 6x_3&\geq 2\\
+    x_1 & \geq 0
+  \end{flalign*}
+  \column{0.5\textwidth}
+  \begin{flalign*}
+    % EXAMPLE  2.12-4
+    \max Z = 2x_1 + 3x_2 &\\
+    \intertext{sujeto a}
+    2x_1 - 3x_2 - x_3& = -4\\
+    3x_1 + 4x_2 - 3x_4 &= -6\\
+    2x_1 + 5x_2 + x_5 &= 10\\
+    4x_1 - 3x_2 + x_6 &= 18\\
+    x_3, x_4,x_5, x_6 & \geq 0
+  \end{flalign*}
+  \end{columns}
+\end{frameExample}
+
+\begin{frameExample}{Unrestricted variables}{}
+      \begin{flalign*}
+      % Example 2.12-5
+    \max Z = 3x_1 + 5x_2 - 2x_3&\\
+    \intertext{sujeto a}
+    x_1 + 2x_2 - x_3& \geq -4\\
+    -5x_1 + 6x_2 +7x_3 &\geq 5\\
+    2x_1 + x_2 + 3x_3&= 10\\
+    x_1, x_2& \geq 0\\
+    x_3 & \text{ irrestricta}
+  \end{flalign*}
+\end{frameExample}
+
+\begin{frameExample}{Matrix Form}{}
+      \begin{flalign*}
+      % Example 2.12-6
+    \max Z = 4x_1 + 2x_2 + 6x_3&\\
+    \intertext{sujeto a}
+    2x_1 + 3x_2 + 2x_3& \geq 6\\
+    3x_1 + 4x_2 &= 8\\
+    6x_1 - 4x_2 + x_3&\leq 10\\
+    x_1, x_2,x_3 & \geq 0
+  \end{flalign*}
+\end{frameExample}
+
+
 \input{act_standardform01.tex}
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "slides"
+%%% TeX-master: "slides_simplex"
 %%% End:

@@ -1,0 +1,118 @@
+
+\section{Graphical Method Of Solution}
+\label{sec:graphical-method}
+
+\begin{frameExample}{01. Graphical Method Of Solution}{}
+  \[ \max Z = 3x_1 + 4x_2\]
+
+  {\centering
+    subject to (s.t.)
+
+    \sysalign{r,r}%
+    \sysdelim..%
+    \systeme[x_1x_2]%
+    {
+      x_1 + x_2 \leq 450,
+      2x_1 + x_2 \leq 600
+    }
+
+    \vspace{5mm}
+    $x_1, x_2 \geq 0$
+  \par}
+\end{frameExample}
+
+
+\begin{frameExample}{02. Graphical Method Of Solution}{}
+  Find the maximum value of \[ Z = 2x_1 + 3x_2\]
+  {\centering
+    subject to
+
+    \sysalign{r,r}%
+    \sysdelim..%
+    \systeme[x_1x_2]%
+    {
+      x_1 + x_2 \leq 30,
+      x_2 \geq 3,
+      x_2 \leq 12,
+      x_1 - x_2 \geq 0,
+      x_1 \leq 20
+    }
+
+    $x_1, x_2 \geq 0$
+    \par}
+  
+\end{frameExample}
+
+\begin{frameExample}{03. Graphical Method Of Solution}{}
+  \[\max Z = 2x_1 + x_2 \]
+
+  {\centering
+    subject to (s.t.)
+
+    \sysalign{r,r}%
+    \sysdelim..%
+    \systeme[x_1x_2]%
+    {
+      x_1 + 2x_2 \leq 10,
+      x_1 - x_2 \leq 6,
+      x_1 - x_2 \leq 2,
+      x_1 - 2x_2 \leq 1
+    }
+
+    \vspace{5mm}
+
+    $x_1 , x_2 \geq 0$
+  \par}
+\end{frameExample}
+
+\begin{frameExample}{04. Graphical Method Of Solution}{}
+    \[\max Z = 3x_1 + 4x_2 \]
+
+  {\centering
+    subject to (s.t.)
+
+    \sysalign{r,r}%
+    \sysdelim..%
+    \systeme[x_1x_2]%
+    {
+      5x_1 + 4x_2 \leq 200,
+      3x_1 + 5x_2 \leq 150,
+      5x_1 + 4x_2 \geq 100,
+      8x_1 + 4x_2 \geq 80
+    }
+
+    \vspace{5mm}
+
+    $x_1 , x_2 \geq 0$
+  \par}
+\end{frameExample}
+
+
+\begin{frameExample}{05. }{}
+  \only<1>{%
+  Mohan-Meakins Breveries Ltd. has two bottling plants, one located at Solan and the other at Mohan Nagar. Each plant produces three drinks, whisky, beer and fruit juices named $A$, $B$, and $C$ respectively. The number of bottles produced per day are as follows:
+
+  {\centering
+    \begin{tabular}{rcc}
+      \toprule
+      &\multicolumn{2}{c}{Plant at}\\
+      \cmidrule{2-3}
+      &Solan&Mohan Nagar \\
+      &$(S)$&$(M)$ \\
+      \midrule
+      Whisky, $A$&1,500&1,500\\
+      Beer, $B$&3,000&1,000\\
+      Fruit juices, $C$&2,000&5,000\\
+      \bottomrule
+    \end{tabular}
+    \par}%
+  }
+
+  \only<2>{%
+  A market survey indicates that during the month of April, there will be a demand of 20,000 bottles of whisky, 40,000 bottles of beer and 44,000 bottles of fruit juices. The operating costs per day for plants at Solan and Mohan Nagar are 600 and 400 monetary units. For how many days each plant be run in April so as to minimize the production cost, while still meeting the market demand?%
+  }
+\end{frameExample}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_simplex"
+%%% End:
