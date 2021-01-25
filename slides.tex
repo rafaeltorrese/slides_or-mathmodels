@@ -114,13 +114,14 @@ text badly centered, text width=5em, draw=black, fill=green!30%
 \end{block}
 }
 % ========================================
+\newcounter{examplecounter}
+\resetcounteronoverlays{examplecounter}
 \newenvironment<>{frameExample}[2]
 {
 \setbeamercolor{frametitle}{fg=white,bg=green!60!blue}
 \begin{frame} \justifying
-  \frametitle{Example - #1}
-  \framesubtitle{\insertsubsectionhead #2}
-  
+  \frametitle{\refstepcounter{examplecounter}Example - \theexamplecounter. #1}
+  \framesubtitle{\insertsubsectionhead #2}  
 }
 % content
 {
@@ -138,22 +139,22 @@ text badly centered, text width=5em, draw=black, fill=green!30%
 \end{frame}
 }
 % ========================================
+
+\newcounter{activitycount}
 \newenvironment<>{frameact}[1] % For Activities
 {
-%\usebackgroundtemplate{\includegraphics[scale=0.3]{blackboard-logo.png}}
+  % \usebackgroundtemplate{\includegraphics[scale=0.3]{blackboard-logo.png}}
 \setbeamercolor{frametitle}{fg=white,bg=red!60!black}
 \begin{frame}\justifying
-  \frametitle{Actividad: #1}
+  \frametitle{\refstepcounter{activitycount} Activity \theactivitycount. #1}
   \framesubtitle{}
-%{\centering \includegraphics[scale=0.5]{BlackBoardSymbol.png}\par}
-%\vspace{5mm}
 
 }
 {
 \end{frame}
 }
 % ========================================
-%\graphicspath{}
+
 \usetheme[%
 sectionpage=progressbar,
 numbering=none,
