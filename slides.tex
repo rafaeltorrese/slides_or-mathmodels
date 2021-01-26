@@ -128,11 +128,13 @@ text badly centered, text width=5em, draw=black, fill=green!30%
 \end{frame}
 }
 % ========================================
+\newcounter{coding}
+\resetcounteronoverlays{coding}
 \newenvironment<>{framecode}[1][] % for coding
 {
 \setbeamercolor{frametitle}{fg=white,bg=black!85}
 \begin{frame}[environment=fr,#1]
-\frametitle{}
+\frametitle{\refstepcounter{coding} Python Coding Example \thecoding}
 \framesubtitle{}
 }%
 {
