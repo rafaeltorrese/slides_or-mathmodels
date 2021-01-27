@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\usepackage[spanish]{babel}
+\usepackage[spanish,es-tabla]{babel}
 \decimalpoint
 \usepackage[utf8]{inputenc}
 \usepackage{ragged2e} % este paquete es para justificar.
@@ -29,7 +29,8 @@
 \usepackage{import} 
 %
 %\pgfpagesuselayout{4 on 1}[letterpaper,landscape]
-\usepackage[font=scriptsize,labelfont=bf,justification=centerlast,format=hang]{caption} %To change the appearance of captions
+\usepackage[font=scriptsize,labelfont=bf,justification=centerlast,format=hang,tableposition=top,skip=0.5pt]{caption} %To change the appearance of captions
+\captionsetup[table]{name=Table}
 % tikz
 \usepackage{tikz} % for draw
 \usetikzlibrary{%
@@ -115,6 +116,7 @@ text badly centered, text width=5em, draw=black, fill=green!30%
 }
 % ========================================
 \newcounter{examplecounter}
+%\newcommand{\refexample}[1]{\refstepcounter{examplecounter}\label{#1}}
 \resetcounteronoverlays{examplecounter}
 \newenvironment<>{frameExample}[2]
 {

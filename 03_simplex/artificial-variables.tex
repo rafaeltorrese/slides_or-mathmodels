@@ -361,7 +361,8 @@ $    x_1, x_2, s_1, s_2, A_1, A_2   \geq 0$
   $x_1, x_2 \geq 0$
 \end{frame}
 
-\begin{frame}{The Two Phase Method. A First Example. Phase I}
+\begin{frame}{The Two-Phase Method. A First Example. Phase I}
+
   \begin{block}<only@1>{Step 1. Set up the Problem in the Standard Form} \justifying
     The original objective function $Z = 5x_1 + 3x_2$ is temporarily set aside during the phase I solution. The given constraints, after the introduction of slack, surplus and artificial variables take de the form:
 
@@ -437,12 +438,14 @@ $    x_1, x_2, s_1, s_2, A_1, A_2   \geq 0$
         \toprule
       \end{tabular}
       \par}
-    Optimal basic feasible solution for phase I problem
+    Optimal basic feasible solution for phase I problem. 
   \end{block}
 
-  $c_j - Z_j$ is either positive or zero under all columns, an optimal basic feasible solution to hte auxiliary L.P.P. has been obtained.
+  \only<4>{%
+    $c_j - Z_j$ is either positive or zero under all columns, an optimal basic feasible solution to the auxiliary L.P.P. has been obtained.
 
-  However, since $W=A=2 (> 0)$ and artificial variable $A_1$ appears in the basis at a positive level ($A_1 = 2$), \alert{the given problem does not posses a feasible solution and the procedure stops}.
+    However, since $W=A=2 (> 0)$ and artificial variable $A_1$ appears in the basis at a positive level ($A_1 = 2$), \alert{the given problem does not posses a feasible solution and the procedure stops}.%
+  }
 \end{frame}
 
 
@@ -486,21 +489,28 @@ $    x_1, x_2, s_1, s_2, A_1, A_2   \geq 0$
   \end{onlyenv}
 \end{frame}
 
-\begin{frame}{Método de las Dos Fases. Ejemplo.}{}
+\begin{frame}{The Two-Phase Method. An example.}{}
   \begin{onlyenv}<1>
     \[ \min W = A_2 \]
-    Sujeto a \systeme[x_1x_2s_1s_2s_3s_4s_5A_2]{%
+    {\centering
+    subject to
+
+    \sysalign{r,r}
+    \sysdelim..
+    \systeme[x_1x_2s_1s_2s_3s_4s_5A_2]{%
       x_1 + x_2 + s_1 = 30,
       x_2  - s_2  + A_2 = 3,
       x_2  + s_3 = 12,
       -x_1 + x_2 + s_4  =  0,
       x_1  + s_5 = 20 }
 
+    \vspace{5mm}
     $x_1, x_2, s_1, s_2, s_3, s_4, s_5, A_2  \geq 0$
+    \par}
   \end{onlyenv}
 \end{frame}
 
-\begin{frame}{Método de las Dos Fases. Ejemplo Fase I.}{}
+\begin{frame}{The Two-Phase Method. An example. Phase I.}{}
   {\centering
     \scalebox{1}{%
       \begin{tabular}{rc|llllllll|rr}
@@ -553,7 +563,7 @@ $    x_1, x_2, s_1, s_2, A_1, A_2   \geq 0$
     \par}
 \end{frame}
 
-\begin{frame}{Método de las Dos Fases. Ejemplo Fase II.}{}
+\begin{frame}{The Two-Phase Method. An example. Phase II.}{}
 Fase II
   
   {\centering
