@@ -1,0 +1,124 @@
+\documentclass[spanish,letterpaper]{exam}
+%\documentclass[legalpaper,11pt]{exam}
+%
+%-----------------------------------
+% ********* PACKAGES ************
+%-----------------------------------
+\usepackage[spanish]{babel}
+\decimalpoint
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+% --
+\usepackage[utf8]{inputenc}
+% Fonts
+%\usepackage{pslatex}
+%\usepackage{arev}
+%\usepackage{bookman}
+%\usepackage[bitstream-charter]{mathdesign}
+%\usepackage{sfmath}
+%\usepackage{sansmath} \sansmath
+\usepackage[math]{anttor}
+ 
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mathpazo}
+%\usepackage{bookman}
+\usepackage{verbatim}
+\usepackage{multirow} % for tables and for merge cells
+\usepackage{xfrac}
+\usepackage{units} %for \nicefrac{num}{den} 
+\usepackage{cleveref}
+\usepackage{blkarray} % \bordermatrix for Markov chains
+\Crefname{figure}{Figura}{Figuras}
+\Crefname{table}{Tabla}{Tablas}
+\Crefname{equation}{Ecuación}{Ecuaciones}
+% --
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{import}
+%
+\usepackage{tikz} % Tikz must be before ctable package, otherwise
+% LaTeX output error
+%\usetikzlibrary{arrows,babel} % If you don't put this, you are going to get
+                       % an error
+\usepackage{etoolbox}
+\AtBeginEnvironment{tikzpicture}{\shorthandoff{>}\shorthandoff{<}}{}{}
+\usepackage{cancel}
+%
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{0pt}{0pt} % this reduces space between
+                                % (sub)sections to 0pt, for example
+\AtBeginDocument{%                     % this will reduce spaces
+                 %                     between parts (above and below)
+                 %                     of texts within a (sub)section
+                 %                     to 0pt, for example - like
+                 %                     between an 'eqnarray' and text
+  \setlength\abovedisplayskip{0pt}
+  \setlength\belowdisplayskip{0pt}}
+
+% % % % % % % % % % % % % % % % % % % % % %
+%-----------------------------------
+% ********* DEFINITIONS ************
+%-----------------------------------
+
+% % % % % % % % % % % % % % % % % % % % % %
+%-----------------------------------
+% ********* PAGE LAYOUT ************
+%-----------------------------------
+%\pagestyle{header}
+\extrawidth{0.5in} % Ancho de página (solo izquierdo y derecho, dividir entre dos)
+%-----------------------------------
+%
+%
+% -----------------------------------------------
+% ============= DEFINICIONES ====================
+% -----------------------------------------------
+\newcommand{\standardize}[3]{\ensuremath{ \frac{#1 - #2}{#3}} }
+% \newcommand{\tema}{\textbf{Variables Aleatorias} }
+% \newcommand{\tema}{Distribuciones de Probabilidad }
+%\newcommand{\tema}{\textbf{Distribuciones de Probabilidad}\\Variables Aleatorias Discretas}
+%\newcommand{\tema}{\textbf{Distribuciones de Probabilidad}\\Variables Aleatorias Continuas}
+%\newcommand{\tema}{\textbf{Distribuciones de Probabilidad Conjuntas}}
+%\newcommand{\tema}{\textbf{Líneas de Espera}}
+%\newcommand{\tema}{\textbf{CASO}}
+
+\newcommand{\asignatura}{\textbf{Estadística Inferencial} \\ Profesor: Rafael
+  Torres Escobar}
+%\newcommand{\tema}{\textbf{EXAMEN \\ MEDIO TÉRMINO}}
+ %\newcommand{\tema}{\textbf{EXAMEN \\ MEDIO TÉRMINO}}
+ %\newcommand{\tema}{\textbf{EXAMEN \\ PARCIAL 02}}
+ %\newcommand{\tema}{\textbf{EXAMEN \\ PARCIAL 01}}
+ %\newcommand{\tema}{\textbf{EXAMEN \\ PARCIAL}}
+\newcommand{\tema}{\textbf{EXAMEN \\ FINAL}}
+%\newcommand{\tema}{\textbf{Programación Lineal \\ Problemas de Minimización}}
+\extrafootheight{-0.5in}
+
+\header{\asignatura }{\tema}{Página \\ \thepage\ de \numpages}
+%\header{TAREA \\M.C.~Rafael Torres Escobar}{\tema}{Página \thepage\ de \numpages}
+\headrule
+
+\pointpoints{punto}{puntos}
+%
+
+% ===================IMPRIMIR RESPUESTAS =========================
+%\printanswers % comentar para mostrar respuestas
+% ==================================================================
+
+% % % % % % % % % % % % % % % % % % % % % % 
+% ********* PAPER SIZE ************
+%-----------------------------------
+
+
+\author{Dr. Rafael Torres Escobar}
+\begin{document}
+
+
+\begin{questions}
+ \question This is a question 
+\end{questions}
+
+
+\end{document}
