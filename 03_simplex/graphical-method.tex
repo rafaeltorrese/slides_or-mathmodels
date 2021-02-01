@@ -164,12 +164,51 @@
 \begin{frameExample}{}{}
 % Example 2.9-10 Gupta ebook
   \only<1>{%
-      A local travel agent is planning a charter trip to a major sea resort. The eight day/seven night package includes the fare for round-trip travel, surface transportation, board and lodging and selected tour options. THe charter trip es restricted to 200 persons and past experience indicates that there will not be any problem for getting 200 persons. The problem for the travel agent is to determine the number of Deluxe, Standard and Economy tour packages to offer for this charter. These three plans differ according to seating and service for the flight, quality of accomodations, meal plans and tour options. The following table summarizes the estimated prices for the three packages and the corresponding expenses for the travel agent. The travel agent has hired an aircraft for the flat fee of \$200,00 for the entire trip
+      A local travel agent is planning a charter trip to a major sea resort. The eight day/seven night package includes the fare for round-trip travel, surface transportation, board and lodging and selected tour options. THe charter trip es restricted to 200 persons and past experience indicates that there will not be any problem for getting 200 persons. The problem for the travel agent is to determine the number of Deluxe, Standard and Economy tour packages to offer for this charter. These three plans differ according to seating and service for the flight, quality of accomodations, meal plans and tour options.
     }
 
     \begin{onlyenv}<2>
+      The following table summarizes the estimated prices for the three packages and the corresponding expenses for the travel agent. The travel agent has hired an aircraft for the flat fee of \$200,00 for the entire trip
       
-      
+      {\centering
+        \scalebox{0.9}{%
+          \begin{tabular}{cccc}
+            \toprule
+            &&&\\
+            Tour&Price(\$)& Hotel costs (\$)& Meal \& other\\
+            plan& &&expenses\\
+            \midrule
+Deluxe&10,000&3,000&4750\\
+Standard&7,000&2,200&2,500\\
+            Economy&6,500&1,900&2,200\\
+            \bottomrule
+          \end{tabular}
+        }
+        \par}
+        \end{onlyenv}
+
+    \begin{onlyenv}<3>
+      In planning the trip, the following considerations must be taken into account:
+
+    \begin{enumerate}[i)] \justifying 
+    \item At least 10 percent of the packages must be deluxe type.
+    \item At least 35 percent but not more than 70 percent must be of the standard type.
+    \item At least 30 percent must be of the economy type.
+    \item The maximum number of deluxe packages available in any aircraft is restricted to 60.
+    \item THe hotel desires at least 120 of the tourists should be on the deluxe and standard packages together.
+    \end{enumerate}
+    \end{onlyenv}
+
+    
+
+
+  \begin{onlyenv}<4>
+    The travel agent wishes to determine the number of packages to offer in each type so as to maximize the total profit.    
+          \begin{enumerate}[a)]
+    \item Formulate the above as a linear programming problem.
+    \item Restate the above linear programming problem in terms of two decision variables, taking advantage of the fact that 200 packages will be sold.
+    \item Find the optimum solution using graphical method for the restated linear programming problem and interpret your results.
+    \end{enumerate}
     \end{onlyenv}
 \end{frameExample}
 %%% Local Variables:
