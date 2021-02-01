@@ -113,7 +113,65 @@
   }
 \end{frameExample}
 
+\begin{frameExample}{}{}
+  Find the minimum value of
 
+  \[Z = -x_1  +2x_2  \]
+
+  {\centering
+    s.t.
+
+    \sysalign{r,r}%
+    \systeme[x_1x_2]%
+    {
+      -x_1 + 3x_2 \leq 10,
+      x_1 + x_2 \leq 6,
+      x_1 - x_2 \leq 2
+    }
+
+    \vspace{5mm}
+
+    $x_1, x_2 \geq 0$
+  \par}
+  
+\end{frameExample}
+
+\begin{frameExample}{}{}
+  Solve the following problem graphically:
+
+  \[\max Z = -x_1  +4x_2  \]
+
+  {\centering
+    subject to
+
+    \sysdelim..
+    \sysalign{r,r}%
+    \systeme[x_1x_2]%
+    {
+      -3x_1 + x_2 \leq 6,
+      x_1 + 2x_2 \leq 4,
+      x_2 \leq -3
+    }
+
+    \vspace{5mm}
+
+    no lower bound constraint for $x_1$ and
+    $x_2 \geq 0$
+  \par}
+  
+\end{frameExample}
+
+\begin{frameExample}{}{}
+% Example 2.9-10 Gupta ebook
+  \only<1>{%
+      A local travel agent is planning a charter trip to a major sea resort. The eight day/seven night package includes the fare for round-trip travel, surface transportation, board and lodging and selected tour options. THe charter trip es restricted to 200 persons and past experience indicates that there will not be any problem for getting 200 persons. The problem for the travel agent is to determine the number of Deluxe, Standard and Economy tour packages to offer for this charter. These three plans differ according to seating and service for the flight, quality of accomodations, meal plans and tour options. The following table summarizes the estimated prices for the three packages and the corresponding expenses for the travel agent. The travel agent has hired an aircraft for the flat fee of \$200,00 for the entire trip
+    }
+
+    \begin{onlyenv}<2>
+      
+      
+    \end{onlyenv}
+\end{frameExample}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "slides_simplex"
