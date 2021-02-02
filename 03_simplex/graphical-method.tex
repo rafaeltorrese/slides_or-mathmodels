@@ -211,8 +211,75 @@ Standard&7,000&2,200&2,500\\
     \item Find the optimum solution using graphical method for the restated linear programming problem and interpret your results.
     \end{enumerate}
     \end{onlyenv}
-\end{frameExample}
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "slides_simplex"
-%%% End:
+  \end{frameExample}
+
+  \begin{frameExample}{Graphical Method Of Solution}{}
+    The standard weight of a special purpose brick is 5 kg and it contains two basic ingredients $B_1$ and $B_2$. $B_1$ costs \$ 5/kg. and $B_2$ costs \$ 8/kg. Strength considerations dictate that the brick contains not more than 4 kg. of $B_1$ and a minimun of 2 kg of $B_2$. Since the demand for the product is likely to be related to the price of the brick, find graphically the minimum cost.
+  \end{frameExample}
+
+  \begin{frame}{Some Exceptional Cases}{}
+    In general a linear programming problem may have:
+
+    \begin{enumerate}[i)] \parskip4mm \justifying
+    \item a definite and unique optimal solution,
+    \item an inifinite number of optimal solutions (multiple optimal solutions),
+    \item an unbounded solution,
+    \item no feasible solution (infeasible solution),
+    \item a single solution.
+    \end{enumerate}
+  \end{frame}
+  
+  \begin{frameExample}{Multiple Optimal Solutions}{}
+    A firm use lathes, milling and grinding machines to produce two machine parts. The following table represents the machining times required for each part, the machining times available on different machines and the profit on each machine part
+
+    {
+      \centering
+      \scalebox{0.8}{%
+\begin{tabular}{lrrr}
+        \toprule
+        &\multicolumn{2}{c}{Machining time required for}& Maximum\\
+            &\multicolumn{2}{c}{the machine part (minutes)}& time available \\
+Type of & & & per week\\
+              Machines&I&II&(minutes)\\
+                             \midrule
+Lathes&12&6&3,00\\
+Milling machines&4&10&2,000\\
+  Grinding machines&2&3&900\\
+  \midrule
+  Profit per unit&\$40&\$100&\\
+  \bottomrule
+      \end{tabular}
+      } % scalebox
+      \par
+    }
+
+    Find the number of parts I and II to be manufactured per week to maximize the profit.
+  \end{frameExample}
+
+
+  \begin{frameExample}{Multiple Optimal Solutions}{}
+    Solve the following problem graphically:
+
+    \[ \max Z = -x_1 + 2x_2 \]
+
+  {\centering
+    subject to
+
+    \sysdelim..
+    \sysalign{r,r}%
+    \systeme[x_1x_2]%
+    {
+      x_1 - x_2 \leq -1,
+      -0.5x_1 + x_2 \leq 2
+    }
+
+    \vspace{5mm}
+
+    $x_1, x_2 \geq 0$
+    \par}
+  \end{frameExample}
+  
+  %%% Local Variables:
+  %%% mode: latex
+  %%% TeX-master: "slides_simplex"
+  %%% End:
