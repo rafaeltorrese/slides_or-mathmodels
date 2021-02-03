@@ -258,6 +258,7 @@ Milling machines&4&10&2,000\\
 
 
   \begin{frameExample}{Multiple Optimal Solutions}{}
+    % Example 2.10-2 Gupta ebook
     Solve the following problem graphically:
 
     \[ \max Z = -x_1 + 2x_2 \]
@@ -278,7 +279,74 @@ Milling machines&4&10&2,000\\
     $x_1, x_2 \geq 0$
     \par}
   \end{frameExample}
-  
+
+  \begin{frameExample}{Unbounded Solution}{}
+    % Example 2.10-3  Gupta ebook
+    \[ \max Z = 5x_1 + 4x_2\]
+
+    {\centering
+      subject to
+
+      \vspace{3mm}
+
+      \sysdelim..%
+      \sysalign{r,r}%
+      \systeme[x_1x_2]%
+      {
+        x_1 - 2x_2 \leq 1,
+        x_1 + 2x_2 \geq 3
+      }
+
+      \vspace{3mm}
+      $x_1, x_2 \geq 0$
+    \par}
+  \end{frameExample}
+
+  \begin{frameExample}{Unbounded Solution}{}
+    % Example 2.10-4  Gupta ebook
+    \[ \max Z = -4x_1 + 3x_2\]
+
+    {\centering
+      subject to
+
+      \vspace{3mm}
+
+      \sysdelim..%
+      \sysalign{r,r}%
+      \systeme[x_1x_2]%
+      {
+        x_1 - x_2 \leq 0,
+        x_1  \leq 4
+      }
+
+      \vspace{3mm}
+      $x_1, x_2 \geq 0$
+    \par}
+\end{frameExample}
+
+  \begin{frameExample}{}{}
+    % Example 2.10-5  Gupta ebook
+    \[ \max Z = -x_1 + 4x_2\]
+
+    {\centering
+      subject to
+
+      \vspace{3mm}
+
+      \sysdelim..%
+      \sysalign{r,r}%
+      \systeme[x_1x_2]%
+      {
+        3x_1 - x_2 \geq -3,
+        -0.3x_1 + 1.2x_2  \leq 3
+      }
+
+      \vspace{3mm}
+      $x_1, x_2 \geq 0$
+    \par}
+  \end{frameExample}
+
+
   %%% Local Variables:
   %%% mode: latex
   %%% TeX-master: "slides_simplex"
