@@ -79,8 +79,9 @@ condition,
   \end{center}
 \end{frame}
 
-\begin{frameExample}{08.}{}
-  \begin{columns}
+\begin{frameExample}{}{}
+  \begin{onlyenv}<1>
+      \begin{columns}
     \column{0.5\textwidth}
 \[\min Z = 2x_1 + 2x_2 + 4x_3  \]
 
@@ -106,9 +107,9 @@ $    x_1, x_2, x_3  \geq 0$
 
 $    x_1, x_2, x_3  \geq 0$
   \end{columns}
-\end{frameExample}
+  \end{onlyenv}
 
-\begin{frameExample}{08}{}
+\begin{onlyenv}<2>
   \[ \max G= -2x_1 - 2x_2 - 4x_3 + 0s_1 + 0s_2 + 0s_3 \]
 
   s.t.
@@ -120,11 +121,9 @@ $    x_1, x_2, x_3  \geq 0$
 }% systeme
 
 $    x_1, x_2, x_3, s_1, s_2, s_3  \geq 0$
-\end{frameExample}
+\end{onlyenv}
 
-\begin{frameExample}{08. Dual Simplex Table}{}
-
-  \begin{onlyenv}<1>
+\begin{onlyenv}<3>
     {%
       \centering
       \begin{tabular}{rrrrrrrrrr}
@@ -145,7 +144,7 @@ $    x_1, x_2, x_3, s_1, s_2, s_3  \geq 0$
     }
   \end{onlyenv}
 
-  \begin{onlyenv}<2>
+    \begin{onlyenv}<4>
     {\centering
       \scalebox{0.8}{%
     \begin{tabular}{rrrrrrrrrr}
@@ -166,7 +165,7 @@ $    x_1, x_2, x_3, s_1, s_2, s_3  \geq 0$
     \par}
 \end{onlyenv}
 
-  \begin{onlyenv}<3>
+  \begin{onlyenv}<5>
     {\centering
       \scalebox{0.8}{%
     \begin{tabular}{rrrrrrrrrr}
@@ -188,18 +187,15 @@ $    x_1, x_2, x_3, s_1, s_2, s_3  \geq 0$
     \par}
 \end{onlyenv}
 
-  \begin{description}\justifying
-  \item<only@1>[Step 4.] Compute $c_j - Z_j$ where $Z_j = \sum c_B a_{ij}$. As all $c_j - Z_j$ are either negative or zero and $b_1$ is negative, \alert{the solution is optimal but infeasible.}
-  \item<only@1>[Step 5.] As $b_1 = -2$ the first row is the key row and $s_1$ is the outgoing variable.
-  \item<only@2>[Step 6.] Find the ratios elements of $c_j - Z_j$ row. \alert{Neglect the ratios corresponding to positive or zero elements for key row}. The desired ratios are:  \[ \frac{-2}{-2} = 1 \quad\quad \frac{-2}{-3}=\frac{\color{blue}2}{\color{blue}3} \quad\quad \frac{-4}{-5} = \frac{4}{5} \] Since $\frac{2}{3}$ \alert{is the smallest ratio} $x_2$ column is the key column; $x_2$ is the incoming variable and $-3$ is the key element.
-  \item<only@3>[Step 7.] Replace  $s_1$ by $x_2$
+\begin{description}\justifying
+  \item<only@3>[Step 4.] Compute $c_j - Z_j$ where $Z_j = \sum c_B a_{ij}$. As all $c_j - Z_j$ are either negative or zero and $b_1$ is negative, \alert{the solution is optimal but infeasible.}
+  \item<only@3>[Step 5.] As $b_1 = -2$ the first row is the key row and $s_1$ is the outgoing variable.
+  \item<only@4>[Step 6.] Find the ratios elements of $c_j - Z_j$ row. \alert{Neglect the ratios corresponding to positive or zero elements for key row}. The desired ratios are:  \[ \frac{-2}{-2} = 1 \quad\quad \frac{-2}{-3}=\frac{\color{blue}2}{\color{blue}3} \quad\quad \frac{-4}{-5} = \frac{4}{5} \] Since $\frac{2}{3}$ \alert{is the smallest ratio} $x_2$ column is the key column; $x_2$ is the incoming variable and $-3$ is the key element.
+  \item<only@5>[Step 7.] Replace  $s_1$ by $x_2$
 
   \end{description}
 
-  
-\end{frameExample}
-
-\begin{frameExample}{08. Dual Simplex Table}{}
+\begin{onlyenv}<6>
 
 {%
   \centering
@@ -234,7 +230,12 @@ $    x_1, x_2, x_3, s_1, s_2, s_3  \geq 0$
    \end{tabular}
  \par}
       
-  \end{frameExample}
+  \end{onlyenv}  
+\end{frameExample}
+
+
+
+
   
 %%% Local Variables:
 %%% mode: latex
