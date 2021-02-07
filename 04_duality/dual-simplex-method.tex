@@ -235,7 +235,194 @@ $    x_1, x_2, x_3, s_1, s_2, s_3  \geq 0$
 
 
 
+\begin{frameExample}{\label{example:6.2-2}}{}
+  % Example 6.2-2 gupta ebook
+  \begin{onlyenv}<1>
+    Use dual simplex method to
+    \begin{columns}[t]
+      \column{0.5\textwidth}
+       \[\max Z = -3x_1 -2x_2 \] 
 
+       {\centering
+         subject to%
+         \vspace{3mm}
+         
+        \sysdelim..%
+        \sysalign{r,r}%
+        \systeme[x_1x_2]%
+        {
+          x_1 + x_2 \geq 1,
+          x_1 + x_2 \leq 7,
+          x_1 + 2x_2 \geq 10,
+          x_2 \leq 3,
+        }
+
+        \vspace{3mm}
+        $x_1, x_2 \geq 0$
+      \par}
+      
+    \column{0.5\textwidth}
+    \[\max Z = -3x_1 -2x_2 \]
+
+    {\centering
+      subject to
+      \vspace{3mm}
+      
+        \sysdelim..%
+        \sysalign{r,r}%
+        \systeme[x_1x_2]%
+        {
+          -x_1 - x_2 \leq -1,
+          x_1 + x_2 \leq 7,
+          -x_1 - 2x_2 \leq -10,
+          x_2 \leq 3,
+        }
+
+        \vspace{3mm}
+        $x_1, x_2 \geq 0$
+      \par}
+    \end{columns}
+  \end{onlyenv}
+
+  \begin{onlyenv}<2>
+    Adding slack variables the problem can be expressed as \[\max Z = -3x_1 -2x_2 + 0s_1 + 0s_2 + 0s_3 + 0s_4\]
+
+        {\centering
+      subject to
+      \vspace{3mm}
+      
+        \sysdelim..%
+        \sysalign{r,r}%
+        \systeme[x_1x_2s_1s_2s_3s_4]%
+        {
+          -x_1 - x_2 +s_1 = -1,
+          x_1 + x_2 +s_2 = 7,
+          -x_1 - 2x_2 +s_3 = -10,
+          x_2 +s_4 =  3,
+        }
+
+        \vspace{3mm}
+        $x_1, x_2,s_1,s_2,s_3,s_4 \geq 0$
+        \par}
+      
+    \end{onlyenv}
+
+    \begin{onlyenv}<3>
+      The initial basic infeasible solution is $x_1 = 0, x_2 = 0, s_1=-1,$ $ s_2 = 7, s_3=-10, s_4=3$
+
+      {\centering
+        \scalebox{1}{%
+          \begin{tabular}{rrrrrrrrrr}
+            \toprule
+            &$c_j$&-3&-2&0&0&0&0&&\\
+            \midrule
+            $c_B$&Basis&$x_1$&$x_2$&$s_1$&$s_2$&$s_3$&$s_4$&$\bm{b}$&\\
+            \midrule
+            0&$s_1$&-1&-1&1&0&0&0&-1&\\
+            0&$s_2$&1&1&0&1&0&0&7&\\
+            0&$s_3$&-1&-2&0&0&1&0&-10&\\
+            0&$s_4$&0&1&0&0&0&1&3&\\
+            \bottomrule
+          \end{tabular}
+        }
+      \par}
+  \end{onlyenv}
+
+  \begin{onlyenv}<4>
+    Leaving and Entering Variables
+    {\centering
+        \scalebox{1}{%
+          \begin{tabular}{rrrrrrrrrr}
+            \toprule
+           Iter 1 &$c_j$&-3&-2&0&0&0&0&&\\
+            \midrule
+            $c_B$&Basis&$x_1$&$x_2$&$s_1$&$s_2$&$s_3$&$s_4$&$\bm{b}$&\\
+            \midrule
+           0&$s_1$&-1&-1&1&0&0&0&-1&\\
+            0&$s_2$&1&1&0&1&0&0&7&\\
+            0&$s_3$&-1&\cellcolor{yellow}-2&0&0&1&0&\cellcolor{cyan!30}-10&\textrightarrow \\
+            0&$s_4$&0&1&0&0&0&1&3&\\
+            \midrule
+            &$Z_j$&0&0&0&0&0&0&0&\\
+            &$c_j - Z_j$&-3&-2&0&0&0&0&&\\
+            &ratios&3&\cellcolor{cyan!30}1&--&--&--&--&&\\
+            &&&\textuparrow&&&&&&\\
+            \bottomrule
+          \end{tabular}
+        }
+      \par}
+  \end{onlyenv}
+
+  \begin{onlyenv}<5>
+    Gauss-Jordan
+    {\centering
+        \scalebox{1}{%
+          \begin{tabular}{rrrrrrrrrr}
+            \toprule
+           Iter 1 &$c_j$&-3&-2&0&0&0&0&&\\
+            \midrule
+            $c_B$&Basis&$x_1$&$x_2$&$s_1$&$s_2$&$s_3$&$s_4$&$\bm{b}$&\\
+            \midrule
+            0&$s_1$&-0.5&0&1&0&-0.5&0&4&\\
+            0&$s_2$&0.5&0&0&0&1.5&0&2&\\
+            -2&$x_2$&0.5&1&0&0&-0.5&0&5&\\
+            0&$s_4$&-0.5&0&0&0&0.5&1&-2&\\
+            \midrule
+                  &$Z_j$&-1&-2&0&0&1&0&-10&\\
+                  &$c_j - Z_j$&-2&0&0&0&-1&0&&\\
+            \bottomrule
+          \end{tabular}
+        }
+      \par}
+  \end{onlyenv}
+
+  \begin{onlyenv}<6>
+        {\centering
+        \scalebox{1}{%
+          \begin{tabular}{rrrrrrrrrr}
+            \toprule
+           \cellcolor{blue!20}Iter 2 &$c_j$&-3&-2&0&0&0&0&&\\
+            \midrule
+            $c_B$&Basis&$x_1$&$x_2$&$s_1$&$s_2$&$s_3$&$s_4$&$\bm{b}$&\\
+            \midrule
+0&$s_1$&-0.5&0&0&0&-0.5&0&4&\\
+0&$s_2$&0.5&0&0&0&1.5&0&2&\\
+-2&$x_2$&0.5&1&0&0&-0.5&0&5&\\
+            0&$s_4$&\cellcolor{yellow}-0.5&0&0&0&0.5&1&\cellcolor{cyan!30}-2&\textrightarrow\\
+            \midrule
+&$Z_j$&-1&-2&0&0&1&0&-10&\\
+&$c_j - Z_j$&-2&0&0&0&-1&0&&\\
+&ratios&\cellcolor{cyan!30}4&--&--&--&--&--&&\\
+&&\textuparrow&&&&&&&\\
+            \bottomrule
+          \end{tabular}
+        }
+      \par}
+  \end{onlyenv}
+
+  \begin{onlyenv}<7>
+    Gauss-Jordan
+        {\centering
+        \scalebox{1}{%
+          \begin{tabular}{rrrrrrrrrr}
+            \toprule
+           \cellcolor{blue!20}Iter 2 &$c_j$&-3&-2&0&0&0&0&&\\
+            \midrule
+            $c_B$&Basis&$x_1$&$x_2$&$s_1$&$s_2$&$s_3$&$s_4$&$\bm{b}$&\\
+            \midrule
+0&$s_1$&0&0&1&0&-1&-1&6&\\
+0&$s_2$&0&0&0&0&2&1&0&\\
+-2&$x_2$&0&1&0&0&0&1&3&\\
+            -3&$x_1$&1&0&0&0&-1&-2&4&\\
+            \midrule
+&$Z_j$&-3&-2&0&0&3&4&\cellcolor{yellow}-18&\\
+&$c_j - Z_j$&\cellcolor{red!30}0&\cellcolor{red!30}0&\cellcolor{red!30}0&\cellcolor{red!30}0&\cellcolor{red!30}-3&\cellcolor{red!30}-4&\textbf{END}&\\
+            \bottomrule
+          \end{tabular}
+        }
+      \par}
+  \end{onlyenv}  
+\end{frameExample}
   
 %%% Local Variables:
 %%% mode: latex
