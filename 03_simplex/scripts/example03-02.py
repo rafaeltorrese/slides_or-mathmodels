@@ -39,6 +39,7 @@ plt.plot([eq5, eq5], [-10, 100], lw=2, label=r"$x_1 = 20$")  # eq5
 plt.plot(x, zeq(x, 0), color="magenta", lw=3, ls="--", alpha=0.4, label=r"$\max Z = 2x_1 + 3x_2$" )
 for i in np.linspace(5, 50, 3):
     plt.plot(x, zeq(x, i), color="magenta", lw=3, ls="--", alpha=0.4)
+# plot areas
 
 plt.xlim(-1,35)
 plt.ylim(-1, 35)
@@ -87,7 +88,7 @@ plt.plot([eq5, eq5], [0, 100], lw=2, label=r"$x_1 = 20$")
 plt.plot(x, zeq(x, 0), color="magenta", lw=3, ls="--", alpha=0.4, label=r"$\max Z = 2x_1 + 3x_2$" )
 for i in np.linspace(5, 50, 3):
     plt.plot(x, zeq(x, i), lw=3, color="magenta", ls="--", alpha=0.4)
-
+# plot z function
 plt.plot(x, zeq(x, best_value), lw=3, color="magenta", ls="--", alpha=0.6)
 
 for point in points:
