@@ -16,3 +16,4 @@ slides*.pdf
 *.pyc
 lectures.pdf
 activities.pdf
+*ipynb_checkpoints
