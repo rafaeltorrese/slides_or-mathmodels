@@ -124,6 +124,3 @@ plt.xlim(-5, 60)
 plt.ylim(-5, 60)
 plt.legend()
 plt.show()
-
-
-
