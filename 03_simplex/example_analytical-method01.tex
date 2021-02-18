@@ -1,27 +1,22 @@
-\begin{frameExample}{Método de Prueba y Error}{}
+\begin{frameExample}{Trial and Error Method \label{example:02.15-02}}{}
   % EXAMPLE  2.15-2 Gupta Ebook
-  \begin{onlyenv}<1>
-    \begin{flalign*}
-    \max Z = x_1 + 3x_2 + 3x_3&\\
-    \intertext{Subject to}
-    x_1 + 2x_2 + 3x_3& = 4\\
-    2x_1 + 3x_2 + 5x_3& = 7\\[3mm]
-    x_1, x_2 & \geq 0\\
-    x_3 & \text{  irrestricta en signo}
-  \end{flalign*}
-\end{onlyenv}
 
-\begin{exampleblock}<only@2>{Planteamiento} \justifying
+\[     \max Z = x_1 + 3x_2 + 3x_3\]
 
-  Existe una variable irrestricta $x_3$, por lo tanto hacemos  $ x_3 = x_4  - x_5 $
-  \begin{flalign*}
-    \max Z = x_1 + 3x_2 + 3x_4  - 3x_5&\\
-    \intertext{Subject to}
-    x_1 + 2x_2 + 3x_4 - 3x_5& = 4\\
-    2x_1 + 3x_2 + 5x_4 - 5x_5& = 7\\
-    x_1, x_2, x_4, x_5 & \geq 0
-  \end{flalign*}
-\end{exampleblock}
+{\centering
+  subject to
+
+  \sysdelim..%
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3]%
+  {
+    x_1 + 2x_2 + 3x_3 = 4,
+    2x_1 + 3x_2 + 5x_3 = 7
+  }
+
+  \vspace{3mm}
+  $x_1, x_2,x_3  \geq 0$
+  \par}
 \end{frameExample}
 
 \begin{frameExample}{Prueba y Error. Minimización}{}
