@@ -54,14 +54,24 @@ donde $x_1, x_2, , \ldots, x_n \geq 0$
 \begin{frame}{Teoría Del Método Simplex}
   \begin{columns}
     \column{0.3\textwidth}
-\begin{onlyenv}<1,2>
-    \begin{flalign*}
-    \max Z = 3x_1 + 4x_2&\\
-    \intertext{Subject to}
-    x_1 + x_2 &\leq 450\\
-    2x_1 + x_2& \leq 600\\
-    x_1, x_2  &\geq 0
-  \end{flalign*}
+    \begin{onlyenv}<1,2>
+\[     \max Z = 3x_1 + 4x_2\]
+{
+  \centering
+  subject to
+
+  \sysdelim..%
+  \sysalign{r,r}%
+  \systeme[x_1x_2]%
+  {
+    x_1 + x_2 \leq 450,
+    2x_1 + x_2 \leq 600
+  }
+  \vspace{3mm}
+
+  $x_1, x_2  \geq 0   $
+  \par
+}
 \end{onlyenv}
     \column{0.7\textwidth}
       {\centering
@@ -80,13 +90,23 @@ donde $x_1, x_2, , \ldots, x_n \geq 0$
   \begin{columns}[t]
     \column{0.4\textwidth}
     \begin{onlyenv}<1>
-          \begin{flalign*}
-    \max Z = 3x_1 + 4x_2&\\
-    \intertext{Subject to}
-    x_1 + x_2 &\leq 450\\
-    2x_1 + x_2& \leq 600\\
-    x_1, x_2  &\geq 0
-  \end{flalign*}
+\[     \max Z = 3x_1 + 4x_2\]
+{
+  \centering
+  subject to
+
+  \sysdelim..%
+  \sysalign{r,r}%
+  \systeme[x_1x_2]%
+  {
+    x_1 + x_2 \leq 450,
+    2x_1 + x_2 \leq 600
+  }
+  \vspace{3mm}
+
+  $x_1, x_2  \geq 0   $
+  \par
+}
 \end{onlyenv}
 
 \begin{onlyenv}<2>
@@ -96,19 +116,30 @@ donde $x_1, x_2, , \ldots, x_n \geq 0$
     _{4}C_{2} &  = 6
   \end{align*}
 \end{onlyenv}
-    \column{0.4\textwidth}
-    \begin{align*}
-    \max Z = 3x_1 &+& 4x_2 &+& 0s_1 &+& 0s_2 & &\\
-    \intertext{Subject to}
-    x_1 &+& x_2 &+& s_1 && &= & 450\\
-    2x_1 &+& x_2 & & &+&  s_2 &=& 600\\
-    x_1&,& x_2&,& s_1&, &s_2  &\geq& 0
-  \end{align*}
+\column{0.4\textwidth}
+
+\[    \max Z = 3x_1 + 4x_2 + 0s_1 + 0s_2 \]
+{
+  \centering
+  subject to
+
+  \sysdelim..%
+  \sysalign{r,r}%
+  \systeme[x_1x_2s_1s_2]%
+  {
+    x_1 + x_2 + s_1  =  450,
+    2x_1 + x_2   +  s_2 = 600
+  }
+  \vspace{3mm}
+
+  $x_1, x_2, s_1, s_2  \geq 0$
+  \par
+}
 \end{columns}
 \end{frame}
 
   %% ------------------------------
-\begin{frame}{Método Prueba y Error}{}
+\begin{frame}{Trial Error Method}{}
             \begin{align*}
     \max Z = 3x_1 &+& 4x_2 &+& 0s_1 &+& 0s_2 & &\\
     \intertext{Subject to}

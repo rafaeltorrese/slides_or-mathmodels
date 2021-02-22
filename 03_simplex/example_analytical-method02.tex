@@ -1,6 +1,7 @@
-\begin{frameExample}{Método de Prueba y Error}{}
+\begin{frameExample}{Trial and Error Method \label{example:02.15-03}}{}
   % EXAMPLE  2.15-3 Gupta Ebook
-  Una empresa fabrica cuatro partes diferentes de una máquina $M_1, M_2,$ $ M_3, M_4$ con una aleación de cobre y zinc. Las cantidades de cobre y zinc requeridas para cada parte, su \alert{disponibilidad exacta} y la ganancia de cada unidad para cada parte es la siguiente
+  \begin{onlyenv}<1>
+      Una empresa fabrica cuatro partes diferentes de una máquina $M_1, M_2,$ $ M_3, M_4$ con una aleación de cobre y zinc. Las cantidades de cobre y zinc requeridas para cada parte, su \alert{disponibilidad exacta} y la ganancia de cada unidad para cada parte es la siguiente
 
   {\centering
     \begin{tabular}{rccccc}
@@ -17,6 +18,27 @@
   \par}
 
 ¿Cuántas partes se deben fabricar para maximizar la ganancia?
+\end{onlyenv}
+\begin{onlyenv}<2>
+  \[ \max Z = 12x_1 + 8x_2 + 14x_3 + 10x_4\]
+
+  {
+    \centering
+    subject to
+
+    \sysdelim..%
+    \sysalign{r,r}%
+    \systeme[x_1x_2x_3x_4]%
+    {
+      5x_1 + 4x_2 + 2x_3 + x_4 = 100,
+      2x_1 + 3x_2 + 8x_3 + x_4 = 75
+    }
+
+    \vspace{4mm}
+    $x_1, x_2,x_3, x_4 \geq 0$
+    \par
+  }
+\end{onlyenv}
 \end{frameExample}
 
 %%% Local Variables:

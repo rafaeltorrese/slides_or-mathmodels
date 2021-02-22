@@ -18,44 +18,60 @@
 \begin{frameExample}{The Simplex Method.}{}
   \begin{columns}
     \column{0.4\textwidth}
-    $\max Z = 3x_1 + 4x_2 $
+    \[ \max Z = 3x_1 + 4x_2 \]
 
-  s.t.
+    {\centering
+      s.t.
+
+      \sysdelim..%
   \sysalign{r,r}%
   \systeme[x_1x_2]{%
       x_1 + x_2  \leq 450,
     2x_1 + x_2   \leq 600
 }% systeme
 
+\vspace{5mm}
 $    x_1, x_2  \geq 0$
+\par}
 
 \column{0.6\textwidth}
 \begin{block}{Step 1. Express the problem in standard form}\justifying 
-    $\max Z = 3x_1 + 4x_2 + 0s_1 + 0s_2$
+    \[\max Z = 3x_1 + 4x_2 + 0s_1 + 0s_2\]
 
-  s.t.
+    {\centering
+      s.t.
+
+      \sysdelim..%
   \sysalign{r,r}%
-  \systeme[x_1x_2s_1s_2]{%
+  \systeme[x_1x_2s_1s_2]%
+  {
       x_1 + x_2 + s_1  = 450,
     2x_1 + x_2 + s_2   = 600
-}% systeme
+  }% systeme
 
-$    x_1, x_2, s_1, s_2  \geq 0$
+  \vspace{5mm}
+  $    x_1, x_2, s_1, s_2  \geq 0$
+  \par}
 \end{block}
   \end{columns}
 \end{frameExample}
 
 \begin{frame}{Step 1. Express The Problem in Standard Form}{}
-    $\max Z = 3x_1 + 4x_2 + 0s_1 + 0s_2$
+    \[ \max Z = 3x_1 + 4x_2 + 0s_1 + 0s_2\]
 
-  s.t.
+    {\centering
+      s.t.
+
+      \sysdelim..%
   \sysalign{r,r}%
   \systeme[x_1x_2s_1s_2]{%
       x_1 + x_2 + s_1  = 450,
-    2x_1 + x_2 + s_2   = 600
+      2x_1 + x_2 + s_2   = 600
 }% systeme
 
+\vspace{5mm}
 $    x_1, x_2, s_1, s_2  \geq 0$
+\par}
 \end{frame}
 
 \begin{frame}{Step 2. Find Initial Basic Feasible Solution}
@@ -312,14 +328,23 @@ $    x_1, x_2, s_1, s_2  \geq 0$
 \begin{frameExample}{Producción}{}
 
 
-      \begin{align*}
-      \max Z = 4x_1 + 3x_2 + 6x_3 & \\[3mm]
-      \text{sujeto a } & \\[2mm]
-    2x_1 + 3x_2 + 2x_3 & \leq 440\\
-    4x_1 + 0x_2 + 3x_3 & \leq 470\\
-    2x_1 + 5x_2  + 0x_3& \leq 430\\[5mm]
-    x_1, x_2,x_3 & \geq 0
-  \end{align*}
+
+  \[ \max Z = 4x_1 + 3x_2 + 6x_3\]
+  
+  {\centering
+    subject to
+
+    \sysdelim..\sysalign{r,r}\systeme[x_1x_2x_3]%
+    {
+      2x_1 + 3x_2 + 2x_3  \leq 440,
+      4x_1 + 3x_3  \leq 470,
+      2x_1 + 5x_2  + 0x_3 \leq 430
+    }
+
+    \vspace{5mm}
+    $    x_1, x_2,x_3  \geq 0$
+    \par}
+
 \end{frameExample}
 
 

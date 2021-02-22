@@ -1,14 +1,26 @@
-\begin{frameExample}{Método Prueba y Error (Analítico)  \label{example:2-9-3_Gupta-ebook}}{}
+\begin{frameExample}{Trial And Error Method  \label{example:2-9-3_Gupta-ebook}}{}
 
   % EXAMPLE  2.9-3 Gupta ebook
-    \begin{align*}
-    \max Z = 2x_1 + x_2 & \\[5mm]
-    x_1 + 2x_2 & \leq 10\\
-    x_1 + x_2 & \leq 6\\
-    x_1 - x_2 & \leq 2\\
-    x_1 - 2x_2 & \leq 1\\[5mm]
-    x_1, x_2 & \geq 0
-  \end{align*}
+  \[     \max Z = 2x_1 + x_2 \]
+
+  {\centering
+    subject to
+
+    \sysdelim..%
+    \sysalign{r,r}%
+    \systeme[x_1_x2]
+    {
+      x_1 + 2x_2  \leq 10,
+      x_1 + x_2  \leq 6,
+      x_1 - x_2  \leq 2,
+      x_1 - 2x_2  \leq 1
+    }
+
+    \vspace{5mm}
+    $    x_1, x_2  \geq 0$
+    \par}
+
+
 \end{frameExample}
 
 %%% Local Variables:

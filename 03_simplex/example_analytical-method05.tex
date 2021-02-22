@@ -1,13 +1,25 @@
-\begin{frameExample}{Método Prueba y Error}{}
-  \begin{align*}
-    \max Z = 2x_1 + 3x_2 & \\[5mm]
-    x_1 + x_2 & \leq 30\\
-    x_2 & \geq 3\\
-    x_2 & \leq 12\\
-    x_1 - x_2 & \geq 0\\
-    x_1  & \leq 20 \\[5mm]
-    x_1, x_2 & \geq 0
-  \end{align*}
+\begin{frameExample}{Trial and Error Method}{}
+
+\[    \max Z = 2x_1 + 3x_2  \]
+{
+  \centering
+  subject to
+
+  \sysdelim..%
+  \sysalign{r,r}%
+  \systeme[x_1x_2]%
+  {
+    x_1 + x_2  \leq 30,
+    x_2  \geq 3,
+    x_2  \leq 12,
+    x_1 - x_2  \geq 0,
+    x_1   \leq 20
+  }
+
+  \vspace{5mm}
+  $    x_1, x_2  \geq 0$
+  \par
+}
 \end{frameExample}
 
 

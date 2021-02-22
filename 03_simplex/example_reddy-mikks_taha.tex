@@ -26,15 +26,23 @@
   \end{onlyenv}
   
 \begin{block}<only@2>{Reddy Mikks (Modelo) }\justifying
-    \begin{align*}
-      \max Z = 5x_1 + 4x_2 & \\[3mm]
-      \text{sujeto a } & \\[2mm]
-    6x_1 + 4x_2 & \leq 24\\
-    x_1 + 2x_2 & \leq 6\\
-    -x_1 + x_2 & \leq 1\\
-    x_2 & \leq 2\\[5mm]
-    x_1, x_2 & \geq 0
-  \end{align*}
+
+\[\max Z = 5x_1 + 4x_2\]
+
+{\centering
+  subject to
+
+  \sysdelim..\sysalign{r,r}\systeme[x_1x_2]%
+  {
+    6x_1 + 4x_2  \leq 24,
+    x_1 + 2x_2  \leq 6,
+    -x_1 + x_2  \leq 1,
+    x_2  \leq 2
+  }
+
+  \vspace{5mm}
+  $x_1, x_2  \geq 0$
+  \par}
 \end{block}
 \end{frameExample}
 
