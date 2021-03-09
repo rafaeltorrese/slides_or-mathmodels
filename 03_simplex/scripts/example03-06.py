@@ -18,13 +18,13 @@ x = np.linspace(0, 20, 40)
 # constraints
 eq1 = (10 + x) / 3   # x2 <= (10 + x1)
 eq2 =   6 - x        # x2 <=   6 - x1
-eq3 =   x - 2        # x2 >=  x1 -  2  
+eq3 =   x - 2        # x2 >=  x1 -  2
 
 # z function
 zeq = lambda x1, z: (z + x1) / 2
 
 # equations_list  x, f(x)
-equations_list = [(x, eq1),  # 
+equations_list = [(x, eq1),  #
                   (x, eq2),
                   (x, eq3),
                   ]
@@ -82,6 +82,7 @@ intersecting_lines = [(3, 4),  # xAxis  ,  yAxis
                       ]
 points = [np.linalg.solve(A[[*i]], b[[*i]]) for i in intersecting_lines]
 coordinates = [*zip(*points)]
+print(coordinates)
 best_index, best_value = min(enumerate(point.dot(np.array([-1, 2])) for point in points), key=lambda t:t[1])
 best_point = points[best_index]
 
