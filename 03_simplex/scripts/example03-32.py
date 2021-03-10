@@ -101,9 +101,9 @@ plt.plot(*best_point, marker="*", ms=10, ls="", color="red", label=fr"$x_1:{best
 
 # plt.fill_between(x, np.minimum(eq1, eq2), np.maximum.reduce([eq3, eq4, np.zeros_like(x)]), where=(x<4), facecolor="gray",alpha=0.5, interpolate=True)
 
-plt.annotate("Iter1", xy=(1,0), xytext=(0.5, 0.5) )
-plt.annotate("Iter2", xy=(3,1), xytext=(2.5, 1.5) )
-plt.annotate("Iter3", xy=(4,2), xytext=(3.5, 2.5) )
+plt.annotate("Iter1", xy=(1,0), xytext=(0.5, 0.3) )
+plt.annotate("Iter2", xy=(3,1), xytext=(2.5, 1.3) )
+plt.annotate("Iter3", xy=(4,2), xytext=(3.5, 2.3) )
 
 plt.fill(*coordinates, facecolor="yellow", alpha=0.3)
 
