@@ -83,12 +83,12 @@ plt.plot(x, zeq(x, best_value), lw=4, ls="--", color="magenta", alpha=0.3, label
 
 
 for point in infeasibles[:, :2]:
-    plt.plot(*point, ls=None, marker="s", ms=6, color="k" )
+    plt.plot(*point, ls="", marker="s", ms=6, color="k" )
 
 for point in points:
-    plt.plot(*point, ls=None, color="blue", marker="o", ms=6)
+    plt.plot(*point, ls="", color="blue", marker="o", ms=6)
 
-plt.plot(*best_point, ls=None, marker="*", ms=12, color="red", label=fr'$x_1:{best_point[0]},\, x_2:{best_point[1]:2.2f}$' )
+plt.plot(*best_point, ls="", marker="*", ms=12, color="red", label=fr'$x_1:{best_point[0]},\, x_2:{best_point[1]:2.2f}$' )
 plt.fill(*coordinates, facecolor="yellow", alpha=0.3)
 
 plt.title("Example 33. Reddy Mikks")
