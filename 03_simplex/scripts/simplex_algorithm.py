@@ -1,0 +1,71 @@
+import numpy as np
+
+def simplex(matrix, rhs, z, numxvars, direction=1):
+    '''Simplex algorithm to solve linear programming problems
+
+    Parameters
+    ----------
+    matrix: numpy ndarray
+        Matrix of coefficients in the left-hand side
+
+    rhs: numpy ndarray
+        Right-hand side vector
+
+    numxvars: int
+        Number of x variables
+
+    direction: {+1 , -1}
+        For maximization problems use +1 and for minimization problems use -1 instead.
+    '''
+    solutionlist = []
+    solution = np.zeros_like(z)
+    num_rows, num_cols = matrix.shape
+
+    onecols = np.where(matrix == 1)[1]
+    cb_index = onecols[onecols >= numxvars]
+
+    iteration = 0
+
+    cb = z[cb_index]
+
+    zj = cb.dot(matrix)
+    net_evaluation = direction * (z - zj)
+    zvalues = []
+    while np.any(net_evaluation > 0):
+        solution = np.zeros_like(z)
+        entering = net_evaluation.argmax()  # entering variables (index)
+
+        key_col = matrix[ : , entering]
+        ratios = np.divide(rhs, key_col, out=np.full_like(rhs, np.inf), where=key_col>0)
+        leaving = ratios.argmin()   # leaving variables (index)
+
+        pivot = matrix[leaving, entering]
+
+        if pivot != 1:
+            matrix[leaving] = matrix[leaving] / pivot
+            rhs[leaving] = rhs[leaving] / pivot
+
+        for i in range(num_rows):
+            if i == leaving:
+                continue
+            factor = matrix[i, entering]
+            matrix[i] = -factor * matrix[leaving] + matrix[i]
+            rhs[i] = -factor * rhs[leaving] + rhs[i]
+
+        cb_index[leaving] = entering
+
+        cb = z[cb_index]
+        zj = cb.dot(matrix)
+        net_evaluation = direction * (z - zj)
+
+        solution[~cb_index] = 0  # non-basics
+        solution[cb_index] = rhs  # basics
+
+        print(matrix, "\n")
+        print("Solution", solution, "\n")
+        solutionlist.append(solution[: numxvars])
+        iteration += 1
+        zvalues.append(cb.dot(rhs))
+        if np.all(net_evaluation <= 0):
+            print(f"Optimal solution found in {iteration} iterations with solution {solution}" )
+            return solutionlist, zvalues
