@@ -698,7 +698,8 @@ Fase II
 
 \begin{frameExample}{Diet Problem}{}
   % EXAMPLE 2.6-2 {Diet Problem} Gupta
-  La persona quiere decidir los componentes de una dieta que cumpla con sus requerimientos diarios de proteínas, grasas y carbohidratos al costo mínimo. La elección debe hacerse a partir de cuatro tipos diferentes de alimentos. Los rendimientos por unidad de estos alimentos se dan en la tabla siguiente. Formule un modelo de programación lineal para el problema y resuelva por método simplex.
+  \begin{onlyenv}<1>
+      La persona quiere decidir los componentes de una dieta que cumpla con sus requerimientos diarios de proteínas, grasas y carbohidratos al costo mínimo. La elección debe hacerse a partir de cuatro tipos diferentes de alimentos. Los rendimientos por unidad de estos alimentos se dan en la tabla siguiente. Formule un modelo de programación lineal para el problema y resuelva por método simplex.
 
 
   {\centering
@@ -718,11 +719,9 @@ Fase II
       \end{tabular}
     } % scalebox
     \par}    
-\end{frameExample}
+\end{onlyenv}
 
-
-\begin{frameExample}{Dieta}{}
-  \begin{onlyenv}<1>
+  \begin{onlyenv}<2>
     \[ \min Z = 45x_1 + 40x_2 + 85x_3 + 65x_4   \]
 
     {\centering
@@ -743,7 +742,7 @@ Fase II
   \par}
   \end{onlyenv}
   
-  \begin{onlyenv}<2>
+  \begin{onlyenv}<3>
     \[ \min W = 0x_1 + 0x_2 + 0x_3 + 0x_4 - 0s_1 - 0s_2 - 0s_3  + A_1 + A_2 + A_3 \]
 
     {\centering
@@ -760,7 +759,7 @@ Fase II
     $x_1, x_2, x_3, x_4, s_1, s_2, s_3, A_1, A_2, A_3  \geq 0$
   \par}
   \end{onlyenv}
-  \begin{onlyenv}<3>
+  \begin{onlyenv}<4>
     \[ \min W = A_1 + A_2 + A_3 \]
 
     {\centering
@@ -778,7 +777,10 @@ Fase II
     $x_1, x_2, x_3, x_4, s_1, s_2, s_3, A_1, A_2, A_3  \geq 0$
     \par}
   \end{onlyenv}
+
 \end{frameExample}
+
+
 
 
 
