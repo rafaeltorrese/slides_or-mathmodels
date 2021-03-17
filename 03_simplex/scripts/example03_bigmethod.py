@@ -53,9 +53,6 @@ A = np.array([
     , dtype=float)
 
 b = np.array([30, 3, 12, 0, 20], dtype=float)
-feasibles, infeasibles, best_vector = analytical(matrix=A, rhs=b, objcoef=cj, constant=0, direction="max")
-
-points = feasibles[:, :2]
 
 
 #%%
@@ -73,6 +70,7 @@ A = np.array([
 points,zs = simplex(matrix=A, rhs=b, z=cj, numxvars=2)
 
 
+
 #%%
 plt.figure(figsize=(8,8))
 plt.axvline(0, color='0.4')
@@ -88,7 +86,7 @@ for z in np.linspace(10,50, 5):
 for z in zs:
     plt.plot(x, zeq(x, z), lw=4, ls="--", color='cyan', alpha=0.4 )
 
-for point in points:
+for point in points[:, :2]:
     plt.plot(*point, marker="o", color="blue", ls="", ms=7)
 
 

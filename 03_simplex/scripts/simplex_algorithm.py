@@ -17,20 +17,20 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
     direction: {+1 , -1}
         For maximization problems use +1 and for minimization problems use -1 instead.
     '''
-    solutionlist = []
-    solution = np.zeros_like(z)
     num_rows, num_cols = matrix.shape
 
     onecols = np.where(matrix == 1)[1]
     cb_index = onecols[onecols >= numxvars]
-
-    iteration = 0
-
     cb = z[cb_index]
 
     zj = cb.dot(matrix)
+
     net_evaluation = direction * (z - zj)
-    zvalues = []
+
+    solutions = []
+    fvalues = []
+
+    iteration = 0
     while np.any(net_evaluation > 0):
         solution = np.zeros_like(z)
         entering = net_evaluation.argmax()  # entering variables (index)
@@ -61,11 +61,13 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
         solution[~cb_index] = 0  # non-basics
         solution[cb_index] = rhs  # basics
 
-        print(matrix, "\n")
-        print("Solution", solution, "\n")
-        solutionlist.append(solution[: numxvars])
         iteration += 1
-        zvalues.append(cb.dot(rhs))
+        print(f"Iteration {iteration}")
+        print(matrix,  "\n")
+        print("Solution", solution, f"\tZ: {cb.dot(rhs):0.2f}", "\n")
+
+        solutions.append(solution)
+        fvalues.append(cb.dot(rhs))
         if np.all(net_evaluation <= 0):
-            print(f"Optimal solution found in {iteration} iterations with solution {solution}" )
-            return solutionlist, zvalues
+            print(f"Optimal solution found in {iteration} iterations")
+    return np.array(solutions), fvalues
