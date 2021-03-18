@@ -6,9 +6,13 @@ with open("example03-33.txt", "r") as f:
 
 
 
-string = "x1 + 2x2 - 3x3"
-regex = re.compile("\d[+-]?x")
-print(regex.findall(string))
+
+string = "x1 + 5x2 - 6x3 + 10x4"
+regex = re.compile("x\d")
+print(regex.split(string))
+
+elements = ["1" if e == '' else e for e in regex.split(string)]
+print(elements)
 
 # pattern = "[<>]="
 # line4 = text[3]
