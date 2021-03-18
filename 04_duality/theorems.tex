@@ -30,18 +30,78 @@
   \end{enumerate}
 \end{frame}
 
+\begin{frameExample}{}{}
+  \only<1>{%
+  A feed mixing operation can be described in terms of the two activities. The required mixture must contain four kinds of ingredients $w, x, y$ and $z$. Two basic feeds $A$ and $B$, which contain the required ingredients are available in the market. One kg. of $A$ contains 0.1 kg. of $w$, 0.1 kg. of $y$ and 0.2 kg. of $z$. Likewise, one kg. of feed $B$ contains 0.1 kg. of $x$, 0.2 kg. of $y$,  and 0.1 kg. of $z$. The daily per head requirement is of at least 0.4 kg. of $w$, 0.6 kg. of $x$, 2 kg. of $y$ and 1.8 kg. of $z$. Feed $A$ can be bought for \$0.07 per kg. and $B$ can be bought for \$ 0.05 per kg. The availabilities, requirements and costs are summarized in the following table.
+
+  Determine the quantities of feeds $A$ and $B$ in the mixture so that the total cost is minimum.
+  }%
+
+  \begin{onlyenv}<2>
+      {\centering
+    \begin{tabular}{cccc}
+      \toprule
+      Ingredient&Feed $A$& Feed $B$& Requirement\\
+      \midrule
+      &(kg.)&(kg.)&(kg.)\\
+$w$&0.1&0.0&0.4\\
+$x$&0.0&0.1&0.6\\
+$y$&0.1&0.2&2.0\\
+      $z$&0.2&0.1&1.8\\
+      \midrule
+      Cost&\$0.07&\$0.05\\
+      \bottomrule
+    \end{tabular}
+  \par}
+  \end{onlyenv}
+\end{frameExample}
 
 \begin{frame}{Economic Interpretation}{}
-  \[\min 600x_1 + 400x_2\]
+
+    \only<1>{%
+  Mohan-Meakins Breveries Ltd. has two bottling plants, one located at Solan and the other at Mohan Nagar. Each plant produces three drinks, whisky, beer and fruit juices named $A$, $B$, and $C$ respectively. The number of bottles produced per day are as follows:
+
+  {\centering
+    \begin{tabular}{rcc}
+      \toprule
+      &\multicolumn{2}{c}{Plant at}\\
+      \cmidrule{2-3}
+      &Solan&Mohan Nagar \\
+      &$(S)$&$(M)$ \\
+      \midrule
+      Whisky, $A$&1,500&1,500\\
+      Beer, $B$&3,000&1,000\\
+      Fruit juices, $C$&2,000&5,000\\
+      \bottomrule
+    \end{tabular}
+    \par}%
+  }
+
+  \only<2>{%
+  A market survey indicates that during the month of April, there will be a demand of 20,000 bottles of whisky, 40,000 bottles of beer and 44,000 bottles of fruit juices. The operating costs per day for plants at Solan and Mohan Nagar are 600 and 400 monetary units. For how many days each plant be run in April so as to minimize the production cost, while still meeting the market demand?%
+  }
+
+  \begin{onlyenv}<3>
+      
+  \[Z = \min 600x_1 + 400x_2\]
 
   {\centering
     subject to
 
     \vspace{3mm}
 
+    \sysdelim..%
+    \sysalign{r,r}%
+    \systeme[x_1x_2]%
+    {
+      1\,500x_1 + 1\,500x_2 \geq 20\,000,
+      3\,000x_1 + 1\,000x_2 \geq 40\,000,
+      2\,000x_1 + 5\,000x_2 \geq 44\,000,
+    }
     
-
+    $x_1, x_2 \geq 0$
   \par}
+  \end{onlyenv}
   
 \end{frame}
 
