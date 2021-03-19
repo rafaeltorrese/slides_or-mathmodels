@@ -58,16 +58,18 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
         zj = cb.dot(matrix)
         net_evaluation = direction * (z - zj)
 
-        solution[~cb_index] = 0  # non-basics
         solution[cb_index] = rhs  # basics
 
         iteration += 1
-        print(f"Iteration {iteration}")
-        print(matrix,  "\n")
-        print("Solution", solution, f"\tZ: {cb.dot(rhs):0.2f}", "\n")
+
+        # print(f"Iteration {iteration}")
+        # print(matrix,  "\n")
+        # print("Solution", solution, f"\tZ: {cb.dot(rhs):0.2f}", "\n")
 
         solutions.append(solution)
         fvalues.append(cb.dot(rhs))
+        yield matrix, iteration
         if np.all(net_evaluation <= 0):
             print(f"Optimal solution found in {iteration} iterations")
-    return np.array(solutions), fvalues
+
+    # return np.array(solutions), fvalues

@@ -10,9 +10,9 @@ $$\min Z = 45x_1 + 40x_2 + 85x_3 + 65x_4 $$
 x_1, x_2,x_3, x_4 & \geq 0
 \end{align*}
 '''
-
+from pprint import pprint
 import numpy as np
-
+np.set_printoptions(precision=3, suppress=True)
 
 from simplex_algorithm import simplex
 from twophase_method import twophase
@@ -32,12 +32,15 @@ b = np.array([
 ], dtype=float)
 
 
-solutions, zvalues = simplex(matrix=A, rhs=b, z=cj, numxvars=4, direction=-1)
+
+M = simplex(matrix=A, rhs=b, z=cj, numxvars=4, direction=-1)
 
 
-solutions, zvalues = simplex(matrix=A, rhs=b, z=cj, numxvars=4, direction=-1)
+for i,l in M:
+    print(i, l)
+    print()
 
-sols2, z2 = twophase(matrix=A, rhs=b, z=cj, numxvars=4, direction=-1)
+# sols2, z2 = twophase(matrix=A, rhs=b, z=cj, numxvars=4, direction=-1)
 
 
 
