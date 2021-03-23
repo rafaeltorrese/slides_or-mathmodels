@@ -17,6 +17,10 @@ def phase1(matrix, rhs, z, numxvars):
     direction: {+1 , -1}
         For maximization problems use +1 and for minimization problems use -1 instead.
     '''
+    matrix = np.array(matrix)
+    rhs = np.array(rhs)
+    z = np.array(z)
+
     print("="*30, "PHASE I", "="*30, "\n")
 
 
