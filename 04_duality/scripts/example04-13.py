@@ -9,6 +9,8 @@ x_1, x_2 & \geq 0
 """
 
 import numpy as np
+np.set_printoptions(precision=3, suppress=True)
+
 import matplotlib.pyplot as plt
 
 #%%

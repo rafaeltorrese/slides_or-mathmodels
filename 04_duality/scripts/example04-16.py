@@ -7,23 +7,25 @@ Example 04-16
 """
 
 import numpy as np
+np.set_printoptions(precision=3, suppress=True)
 
 from dualsimplex_algorithm import dual_simplex
 #%%
-cj = np.array([3, 4, 0, 0, 0, 0] , dtype=float)
+cj = np.array([-3, -2, -1, -4, 0, 0, 0] , dtype=float)
 
 A = np.array([
-    [ 5,  4, 1, 0, 0, 0],
-    [ 3,  5, 0, 1, 0, 0],
-    [-5, -4, 0, 0, 1, 0],
-    [-8, -4, 0, 0, 0, 1]
+    [-2, -4, -5, -1, 1, 0, 0],
+    [-3,  1, -7,  2, 0, 1, 0],
+    [-5, -2, -1, -6, 0, 0, 1],
     ] , dtype=float)
 
-b = np.array([200, 150, -100, -80] , dtype=float)
+b = np.array([-10, -2, -15] , dtype=float)
 
 
 #%%
 soldualsimplex, gvalues, lastrow = dual_simplex(matrix=A,
                                   rhs=b,
                                   z=cj,
-                                  numxvars=2)
+                                  numxvars=4)
+
+print(20/23)

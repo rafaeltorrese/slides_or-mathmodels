@@ -12,6 +12,7 @@ x_2 \leq 3
 
 import numpy as np
 import matplotlib.pyplot as plt
+np.set_printoptions(precision=3, suppress=True)
 
 from simplex_algorithm import simplex
 from twophase_method import twophase

@@ -8,6 +8,7 @@
 """
 
 import numpy as np
+np.set_printoptions(precision=3, suppress=True)
 
 from dualsimplex_algorithm import dual_simplex
 #%%
