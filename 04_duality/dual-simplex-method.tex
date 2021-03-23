@@ -241,7 +241,7 @@ $    x_1, x_2, x_3, s_1, s_2, s_3  \geq 0$
     Use dual simplex method to
     \begin{columns}[t]
       \column{0.5\textwidth}
-       \[\max Z = -3x_1 -2x_2 \] 
+       \[\min Z = 3x_1 + 2x_2 \] 
 
        {\centering
          subject to%
@@ -262,7 +262,7 @@ $    x_1, x_2, x_3, s_1, s_2, s_3  \geq 0$
       \par}
       
     \column{0.5\textwidth}
-    \[\max Z = -3x_1 -2x_2 \]
+    \[\max -Z = -3x_1 -2x_2 \]
 
     {\centering
       subject to
@@ -423,7 +423,52 @@ $    x_1, x_2, x_3, s_1, s_2, s_3  \geq 0$
       \par}
   \end{onlyenv}  
 \end{frameExample}
-  
+
+
+\begin{frameExample}{}{}
+
+        \[ \max Z = 2x_1 + 3x_2 \]
+
+        {\centering
+          subject to
+
+          \sysdelim..\sysalign{r,r}%
+          \systeme[x_1x_2]%
+          {
+            x_1 + x_2  \leq 30,
+        x_2  \geq 3,
+        x_2  \leq 12,
+        x_1 - x_2  \geq 0,
+        x_1   \leq 20 
+      }
+
+      \vspace{5mm}
+              $x_1, x_2  \geq 0$
+        \par}
+\end{frameExample}
+
+\begin{frameExample}{}{}
+    \[\max Z = 3x_1 + 4x_2 \]
+
+  {\centering
+    subject to (s.t.)
+
+    \sysalign{r,r}%
+    \sysdelim..%
+    \systeme[x_1x_2]%
+    {
+      5x_1 + 4x_2 \leq 200,
+      3x_1 + 5x_2 \leq 150,
+      5x_1 + 4x_2 \geq 100,
+      8x_1 + 4x_2 \geq 80
+    }
+
+    \vspace{5mm}
+
+    $x_1 , x_2 \geq 0$
+  \par}
+\end{frameExample}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "slides_duality"
