@@ -35,11 +35,18 @@ def dual_simplex(matrix, rhs, z, numxvars):
     fvalues = []
 
     iteration = 0
+    if np.any(net_evaluation > 0):
+            print("Method Fails")
+            print("Net Evaluation Row", net_evaluation)
     while np.all(net_evaluation <= 0) and np.any(rhs < 0) :
         solution = np.zeros_like(z)
 
         leaving = rhs.argmin()   # leaving variables (index)
         key_row = matrix[leaving]
+
+        if np.all(key_row>=0):
+            print("Infeasible Solution")
+            break
 
         ratios = np.divide(net_evaluation, key_row, out=np.full_like(z, np.inf), where=key_row<0)
 
