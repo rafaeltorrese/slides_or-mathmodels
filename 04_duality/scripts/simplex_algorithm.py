@@ -17,7 +17,11 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
     direction: {+1 , -1}
         For maximization problems use +1 and for minimization problems use -1 instead.
     '''
-    print("=======")
+
+    matrix = np.array(matrix)
+    rhs = np.array(rhs)
+    z = np.array(z)
+
     num_rows, num_cols = matrix.shape
 
     onecols = np.where(matrix == 1)[1]
@@ -69,6 +73,7 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
 
         solutions.append(solution)
         fvalues.append(cb.dot(rhs))
+        # yield matrix, iteration
         if np.all(net_evaluation <= 0):
             print(f"Optimal solution found in {iteration} iterations")
 

@@ -2,25 +2,70 @@
 \section{Duality Theorems}
 \label{sec:duality-theorems}
 
-\begin{frame}{Teoremas de Dualidad}
+\begin{frame}{Duality Theorems}
   \begin{enumerate} \justifying \parskip4mm
-\item<only@1> El dual del dudal es el primal.
-\item<only@1> El valor de la función objetivo $Z$ para cualquier solución factible del primal es $\leq$ que el valor de la función objetivo $W$ para cualquier solución factible del dual $Z \leq W$.
-\item<only@1> Si el problema primal o dual no tienen solución acotada, entonces, la solución al otro problema (dual o primal) es infactible.
-\item<only@1> Si el problema primal y dual tiene soluciones factibles, entonces, la solución para ambos (dual y primal) es la misma, esto es, $\max Z = \min W$
-\item<only@1> Holgura complementaria.
+\item<only@1> The dual of the dual is the primal.
+\item<only@1> The value of the objective function $Z$ for any feasible solution of the primal is $\leq$ the value of the objective function $W$ for any feasible solution of the dual ( $Z \leq W$).
+\item<only@1> If either the primal or the dual problem has an unbounded solution, then the solultion to the other problem is infeasible.
+\item<only@1> \textbf{(Main Duality Theorem)}. If both the primal and the dual problems have feasible solutions, then both have optimal solutions and  $\max Z = \min W$
+\item<only@1> Complementary Slackness.
 \end{enumerate}
 
-\begin{theorem}<only@2>[Holgura Complementaria]
+\begin{theorem}<only@2>[Complementary Slackness Theorem]
   \begin{enumerate} \justifying \parskip2mm
-  \item Si una variable primal es positiva, entonces, la restricción dual correspondiente es una ecuación en el óptimo.
-  \item Si la restricción primal es una desigualdad, entonces la variable dual correspondiente es cero en el óptimo.
-  \item Si una variable dual es positiva, entonces, la restricción primal correspondiente es una ecuación en el óptimo.
-  \item Si una restricción dual es una desigualdad, entonces, la variable primal correspondiente es cero en el óptimo.
+  \item If a \alert{primal variable is positive}, then the corresponding dual constraint is an equation at the optimum.
+  \item If the \alert{primal constraint is a strict inequality}, then the corresponding dual variable
+    is zero at the optimum.
+    
+  \item If a \alert{dual variable is positive}, then the corresponding constraint is an equation at the optimum.
+  \item If a \alert{dual constraint is a strict inequality}, then the corresponding primal variable is zero at the optimum.
   \end{enumerate}
 \end{theorem}
 \end{frame}
 
+\begin{frameExample}{}{}
+  \[ \max Z = 2x_1 + x_2 \]
+      {\centering
+      s.t.%
+\vspace{4mm}
+      
+        \sysdelim..%
+        \sysalign{r,r}%
+        \systeme[x_1x_2]%
+        {%
+          x_1 + 2x_2  \leq 10,
+          x_1 + x_2  \leq 6,
+          x_1 - x_2  \leq 2,
+          x_1 - 2x_2  \leq 1
+      }
+
+      \vspace{5mm}
+      $x_1, x_2 \geq 0$
+      \par}
+\end{frameExample}
+
+
+\begin{frameExample}{}{}
+  \[ \max Z = 5x_1 + 4x_2 \]
+      {\centering
+      s.t.%
+\vspace{4mm}
+      
+        \sysdelim..%
+        \sysalign{r,r}%
+        \systeme[x_1x_2]%
+        {%
+          6x_1 + 4x_2  \leq 24,
+          x_1 + 2x_2  \leq 6,
+          -x_1 + x_2  \leq 1,
+          x_2  \leq 2
+      }
+
+      \vspace{5mm}
+      $x_1, x_2 \geq 0$
+      \par}
+\end{frameExample}
+  
 \begin{frame}{Correspondencia entre las Soluciones Primal--Dual}
 
   \begin{enumerate} \justifying \parskip3mm
@@ -29,6 +74,8 @@
   \item El valor de la función objetivo es el mismo en la solución primal y dual.
   \end{enumerate}
 \end{frame}
+
+
 
 \begin{frameExample}{}{}
   \only<1>{%
@@ -55,6 +102,7 @@ $y$&0.1&0.2&2.0\\
   \par}
   \end{onlyenv}
 \end{frameExample}
+
 
 \begin{frame}{Economic Interpretation}{}
 
