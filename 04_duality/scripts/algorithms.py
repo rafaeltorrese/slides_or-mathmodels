@@ -2,7 +2,36 @@ from itertools import combinations
 import numpy as np
 
 
-def create_fullmatrix(body, inequalities, c, direction=1, M=1000):
+def create_fullmatrix(body, inequalities, c, varlabel="x", direction=1, M=1000 ):
+    """
+    This function creates body matrix to solve a Linear Programming Problem through Simplex Method
+
+
+    Parameters
+    -----------
+
+    body: numpy ndarray
+        Left-hand side of the problem
+
+    inequalities: list of strings
+        Inequalities in each constraint
+
+    c: list of floats
+        Coefficients in the objective function
+
+    varlabel: string, default="x"
+        Letter for identify the main variable in the problem, for example x1, x2, xn or y1, y2, ..., yn
+
+    direction: {-1, +1}
+        Sense of the problem. -1 for minimization problems or +1 for maximization problems
+
+    M: int, default=1000
+        If there are artificial variables, maybe the method for solving is BigM method, so, we need to set a penalty where M represents a big number.
+    """
+    if not isinstance(body, np.ndarray):
+        body = np.array(body, dtype=float)
+    if not isinstance(c, np.ndarray):
+        c = np.array(c, dtype=float)
     rows, cols = body.shape
     labels = []
     signs = []
@@ -25,16 +54,16 @@ def create_fullmatrix(body, inequalities, c, direction=1, M=1000):
             row_positions += [i]
             zaux += [M]
 
-    samatrix = np.zeros((rows, len(labels)))
+    samatrix = np.zeros((rows, len(labels)))  # slack artificial matrix
     samatrix[row_positions, range(len(labels))] = signs
-    full_labels = [f"x{i + 1}" for i in range(cols)] + labels
+    full_labels = [f"{varlabel}{i + 1}" for i in range(cols)] + labels
     full_matrix = np.hstack((body, samatrix))
 
-    z = np.concatenate((c, direction * -np.array(zaux)))
-    return full_matrix, full_labels, z
+    cj = np.concatenate((c, direction * -np.array(zaux)))
+    return full_matrix, full_labels, cj
 
 
-def simplex(matrix, rhs, z, numxvars, direction=1):
+def simplex(matrix, rhs, z, inequalities, direction=1, M=1000, vlabel="x"):
     '''Simplex algorithm to solve linear programming problems
 
     Parameters
@@ -45,21 +74,29 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
     rhs: numpy ndarray
         Right-hand side vector
 
-    numxvars: int
-        Number of x variables
+    inequalities: list of strings
+        List with inequality strings
+
+    M: int, default=1000
+       Penalty quantity
 
     direction: {+1 , -1}
         For maximization problems use +1 and for minimization problems use -1 instead.
     '''
+    if not isinstance(matrix, np.ndarray):
+        matrix = np.array(matrix, dtype=float)
 
-    matrix = np.array(matrix)
-    rhs = np.array(rhs)
-    z = np.array(z)
+    numconstraints, numxvars = matrix.shape
+    rhs = np.array(rhs, dtype=float)
+
+    matrix, labels, z = create_fullmatrix(matrix, inequalities, z, vlabel, direction, M)
 
     num_rows, num_cols = matrix.shape
 
     onecols = np.where(matrix == 1)[1]
+
     cb_index = onecols[onecols >= numxvars]
+
     cb = z[cb_index]
 
     zj = cb.dot(matrix)
@@ -91,6 +128,9 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
             matrix[i] = -factor * matrix[leaving] + matrix[i]
             rhs[i] = -factor * rhs[leaving] + rhs[i]
 
+        leaving_label = labels[cb_index[leaving]]
+        entering_label= labels[entering]
+
         cb_index[leaving] = entering
 
         cb = z[cb_index]
@@ -102,7 +142,7 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
         iteration += 1
 
 
-        print(f"Iteration {iteration}")
+        print(f"Iteration {iteration}. Entering: {entering_label}, Leaving: Leaving: {leaving_label}")
         print(matrix,  "\n")
         print("Solution", solution, f"\tZ: {cb.dot(rhs):0.2f}", "\n")
 
@@ -110,7 +150,9 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
         fvalues.append(cb.dot(rhs))
         if np.all(net_evaluation <= 0):
             print(f"Optimal solution found in {iteration} iterations")
+            print((*zip(labels, solution)))
     return np.array(solutions), fvalues, np.vstack((zj, net_evaluation))
+
 
 
 

@@ -8,8 +8,10 @@ Example 04-16
 
 import numpy as np
 np.set_printoptions(precision=3, suppress=True)
-
+#%%
 from dualsimplex_algorithm import dual_simplex
+from algorithms import simplex as simplex2
+from algorithms import create_fullmatrix
 #%%
 cj = np.array([-3, -2, -1, -4, 0, 0, 0] , dtype=float)
 
@@ -28,4 +30,29 @@ soldualsimplex, gvalues, lastrow = dual_simplex(matrix=A,
                                   z=cj,
                                   numxvars=4)
 
-print(20/23)
+#%%
+cjprimal = [3, 2, 1, 4]
+
+Aprimal = [
+    [2,  4, 5,  1],
+    [3, -1, 7,  2],
+    [5,  2, 1,  6],
+    ]
+ineqprimal = [">=", ">=", ">="]
+
+bprimal = [10, 2, 15]
+
+
+#%%
+cjdual = bprimal[:]
+bdual = cjprimal[:]
+ineqdual = ["<=", "<=", "<=", "<="]
+Adual = np.array(Aprimal).T
+
+#%%
+print()
+solutions, zvalues, lastrows = simplex2(matrix=Aprimal, rhs=bprimal, z=cjprimal, inequalities=ineqprimal, direction=-1)
+
+print()
+
+solutions, zvalues, lastrows = simplex2(matrix=Adual, rhs=bdual, z=cjdual, inequalities=ineqdual, direction=1, vlabel="y")

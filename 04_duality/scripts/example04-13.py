@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 #%%
 from simplex_algorithm import simplex
 from dualsimplex_algorithm import dual_simplex
+
 #%%
 x = np.linspace(0, 100, 100)
 
