@@ -3,7 +3,7 @@ Example 04-16
 \min Z = 3x_1 + 2x_2 + x_3 + 4x_4
 2x_1 + 4x_2 + 5x_3 + x_4 \geq 10
 3x_1 - x_2 + 7x_3 - 2x_4 \geq 2
-5x_1 + 2x_2 + x_3 +6x_4 \geq 1
+5x_1 + 2x_2 + x_3 +6x_4 \geq 15
 """
 
 import numpy as np
