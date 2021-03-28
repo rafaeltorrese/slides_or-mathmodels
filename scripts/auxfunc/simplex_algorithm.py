@@ -15,9 +15,25 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
         Number of x variables
 
     direction: {+1 , -1}
-        For maximization problems use +1 and for minimization problems use -1 instead.
+        Use +1 for maximization and -1 for minimization.
+
+    Returns
+    -------
+    solutions: numpy ndarray
+        Vector solutions of every iteration
+
+    fvalues: numpy ndarray
+        Values of z (objective function)
+
+    lastrows: numpy ndarray
+        Last rows of optimal table, this rows corresponde to Zj and cj - Zj
     '''
-    print("=======")
+    print("="*10, "Simplex Method", "="*10)
+
+    matrix = np.array(matrix, dtype=float)
+    rhs = np.array(rhs, dtype=float)
+    z = np.array(z, dtype=float)
+
     num_rows, num_cols = matrix.shape
 
     onecols = np.where(matrix == 1)[1]
@@ -31,15 +47,23 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
     solutions = []
     fvalues = []
 
+    labels = [f"x{i + 1}" for i in range(num_cols)]
+
     iteration = 0
     while np.any(net_evaluation > 0):
         solution = np.zeros_like(z)
         entering = net_evaluation.argmax()  # entering variables (index)
+        entering_label = labels[entering]
 
-        key_col = matrix[ : , entering]
-        ratios = np.divide(rhs, key_col, out=np.full_like(rhs, np.inf), where=key_col>0)
+        key_col = matrix[:, entering]
+
+        ratios = np.divide(rhs, key_col,
+                           out=np.full_like(rhs, np.inf),
+                           where=key_col > 0)
+
         leaving = ratios.argmin()   # leaving variables (index)
-
+        leaving_label = labels[cb_index[leaving]]
+        # ==================
         pivot = matrix[leaving, entering]
 
         if pivot != 1:
@@ -47,12 +71,11 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
             rhs[leaving] = rhs[leaving] / pivot
 
         for i in range(num_rows):
-            if i == leaving:
-                continue
-            factor = matrix[i, entering]
-            matrix[i] = -factor * matrix[leaving] + matrix[i]
-            rhs[i] = -factor * rhs[leaving] + rhs[i]
-
+            if i != leaving:
+                factor = matrix[i, entering]
+                matrix[i] = -factor * matrix[leaving] + matrix[i]
+                rhs[i] = -factor * rhs[leaving] + rhs[i]
+        # ==================
         cb_index[leaving] = entering
 
         cb = z[cb_index]
@@ -63,7 +86,7 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
 
         iteration += 1
 
-        print(f"Iteration {iteration}")
+        print(f"Iteration {iteration}. {leaving_label} ---> {entering_label}")
         print(matrix,  "\n")
         print("Solution", solution, f"\tZ: {cb.dot(rhs):0.2f}", "\n")
 
@@ -71,5 +94,6 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
         fvalues.append(cb.dot(rhs))
         if np.all(net_evaluation <= 0):
             print(f"Optimal solution found in {iteration} iterations")
+            print((*zip(labels, np.round(solution, 3))))
 
-    return np.array(solutions), fvalues
+    return np.array(solutions), fvalues, np.vstack((zj, net_evaluation))

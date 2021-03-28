@@ -35,14 +35,18 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
     solutions = []
     fvalues = []
 
+    labels = [f"x{i + 1}" for i in range(num_cols)]
+
     iteration = 0
     while np.any(net_evaluation > 0):
         solution = np.zeros_like(z)
         entering = net_evaluation.argmax()  # entering variables (index)
+        entering_label = labels[entering]
 
         key_col = matrix[ : , entering]
         ratios = np.divide(rhs, key_col, out=np.full_like(rhs, np.inf), where=key_col>0)
         leaving = ratios.argmin()   # leaving variables (index)
+        leaving_label = labels[cb_index[leaving]]
 
         pivot = matrix[leaving, entering]
 
@@ -67,7 +71,7 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
 
         iteration += 1
 
-        print(f"Iteration {iteration}")
+        print(f"Iteration {iteration}. {leaving_label} ---> {entering_label}")
         print(matrix,  "\n")
         print("Solution", solution, f"\tZ: {cb.dot(rhs):0.2f}", "\n")
 
