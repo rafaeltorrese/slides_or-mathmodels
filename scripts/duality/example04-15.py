@@ -6,9 +6,12 @@ Example 04-15
       2x_1 + x_2 \geq 2
       -x_1 - x_2 \geq 1
 """
+import os
+os.chdir('..')
 
 import numpy as np
-from dualsimplex_algorithm import dual_simplex
+from auxfunc.dualsimplex_algorithm import dual_simplex
+
 
 
 cj = np.array([-1, -1, 0, 0] , dtype=float)

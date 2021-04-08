@@ -5,13 +5,15 @@ Example 04-16
 3x_1 - x_2 + 7x_3 - 2x_4 \geq 2
 5x_1 + 2x_2 + x_3 +6x_4 \geq 15
 """
-
+import os
 import numpy as np
 np.set_printoptions(precision=3, suppress=True)
 #%%
-from dualsimplex_algorithm import dual_simplex
-from algorithms import simplex as simplex2
-from algorithms import create_fullmatrix
+from auxfunc.dualsimplex_algorithm import dual_simplex
+from auxfunc.algorithms import simplex as simplex2
+from auxfunc.algorithms import create_fullmatrix
+#%%
+os.chdir('..')
 #%%
 cj = np.array([-3, -2, -1, -4, 0, 0, 0] , dtype=float)
 
@@ -50,9 +52,9 @@ ineqdual = ["<=", "<=", "<=", "<="]
 Adual = np.array(Aprimal).T
 
 #%%
-print()
-solutions, zvalues, lastrows = simplex2(matrix=Aprimal, rhs=bprimal, z=cjprimal, inequalities=ineqprimal, direction=-1)
+# print()
+# solutions, zvalues, lastrows = simplex2(matrix=Aprimal, rhs=bprimal, z=cjprimal, inequalities=ineqprimal, direction=-1)
 
-print()
+# print()
 
-solutions, zvalues, lastrows = simplex2(matrix=Adual, rhs=bdual, z=cjdual, inequalities=ineqdual, direction=1, vlabel="y")
+# solutions, zvalues, lastrows = simplex2(matrix=Adual, rhs=bdual, z=cjdual, inequalities=ineqdual, direction=1, vlabel="y")

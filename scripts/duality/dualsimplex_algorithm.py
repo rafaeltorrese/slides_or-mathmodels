@@ -1,7 +1,6 @@
 import numpy as np
-from auxfunc.algorithms import create_fullmatrix
 
-def dual_simplex(matrix, rhs, z):
+def dual_simplex(matrix, rhs, z, numxvars):
     '''Simplex algorithm to solve linear programming problems
 
     Parameters
@@ -18,18 +17,14 @@ def dual_simplex(matrix, rhs, z):
     direction: {+1 , -1}
         For maximization problems use +1 and for minimization problems use -1 instead.
     '''
-    print("=" * 20, "Dual Simplex Method", "=" * 20)
-    matrix = np.array(matrix, dtype=float)
-    # if not isinstance(matrix, np.ndarray):
-    #     matrix = np.array(matrix, dtype=float)
-
-    num_constraints, numxvars = matrix.shape
+    matrix = np.array(matrix)
     rhs = np.array(rhs)
     z = np.array(z)
-    
-    # matrix, labels, z = create_fullmatrix(matrix, inequalities, z, vlabel, direction=1, M)
 
-    cb_index = np.where((matrix == 1) & (np.abs(matrix).sum(axis=0) == 1))[1]
+    num_rows, num_cols = matrix.shape
+
+    onecols = np.where(matrix == 1)[1]
+    cb_index = onecols[onecols >= numxvars]
     cb = z[cb_index]
 
     zj = cb.dot(matrix)
@@ -63,7 +58,7 @@ def dual_simplex(matrix, rhs, z):
             matrix[leaving] = matrix[leaving] / pivot
             rhs[leaving] = rhs[leaving] / pivot
 
-        for i in range(num_constraints):
+        for i in range(num_rows):
             if i == leaving:
                 continue
             factor = matrix[i, entering]

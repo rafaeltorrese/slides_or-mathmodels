@@ -83,6 +83,7 @@ def simplex(matrix, rhs, z, inequalities, direction=1, M=1000, vlabel="x"):
     direction: {+1 , -1}
         For maximization problems use +1 and for minimization problems use -1 instead.
     '''
+    print("=" * 20, "Simplex Method", "=" * 20)
     if not isinstance(matrix, np.ndarray):
         matrix = np.array(matrix, dtype=float)
 
@@ -91,11 +92,9 @@ def simplex(matrix, rhs, z, inequalities, direction=1, M=1000, vlabel="x"):
 
     matrix, labels, z = create_fullmatrix(matrix, inequalities, z, vlabel, direction, M)
 
-    num_rows, num_cols = matrix.shape
-
-    onecols = np.where(matrix == 1)[1]
-
-    cb_index = onecols[onecols >= numxvars]
+    # num_rows, num_cols = matrix.shape
+    
+    cb_index = np.where((matrix == 1) & (np.abs(matrix).sum(axis=0) == 1))[1]
 
     cb = z[cb_index]
 
@@ -121,7 +120,7 @@ def simplex(matrix, rhs, z, inequalities, direction=1, M=1000, vlabel="x"):
             matrix[leaving] = matrix[leaving] / pivot
             rhs[leaving] = rhs[leaving] / pivot
 
-        for i in range(num_rows):
+        for i in range(numconstraints):
             if i == leaving:
                 continue
             factor = matrix[i, entering]
@@ -150,7 +149,7 @@ def simplex(matrix, rhs, z, inequalities, direction=1, M=1000, vlabel="x"):
         fvalues.append(cb.dot(rhs))
         if np.all(net_evaluation <= 0):
             print(f"Optimal solution found in {iteration} iterations")
-            print((*zip(labels, solution)))
+            print((*zip(labels, np.round(solution, 4))))
     return np.array(solutions), fvalues, np.vstack((zj, net_evaluation))
 
 
