@@ -1,7 +1,8 @@
 import numpy as np
+import pandas as pd
 from auxfunc.algorithms import create_fullmatrix
 
-def dual_simplex(matrix, rhs, z):
+def dual_simplex(matrix, inequalities, rhs, z):
     '''Simplex algorithm to solve linear programming problems
 
     Parameters
@@ -27,8 +28,13 @@ def dual_simplex(matrix, rhs, z):
     rhs = np.array(rhs)
     z = np.array(z)
     
-    # matrix, labels, z = create_fullmatrix(matrix, inequalities, z, vlabel, direction=1, M)
-
+    matrix, labels, z = create_fullmatrix(matrix, 
+                                          inequalities, 
+                                          z, 
+                                          varlabel="x", 
+                                          M=-1000,
+                                          direction=1)
+    
     cb_index = np.where((matrix == 1) & (np.abs(matrix).sum(axis=0) == 1))[1]
     cb = z[cb_index]
 
@@ -47,6 +53,7 @@ def dual_simplex(matrix, rhs, z):
         solution = np.zeros_like(z)
 
         leaving = rhs.argmin()   # leaving variables (index)
+        leaving_label = labels[cb_index[leaving]]
         key_row = matrix[leaving]
 
         if np.all(key_row>=0):
@@ -56,6 +63,7 @@ def dual_simplex(matrix, rhs, z):
         ratios = np.divide(net_evaluation, key_row, out=np.full_like(z, np.inf), where=key_row<0)
 
         entering = ratios.argmin()
+        entering_label = labels[entering]
 
         pivot = matrix[leaving, entering]
 
@@ -75,12 +83,14 @@ def dual_simplex(matrix, rhs, z):
         cb = z[cb_index]
         zj = cb.dot(matrix)
         net_evaluation = z - zj
-
+        
+        basic_labels = labels[cb_index]
+        
         solution[cb_index] = rhs  # basics
 
         iteration += 1
 
-        print(f"Iteration {iteration}")
+        print(f"Iteration {iteration}. {leaving_label} --> {entering_label}")
         print(matrix,  "\n")
         print("Solution", solution, f"\tZ: {cb.dot(rhs):0.2f}", "\n")
 
@@ -90,9 +100,24 @@ def dual_simplex(matrix, rhs, z):
             print("Method Fails")
             break
 
-        if np.all(net_evaluation <= 0) and np.all(rhs >= 0):
+        if np.all(net_evaluation <= 0) and np.all(rhs >= 0):            
+            print("#" * 20)
             print(f"Optimal solution found in {iteration} iterations")
-
+            print((*zip(labels, np.round(solution, 3))))
+            print("\nBasis:")
+            print(np.hstack((cb[:,np.newaxis], basic_labels[:,np.newaxis], np.round(rhs[:,np.newaxis], 3))))
+            print("\nOptimal Table:")
+            print(
+                pd.DataFrame(matrix, columns=labels, index=basic_labels)
+                )
+            print("\nRow Base:")
+            print(
+                pd.DataFrame(np.vstack((zj, net_evaluation)), 
+                             columns=labels,
+                             index=["zj", "cj-zj"])
+                )
+            
+                                    
     return np.array(solutions), fvalues, np.vstack((zj, net_evaluation))
 
 if __name__ == '__main__':

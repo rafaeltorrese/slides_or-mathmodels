@@ -16,21 +16,22 @@ from auxfunc.algorithms import create_fullmatrix
 #%%
 
 
-cj = np.array([-2, -1, 0, 0, 0], dtype=float)
+cj = np.array([-2, -1], dtype=float)
 
 A = np.array([
-    [-3, -1, 1, 0, 0],
-    [-4, -3, 0, 1, 0],
-    [-1, -2, 0, 0, 1],
+    [-3, -1],
+    [-4, -3],
+    [-1, -2],
     ] , dtype=float)
 
 b = np.array([-3, -6, -3], dtype=float)
 
-
+ineqdualsimplex = ["<="] * 3
 #%%
 soldualsimplex, gvalues, lastrow = dual_simplex(matrix=A,
-                                  rhs=b,
-                                  z=cj,)
+                                                inequalities=ineqdualsimplex,
+                                                rhs=b,
+                                                z=cj)
 
 #%%
 cjprimal = -1 * cj[:2]
@@ -49,8 +50,8 @@ Adual = np.array(Aprimal).T
 
 #%%
 print()
-solutions, zvalues, lastrows = simplex2(matrix=Aprimal, rhs=bprimal, z=cjprimal, inequalities=ineqprimal, direction=-1)
+solutions, zvalues, lastrows, optitable_primal = simplex2(matrix=Aprimal, rhs=bprimal, z=cjprimal, inequalities=ineqprimal, direction=-1)
 
 print()
 
-solutions, zvalues, lastrows = simplex2(matrix=Adual, rhs=bdual, z=cjdual, inequalities=ineqdual, direction=1, vlabel="y")
+solutions, zvalues, lastrows, optitable_dual = simplex2(matrix=Adual, rhs=bdual, z=cjdual, inequalities=ineqdual, direction=1, vlabel="y")

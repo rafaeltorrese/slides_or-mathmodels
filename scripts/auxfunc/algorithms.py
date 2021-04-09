@@ -1,5 +1,6 @@
 from itertools import combinations
 import numpy as np
+import pandas as pd
 
 
 def create_fullmatrix(body, inequalities, c, varlabel="x", direction=1, M=1000 ):
@@ -60,7 +61,7 @@ def create_fullmatrix(body, inequalities, c, varlabel="x", direction=1, M=1000 )
     full_matrix = np.hstack((body, samatrix))
 
     cj = np.concatenate((c, direction * -np.array(zaux)))
-    return full_matrix, full_labels, cj
+    return full_matrix, np.array(full_labels), cj
 
 
 def simplex(matrix, rhs, z, inequalities, direction=1, M=1000, vlabel="x"):
@@ -90,7 +91,12 @@ def simplex(matrix, rhs, z, inequalities, direction=1, M=1000, vlabel="x"):
     numconstraints, numxvars = matrix.shape
     rhs = np.array(rhs, dtype=float)
 
-    matrix, labels, z = create_fullmatrix(matrix, inequalities, z, vlabel, direction, M)
+    matrix, labels, z = create_fullmatrix(matrix, 
+                                          inequalities, 
+                                          z, 
+                                          vlabel, 
+                                          direction, 
+                                          M)
 
     # num_rows, num_cols = matrix.shape
     
@@ -134,23 +140,36 @@ def simplex(matrix, rhs, z, inequalities, direction=1, M=1000, vlabel="x"):
 
         cb = z[cb_index]
         zj = cb.dot(matrix)
+        basic_labels = labels[cb_index]
         net_evaluation = direction * (z - zj)
 
         solution[cb_index] = rhs  # basics
 
         iteration += 1
 
-
-        print(f"Iteration {iteration}. Entering: {entering_label}, Leaving: Leaving: {leaving_label}")
+        print(f"Iteration {iteration}. {leaving_label} --> {entering_label}")
         print(matrix,  "\n")
         print("Solution", solution, f"\tZ: {cb.dot(rhs):0.2f}", "\n")
 
         solutions.append(solution)
         fvalues.append(cb.dot(rhs))
         if np.all(net_evaluation <= 0):
+            print("#" * 20)
             print(f"Optimal solution found in {iteration} iterations")
-            print((*zip(labels, np.round(solution, 4))))
-    return np.array(solutions), fvalues, np.vstack((zj, net_evaluation))
+            print((*zip(labels, np.round(solution, 3))))
+            print("\nBasis:")
+            print(np.hstack((cb[:,np.newaxis], basic_labels[:,np.newaxis], np.round(rhs[:,np.newaxis], 3))))
+            print("\nOptimal Table:")
+            print(
+                pd.DataFrame(matrix, columns=labels, index=basic_labels)
+                )
+            print("\nRow Base:")
+            print(
+                pd.DataFrame(np.vstack((zj, net_evaluation)), 
+                             columns=labels,
+                             index=["zj", "cj-zj"])
+                )
+    return np.array(solutions), fvalues, np.vstack((zj, net_evaluation)), matrix
 
 
 
