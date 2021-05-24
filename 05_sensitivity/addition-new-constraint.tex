@@ -12,10 +12,57 @@
 
 \begin{frameExample}{\label{example:6.6-5.1}}{}
   % Example 6.6-5.1 gupta ebook
-  \begin{enumerate}[a)] \justifying \parskip4mm
+  \begin{onlyenv}<1>
+    \begin{enumerate}[a)] \justifying \parskip4mm
   \item In example~\ref{example:6.6-2.1} an administrative constraint is added. Products $A, B$ and $C$ require 2, 3, and 2 hours of administrative services, while the total available administrative hours are 10. How does the optimal solution change?
   \item \label{example08} If the total available administrative time is 4 hours, find the new optimal solution.
   \end{enumerate}
+  \end{onlyenv}
+
+
+\begin{onlyenv}<2>
+        \[\max Z = 4x_1 +6x_2 +2x_3  \]
+
+  {\centering
+    subject to
+
+    \vspace{3mm}
+    \sysalign{r,r}%
+    \sysdelim..%
+  \systeme[x_1x_2x_3]%
+  {
+    x_1 + x_2 + x_3  \leq 3@(manpower),
+    x_1 +4x_2 +7x_3 \leq 9@ (material),
+    2x_1 +3x_2 +2x_3 \leq 10@ (administrative)
+  }
+
+  $x_1, x_2, x_3 \geq 0$
+  \par}
+
+  Where   $x_1, x_2, x_3$ are the number of products $A, B$ and $C$ produced.
+\end{onlyenv}
+
+\begin{onlyenv}<3>
+        \[\max Z = 4x_1 +6x_2 +2x_3  \]
+
+  {\centering
+    subject to
+
+    \vspace{3mm}
+    \sysalign{r,r}%
+    \sysdelim..%
+  \systeme[x_1x_2x_3]%
+  {
+    x_1 + x_2 + x_3  \leq 3@(manpower),
+    x_1 +4x_2 +7x_3 \leq 9@ (material),
+    2x_1 +3x_2 +2x_3 \leq 4@ (administrative)
+  }
+
+  $x_1, x_2, x_3 \geq 0$
+  \par}
+
+  Where   $x_1, x_2, x_3$ are the number of products $A, B$ and $C$ produced.
+\end{onlyenv}
 \end{frameExample}
 
 %%% Local Variables:

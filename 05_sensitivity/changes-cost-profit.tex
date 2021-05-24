@@ -14,9 +14,14 @@
   \begin{onlyenv}<1>
       A company wants to produce three products: $A, B, C$. The unit profits on these products are \$ 4, 6, and 2 respectively. These products require two types of resources -- manpower and material. The following L.P. model is formulated for determining the optimal product mix
 
-  $\max Z = 4x_1 +6x_2 +2x_3$
+  \[\max Z = 4x_1 +6x_2 +2x_3 \]
 
-  \sysalign{r,r}%
+  {\centering
+    subject to
+
+    \vspace{3mm}
+    \sysalign{r,r}%
+    \sysdelim..%
   \systeme[x_1x_2x_3]%
   {
     x_1 + x_2 + x_3 \leq 3@(manpower),
@@ -24,6 +29,7 @@
   }
 
   $x_1, x_2, x_3 \geq 0$
+  \par}
 
   Where   $x_1, x_2, x_3$ are the number of products $A, B $ and $C$ produced.
   \end{onlyenv}
@@ -31,7 +37,7 @@
 \begin{onlyenv}<2>
   \begin{enumerate}[a)] \justifying \parskip3mm
   \item Find the optimal product mix and the corresponding profit to the company.
-  \item Finde the range on the values of non-basic variable coefficient $c_3$ such that the current optimal product mix remains optimal.
+  \item Find the range on the values of non-basic variable coefficient $c_3$ such that the current optimal product mix remains optimal.
   \item What happens if $c_3$ is increased to \$ 12? What is the new optimal product mix in this case?
   \item Find the range on basic variable coefficient $c_1$ such that the current optimal product mix remains optimal.
   \item Find the effect when $c_1 = \$8$ on the optimal product mix.
@@ -98,8 +104,8 @@
     $x_1,x_2,x_3 \geq 0$
     \column{0.5\textwidth}
     \begin{enumerate}[a)] \parskip3mm \justifying
-    \item How much $c_3$ and $c_4$ can be increased till the optimal solution ceases to be optimal? Aldo find the new value of the objective function if possible.
-    \item Finde the range over which $b_2$ can be changed maintaining the feasibility of the solution.
+    \item How much $c_3$ and $c_4$ can be increased till the optimal solution ceases to be optimal? Also find the new value of the objective function if possible.
+    \item Find the range over which $b_2$ can be changed maintaining the feasibility of the solution.
     \end{enumerate}
   \end{columns}
 \end{frameExample}
