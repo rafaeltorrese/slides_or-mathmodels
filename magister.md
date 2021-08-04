@@ -1,19 +1,32 @@
 ---
-title: PROGRAMACIÓN - ITI 5518 002
-author: 10267
+title: "INVESTIGACIÓN DE OPERACIONES: MODELOS MATEMÁTICOS IIND3305"
+author: 10523
+period: 202160 - Lic Ago-Dic 2021 (22-1)
 ...
 
 # Reglas de la clase
-- Conectarse puntualmente.
-- Las actividades dentro de clase, solo se reciben en horario de clase.
-- Actividades fuera de clase, solo se reciben en fecha y hora asignada.
-- Comunicación respetuosa entre compañeros y profesor.
-- Asistencia se tomará en cuenta.
+- Prohibido comer en hora de clase
+- Se realizarán tareas dentro y fuera de la sesión de clase. Si la actividad se debe realizar durante la sesión de clase no habrá prorroga para entregar en otro horario o día.
+- Respeto y actitud para trabajar.
+- Se toma asistencia al inicio, durante y al final de la clase.
+- Si las clases son virtuales, se solicita tener cámara web disponible; ocasionalmente se solicitará encender cámara.
+- Asistir a las sesiones con ropa adecuada. Queda prohibido usar pantalones cortos (short) o ropa para dormir (pijama)
+- Quitarse gorras, lentes o cualquier otro accesorio que impida tener un contacto cara a cara adecuado.
+- Evitar decir groserías.
+- Todas las actividades se suber a Brightspace.
 
 # Sugerencias para tener éxito en la asignatura
-- Realizar ejercicios en clase
-- Leer las lecturas recomendadas.
-- Leer la documentación del programa.
+- Realizar las tareas y actividades de investigación.
+- Investigar funciones y palabras reservadas para las secciones de programación.
+- Leer los artículos de investigación proporcionadas.
+- Estar pendientes de los correso electrónicos enviados.
+- Estar pendienes de las notificaciones de la plataforma Brightspace.
+- Realizar los ejercicios de la plataforma DataCamp.
+
+# Pre-requisitos
+- Instalar software Anconda Python 3.x disponible en Anaconda [click aquí](https://www.anaconda.com/products/individual)
+- Generar cuenta y descargar optimizador comercial versión de prueba Gurobi ( click aquí para ingresar )
+- Crear cuenta DataCamp [click aquí para aceptar invitacion](https://www.datacamp.com/groups/shared_links/5844c5ce44c8ededed5b9b2be2efa27e0ba2e4390048e3986720aefc4d43b4a6)
 
 # Planeación de la asignatura
 
