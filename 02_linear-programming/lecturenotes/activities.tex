@@ -1,0 +1,116 @@
+\documentclass[spanish,letterpaper]{exam}
+%\documentclass[legalpaper,11pt]{exam}
+%
+%-----------------------------------
+% ********* PACKAGES ************
+%-----------------------------------
+\usepackage[spanish]{babel}
+\decimalpoint
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+% --
+\usepackage[utf8]{inputenc}
+% Fonts
+%\usepackage{pslatex}
+%\usepackage{arev}
+%\usepackage{bookman}
+%\usepackage[bitstream-charter]{mathdesign}
+%\usepackage{sfmath}
+%\usepackage{sansmath} \sansmath
+\usepackage[math]{anttor}
+ 
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mathpazo}
+%\usepackage{bookman}
+\usepackage{verbatim}
+\usepackage{multirow} % for tables and for merge cells
+\usepackage{xfrac}
+\usepackage{units} %for \nicefrac{num}{den} 
+\usepackage{cleveref}
+\usepackage{blkarray} % \bordermatrix for Markov chains
+\Crefname{figure}{Figura}{Figuras}
+\Crefname{table}{Tabla}{Tablas}
+\Crefname{equation}{Ecuación}{Ecuaciones}
+% --
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{import}
+\usepackage{systeme}
+%
+\usepackage{tikz} % Tikz must be before ctable package, otherwise
+% LaTeX output error
+%\usetikzlibrary{arrows,babel} % If you don't put this, you are going to get
+                       % an error
+\usepackage{etoolbox}
+\AtBeginEnvironment{tikzpicture}{\shorthandoff{>}\shorthandoff{<}}{}{}
+\usepackage{cancel}
+%
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{0pt}{0pt} % this reduces space between
+                                % (sub)sections to 0pt, for example
+\AtBeginDocument{%                     % this will reduce spaces
+                 %                     between parts (above and below)
+                 %                     of texts within a (sub)section
+                 %                     to 0pt, for example - like
+                 %                     between an 'eqnarray' and text
+  \setlength\abovedisplayskip{0pt}
+  \setlength\belowdisplayskip{0pt}}
+
+% % % % % % % % % % % % % % % % % % % % % %
+%-----------------------------------
+% ********* DEFINITIONS ************
+%-----------------------------------
+
+% % % % % % % % % % % % % % % % % % % % % %
+%-----------------------------------
+% ********* PAGE LAYOUT ************
+%-----------------------------------
+%\pagestyle{header}
+\extrawidth{0.5in} % Ancho de página (solo izquierdo y derecho, dividir entre dos)
+%-----------------------------------
+%
+%
+% -----------------------------------------------
+% ============= DEFINICIONES ====================
+% -----------------------------------------------
+\newcommand{\standardize}[3]{\ensuremath{ \frac{#1 - #2}{#3}} }
+
+\newcommand{\asignatura}{\textbf{Operations Research} \\ Professor: Rafael
+  Torres Escobar}
+
+\newcommand{\tema}{\textbf{ACTIVITIES \\ SLIDES}}
+%\newcommand{\tema}{\textbf{Programación Lineal \\ Problemas de Minimización}}
+\extrafootheight{-0.5in}
+
+\header{\asignatura }{\tema}{Página \\ \thepage\ de \numpages}
+\headrule
+
+\pointpoints{punto}{puntos}
+%
+
+% ===================IMPRIMIR RESPUESTAS =========================
+\printanswers % comentar para mostrar respuestas
+% ==================================================================
+
+% % % % % % % % % % % % % % % % % % % % % % 
+% ********* PAPER SIZE ************
+%-----------------------------------
+
+
+\author{Rafael Torres Escobar, Dr.}
+\begin{document}
+
+
+\begin{questions}
+  \input{act_taha-02-02A-04}
+  \input{act_taha-02-02A-05.tex}
+  \input{act_taha-02-02A-06.tex}
+  
+\end{questions}
+
+
+\end{document}

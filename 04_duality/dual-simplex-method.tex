@@ -1,0 +1,540 @@
+
+\section{The Dual Simplex Method}
+\label{sec:simplexdual-algorithm}
+
+
+\begin{frame}{The Dual Simplex Method}
+  \begin{itemize} \justifying \parskip3mm
+  \item The algorithm is designed to solve a class of L.P. models efficiently. It is used to solve problems which start dual feasible, i.e., whose primal  is optimal but infeasible .
+  \item   In this method \alert{the solution starts better than optimum but infeasible} and remains infeasible until the true optimum is reached at which the solution becomes feasible.
+  \item Thus, whereas \alert{the regular simplex method starts with a basic feasible but non-optimal solution} and works towards optimality, the dual simplex method starts with a basic infeasible but optimal solution and works towards feasibility.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Dual Simplex Algorithm}
+  \begin{description} \justifying \parskip3mm
+  \item<only@1>[Step 1.] \alert{Convert the problem into maximization problem} if it is initially in the minimization form.
+  \item<only@1>[Step 2.] Convert $\geq$ type constraints, if any, into $\leq$ type by multiplying both sides of such
+constraints by $-1$.
+\item<only@1>[Step 3.] Convert the inequality constraints into equalities by addition of slack variables and obtain the initial solution. Express the above information in the form of a \alert{table known as the dual simplex table}.
+\item<only@2>[Step 4.]  Compute $c_j - Z_j$ for every column. Three cases arise :
+  \begin{enumerate} \justifying 
+  \item  If all $c_j - Z_j$ are either negative or zero and all $b_i$ are non-negative, \alert{the solution obtained
+above is the optimal basic feasible solution.}
+\item If all $c_j - Z_j$ are either negative or zero and at least one $b_i$ is negative, then proceed to
+step 5.
+\item  If any $c_j - Z_j$ is positive, the method fails.
+  \end{enumerate}
+\item<only@2>[Step 5.]  Select the row that contains \alert{the most negative $b_i$}. This row is called the key row or
+the pivot row. The corresponding basic variable leaves the basis. This is called dual feasibility
+condition,
+\item<only@3>[Step 6.]  Look at the elements of the key row.
+  \begin{enumerate}[a)] \justifying
+  \item  \alert{If all elements are non-negative, the problem does not have a feasible solution}.
+  \item  \alert{If at least one element is negative}, find the ratios of the corresponding elements of row to these elements. \alert{Ignore the ratios associated with positive or zero elements of the key row}. Choose the smallest of these ratios. The corresponding column is the key column and the associated variable is the entering variable. This is called dual optimality condition. Mark the key element or the pivot element.
+  \end{enumerate}
+  \end{description}
+\end{frame}
+
+\begin{frame}{Dual Simplex Algorithm Flowchart}
+
+  \begin{center}
+    \resizebox{7cm}{!}{%
+      \begin{tikzpicture}[node distance=2cm]
+        % \node (start) [startstop] {Start};
+        % \node (input1) [io, below of=start] {Input};
+        \node (pro1) [process] {Convert the minimization problem, if any, into the maximization problem};
+        \node (pro2) [process, below of=pro1] {Convert $\geq$ type constraints, if any, into $\leq$; type};
+        \node (pro3) [process, below of=pro2] {Convert $\leq$ type constraints, into equations and set up the initial dual simplex table};
+        \node (pro4) [process, text width=5cm, below of=pro3] {Compute $c_j - Z_j$ values};
+        \node (dec1) [decision, yshift=-1.2cm, below of=pro4] {Are all $c_j - Z_j \leq 0$ and all $b_i > 0$?};
+        \node (pro5) [process, text width=5cm, right of=dec1, xshift=5cm] {Optimal solution obtained};
+        \node (pro6) [process, below of=dec1, yshift=-2cm]{%
+          \begin{enumerate}[a)]
+          \item Select key row with the most negative $b_i$.
+          \item Find ratios of $c_j - Z_j$ elements to the negative elements of key row. Select key column with minimum ratio
+          \end{enumerate}%
+        };
+        \node (pro7) [process, below of=pro6, yshift=-0.7cm] {Mark the key element. Perform row operations as in regular simplex method};
+        % \node (pro2a) [process, below of=dec1, yshift=-0.5cm] {Process 2a};
+        % \node (pro2b) [process, right of=dec1, xshift=2cm] {Process 2b};
+        % \node (out1) [io, below of=pro2a] {Output};
+        % \node (stop)[startstop, below of=out1] {Stop};
+
+        \draw [arrow] (pro1) -- (pro2);
+        \draw [arrow] (pro2) -- (pro3);
+        \draw [arrow] (pro3) -- (pro4);
+        \draw [arrow] (pro4) -- (dec1);
+        \draw[arrow] (dec1) -- node[anchor=south] {yes}(pro5);
+        \draw[arrow] (dec1) -- node[anchor=east] {no} (pro6);
+        \draw[arrow] (pro6) -- (pro7);
+        \draw[arrow] (pro7.west) -- ++(-1,0) |- (pro4.west);
+        
+
+        % \draw[arrow] (pro2b) |- (proc1);
+        % \draw[arrow] (pro2a) -- (out1);
+        % \draw[arrow] (out1) -- (stop);
+      \end{tikzpicture}%
+    }
+  \end{center}
+\end{frame}
+
+\begin{frameExample}{}{}
+  \begin{onlyenv}<1>
+      \begin{columns}
+    \column{0.5\textwidth}
+\[\min Z = 2x_1 + 2x_2 + 4x_3  \]
+
+  s.t.
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3]{%
+      2x_1 + 3x_2 + 5x_3 \geq 2,
+    3x_1 + x_2 + 7x_3  \leq 3,
+    x_1 + 4x_2 + 6x_3  \leq 5,
+}% systeme
+
+$    x_1, x_2, x_3  \geq 0$
+\column{0.5\textwidth}
+ \[ \max G =  -Z = -2x_1 - 2x_2 - 4x_3 \]
+
+  s.t.
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3]{%
+      -2x_1 - 3x_2 - 5x_3 \leq -2,
+    3x_1 + x_2 + 7x_3  \leq 3,
+    x_1 + 4x_2 + 6x_3  \leq 5,
+}% systeme
+
+$    x_1, x_2, x_3  \geq 0$
+  \end{columns}
+  \end{onlyenv}
+
+\begin{onlyenv}<2>
+  \[ \max G= -2x_1 - 2x_2 - 4x_3 + 0s_1 + 0s_2 + 0s_3 \]
+
+  s.t.
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3s_1s_2s_3]{%
+      -2x_1 - 3x_2 - 5x_3 + s_1 = -2,
+    3x_1 + x_2 + 7x_3  + s_2 =  3,
+    x_1 + 4x_2 + 6x_3  + s_3 = 5,
+}% systeme
+
+$    x_1, x_2, x_3, s_1, s_2, s_3  \geq 0$
+\end{onlyenv}
+
+\begin{onlyenv}<3>
+    {%
+      \centering
+      \begin{tabular}{rrrrrrrrrr}
+        \toprule
+        $\max$&$c_j$&-2&-2&-4&0&0&0&\\
+        \midrule
+        $C_b$&Basis&$x_1$&$x_2$&$x_3$&$s_1$&$s_2$&$s_3$&$b$&\\
+        \midrule
+        0&\color{blue}$s_1$&-2&-3&-5&1&0&0&\cellcolor{blue!30}-2&\textrightarrow \\
+        0&$s_2$&3&1&7&0&1&0&3&\\
+        0&$s_3$&1&4&6&0&0&1&5&\\
+        \midrule
+              &$Z_j$&0&0&0&0&0&0&\cellcolor{yellow}\textbf{0}&\\
+              &$c_j - Z_j$&-2&-2&-4&0&0&0&\\
+        \bottomrule
+      \end{tabular}
+      \par
+    }
+  \end{onlyenv}
+
+    \begin{onlyenv}<4>
+    {\centering
+      \scalebox{0.8}{%
+    \begin{tabular}{rrrrrrrrrr}
+      \toprule
+      $\max$&$c_j$&-2&-2&-4&0&0&0&\\
+      \midrule
+      $C_b$&Basis&$x_1$&$\cellcolor{yellow}x_2$&$x_3$&$s_1$&$s_2$&$s_3$&$\pmb{b}$&\\
+      \midrule
+      0&$s_1$&\cellcolor{blue!30}-2&\cellcolor{blue!30}-3&\cellcolor{blue!30}-5&1&0&0&-2& key row\\
+      0&$s_2$&3&1&7&0&1&0&3&\\
+      0&$s_3$&1&4&6&0&0&1&5&\\
+      \midrule
+      &$Z_j$&0&0&0&0&0&0&\textbf{0}&\\
+      &$c_j - Z_j$&\cellcolor{blue!30}-2&\cellcolor{blue!30}-2&\cellcolor{blue!30}-4&0&0&0&\\
+      \bottomrule
+    \end{tabular}
+      }
+    \par}
+\end{onlyenv}
+
+  \begin{onlyenv}<5>
+    {\centering
+      \scalebox{0.8}{%
+    \begin{tabular}{rrrrrrrrrr}
+      \toprule
+      $\max$&$c_j$&-2&-2&-4&0&0&0&\\
+      \midrule
+      $c_B$&Basis&$x_1$&$x_2$&$x_3$&$s_1$&$s_2$&$s_3$&$b$&\\
+      \midrule
+      -2&$x_2$&-2&\cellcolor{orange}-3&-5&1&0&0&-2&\\
+      0&$s_2$&3&1&7&0&1&0&3&\\
+      0&$s_3$&1&4&6&0&0&1&5&\\
+      \midrule
+      &$Z_j$&0&0&0&0&0&0&\textbf{0}&\\
+            &$c_j - Z_j$&-2&-2&-4&0&0&0&\\
+            &&&\textuparrow&&&&&\\
+      \bottomrule
+    \end{tabular}
+      }
+    \par}
+\end{onlyenv}
+
+\begin{description}\justifying
+  \item<only@3>[Step 4.] Compute $c_j - Z_j$ where $Z_j = \sum c_B a_{ij}$. As all $c_j - Z_j$ are either negative or zero and $b_1$ is negative, \alert{the solution is optimal but infeasible.}
+  \item<only@3>[Step 5.] As $b_1 = -2$ the first row is the key row and $s_1$ is the outgoing variable.
+  \item<only@4>[Step 6.] Find the ratios elements of $c_j - Z_j$ row. \alert{Neglect the ratios corresponding to positive or zero elements for key row}. The desired ratios are:  \[ \frac{-2}{-2} = 1 \quad\quad \frac{-2}{-3}=\frac{\color{blue}2}{\color{blue}3} \quad\quad \frac{-4}{-5} = \frac{4}{5} \] Since $\frac{2}{3}$ \alert{is the smallest ratio} $x_2$ column is the key column; $x_2$ is the incoming variable and $-3$ is the key element.
+  \item<only@5>[Step 7.] Replace  $s_1$ by $x_2$
+
+  \end{description}
+
+\begin{onlyenv}<6>
+
+{%
+  \centering
+      \scalebox{0.8}{%
+    \begin{tabular}{rrrrrrrrrr}
+      \toprule
+      $\max$&$c_j$&-2&-2&-4&0&0&0&\\
+      \midrule
+      $c_B$&Basis&$x_1$&$x_2$&$x_3$&$s_1$&$s_2$&$s_3$&$b$&\\
+      \midrule
+      -2&$x_2$&\nicefrac{2}{3}&1&\nicefrac{5}{3}&-\nicefrac{1}{3}&0&0&\nicefrac{2}{3}&\\
+      0&$s_2$&\nicefrac{7}{3}&0&\nicefrac{16}{3}&\nicefrac{1}{3}&1&0&\nicefrac{7}{3}&\\
+      0&$s_3$&-\nicefrac{5}{3}&0&-\nicefrac{2}{3}&\nicefrac{4}{3}&0&1&\nicefrac{7}{3}&\\
+      \midrule
+      &$Z_j$&-\nicefrac{4}{3}&-2&-\nicefrac{10}{3}&\nicefrac{2}{3}&0&0&\cellcolor{yellow}-\nicefrac{4}{3}&\\
+            &$c_j - Z_j$&-\nicefrac{2}{3}&0&-\nicefrac{2}{3}&-\nicefrac{2}{3}&0&0&\\
+            &&&\multicolumn{6}{r}{Optimal basic feasible solution}\\
+      \bottomrule
+    \end{tabular}
+      }
+      \par
+    }
+
+ As \alert{all $c_j - Z_j$ are negative or zero and all $b_i$ are positive}, the solution is given by the table is optimal. The optimal solution is:
+
+ 
+ {\centering
+   \begin{tabular}{cccc}
+     $x_1$&$x_2$&$x_3$& $\min Z$\\
+     \midrule
+     0&$\nicefrac{2}{3}$&0& $\cellcolor{yellow}\nicefrac{4}{3}$
+   \end{tabular}
+ \par}
+      
+  \end{onlyenv}  
+\end{frameExample}
+
+
+
+\begin{frameExample}{\label{example:6.2-2}}{}
+  % Example 6.2-2 gupta ebook
+  \begin{onlyenv}<1>
+    Use dual simplex method to
+    \begin{columns}[t]
+      \column{0.5\textwidth}
+       \[\min Z = 3x_1 + 2x_2 \] 
+
+       {\centering
+         subject to%
+         \vspace{3mm}
+         
+        \sysdelim..%
+        \sysalign{r,r}%
+        \systeme[x_1x_2]%
+        {
+          x_1 + x_2 \geq 1,
+          x_1 + x_2 \leq 7,
+          x_1 + 2x_2 \geq 10,
+          x_2 \leq 3,
+        }
+
+        \vspace{3mm}
+        $x_1, x_2 \geq 0$
+      \par}
+      
+    \column{0.5\textwidth}
+    \[\max -Z = -3x_1 -2x_2 \]
+
+    {\centering
+      subject to
+      \vspace{3mm}
+      
+        \sysdelim..%
+        \sysalign{r,r}%
+        \systeme[x_1x_2]%
+        {
+          -x_1 - x_2 \leq -1,
+          x_1 + x_2 \leq 7,
+          -x_1 - 2x_2 \leq -10,
+          x_2 \leq 3,
+        }
+
+        \vspace{3mm}
+        $x_1, x_2 \geq 0$
+      \par}
+    \end{columns}
+  \end{onlyenv}
+
+  \begin{onlyenv}<2>
+    Adding slack variables the problem can be expressed as \[\max Z = -3x_1 -2x_2 + 0s_1 + 0s_2 + 0s_3 + 0s_4\]
+
+        {\centering
+      subject to
+      \vspace{3mm}
+      
+        \sysdelim..%
+        \sysalign{r,r}%
+        \systeme[x_1x_2s_1s_2s_3s_4]%
+        {
+          -x_1 - x_2 +s_1 = -1,
+          x_1 + x_2 +s_2 = 7,
+          -x_1 - 2x_2 +s_3 = -10,
+          x_2 +s_4 =  3,
+        }
+
+        \vspace{3mm}
+        $x_1, x_2,s_1,s_2,s_3,s_4 \geq 0$
+        \par}
+      
+    \end{onlyenv}
+
+    \begin{onlyenv}<3>
+      The initial basic infeasible solution is $x_1 = 0, x_2 = 0, s_1=-1,$ $ s_2 = 7, s_3=-10, s_4=3$
+
+      {\centering
+        \scalebox{1}{%
+          \begin{tabular}{rrrrrrrrrr}
+            \toprule
+            &$c_j$&-3&-2&0&0&0&0&&\\
+            \midrule
+            $c_B$&Basis&$x_1$&$x_2$&$s_1$&$s_2$&$s_3$&$s_4$&$\bm{b}$&\\
+            \midrule
+            0&$s_1$&-1&-1&1&0&0&0&-1&\\
+            0&$s_2$&1&1&0&1&0&0&7&\\
+            0&$s_3$&-1&-2&0&0&1&0&-10&\\
+            0&$s_4$&0&1&0&0&0&1&3&\\
+            \bottomrule
+          \end{tabular}
+        }
+      \par}
+  \end{onlyenv}
+
+  \begin{onlyenv}<4>
+    Leaving and Entering Variables
+    {\centering
+        \scalebox{1}{%
+          \begin{tabular}{rrrrrrrrrr}
+            \toprule
+           Iter 1 &$c_j$&-3&-2&0&0&0&0&&\\
+            \midrule
+            $c_B$&Basis&$x_1$&$x_2$&$s_1$&$s_2$&$s_3$&$s_4$&$\bm{b}$&\\
+            \midrule
+           0&$s_1$&-1&-1&1&0&0&0&-1&\\
+            0&$s_2$&1&1&0&1&0&0&7&\\
+            0&$s_3$&-1&\cellcolor{yellow}-2&0&0&1&0&\cellcolor{cyan!30}-10&\textrightarrow \\
+            0&$s_4$&0&1&0&0&0&1&3&\\
+            \midrule
+            &$Z_j$&0&0&0&0&0&0&0&\\
+            &$c_j - Z_j$&-3&-2&0&0&0&0&&\\
+            &ratios&3&\cellcolor{cyan!30}1&--&--&--&--&&\\
+            &&&\textuparrow&&&&&&\\
+            \bottomrule
+          \end{tabular}
+        }
+      \par}
+  \end{onlyenv}
+
+  \begin{onlyenv}<5>
+    Gauss-Jordan
+    {\centering
+        \scalebox{1}{%
+          \begin{tabular}{rrrrrrrrrr}
+            \toprule
+           Iter 1 &$c_j$&-3&-2&0&0&0&0&&\\
+            \midrule
+            $c_B$&Basis&$x_1$&$x_2$&$s_1$&$s_2$&$s_3$&$s_4$&$\bm{b}$&\\
+            \midrule
+            0&$s_1$&-0.5&0&1&0&-0.5&0&4&\\
+            0&$s_2$&0.5&0&0&0&1.5&0&2&\\
+            -2&$x_2$&0.5&1&0&0&-0.5&0&5&\\
+            0&$s_4$&-0.5&0&0&0&0.5&1&-2&\\
+            \midrule
+                  &$Z_j$&-1&-2&0&0&1&0&-10&\\
+                  &$c_j - Z_j$&-2&0&0&0&-1&0&&\\
+            \bottomrule
+          \end{tabular}
+        }
+      \par}
+  \end{onlyenv}
+
+  \begin{onlyenv}<6>
+        {\centering
+        \scalebox{1}{%
+          \begin{tabular}{rrrrrrrrrr}
+            \toprule
+           \cellcolor{blue!20}Iter 2 &$c_j$&-3&-2&0&0&0&0&&\\
+            \midrule
+            $c_B$&Basis&$x_1$&$x_2$&$s_1$&$s_2$&$s_3$&$s_4$&$\bm{b}$&\\
+            \midrule
+0&$s_1$&-0.5&0&0&0&-0.5&0&4&\\
+0&$s_2$&0.5&0&0&0&1.5&0&2&\\
+-2&$x_2$&0.5&1&0&0&-0.5&0&5&\\
+            0&$s_4$&\cellcolor{yellow}-0.5&0&0&0&0.5&1&\cellcolor{cyan!30}-2&\textrightarrow\\
+            \midrule
+&$Z_j$&-1&-2&0&0&1&0&-10&\\
+&$c_j - Z_j$&-2&0&0&0&-1&0&&\\
+&ratios&\cellcolor{cyan!30}4&--&--&--&--&--&&\\
+&&\textuparrow&&&&&&&\\
+            \bottomrule
+          \end{tabular}
+        }
+      \par}
+  \end{onlyenv}
+
+  \begin{onlyenv}<7>
+    Gauss-Jordan
+        {\centering
+        \scalebox{1}{%
+          \begin{tabular}{rrrrrrrrrr}
+            \toprule
+           \cellcolor{blue!20}Iter 2 &$c_j$&-3&-2&0&0&0&0&&\\
+            \midrule
+            $c_B$&Basis&$x_1$&$x_2$&$s_1$&$s_2$&$s_3$&$s_4$&$\bm{b}$&\\
+            \midrule
+0&$s_1$&0&0&1&0&-1&-1&6&\\
+0&$s_2$&0&0&0&0&2&1&0&\\
+-2&$x_2$&0&1&0&0&0&1&3&\\
+            -3&$x_1$&1&0&0&0&-1&-2&4&\\
+            \midrule
+&$Z_j$&-3&-2&0&0&3&4&\cellcolor{yellow}-18&\\
+&$c_j - Z_j$&\cellcolor{red!30}0&\cellcolor{red!30}0&\cellcolor{red!30}0&\cellcolor{red!30}0&\cellcolor{red!30}-3&\cellcolor{red!30}-4&\textbf{END}&\\
+            \bottomrule
+          \end{tabular}
+        }
+      \par}
+  \end{onlyenv}  
+\end{frameExample}
+
+
+\begin{frameExample}{}{}
+
+        \[ \max Z = 2x_1 + 3x_2 \]
+
+        {\centering
+          subject to
+
+          \sysdelim..\sysalign{r,r}%
+          \systeme[x_1x_2]%
+          {
+            x_1 + x_2  \leq 30,
+        x_2  \geq 3,
+        x_2  \leq 12,
+        x_1 - x_2  \geq 0,
+        x_1   \leq 20 
+      }
+
+      \vspace{5mm}
+              $x_1, x_2  \geq 0$
+        \par}
+\end{frameExample}
+
+\begin{frameExample}{}{}
+    \[\max Z = 3x_1 + 4x_2 \]
+
+  {\centering
+    subject to (s.t.)
+
+    \sysalign{r,r}%
+    \sysdelim..%
+    \systeme[x_1x_2]%
+    {
+      5x_1 + 4x_2 \leq 200,
+      3x_1 + 5x_2 \leq 150,
+      5x_1 + 4x_2 \geq 100,
+      8x_1 + 4x_2 \geq 80
+    }
+
+    \vspace{5mm}
+
+    $x_1 , x_2 \geq 0$
+  \par}
+\end{frameExample}
+
+
+\begin{frameExample}{}{}
+    \[\min Z = x_1 + x_2 \]
+
+  {\centering
+    subject to (s.t.)
+
+    \sysalign{r,r}%
+    \sysdelim..%
+    \systeme[x_1x_2]%
+    {
+      2x_1 + x_2 \geq 2,
+      -x_1 - x_2 \geq 1
+    }
+
+    \vspace{5mm}
+
+    $x_1 , x_2 \geq 0$
+  \par}
+\end{frameExample}
+
+
+\begin{frameExample}{}{}
+    \[\min Z = 3x_1 + 2x_2 + x_3 + 4x_4  \]
+
+  {\centering
+    subject to (s.t.)
+
+    \sysalign{r,r}%
+    \sysdelim..%
+    \systeme[x_1x_2x_3x_4]%
+    {
+      2x_1 + 4x_2 + 5x_3 + x_4 \geq 10,
+      3x_1 - x_2 + 7x_3 - 2x_4 \geq 2,
+      5x_1 + 2x_2 + x_3 +6x_4 \geq 15
+    }
+
+    \vspace{5mm}
+
+    $x_1 , x_2, x_3, x_4 \geq 0$
+  \par}
+\end{frameExample}
+
+\begin{frameExample}{}{}
+  \[\min Z = 2x_1 + x_2, \]
+  {\centering
+    s.t.
+    \vspace{3mm}
+
+    \sysdelim..%
+    \sysalign{r,r}%
+    \systeme[x_1x_2]%
+    {
+        3x_1 + x_2 \geq 3,
+        4x_1 + 3x_2 \geq 6,
+        x_1+ 2x_2 \geq 3
+    }
+
+    \vspace{4mm}
+    $x_1, x_2 \geq 0$
+  \par}
+ 
+\end{frameExample}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_duality"
+%%% End:

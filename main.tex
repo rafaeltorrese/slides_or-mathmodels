@@ -1,0 +1,213 @@
+\documentclass{beamer}
+
+\usepackage[spanish,es-tabla]{babel}
+\decimalpoint
+\usepackage[utf8]{inputenc}
+\usepackage{ragged2e} % este paquete es para justificar.
+\justifying
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{bm} % bold font greek letters. Use \boldsymbol{ }  and \pmb
+\usepackage{xfrac} % for slanted fractions   \sfrac{}{}
+\usepackage{nicefrac} % for small fractions in text or math mode   \nicefrac{}{}
+%\usepackage{blkarray} % for block arrays, useful for markov chains. Error with Metropolis Beamer Theme
+\usepackage{hhline} % hlines  but interacts with vertical lines
+\usepackage{multirow}
+\usepackage{pgfpages} % for handouts
+\usepackage{graphicx} % for graphics and grapics path
+\usepackage{bm} % math bold symbols \bm{}
+% \usepackage{blkarray} % for block arrays, useful for markov chain (matrices)
+\usepackage{cancel}
+\usepackage{systeme}
+%\usepackage{enumitem}
+%
+% \usepackage{pygmentize}
+% \usepackage{minted}
+% \usemintedstyle[python]{friendly}
+\usepackage{import} 
+%
+%\pgfpagesuselayout{4 on 1}[letterpaper,landscape]
+\usepackage[font=scriptsize,labelfont=bf,justification=centerlast,format=hang,tableposition=top,skip=0.5pt]{caption} %To change the appearance of captions
+\captionsetup[table]{name=Table}
+% tikz
+\usepackage{tikz} % for draw
+\usetikzlibrary{%
+  shapes.geometric,
+  automata,
+  arrows,
+  positioning,
+  calc,
+  intersections}
+\graphicspath{{figs/}}
+% flowchart with tikz library
+\tikzstyle{startstop}=[rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!30]
+%
+\tikzstyle{io}=[%
+trapezium, trapezium left angle=70, trapezium right angle=110,%
+minimum width=3cm, minimum height=1cm,%
+text centered, draw=black, fill=blue!30%
+]
+%
+\tikzstyle{process}=[%
+rectangle, minimum width=3cm, minimum height=1cm,%
+text centered,text width=8cm, draw=black, fill=orange!30%
+]
+%
+\tikzstyle{decision}=[%
+diamond, minimum width=2cm, minimum height=2cm,%
+text badly centered, text width=5em, draw=black, fill=green!30%
+]
+%
+\tikzstyle{arrow}=[thick, ->, >=stealth]
+%%%%%%%%%%%%%%%%%%%%
+\definecolor{tealsection}{RGB}{50,90,90}
+\hypersetup{colorlinks=true,
+  urlcolor=red,
+  linkcolor=tealsection}
+
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage{subfiles}
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\lstset{
+  %inputpath=contents,
+  language=python,
+  % basicstyle=\scriptsize\fontfamily{fvm}\selectfont,
+  basicstyle=\tiny\fontfamily{fvm}\selectfont,
+  %basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\color{keywords},
+  commentstyle=\color{comments}\emph,
+  stringstyle=\color{orange},
+  upquote=false,
+  showstringspaces=false
+}
+%%% Ipython Notebook Style
+%\input{ipythonnb_style}
+% ========================================
+\newenvironment<>{exercise}[1]
+{
+\setbeamercolor{block title}{fg=white,bg=orange!45!black}
+\begin{block}#2{Ejercicio #1}\justifying
+}
+{%
+\end{block}
+}%
+% ========================================
+\newenvironment<>{solution}[1]
+{
+\setbeamercolor{block title}{fg=white,bg=orange!65!black}
+\begin{block}#2{Ejercicio #1 (Solución)}\justifying
+}
+{
+\end{block}
+}
+% ========================================
+\newenvironment<>{example}[1]
+{
+\setbeamercolor{block title}{fg=white,bg=green!65!black}
+\begin{block}#2{Ejemplo #1}\justifying
+}
+% content
+{
+\end{block}
+}
+% ========================================
+\newcounter{examplecounter}
+%\newcommand{\refexample}[1]{\refstepcounter{examplecounter}\label{#1}}
+\resetcounteronoverlays{examplecounter}
+\newenvironment<>{frameExample}[2]
+{
+\setbeamercolor{frametitle}{fg=white,bg=green!60!blue}
+\begin{frame} \justifying
+  \frametitle{\refstepcounter{examplecounter}Example \theexamplecounter. #1}
+  \framesubtitle{\insertsubsectionhead #2}  
+}
+% content
+{
+\end{frame}
+}
+% ========================================
+\newcounter{coding}
+\resetcounteronoverlays{coding}
+\newenvironment<>{framecode}[1][] % for coding
+{
+\setbeamercolor{frametitle}{fg=white,bg=black!85}
+\begin{frame}[environment=fr,#1]
+\frametitle{\refstepcounter{coding} Python Coding Example \thecoding}
+\framesubtitle{}
+}%
+{
+\end{frame}
+}
+% ========================================
+
+\newcounter{activitycount}
+\newenvironment<>{frameact}[1] % For Activities
+{
+  % \usebackgroundtemplate{\includegraphics[scale=0.3]{blackboard-logo.png}}
+\setbeamercolor{frametitle}{fg=white,bg=red!60!black}
+\begin{frame}\justifying
+  \frametitle{\refstepcounter{activitycount} Activity \theactivitycount. #1}
+  \framesubtitle{}
+
+}
+{
+\end{frame}
+}
+% ========================================
+
+\usetheme[%
+sectionpage=progressbar,
+numbering=none,
+progressbar=frametitle%
+]{metropolis}
+%\usetheme{Boadilla}
+
+\title{OPERATIONS RESEARCH.}
+%\subtitle{Operations Research. \\ Mathematical Models.} 
+\subtitle{Operations Research} 
+
+% \institute{UNIVERSIDAD ANÁHUAC MÉXICO}
+\author{Rafael Torres Escobar, Ph.D.}
+\date[OR]{}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+
+\begin{frame}{Agenda}
+  \tableofcontents
+\end{frame}
+ % ==============================
+ % WRITE CONTENT  BELOW
+ % %%%
+
+%\input{examples/example_fluid-blending_gupta}
+%\input{contents/graphic-method.tex}
+
+% \section{Método Simplex}
+% \label{sec:simplex-method}
+
+% \subfile{03_simplex/slides_simplex}
+% %\input{canonical}
+%\input{theory-simplex}
+
+% ==============================
+\begin{frame}
+  \maketitle
+\end{frame}
+
+
+\end{document}

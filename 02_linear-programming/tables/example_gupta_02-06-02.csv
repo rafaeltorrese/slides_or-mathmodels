@@ -1,0 +1,8 @@
+Food,Yield per unit,,,Cost per
+Type,Proteins,Fats,Carbohydrates,unit (\$)
+1,3,2,6,45
+2,4,2,4,40
+3,8,7,7,85
+4,6,5,4,65
+Minimum,,,,
+requirement,800,200,700,

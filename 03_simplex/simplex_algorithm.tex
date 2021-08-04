@@ -1,0 +1,355 @@
+
+\section{The Simplex Method}
+\label{sec:simplex-method}
+
+
+\begin{frame}{The Simplex Method}
+  \begin{itemize} \parskip3mm \justifying
+  \item<only@1>   El método gráfico no se puede aplicar cuando el número de variables involucradas en el problema de LP es más de tres o más bien dos, ya que incluso \alert{con tres variables la solución gráfica se vuelve tediosa} ya que involucra la intersección de planos en tres dimensiones.
+
+  \item<only@1>   El método simplex, desarrollado por el profesor George B. Dantzig, se puede utilizar para resolver cualquier problema de LP (para el que existe la solución) que involucre cualquier número de variables y restricciones (cientos o incluso miles).
+  
+  \item<only@2>   El procedimiento computacional en el método simplex \alert{se basa en la propiedad fundamental de que la solución óptima a un problema de LP, si existe, ocurre solo en uno de los puntos de esquina de la región factible.} El método simplex siempre comienza con la solución factible básica inicial, es decir, el origen, que es uno de los puntos de esquina de la región factible.
+
+  \item<only@2>   A continuación, se prueba esta solución, es decir, \alert{se determina si es posible mejorar el valor de la función objetivo moviéndose al siguiente punto de esquina de la región factible.} Si es así, se obtiene la solución en este punto. Esta búsqueda del mejor punto de esquina se repite, hasta que después de un número finito de intentos, se obtiene la solución óptima, si existe.
+  \end{itemize}
+\end{frame}
+
+\begin{frameExample}{The Simplex Method.}{}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \[ \max Z = 3x_1 + 4x_2 \]
+
+    {\centering
+      s.t.
+
+      \sysdelim..%
+  \sysalign{r,r}%
+  \systeme[x_1x_2]{%
+      x_1 + x_2  \leq 450,
+    2x_1 + x_2   \leq 600
+}% systeme
+
+\vspace{5mm}
+$    x_1, x_2  \geq 0$
+\par}
+
+\column{0.6\textwidth}
+\begin{block}{Step 1. Express the problem in standard form}\justifying 
+    \[\max Z = 3x_1 + 4x_2 + 0s_1 + 0s_2\]
+
+    {\centering
+      s.t.
+
+      \sysdelim..%
+  \sysalign{r,r}%
+  \systeme[x_1x_2s_1s_2]%
+  {
+      x_1 + x_2 + s_1  = 450,
+    2x_1 + x_2 + s_2   = 600
+  }% systeme
+
+  \vspace{5mm}
+  $    x_1, x_2, s_1, s_2  \geq 0$
+  \par}
+\end{block}
+  \end{columns}
+\end{frameExample}
+
+\begin{frame}{Step 1. Express The Problem in Standard Form}{}
+    \[ \max Z = 3x_1 + 4x_2 + 0s_1 + 0s_2\]
+
+    {\centering
+      s.t.
+
+      \sysdelim..%
+  \sysalign{r,r}%
+  \systeme[x_1x_2s_1s_2]{%
+      x_1 + x_2 + s_1  = 450,
+      2x_1 + x_2 + s_2   = 600
+}% systeme
+
+\vspace{5mm}
+$    x_1, x_2, s_1, s_2  \geq 0$
+\par}
+\end{frame}
+
+\begin{frame}{Step 2. Find Initial Basic Feasible Solution}
+  \begin{itemize} \justifying
+  \item In the simplex method a start is made with a feasible
+    solution, which we shall get by assuming that the profit earned is
+    zero. This will be so when decision variables \alert{$x_1$ and
+      $x_2$ are each equal to zero}. \alert{These variables are called
+      non-basic variables}. 
+  \item Substituting $x_1 = x_2 = 0$ yields
+    $s_1 = 450, \, s_2 = 600$ which \alert{is called the initial basic
+      feasible solution}. Note that $Z=0$ for this
+    solution. \alert{Variables $s_1$ and $s_2$ are called basic
+      variables and they form the basis}.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Step 2. Find Initial Basic Feasible Solution}
+  The problem in standard form and the solution obtained above are now expressed in the form of a table, called the simplex table
+
+  \begin{table}[h]
+    \centering
+    \caption{The Simplex Table}    \label{tab:simplex-table}
+    \begin{tabular}{ccccccc}
+      \toprule
+      \multicolumn{2}{c}{Contribution/unit $c_j$}  &3 &4 &0 &0 & \\
+      \midrule
+                                                   &Basis&\multicolumn{2}{c}{Body Matrix}&\multicolumn{2}{c}{Identity Matrix}&\\
+      \cmidrule{3-6}
+      $C_B$ &(Basic variables)&$x_1$&$x_2$&$s_1$&$s_2$&$b$\\
+      \midrule
+      0&$s_1$&1&1&1&0&450\\
+      0&$s_2$&2&1&0&1&600\\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}{Step 3. Perform Optimality Test}
+  The next step is to ascertain whether the initial basic feasible solution found in step 2 can be improved or not. This solution involves zero profit; an improved solution should result in profit higher than zero. \alert{Two more rows are now added to the simplex table}.
+
+  \begin{table}[h]
+    \centering
+    \caption{Optimality test in the simplex table}    \label{tab:simplex-table-optimalitytest}
+    \begin{tabular}{rrrrrrr}
+      \toprule
+      $\max$& $c_j$  &3 &4 &0 &0 & \\
+      \midrule
+      $C_B$ &Basis&$x_1$&$x_2$&$s_1$&$s_2$&$b$\\
+      \midrule
+      0&$s_1$&1&1&1&0&450\\
+      0&$s_2$&2&1&0&1&600\\
+      \midrule
+      &$Zj$&0&0&0&0&0\\
+      (N.E.R)&$c_j - Z_j$&3&4&0&0&\\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}{Step 3. Perform Optimality Test}{}
+  {\centering
+    \begin{tabular}{rrrrrrr}
+      \toprule
+      $\max$& $c_j$  &3 &4 &0 &0 & \\
+      \midrule
+      $C_B$ &Basis&$x_1$&$x_2$&$s_1$&$s_2$&$b$\\
+      \midrule
+      0&$s_1$&1&1&1&0&450\\
+      0&$s_2$&2&1&0&1&600\\
+      \midrule
+      &$Zj$&\cellcolor{cyan!30}0&\cellcolor{cyan!30}0&\cellcolor{cyan!30}0&\cellcolor{cyan!30}0&0\\
+      (N.E.R)&$c_j - Z_j$&3&4&0&0&\\
+      \bottomrule
+    \end{tabular}
+    \par}
+
+  $Z_j$-row coefficients under any column are obtained by adding the products of elements under that column with the corresponding $C_b$ values \emph{i.e.} $Z_j = \sum C_b a_{ij}$ where $a_{ij}$ are the matrix element in the \emph{i}th row and \emph{j}th colum. For example, $Z_1 = 0 \times 1 + 0 \times 2 = 0$. \alert{$Z_j$ value under \emph{b}-column represents the current profit \emph{i.e.}, zero}.
+\end{frame}
+
+
+\begin{frame}{Step 3. Perform Optimality Test}{}
+  {\centering
+    \begin{tabular}{rrrrrrr}
+      \toprule
+      $\max$& $c_j$  &3 &4 &0 &0 & \\
+      \midrule
+      $C_B$ &Basis&$x_1$&$x_2$&$s_1$&$s_2$&$b$\\
+      \midrule
+      0&$s_1$&1&1&1&0&450\\
+      0&$s_2$&2&1&0&1&600\\
+      \midrule
+      &$Zj$&0&0&0&0&0\\
+      (N.E.R)&$c_j - Z_j$&\cellcolor{blue!30}3&\cellcolor{blue!30}4&\cellcolor{blue!30}0&\cellcolor{blue!30}0&\\
+      \bottomrule
+    \end{tabular}
+    \par}
+
+  The last row (base row) in the table is $c_j - Zj$ row, also called the index row or net evaluation row (N.E.R.). It is obtained by \alert{subtracting columnwise the $Z_j$ values from the $c_j$ values. This row determines whether or not the current solution is optimal}. Coefficients in this row represent the net profit (or net contribution or net marginal improvement) in the value of the objective function $Z$ for each unit of the respective column variable introduced into the solution.
+\end{frame}
+
+\begin{frame}{Step 4. Iterate towards an optimal solution}{}
+\only<1>{  At each iteration, the simplex method moves the current basic feasible solution to an improved basic feasible solution. This is donde by replacing one current basic variable by a new non-basic variable as explained below:}
+
+\begin{enumerate} \justifying \parskip3mm
+
+\item<only@1> \textbf{Selection of the entering variable.} For this we observe $c_j - Z_j$ for different columns and \alert{mark the column for maximum positive value}. The variable heading that column is the one which should enter the solution \emph{i.e.}, the corresponding product should be produced. \alert{This variable is called entering variable} or incoming variable and \alert{the column in which it occurs is called the key column} (or pivot column).
+
+\item<only@3> \textbf{Selection of the leaving variable.} To determine which of the slack variables be replaced (removed or made zero or made non-basic), \alert{elements under \emph{b}-column (quantity column) are divided by the corresponding elements of the key column and the row containing the minimum non-negative ratio is marked}. The current basic variable is, the, to be replaced and \alert{is called leaving (outgoing or departing) variable and is to be made zero}. \alert{The element lying at the intersection of key column and key row is called key (or pivot) element.}
+  
+   \item<only@6> \textbf{Evaluating (updating) the new solution or preparing the new simplex table.} Perform Gauss-Jordan
+\end{enumerate}
+
+\begin{onlyenv}<2>
+  {\centering
+    \begin{tabular}{rrrrrrrrr}
+      \toprule
+      $\max$& $c_j$  &3 &4 &0 &0 & & &\\
+      \midrule
+      $C_B$ &Basis&$x_1$&\cellcolor{yellow}$x_2$&$s_1$&$s_2$&$b$& &\\
+      \midrule
+      0&$s_1$&1&\cellcolor{blue!30}1&1&0&450& &\\
+      0&$s_2$&2&\cellcolor{blue!30}1&0&1&600&&\\
+      \midrule
+      &$Zj$&0&0&0&0&0&\multicolumn{2}{c}{(Profit lost/unit)}\\
+      (N.E.R)&$c_j - Z_j$&3&\cellcolor{yellow}4&0&0&&\multicolumn{2}{c}{(Net profit/unit)}\\
+            &&&\textuparrow&&&&&\\
+       &&&K&&&&&\\
+      \bottomrule
+    \end{tabular}
+    \par}
+\end{onlyenv}
+
+\begin{onlyenv}<4>
+  {\centering
+    \begin{tabular}{rrrrrrrrr}
+      \toprule
+      $\max$& $c_j$  &3 &4 &0 &0 & & &\\
+      \midrule
+      $C_B$ &Basis&$x_1$&\cellcolor{yellow}$x_2$&$s_1$&$s_2$&$b$&\multicolumn{2}{c}{$\theta$} \\
+      \midrule
+      0&$s_1$&1&\cellcolor{blue!30}1&1&0&\cellcolor{blue!30}450&\multicolumn{2}{c}{$\nicefrac{450}{1}=450$ }  \\
+      0&$s_2$&2&\cellcolor{blue!30}1&0&1&\cellcolor{blue!30}600&\multicolumn{2}{c}{$\nicefrac{600}{1}=600$ }\\
+      \midrule
+      &$Zj$&0&0&0&0&0&\multicolumn{2}{c}{(Profit lost/unit)}\\
+      (N.E.R)&$c_j - Z_j$&3&\cellcolor{yellow}4&0&0&&\multicolumn{2}{c}{(Net profit/unit)}\\
+            &&&\textuparrow&&&&&\\
+       &&&K&&&&&\\
+      \bottomrule
+    \end{tabular}
+    \par}
+\end{onlyenv}
+
+\begin{onlyenv}<5>
+  {\centering
+    \begin{tabular}{rrrrrrrrr}
+      \toprule
+      $\max$& $c_j$  &3 &4 &0 &0 & & &\\
+      \midrule
+      $C_B$ &Basis&$x_1$&\cellcolor{yellow}$x_2$&$s_1$&$s_2$&$b$&$\theta$ &\\
+      \midrule
+      0&\cellcolor{yellow}$s_1$&1&\cellcolor{orange}1&1&0&450&\cellcolor{yellow}450 & \textrightarrow (key row)\\
+      0&$s_2$&2&1&0&1&600&600&\\
+      \midrule
+      &$Zj$&0&0&0&0&0&\multicolumn{2}{c}{(Profit lost/unit)}\\
+      (N.E.R)&$c_j - Z_j$&3&\cellcolor{yellow}4&0&0&&\multicolumn{2}{c}{(Net profit/unit)}\\
+            &&&\textuparrow&&&&&\\
+       &&&K&&&&&\\
+      \bottomrule
+    \end{tabular}
+    \par}
+\end{onlyenv}
+
+\begin{onlyenv}<6>
+  {\centering
+    \begin{tabular}{rrrrrrrrr}
+      \toprule
+      $\max$& $c_j$  &3 &4 &0 &0 & & &\\
+      $C_B$ &Basis&$x_1$&\cellcolor{yellow}$x_2$&$s_1$&$s_2$&$b$& &\\
+      \cmidrule{1-7}
+      \cellcolor{yellow}4&\cellcolor{yellow}$x_2$&1&\cellcolor{orange}1&1&0&450& &\\
+      0&$s_2$&1&0&-1&1&150&&\\
+      \cmidrule{1-7}
+      Iter&$Zj$&4&4&4&0&1800&&\\
+        1    &$c_j - Z_j$&-1&0&-4&0&&&\\
+      \bottomrule
+    \end{tabular}
+    \par}
+\end{onlyenv}
+\end{frame}
+
+
+
+\begin{frame}{Step 5. Perform Optimality Test For Second Feasible Solution}{}
+
+  {\centering
+    \begin{tabular}{rcrrrrrrr}
+      \toprule
+      $\max$& $c_j$  &3 &4 &0 &0 & & &\\
+      %\midrule
+      $C_B$ &Basis&$x_1$&$x_2$&$s_1$&$s_2$&$b$& &\\
+      \cmidrule{1-7}
+      4&$x_2$&1&1&1&0&450& &\\
+      0&$s_2$&1&0&-1&1&150&&\\
+      \cmidrule{1-7}
+      Iter&$Zj$&4&4&4&0&\cellcolor{red!30}1800&\multicolumn{2}{c}{2nd feasible solution}\\
+           1 &$c_j - Z_j$&\cellcolor{blue!30}-1&\cellcolor{blue!30}0&\cellcolor{blue!30}-4&\cellcolor{blue!30}0&&\multicolumn{2}{c}{(Optimal solution)}\\
+      \bottomrule
+    \end{tabular}
+    \par}
+
+  Since all elements are either zero or negative, \alert{the second feasible solution is optimal}. The computational procedure comes to an end.
+
+  Hence the optimal solution is%
+  \begin{flalign*}
+    x_1 & = 0\\
+    x_2 & = 450\\
+    Z_{\max} & = 1,800
+  \end{flalign*}
+\end{frame}
+
+
+
+\input{example_simplex01}
+
+
+\input{example_reddy-mikks_taha}
+
+\begin{frameExample}{Producción}{}
+  % EXAMPLE 2.6-1 (Production Allocation Problem} Gupta ebook
+  Una empresa produce tres productos. Estos productos se procesan en tres máquinas diferentes. El tiempo requerido para fabricar una unidad de cada uno de los tres productos y la capacidad diaria de las tres máquinas se detallan en la tabla a continuación.
+
+  {\centering
+    \scalebox{0.8}{%
+      \begin{tabular}{ccccc}
+        \toprule
+        Máquina & \multicolumn{3}{l}{Tiempo por unidad (minutos)} & Capacidad       \\
+                &      Producto 1         &  Producto 2              &  Producto 3              & (Minutos / día) \\
+        \midrule
+        $M_1$   & 2             & 3              & 2              & 440             \\
+        $M_2$   & 4             & --            & 3              & 470             \\
+        $M_3$   & 2             & 5              & --             & 430\\
+        \bottomrule
+      \end{tabular}
+    }% scalebox
+    \par}
+  
+  
+
+   Se requiere determinar la cantidad diaria de unidades que se fabricarán para cada producto. El beneficio por unidad para el producto 1, 2 y 3 es de \$ 4, \$ 3 y \$ 6 respectivamente. Se supone que todas las cantidades producidas se consumen en el mercado. Formule el modelo matemático (L.P.) que maximizará la ganancia diaria.
+\end{frameExample}
+
+\begin{frameExample}{Producción}{}
+
+
+
+  \[ \max Z = 4x_1 + 3x_2 + 6x_3\]
+  
+  {\centering
+    subject to
+
+    \sysdelim..\sysalign{r,r}\systeme[x_1x_2x_3]%
+    {
+      2x_1 + 3x_2 + 2x_3  \leq 440,
+      4x_1 + 3x_3  \leq 470,
+      2x_1 + 5x_2  + 0x_3 \leq 430
+    }
+
+    \vspace{5mm}
+    $    x_1, x_2,x_3  \geq 0$
+    \par}
+
+\end{frameExample}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_simplex"
+%%% End:

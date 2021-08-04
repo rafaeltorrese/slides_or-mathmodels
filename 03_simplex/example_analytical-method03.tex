@@ -1,0 +1,43 @@
+\begin{frameExample}{Trial and Error Method}{}
+  % EXAMPLE  2.15-04 Gupta Ebook
+  Show, using matrix-vector notation, that the following system of linear equations has degenerate solutions:
+
+  \begin{columns}
+    \column{0.3\textwidth}
+
+    {
+      \centering
+      \sysdelim..%
+      \sysalign{r,r}%
+      \systeme[x_1x_2x_3]%
+      {
+        2x_1 + x_2 - x_3 = 2,
+        3x_1 + 2x_2 + x_3 =3
+      }
+      \par
+}
+  \column{0.7\textwidth}
+  \[\bm{A} =%
+    \begin{bmatrix}
+      2 & 1 & -1\\
+      3 & 2 & 1 \\
+    \end{bmatrix},
+    \bm{x} = %
+    \begin{bmatrix}
+      x_1\\
+      x_2\\
+      x_3
+    \end{bmatrix},
+    \bm{b} = %
+    \begin{bmatrix}
+      2\\
+      3
+    \end{bmatrix}
+  \]
+  \end{columns}
+\end{frameExample}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_simplex"
+%%% End:

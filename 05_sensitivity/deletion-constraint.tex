@@ -1,0 +1,17 @@
+
+\section{Deletion of a Constraint}
+\label{sec:deletion-constraint}
+
+\begin{frame}{Deletion of a constraint}{}
+  \begin{itemize} \justifying \parskip3mm
+\item<only@1> The constraint to be deleted may be either binding or unbinding on the optimal solution. The deletion of an unbinding constraint can only enlarge the feasible region but will no affect the optimal solution.
+\item<only@1> If the constraint under consideration has a slack os surplus variable of zero value in the basis matrix, it cannot be binding and hence will not affect the optimal solution.
+\item<only@2> The deletion of a binding constraint will, however, cause postoptimality problem. The simplest way to proceed in this case is via the addition of one or two new variables. For example, the constraint \[ a_{11}x_1  + a_{12}x_2 + \ldots + a_{i n}x_n = b_{i}\] can be written as \[ a_{11}x_1  + a_{12}x_2 + \ldots + a_{i n}x_n + x_{n+1} - x_{n+2} = b_{i};\,\, x_{n+1}, x_{n+2} \geq 0\] where $x_{n+1}, x_{n+2}$ are slack and surplus variables respectively. The problem can then be solvled by the procedure laid down in the section \hyperlink{sec:addition-new-variable}{addition of new variables}.
+\end{itemize}
+\end{frame}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_sensitivity"
+%%% End:

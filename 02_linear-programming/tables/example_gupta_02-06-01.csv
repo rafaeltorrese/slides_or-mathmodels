@@ -1,0 +1,5 @@
+,Time per unit (minutes),,,Machine capacity
+Machine,Product 1,Product 2,Product 3,(minutes /day)
+$M_1$,2,3,2,440
+$M_2$,4,--,3,470
+$M_3$,2,5,--,430

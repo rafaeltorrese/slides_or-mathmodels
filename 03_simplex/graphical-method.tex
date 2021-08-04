@@ -1,0 +1,396 @@
+
+\section{Graphical Method Of Solution}
+\label{sec:graphical-method}
+
+\begin{frameExample}{Graphical Method Of Solution}{}
+  \[ \max Z = 3x_1 + 4x_2\]
+
+  {\centering
+    subject to (s.t.)
+
+    \sysalign{r,r}%
+    \sysdelim..%
+    \systeme[x_1x_2]%
+    {
+      x_1 + x_2 \leq 450,
+      2x_1 + x_2 \leq 600
+    }
+
+    \vspace{5mm}
+    $x_1, x_2 \geq 0$
+  \par}
+\end{frameExample}
+
+
+\begin{frameExample}{Graphical Method Of Solution}{}
+  Find the maximum value of \[ Z = 2x_1 + 3x_2\]
+  {\centering
+    subject to
+
+    \sysalign{r,r}%
+    \sysdelim..%
+    \systeme[x_1x_2]%
+    {
+      x_1 + x_2 \leq 30,
+      x_2 \geq 3,
+      x_2 \leq 12,
+      x_1 - x_2 \geq 0,
+      x_1 \leq 20
+    }
+
+    $x_1, x_2 \geq 0$
+    \par}
+  
+\end{frameExample}
+
+\begin{frameExample}{Graphical Method Of Solution}{}
+  \[\max Z = 2x_1 + x_2 \]
+
+  {\centering
+    subject to (s.t.)
+
+    \sysalign{r,r}%
+    \sysdelim..%
+    \systeme[x_1x_2]%
+    {
+      x_1 + 2x_2 \leq 10,
+      x_1 + x_2 \leq 6,
+      x_1 - x_2 \leq 2,
+      x_1 - 2x_2 \leq 1
+    }
+
+    \vspace{5mm}
+
+    $x_1 , x_2 \geq 0$
+  \par}
+\end{frameExample}
+
+\begin{frameExample}{Graphical Method Of Solution}{}
+    \[\max Z = 3x_1 + 4x_2 \]
+
+  {\centering
+    subject to (s.t.)
+
+    \sysalign{r,r}%
+    \sysdelim..%
+    \systeme[x_1x_2]%
+    {
+      5x_1 + 4x_2 \leq 200,
+      3x_1 + 5x_2 \leq 150,
+      5x_1 + 4x_2 \geq 100,
+      8x_1 + 4x_2 \geq 80
+    }
+
+    \vspace{5mm}
+
+    $x_1 , x_2 \geq 0$
+  \par}
+\end{frameExample}
+
+
+\begin{frameExample}{}{}
+  \only<1>{%
+  Mohan-Meakins Breveries Ltd. has two bottling plants, one located at Solan and the other at Mohan Nagar. Each plant produces three drinks, whisky, beer and fruit juices named $A$, $B$, and $C$ respectively. The number of bottles produced per day are as follows:
+
+  {\centering
+    \begin{tabular}{rcc}
+      \toprule
+      &\multicolumn{2}{c}{Plant at}\\
+      \cmidrule{2-3}
+      &Solan&Mohan Nagar \\
+      &$(S)$&$(M)$ \\
+      \midrule
+      Whisky, $A$&1,500&1,500\\
+      Beer, $B$&3,000&1,000\\
+      Fruit juices, $C$&2,000&5,000\\
+      \bottomrule
+    \end{tabular}
+    \par}%
+  }
+
+  \only<2>{%
+  A market survey indicates that during the month of April, there will be a demand of 20,000 bottles of whisky, 40,000 bottles of beer and 44,000 bottles of fruit juices. The operating costs per day for plants at Solan and Mohan Nagar are 600 and 400 monetary units. For how many days each plant be run in April so as to minimize the production cost, while still meeting the market demand?%
+  }
+\end{frameExample}
+
+\begin{frameExample}{}{}
+  Find the minimum value of
+
+  \[Z = -x_1  +2x_2  \]
+
+  {\centering
+    s.t.
+
+    \sysalign{r,r}%
+    \systeme[x_1x_2]%
+    {
+      -x_1 + 3x_2 \leq 10,
+      x_1 + x_2 \leq 6,
+      x_1 - x_2 \leq 2
+    }
+
+    \vspace{5mm}
+
+    $x_1, x_2 \geq 0$
+  \par}
+  
+\end{frameExample}
+
+\begin{frameExample}{}{}
+  Solve the following problem graphically:
+
+  \[\max Z = -x_1  +4x_2  \]
+
+  {\centering
+    subject to
+
+    \sysdelim..
+    \sysalign{r,r}%
+    \systeme[x_1x_2]%
+    {
+      -3x_1 + x_2 \leq 6,
+      x_1 + 2x_2 \leq 4,
+      x_2 \leq -3
+    }
+
+    \vspace{5mm}
+
+    no lower bound constraint for $x_1$ 
+  \par}
+  
+\end{frameExample}
+
+\begin{frameExample}{}{}
+% Example 2.9-10 Gupta ebook
+  \only<1>{%
+      A local travel agent is planning a charter trip to a major sea resort. The eight day/seven night package includes the fare for round-trip travel, surface transportation, board and lodging and selected tour options. THe charter trip es restricted to 200 persons and past experience indicates that there will not be any problem for getting 200 persons. The problem for the travel agent is to determine the number of Deluxe, Standard and Economy tour packages to offer for this charter. These three plans differ according to seating and service for the flight, quality of accomodations, meal plans and tour options.
+    }
+
+    \begin{onlyenv}<2>
+      The following table summarizes the estimated prices for the three packages and the corresponding expenses for the travel agent. The travel agent has hired an aircraft for the flat fee of \$200,00 for the entire trip
+      
+      {\centering
+        \scalebox{0.9}{%
+          \begin{tabular}{cccc}
+            \toprule
+            &\multicolumn{3}{c}{Prices and costs for tour packages per person}\\
+            \cmidrule{2-4}
+            Tour&Price(\$)& Hotel costs (\$)& Meal \& other\\
+            plan& &&expenses\\
+            \midrule
+Deluxe&10,000&3,000&4750\\
+Standard&7,000&2,200&2,500\\
+            Economy&6,500&1,900&2,200\\
+            \bottomrule
+          \end{tabular}
+        }
+        \par}
+        \end{onlyenv}
+
+    \begin{onlyenv}<3>
+      In planning the trip, the following considerations must be taken into account:
+
+    \begin{enumerate}[i)] \justifying 
+    \item At least 10 percent of the packages must be deluxe type.
+    \item At least 35 percent but not more than 70 percent must be of the standard type.
+    \item At least 30 percent must be of the economy type.
+    \item The maximum number of deluxe packages available in any aircraft is restricted to 60.
+    \item THe hotel desires at least 120 of the tourists should be on the deluxe and standard packages together.
+    \end{enumerate}
+    \end{onlyenv}
+
+    
+
+
+  \begin{onlyenv}<4>
+    The travel agent wishes to determine the number of packages to offer in each type so as to maximize the total profit.    
+          \begin{enumerate}[a)]
+    \item Formulate the above as a linear programming problem.
+    \item Restate the above linear programming problem in terms of two decision variables, taking advantage of the fact that 200 packages will be sold.
+    \item Find the optimum solution using graphical method for the restated linear programming problem and interpret your results.
+    \end{enumerate}
+    \end{onlyenv}
+  \end{frameExample}
+
+  \begin{frameExample}{Graphical Method Of Solution}{}
+    The standard weight of a special purpose brick is 5 kg and it contains two basic ingredients $B_1$ and $B_2$. $B_1$ costs \$ 5/kg. and $B_2$ costs \$ 8/kg. Strength considerations dictate that the brick contains not more than 4 kg. of $B_1$ and a minimun of 2 kg of $B_2$. Since the demand for the product is likely to be related to the price of the brick, find graphically the minimum cost.
+  \end{frameExample}
+
+  \begin{frame}{Some Exceptional Cases}{}
+    In general a linear programming problem may have:
+
+    \begin{enumerate}[i)] \parskip4mm \justifying
+    \item a definite and unique optimal solution,
+    \item an inifinite number of optimal solutions (multiple optimal solutions),
+    \item an unbounded solution,
+    \item no feasible solution (infeasible solution),
+    \item a single solution.
+    \end{enumerate}
+  \end{frame}
+  
+  \begin{frameExample}{Multiple Optimal Solutions\label{example:2.10-01}}{}
+    % Example 2.10-01 gupta ebook
+    A firm use lathes, milling and grinding machines to produce two machine parts. The following table represents the machining times required for each part, the machining times available on different machines and the profit on each machine part
+
+    {
+      \centering
+      \scalebox{0.8}{%
+\begin{tabular}{lrrr}
+        \toprule
+        &\multicolumn{2}{c}{Machining time required for}& Maximum\\
+            &\multicolumn{2}{c}{the machine part (minutes)}& time available \\
+Type of & & & per week\\
+              Machines&I&II&(minutes)\\
+                             \midrule
+Lathes&12&6&3,00\\
+Milling machines&4&10&2,000\\
+  Grinding machines&2&3&900\\
+  \midrule
+  Profit per unit&\$40&\$100&\\
+  \bottomrule
+      \end{tabular}
+      } % scalebox
+      \par
+    }
+
+    Find the number of parts I and II to be manufactured per week to maximize the profit.
+  \end{frameExample}
+
+
+  \begin{frameExample}{Multiple Optimal Solutions}{}
+    % Example 2.10-2 Gupta ebook
+    Solve the following problem graphically:
+
+    \[ \max Z = -x_1 + 2x_2 \]
+
+  {\centering
+    subject to
+
+    \sysdelim..
+    \sysalign{r,r}%
+    \systeme[x_1x_2]%
+    {
+      x_1 - x_2 \leq -1,
+      -0.5x_1 + x_2 \leq 2
+    }
+
+    \vspace{5mm}
+
+    $x_1, x_2 \geq 0$
+    \par}
+  \end{frameExample}
+
+  \begin{frameExample}{Unbounded Solution}{}
+    % Example 2.10-3  Gupta ebook
+    \[ \max Z = 5x_1 + 4x_2\]
+
+    {\centering
+      subject to
+
+      \vspace{3mm}
+
+      \sysdelim..%
+      \sysalign{r,r}%
+      \systeme[x_1x_2]%
+      {
+        x_1 - 2x_2 \leq 1,
+        x_1 + 2x_2 \geq 3
+      }
+
+      \vspace{3mm}
+      $x_1, x_2 \geq 0$
+    \par}
+  \end{frameExample}
+
+  \begin{frameExample}{Unbounded Solution}{}
+    % Example 2.10-4  Gupta ebook
+    \[ \max Z = -4x_1 + 3x_2\]
+
+    {\centering
+      subject to
+
+      \vspace{3mm}
+
+      \sysdelim..%
+      \sysalign{r,r}%
+      \systeme[x_1x_2]%
+      {
+        x_1 - x_2 \leq 0,
+        x_1  \leq 4
+      }
+
+      \vspace{3mm}
+      $x_1, x_2 \geq 0$
+    \par}
+\end{frameExample}
+
+  \begin{frameExample}{}{}
+    % Example 2.10-5  Gupta ebook
+    \[ \max Z = -x_1 + 4x_2\]
+
+    {\centering
+      subject to
+
+      \vspace{3mm}
+
+      \sysdelim..%
+      \sysalign{r,r}%
+      \systeme[x_1x_2]%
+      {
+        3x_1 - x_2 \geq -3,
+        -0.3x_1 + 1.2x_2  \leq 3
+      }
+
+      \vspace{3mm}
+      $x_1, x_2 \geq 0$
+    \par}
+  \end{frameExample}
+
+    \begin{frameExample}{Infeasible Solution}{}
+    % Example 2.10-6  Gupta ebook
+    \[ \max Z = 3x_1 + 2x_2\]
+
+    {\centering
+      subject to
+
+      \vspace{3mm}
+
+      \sysdelim..%
+      \sysalign{r,r}%
+      \systeme[x_1x_2]%
+      {
+        -2x_1 + 3x_2 \leq 9,
+        3x_1 - 2x_2  \leq -20
+      }
+
+      \vspace{3mm}
+      $x_1, x_2 \geq 0$
+    \par}
+\end{frameExample}
+
+    \begin{frameExample}{Infeasible Solution}{}
+    % Example 2.10-7  Gupta ebook
+    \[ \max Z = 3x_1 + 4x_2\]
+
+    {\centering
+      subject to
+
+      \vspace{3mm}
+
+      \sysdelim..%
+      \sysalign{r,r}%
+      \systeme[x_1x_2]%
+      {
+        x_1 - x_2 \leq 0,
+        2.5x_1 - x_2  \leq -3
+      }
+
+      \vspace{3mm}
+      $x_1, x_2 \geq 0$
+    \par}
+  \end{frameExample}
+
+  %%% Local Variables:
+  %%% mode: latex
+  %%% TeX-master: "slides_simplex"
+  %%% End:

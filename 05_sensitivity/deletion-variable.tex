@@ -1,0 +1,22 @@
+
+\section{Deletion Of A Variable}
+\label{sec:deletion-variable}
+
+\begin{frame}{Deletion Of A Variable}{}
+  \begin{itemize} \justifying \parskip3mm
+  \item Deletion of a \alert{non-basic variable} is a totally superflous operation and does not affect the feasibility or optimality of the current optimal solution.
+  \item Deletion of a \alert{basic variable} may affect the optimality and a new optimum solution may have to be found out.
+  \item A \alert{heavy penalty} $-M$ ($+M$ for minimization problems) is assigned to the variable under consideration and the new optimum solution is obtained by \alert{applying regular simplex method} to the (modified) current optimum table.
+  \end{itemize}
+\end{frame}
+
+\begin{frameExample}{\label{example:6.6-6.1}}{}
+  Consider the optimal solution of example~\ref{example:6.6-5.1} when a new  constratint was added. If product $B$ is not to be produced, so that variable $x_2$ is to be deleted from this table, find the optimum solution to the resulting L.P. problem.
+  
+\end{frameExample}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_sensitivity"
+%%% End:

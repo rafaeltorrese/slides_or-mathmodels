@@ -1,0 +1,194 @@
+
+\section{Canonical and Standard Forms of L.P.P.}
+\label{sec:canonical-standard-form}
+
+\begin{frame}{Forma Canónica y Estándar}
+  \begin{columns}
+    \column{0.5\textwidth}
+      \begin{block}{Forma Canónica}
+  Maximizar \[ Z = \sum_{j=1}^{n} c_j x_j\] 
+  sujeto a
+  \begin{align*}
+    \sum a_{ij}x_j  & \leq b_i, \quad i = 1, 2, \ldots, m,\\
+    x_j  & \geq 0, \quad j = 1, 2, \ldots, n,\\
+  \end{align*}  
+\end{block}
+\column{0.5\textwidth}
+\begin{block}{Forma Estándar}
+    Maximizar \[ Z = \sum_{j=1}^{n} c_j x_j\] 
+  sujeto a
+  \begin{align*}
+    \sum a_{ij}x_j  & = b_i, \quad i = 1, 2, \ldots, m,\\
+    x_j  & \geq 0, \quad j = 1, 2, \ldots, n,\\
+  \end{align*}
+\end{block}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}{Forma Estándar Para P.P.L.}
+  \begin{onlyenv}<1>
+    
+    Para resolver un Problema de Programación Lineal (P.P.L.), éste se debe expresar en la forma estándar.\\
+
+    Maximizar \[ Z = \sum_{j=1}^{n} c_j x_j\] 
+  sujeto a
+  \begin{align*}
+    \sum a_{ij}x_j  & \leq  b_i, \, (\geq b_i), & i = 1, 2, \ldots, m,\\
+    x_j  & \geq 0, & j = 1, 2, \ldots, n,\\
+  \end{align*}
+\end{onlyenv}
+\begin{onlyenv}<2>
+  Expresado en forma estándar obtenemos\\
+
+  Maximizar \[ Z = \sum_{j=1}^{n} c_j x_j\] 
+  sujeto a
+  \begin{align*}
+    \sum a_{ij}x_j + s_i & =  b_i,  \,\, i = 1, 2, \ldots, m,\\
+    x_j  & \geq 0, \, \, j = 1, 2, \ldots, n,\\
+    s_i  & \geq 0, \, \, i = 1, 2, \ldots, m.\\
+  \end{align*}
+\end{onlyenv}
+\end{frame}
+
+
+\begin{frameExample}{Standard Form \label{example:02.12-01}}{}
+
+\[     \max Z = 7x_1 + 5x_2 \]
+
+{\centering
+  subject to
+  
+  \sysdelim..%
+  \sysalign{r,r}%
+  \systeme[x_1x_2]%
+  {
+    2x_1 + 3x_2  \leq 20,
+    3x_1 + x_2 \geq 10
+  }
+
+    \vspace{3mm}
+    $x_1, x_2  \geq 0$
+    \par}
+
+
+
+
+
+\end{frameExample}
+
+\begin{frameExample}{Standard Form \label{example:02.12-02}}{}
+      % EXAMPLE  Gupta ebook 2.12-2
+    \[ \max Z = 3x_1 + 2x_2 + 5x_3\]
+    {\centering
+      subject to
+
+      \sysdelim..%
+      \sysalign{r,r}%
+      \systeme[x_1x_2x_3]%
+      {
+        2x_1 - 3x_2  \leq 3,
+        x_1 + 2x_2 + 3x_3 \geq 5,
+        3x_1 + 2x_3 \leq 2
+      }
+\vspace{3mm}
+
+    $x_1, x_2  \geq 0$
+    \par}
+    
+  \end{frameExample}
+  
+
+\begin{frameExample}{Unrestricted variables \label{example:02-12-03}}{}
+
+      % Example Gupta ebook 2.12-3 
+    \[\max Z = 3x_1 + 2x_2 + 5x_3 \]
+    {\centering
+      subject to
+
+      \sysdelim..%
+      \sysalign{r,r}%
+      \systeme[x_1x_2x_3]%
+      {
+        2x_1 + 3x_2 - 2x_3 \leq 40,
+        4x_1 - 2x_2 + x_3\leq 24,
+        x_1 - 5x_2 - 6x_3\geq 2
+      }
+
+\vspace{3mm}
+    $    x_1  \geq 0$
+        \par}
+\end{frameExample}
+
+\begin{frameExample}{Unrestricted variables \label{example:02.12-04}}{}
+  % Gupta ebook Example 02.12-04
+  \[ \max Z = 2x_1 + 3x_2 \]
+  {\centering
+    subject to
+    
+    \sysdelim..%
+    \sysalign{r,r}%
+    \systeme[x_1x_2x_3x_4x_5x_6]%
+    {
+      2x_1 - 3x_2 - x_3 = -4,
+    3x_1 + 4x_2 - x_4 = -6,
+    2x_1 + 5x_2 + x_5 = 10,
+    4x_1 - 3x_2 + x_6 = 18
+    }
+
+    \vspace{3mm}
+    $x_3, x_4,x_5, x_6  \geq 0$
+  \par}
+\end{frameExample}
+
+\begin{frameExample}{Unrestricted variables \label{example:02.12-05}}{}
+  % Example 2.12-5
+  
+    \[ \max Z = 3x_1 + 5x_2 - 2x_3\]
+    {\centering
+      subject to
+
+      \sysdelim..%
+      \sysalign{r,r}%
+      \systeme[x_1x_2x_3]%
+      {
+        x_1 + 2x_2 - x_3 \geq -4,
+        -5x_1 + 6x_2 +7x_3 \geq 5,
+        2x_1 + x_2 + 3x_3 = 10
+      }
+    \par}
+
+  \vspace{3mm}
+  $    x_1, x_2 \geq 0,$
+    $x_3  \text{ unrestricted}$
+\end{frameExample}
+
+\begin{frameExample}{Matrix Form\label{example:02.12-06}}{}
+        % Example 2.12-6
+        
+    \[\max Z = 4x_1 + 2x_2 + 6x_3 \]
+
+    {\centering
+      subject to
+
+      \sysdelim..%
+      \sysalign{r,r}%
+      \systeme[x_1x_2x_3]%
+      {
+        2x_1 + 3x_2 + 2x_3 \geq 6,
+        3x_1 + 4x_2 = 8,
+        6x_1 - 4x_2 + x_3\leq 10
+      }
+
+      \vspace{3mm}
+      $x_1, x_2,x_3  \geq 0$
+    \par}
+
+\end{frameExample}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_simplex"
+%%% End:

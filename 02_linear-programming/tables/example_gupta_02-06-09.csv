@@ -1,0 +1,6 @@
+,Input per run (units),,Output per run (units),
+,Raw,Raw,Part,Part
+Method,Material 1,Material 2,A,B
+1,7,5,6,4
+2,4,7,5,8
+3,2,9,7,3

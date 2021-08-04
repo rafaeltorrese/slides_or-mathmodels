@@ -1,0 +1,188 @@
+\section{Analytical Method}
+\label{sec:simplex-method}
+
+
+
+
+\begin{frame}{Important Definitions}
+  \begin{onlyenv}<1>
+  Considerar el siguiente problema de programación lineal con $n$ variables y $m$ restricciones:
+  \begin{flalign*}
+  \max Z = c_1x_1 + c_2x_2 + \cdots + c_nx_n &\\
+  \intertext{Subject to}
+  a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n  &\leq b_1,\\
+  a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n  & \leq b_2\\
+  \vdots \qquad \qquad\qquad \qquad &\vdots\\
+  a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n & \leq b_m
+\end{flalign*}
+donde $x_1, x_2, , \ldots, x_n \geq 0$
+
+¿Cómo obtenemos la forma estándar? \\ Usar variables de holgura $x_{n+1}, x_{n+2}, \ldots, x_{n+m}$
+\end{onlyenv}
+\end{frame}
+
+\begin{frame}{Theory of Simplex Method}{}
+
+      \begin{columns}[t]
+    \column{0.3\textwidth}    
+    \begin{block}{Condiciones fundamentales}
+  \begin{enumerate}  \justifying \parskip3mm
+  \item Factibilidad
+  \item Optimalidad
+  \end{enumerate}
+\end{block}
+
+\column{0.7\textwidth}
+\begin{block}{Important Considerations}
+  \begin{enumerate} \justifying 
+  \item Solution.
+  \item Feasible Solution.
+  \item Basic Solution.
+  \item Basic Feasible Solution.
+  \item Non-degenerate Basic Feasible Solution.
+  \item Degenerate Basic Feasible Solution.
+  \item Optimal Basic Feasible Solution.
+  \item Unbounded solution.
+  \item Set of points.
+  \item Convex Set.
+  \end{enumerate}
+\end{block}
+\end{columns}
+\end{frame}
+
+% ---
+\begin{frame}{Theory of Simplex Method}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \begin{onlyenv}<1,2>
+\[     \max Z = 3x_1 + 4x_2\]
+{
+  \centering
+  subject to
+
+  \sysdelim..%
+  \sysalign{r,r}%
+  \systeme[x_1x_2]%
+  {
+    x_1 + x_2 \leq 450,
+    2x_1 + x_2 \leq 600
+  }
+  \vspace{3mm}
+
+  $x_1, x_2  \geq 0   $
+  \par
+}
+\end{onlyenv}
+    \column{0.7\textwidth}
+      {\centering
+\includegraphics<1>[scale=0.4]{fig_example-simplex01.pdf}
+\par}
+
+
+\begin{onlyenv}<2>
+  El número de soluciones básicas con $m$ ecuaciones y $m + n$ variables es:\[ _{m +n}C_{m} = \frac{(m + n)!}{m!n!} \]
+\end{onlyenv}
+  \end{columns}
+\end{frame}
+
+% ---------
+\begin{frame}{Trial and Error Approach}
+  \begin{columns}[t]
+    \column{0.4\textwidth}
+    \begin{onlyenv}<1>
+\[     \max Z = 3x_1 + 4x_2\]
+{
+  \centering
+  subject to
+
+  \sysdelim..%
+  \sysalign{r,r}%
+  \systeme[x_1x_2]%
+  {
+    x_1 + x_2 \leq 450,
+    2x_1 + x_2 \leq 600
+  }
+  \vspace{3mm}
+
+  $x_1, x_2  \geq 0   $
+  \par
+}
+\end{onlyenv}
+
+\begin{onlyenv}<2>
+  \begin{align*}
+    _{m +n}C_{m} &= \frac{(m + n)!}{m!n!}  \\[3mm]
+    _{4}C_{2} &= \frac{4!}{2!2!}  \\[2mm]
+    _{4}C_{2} &  = 6
+  \end{align*}
+\end{onlyenv}
+\column{0.4\textwidth}
+
+\[    \max Z = 3x_1 + 4x_2 + 0s_1 + 0s_2 \]
+{
+  \centering
+  subject to
+
+  \sysdelim..%
+  \sysalign{r,r}%
+  \systeme[x_1x_2s_1s_2]%
+  {
+    x_1 + x_2 + s_1  =  450,
+    2x_1 + x_2   +  s_2 = 600
+  }
+  \vspace{3mm}
+
+  $x_1, x_2, s_1, s_2  \geq 0$
+  \par
+}
+\end{columns}
+\end{frame}
+
+  %% ------------------------------
+\begin{frame}{Trial Error Method}{}
+            \begin{align*}
+    \max Z = 3x_1 &+& 4x_2 &+& 0s_1 &+& 0s_2 & &\\
+    \intertext{Subject to}
+              \textcolor<1,2,3>{red}{x_1} &+& \textcolor<1,4,5>{red}{x_2} &+& \textcolor<2,4,6>{red}{1s_1} &+&\textcolor<3,5,6>{red}{\cancel{0s_2}} &= & \textcolor{red}{450}\\
+          \textcolor<1,2,3>{red}{2x_1} &+& \textcolor<1,4,5>{red}{x_2} &+ &\textcolor<2,4,6>{red}{\cancel{0s_1}} &+&  \textcolor<3,5,6>{red}{1s_2} &=& \textcolor{red}{600}\\
+    %x_1&,& x_2&,& s_1&, &s_2  &\geq& 0
+            \end{align*}
+            \begin{columns}[t]
+              \column{0.4\textwidth}
+              \begin{align*}
+              %\max Z = 3x_1 + 4x_2 + 0s_1 + 0s_2&\\
+              %\intertext{Subject to}
+              \only<1,2,3>{1 \textcolor{red}{x_1} }  \only<1,2,3>{+} \only<1,4,5>{1 \textcolor{red}{x_2}} \only<4,5>{+} \only<2,4,6>{1 \textcolor{red}{s_1}} \only<6>{+}  \only<3,5,6>{0 \textcolor{red}{s_2}}&= 450\\
+              \only<1,2,3>{2 \textcolor{red}{x_1} } \only<1,2,3>{+}  \only<1,4,5>{1 \textcolor{red}{x_2}} \only<4,5>{+} \only<2,4,6>{0 \textcolor{red}{s_1}} \only<6>{+} \only<3,5,6>{1 \textcolor{red}{s_2}}& = 600\\
+              %x_1, x_2  &\geq 0
+              \end{align*}
+              \column{0.2\textwidth}
+              \begin{align*}
+                Z &= \only<1>{1650} \only<2>{900} \only<3>{\textcolor{cyan}{--}} \only<4>{\textcolor{cyan}{--}} \only<5>{\textcolor{red}{1800}} \only<6>{0}\\
+                \textcolor<1,2,3>{red}{x_1} &= \textcolor{red}{\only<1>{150} \only<2>{300} \only<3>{450}}  \only<4,5,6>{0}\\
+                \textcolor<1,4,5>{red}{x_2} &= \textcolor{red}{\only<1>{300} \only<4>{600} \only<5>{450}}  \only<2,3,6>{0}\\
+              \end{align*}
+              \column{0.2\textwidth}
+              \begin{align*}
+                \\
+                \textcolor<2,4,6>{red}{s_1} &=  \only<4>{\textcolor{cyan}{-150}} \textcolor{red}{\only<2>{150}  \only<6>{450}}\only<1,3,5>{0}\\
+                \textcolor<3,5,6>{red}{s_2} &= \only<3>{\textcolor{cyan}{-300}}  \textcolor{red}{ \only<5>{150} \only<6>{600}} \only<1,2,4>{0}
+              \end{align*}
+            \end{columns}
+  \end{frame}
+  %% ------------------------------
+
+\input{example_analytical-method01}
+\input{example_analytical-method02}
+\input{example_analytical-method03}
+\input{example_analytical-method05}
+\input{example_analytical-method06}
+\input{example_allocation_gupta}
+\input{example_diet_gupta}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides_simplex"
+%%% End:
