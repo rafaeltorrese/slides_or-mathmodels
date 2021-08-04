@@ -10,7 +10,7 @@ period: 202160 - Lic Ago-Dic 2021 (22-1)
 - Respeto y actitud para trabajar.
 - Se toma asistencia al inicio, durante y al final de la clase.
 - Si las clases son virtuales, se solicita tener cámara web disponible; ocasionalmente se solicitará encender cámara.
-- Asistir a las sesiones con ropa adecuada. Queda prohibido usar pantalones cortos (short) o ropa para dormir (pijama)
+- Asistir a las sesiones con ropa adecuada. Queda prohibido usar pantalones cortos (short) o ropa para dormir (pijama).
 - Quitarse gorras, lentes o cualquier otro accesorio que impida tener un contacto cara a cara adecuado.
 - Evitar decir groserías.
 - Todas las actividades se suber a Brightspace.
@@ -28,6 +28,14 @@ period: 202160 - Lic Ago-Dic 2021 (22-1)
 - Generar cuenta y descargar optimizador comercial versión de prueba Gurobi ( click aquí para ingresar )
 - Crear cuenta DataCamp [click aquí para aceptar invitacion](https://www.datacamp.com/groups/shared_links/5844c5ce44c8ededed5b9b2be2efa27e0ba2e4390048e3986720aefc4d43b4a6)
 
+# Criterios de Evaluación
+- Exam1:        10
+- Exam2:        20
+- Exam3:        10
+- Homework:     10
+- Research:     10
+- Exam4:        20
+- FinalWork:    20 
 # Planeación de la asignatura
 
 ## Introducción al lenguaje de programación
