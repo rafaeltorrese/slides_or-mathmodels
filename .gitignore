@@ -17,3 +17,5 @@ slides*.pdf
 lectures.pdf
 activities.pdf
 *ipynb_checkpoints
+*.html
+*.doc*
