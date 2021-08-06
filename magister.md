@@ -24,10 +24,16 @@ period: 202160 - Lic Ago-Dic 2021 (22-1)
 - Realizar los ejercicios de la plataforma DataCamp.
 
 # Pre-requisitos
+
+## Conocimiento previo sugerido
+- Cálculo.
+- Álgrebra Lineal
+- Programación.
+
+## Notas de los requisitos de la asignatura
 - Instalar software Anconda Python 3.x disponible en Anaconda [click aquí](https://www.anaconda.com/products/individual)
 - Generar cuenta y descargar optimizador comercial versión de prueba Gurobi ( click aquí para ingresar )
 - Crear cuenta DataCamp [click aquí para aceptar invitacion](https://www.datacamp.com/groups/shared_links/5844c5ce44c8ededed5b9b2be2efa27e0ba2e4390048e3986720aefc4d43b4a6)
-
 # Criterios de Evaluación
 - Exam1:        10
 - Exam2:        20
