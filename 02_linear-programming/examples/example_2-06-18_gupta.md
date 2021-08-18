@@ -6,10 +6,10 @@ A firm produces  three  different products,  1,  2  and 3.  Each product needs  
 
 Machine| 1 | 2 | 3 | Time per week (minutes)| Cost / week at full capacity
 -----| ----- | ----- | ----- | -----| -----
-A1|4|5|--|5,000|250
-A2|5|7|11|10,000|500
-B1|7|8|--|8,000|450
-B2|8|--|--|4,000|250
-B3|3|--|7|5,600|280
+$A_1$|4|5|--|5,000|250
+$A_2$|5|7|11|10,000|500
+$B_1$|7|8|--|8,000|450
+$B_2$|8|--|--|4,000|250
+$B_3$|3|--|7|5,600|280
 Material Cost | 0.30 | 0.40 | 0.50
 Sale price | 1.50 | 1.80 | 2.40
