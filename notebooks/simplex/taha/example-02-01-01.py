@@ -12,6 +12,7 @@
 #
 # $$\max z = 5x_1 + 4x_2$$
 # s.t.
+
 # $$\begin{align*}
 # 6x_1 + 4x_2  & \leq 24 \\
 # x_1 + x_2 & \leq 6\\
@@ -25,16 +26,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 # %matplotlib inline
-# %% [markdown]
+#%% [markdown]
 # ## Domain Function
-x = np.linspace(0, 100, 50)
-print(x.shape)
+x = np.linspace(0, 100, 10)
+
 #%% [markdown]
 # ## Objective Function 
 zfunction = lambda z, x: (z - 5 * x) / 4
 zlabel = r"$Z = 5x_1 + 4x_2$"
-zdomain = np.linspace(5, 20, 5)
-# %% [markedown]
+zdomain = np.linspace(5, 50, 5)
+#%% [markdown]
 # ## Equations
 equation1 = (24 - 6 * x) / 4
 equation2 = (6 - x) / 2
@@ -42,11 +43,12 @@ equation3 = 1 + x
 equation4 = np.full_like(x, 2)  #  it's a constant
 
 #%% [markdown]
+# ## Labels
 labels = [
-    r"$6x_1 + 4x_2 \leq 24$",
-    r"$x_1 + 2x_2 \leq 6$",
-    r"$-x_1 + x_2 \leq 1$",
-    r"$x-2 \leq 2$",
+    r"$Eq1:\, 6x_1 + 4x_2 = 24$",
+    r"$Eq2:\, x_1 + 2x_2 = 6$",
+    r"$Eq3:\, -x_1 + x_2 = 1$",
+    r"$Eq4:\, x_2= 2$",
 ]
 
 # %%
@@ -76,10 +78,38 @@ plt.plot(x, zfunction(0, x), color="magenta", ls="--", label=zlabel, alpha=0.3)
 for z in zdomain:
     plt.plot(x, zfunction(z, x), ls="--", color="magenta", alpha=0.3)
 
-plt.fill_between(x, equation1, where=(x < equation1), color="orange", alpha=0.2, interpolate=True)
-plt.fill_between(x, equation2, where=(x <= equation2), color="green", alpha=0.2, interpolate=True)
-plt.fill_between(x, equation4, color="blue", alpha=0.2, interpolate=True)
+# Plot areas
+plt.fill_between(x, 
+                equation1, 
+                where=(x < equation1), 
+                color="orange", 
+                alpha=0.2, 
+                interpolate=True,
+                label=r"$x_1 + 2x_2 \leq 6$")
 
+plt.fill_between(x,
+                 equation2, 
+                 where=(x < equation2), 
+                 color="green", 
+                 alpha=0.2, 
+                 interpolate=True,
+                 label=r"$x_1 + 2x_2 \leq 6$",
+                 )
+
+plt.fill_between(x, 
+                equation3,
+                where=(x <= equation3), 
+                color="red", 
+                alpha=0.2, 
+                interpolate=True,
+                label=r"$-x_1 + x_2 \leq 1$")
+
+plt.fill_between(x, 
+                equation4,
+                color="blue",
+                alpha=0.2,
+                label=r"$x_2 \leq 2$",
+                )
 plt.legend(
     fontsize=15, 
     loc="upper right"
