@@ -24,4 +24,5 @@ activities.pdf
 main.pdf
 .*doc*
 .*ppt*
+.odt*
 env
