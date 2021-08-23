@@ -1,3 +1,6 @@
+---
+title: Plotting a Linear Programming Problem
+...
 <style>
 .inside {
     background-color: "red";
@@ -81,14 +84,14 @@ $$\max Z = 5x_1 + 4x_2$$
 
 ### Constraints
 
-$$
-\begin{align*}
-6x_1 + 4x_2 &\leq 24 \\
-x_1 + 2x_2 &\leq 6 \\
--x_1 + x_2 &\leq 1 \\
-x_2 & \leq 2 \\
-\end{align*}
-$$
+$$\begin{align*}
+6x_1 + 4x_2 &\leq 24\\
+x_1 + 2x_2 &\leq 6\\
+-x_1 + x_2 &\leq 1\\
+x_2  &\leq 2\\
+\end{align*}$$
+
+
 
 
 ## Isolate all $x_2$ variables
