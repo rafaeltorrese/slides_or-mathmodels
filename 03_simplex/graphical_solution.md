@@ -1,12 +1,6 @@
 ---
 title: Plotting a Linear Programming Problem
 ...
-<style>
-.inside {
-    background-color: "red";
-    border-collapse: collapse;
-}
-</style>
 
 # Plotting a Linear Programming Problem with Python
 - Go to Chapter 02 Section 2.1 "MODELO DE PL CON DOS VARIABLES" and read "Ejemplo 2.1-1 (La compañía Reddy Mikks)" Page 13 in the book [Investigación de operaciones (9a. ed.) de Hamdy A. Taha](https://anahuac.primo.exlibrisgroup.com/permalink/52ANAHUAC_INST/ttdqh7/cdi_proquest_ebookcentral_EBC5243899).
@@ -251,3 +245,7 @@ Show the plot, don't forget his bottom line
 ```python
 plt.show()
 ```
+
+## Find intersection points. 
+
+This points are solutions to the linear system equations
