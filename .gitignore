@@ -22,3 +22,6 @@ activities.pdf
 *.fdb*
 *.fls
 main.pdf
+.*doc*
+.*ppt*
+env
