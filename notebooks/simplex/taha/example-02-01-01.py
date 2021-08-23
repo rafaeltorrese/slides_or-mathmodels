@@ -28,7 +28,7 @@ import matplotlib.pyplot as plt
 # %matplotlib inline
 #%% [markdown]
 # ## Domain Function
-x = np.linspace(-5, 50, 5)
+x = np.linspace(-1, 50, 5)
 
 #%% [markdown]
 # ## Objective Function 
@@ -68,10 +68,10 @@ plt.axvline(0, color="0.4")
 plt.axhline(0, color="0.4")
 
 plt.plot(x, equation4)
-
+colors = ("orange", "green", "red", "blue")
 # Plot lines: x, f(x)
-for equation, label in zip(equations, labels):
-    plt.plot(x, equation, lw=2, label=label)
+for equation, label, c in zip(equations, labels, colors):
+    plt.plot(x, equation, lw=2, color=c, label=label)
 
 # Plot z values
 plt.plot(x, zfunction(0, x), color="magenta", ls="--", label=zlabel, alpha=0.3)
@@ -82,7 +82,7 @@ for z in zdomain:
 plt.fill_between(x, 
                 equation1, 
                 where=(x < equation1), 
-                color="orange", 
+                color=colors[0], 
                 alpha=0.2, 
                 interpolate=True,
                 label=r"$x_1 + 2x_2 \leq 6$")
@@ -90,7 +90,7 @@ plt.fill_between(x,
 plt.fill_between(x,
                  equation2, 
                  where=(x < equation2), 
-                 color="green", 
+                 color=colors[1], 
                  alpha=0.2, 
                  interpolate=True,
                  label=r"$x_1 + 2x_2 \leq 6$",
@@ -99,14 +99,14 @@ plt.fill_between(x,
 plt.fill_between(x, 
                 equation3,
                 where=(x <= equation3), 
-                color="red", 
+                color=colors[2], 
                 alpha=0.2, 
                 interpolate=True,
                 label=r"$-x_1 + x_2 \leq 1$")
 
 plt.fill_between(x, 
                 equation4,
-                color="blue",
+                color=colors[3],
                 alpha=0.2,
                 label=r"$x_2 \leq 2$",
                 )
@@ -145,6 +145,7 @@ sysequations = [
     (1, 3),  # Eq2 vs Eq4  
     (2, 3),  # Eq3 vs Eq4
     (2, 5),  # Eq3 vs y axis
+    (4, 5),  # Origin
     ]
 
 
@@ -179,36 +180,23 @@ print(best_index, zbest)
 
 
 print(solutions[best_index])
-
-# ## Labels
-labels = [
-    r"$Eq1:\, 6x_1 + 4x_2 = 24$",
-    r"$Eq2:\, x_1 + 2x_2 = 6$",
-    r"$Eq3:\, -x_1 + x_2 = 1$",
-    r"$Eq4:\, x_2= 2$",
-]
-
-# %%
-equations = [
-    equation1, 
-    equation2, 
-    equation3, 
-    equation4,
-    ]
+coordinates = [*zip(*solutions)]
+print(coordinates)
 # %% [markdown]
 # ## Plotting Solutions
 plt.figure(figsize=(10, 10))
+
+#---- SUBPLOT ------
+plt.subplot(1, 2, 1)
 plt.xlim(-1, 7)
 plt.ylim(-1, 7)
 
 plt.axvline(0, color="0.4")
 plt.axhline(0, color="0.4")
 
-plt.plot(x, equation4)
-
 # Plot lines: x, f(x)
-for equation, label in zip(equations, labels):
-    plt.plot(x, equation, lw=2, label=label)
+for equation, label, c in zip(equations, labels, colors):
+    plt.plot(x, equation, lw=2, color=c, label=label)
 
 # Plot best z line
 plt.plot(x, zfunction(zbest, x), lw=3, color="magenta", ls="--", label=zlabel, alpha=0.3)
@@ -235,7 +223,7 @@ plt.plot(
 plt.fill_between(x, 
                 equation1, 
                 where=(x < equation1), 
-                color="orange", 
+                color=colors[0], 
                 alpha=0.2, 
                 interpolate=True,
                 label=r"$x_1 + 2x_2 \leq 6$")
@@ -243,7 +231,7 @@ plt.fill_between(x,
 plt.fill_between(x,
                  equation2, 
                  where=(x < equation2), 
-                 color="green", 
+                 color=colors[1], 
                  alpha=0.2, 
                  interpolate=True,
                  label=r"$x_1 + 2x_2 \leq 6$",
@@ -252,14 +240,14 @@ plt.fill_between(x,
 plt.fill_between(x, 
                 equation3,
                 where=(x <= equation3), 
-                color="red", 
+                color=colors[2], 
                 alpha=0.2, 
                 interpolate=True,
                 label=r"$-x_1 + x_2 \leq 1$")
 
 plt.fill_between(x, 
                 equation4,
-                color="blue",
+                color=colors[3],
                 alpha=0.2,
                 label=r"$x_2 \leq 2$",
                 )
@@ -267,4 +255,43 @@ plt.legend(
     fontsize=10, 
     loc="upper right"
     )
+# ----- SUBPLOT -----
+plt.subplot(1, 2, 2)
+plt.xlim(-1, 7)
+plt.ylim(-1, 7)
+
+plt.axvline(0, color="0.4")
+plt.axhline(0, color="0.4")
+# Plot lines: x, f(x)
+for equation, label, c in zip(equations, labels, colors):
+    plt.plot(x, equation, lw=2, color=c, label=label)
+
+# Plot best z line
+plt.plot(x, zfunction(zbest, x), lw=3, color="magenta", ls="--", label=zlabel, alpha=0.3)
+
+# Feasible solutions
+for solution in solutions:
+    plt.plot(
+        solution[0], solution[1], 
+        ls="", 
+        marker='o', 
+        # ms=14,
+        color='k',
+        )
+
+# Best solution
+plt.plot(
+    solutions[best_index][0], solutions[best_index][1], 
+    marker='*',
+    color="red",
+    ms=10,
+    )
+
+plt.fill(*coordinates, facecolor="yellow")
+
+plt.legend(
+    fontsize=10, 
+    loc="upper right"
+    )    
+# -----
 plt.show()
