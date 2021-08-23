@@ -26,3 +26,5 @@ main.pdf
 .*ppt*
 *.odt
 env
+# For Mac
+.DS_Store
