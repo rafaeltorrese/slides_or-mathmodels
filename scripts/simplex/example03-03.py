@@ -35,7 +35,6 @@ equation_labels = [r"$x_1 + 2x_2 \leq 10$",  # blue
                    ]
 
 plt.figure(figsize=(8,8))
-plt.figure("equal")
 plt.axvline(0, color="0.4")
 plt.axhline(0, color="0.4")
 for equation, eqlabel in zip(equations_list, equation_labels):
@@ -85,7 +84,7 @@ best_point = points[best_index]
 coordinates = [*zip(*points)]
 
 plt.figure(figsize=(8,8))
-plt.figure("equals")
+# plt.figure("equals")
 plt.axvline(0, color="0.4")
 plt.axhline(0, color="0.4")
 
