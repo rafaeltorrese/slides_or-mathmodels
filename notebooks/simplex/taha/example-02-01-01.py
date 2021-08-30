@@ -58,7 +58,7 @@ equations = [
     equation3, 
     equation4,
     ]
-# %% [markdown]
+#%% [markdown]
 # ## Plotting
 plt.figure(figsize=(10, 10))
 plt.xlim(-1, 7)
@@ -117,7 +117,7 @@ plt.legend(
 plt.show()
 
 
-# %% [markdown]
+#%% [markdown]
 # ## Find Feasible Solutions
 # [Solve a linear matrix equation wity Numpy](https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html)
 A = np.array([# index
