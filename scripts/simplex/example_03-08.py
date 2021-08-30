@@ -2,7 +2,7 @@
 # # Graphical Method. Example 08
 
 
-# %% [markdown]
+#%% [markdown]
 # ## Original Model
 # $$\max Z = x_1(10,000 - 3,000 - 4,750) + x_2(7,000 - 2200 - 2,500) + x_3(6,500 - 1,900 -2,200) - 200,000$$
 
@@ -32,13 +32,13 @@
 # x_1 \leq 60 \\
 # x_1 + x_2 \geq 120\\    
 # \end{align*}$$
-# %%
+#%%
 import numpy as np
 import matplotlib.pyplot as plt
 
-# %%
+#%%
 x = np.linspace(0, 500, 20)
-# %%  [markdown]
+#%% [markdown]
 # ## Objective Function
 
 zfunction = lambda z, x: (z + 150 * x - 280_000) / -100
@@ -51,7 +51,7 @@ objective = {
     'label': r'$\min Z = -150x_1 -100x_2 + 280,000$',
     'domain': np.linspace(240, 260, 5),  # minimize
 }
-# %%  [markdown]
+#%% [markdown]
 # ## Constraints
 c1 = {
     'x': [20, 20],
@@ -104,7 +104,7 @@ c6 = {
 }
 
 
-# %% [markdown]
+#%% [markdown]
 # ## Plotting
 
 plt.figure(figsize=(10, 10))
@@ -197,7 +197,7 @@ plt.axhline(0, lw=3, color="0.2")
 
 plt.show()
 
-# %% [markdown]
+#%% [markdown]
 # ## Solving Linear Equations System
 A = np.array([
     [1, 0],
