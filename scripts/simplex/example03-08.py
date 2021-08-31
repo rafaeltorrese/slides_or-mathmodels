@@ -38,7 +38,7 @@ import matplotlib.pyplot as plt
 
 #%%
 x = np.linspace(0, 500, 20)
-#%% [markdown]
+#%% 
 # ## Objective Function
 
 zfunction = lambda z, x: (z + 150 * x - 280_000) / -100
@@ -48,11 +48,12 @@ zlabel = r'$\min Z = -150x_1 -100x_2 + 280,000$'
 
 objective = {
     'function': lambda z, x: (z + 150 * x - 280_000) / -100,
-    'label': r'$\min Z = -150x_1 -100x_2 + 280,000$',
+    'label': r'$\max\, Z = -150x_1 -100x_2 + 280,000$',
     'domain': np.linspace(240, 260, 5),  # minimize
 }
-#%% [markdown]
+#%% 
 # ## Constraints
+
 c1 = {
     'x': [20, 20],
     'y': [-5, 500],
@@ -104,8 +105,8 @@ c6 = {
 }
 
 
-#%% [markdown]
-# ## Plotting
+#%%
+### Plotting
 
 plt.figure(figsize=(10, 10))
 
@@ -114,6 +115,39 @@ plt.subplot(121)
 plt.xlim(-5, 150)
 plt.ylim(-5, 150)
 
+plt.axvline(0, lw=3, color="0.2")
+plt.axhline(0, lw=3, color="0.2")
+
+for constraint in [c1, c2, c3, c4, c5, c6]:
+    plt.plot(constraint['x'], 
+            constraint['y'],
+            lw=2, 
+            color=constraint['color'],
+            label=constraint['label1'])
+
+
+plt.plot(x, 
+        objective['function'](0, x),
+        lw=3, 
+        ls='--', 
+        color='magenta',
+        alpha=0.2,
+        label=objective['label'],
+            )
+
+for z in objective['domain']:
+    plt.plot(x, objective['function'](z * 1000, x), 
+            lw=2, 
+            ls='--', 
+            color='magenta',
+            alpha=0.2
+            )
+
+plt.legend(fontsize=10,loc='upper right')
+# --------- SUBPLOT ------------------
+plt.subplot(122)
+plt.xlim(-5, 150)
+plt.ylim(-5, 150)
 plt.axvline(0, lw=3, color="0.2")
 plt.axhline(0, lw=3, color="0.2")
 
@@ -178,6 +212,7 @@ plt.plot(x,
         lw=2, 
         ls='--', 
         color='magenta',
+        alpha=0.2,
             )
 
 for z in objective['domain']:
@@ -185,19 +220,13 @@ for z in objective['domain']:
             lw=2, 
             ls='--', 
             color='magenta',
+            alpha=0.2,
             )
 
 plt.legend(fontsize=10,loc='upper right')
-# --------- SUBPLOT ------------------
-plt.subplot(122)
-plt.xlim(-5, 150)
-plt.ylim(-5, 150)
-plt.axvline(0, lw=3, color="0.2")
-plt.axhline(0, lw=3, color="0.2")
-
 plt.show()
 
-#%% [markdown]
+#%%
 # ## Solving Linear Equations System
 A = np.array([
     [1, 0],
