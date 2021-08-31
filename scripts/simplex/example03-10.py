@@ -10,11 +10,11 @@ subject to
 4x1 + 10x2 <= 2000
 2x1 + 3x2 <= 900
 '''
-
+#%%
 import numpy as np
 import matplotlib.pyplot as plt
 # %matplotlib inline
-
+#%%
 # Domain
 x =np.linspace(0, 600, 200)
 
