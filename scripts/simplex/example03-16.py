@@ -1,8 +1,9 @@
+#%%
 import numpy as np
 import matplotlib.pyplot as plt
-
+#%%
 x = np.linspace(-10, 50, 20)
-
+#%%
 objective = {
     'f': lambda z, x: (z + x) / 2,
     'label': r'$\max\, Z = 3x_1 + 4x_2$',
@@ -10,7 +11,7 @@ objective = {
     'color': 'magenta',
     'ls': '--',
 }
-
+#%%
 y1 = {
     'x': x, 
     'y': x,
@@ -26,7 +27,7 @@ y2 = {
     'label1': r'$2.5x_1 - x_2 = -3$',
     'label2': r'$2.5x_1 - x_2 \leq -3$',
 }
-
+#%%
 plt.figure(figsize=(10, 10))
 
 # ----- SUBPLOT -----
