@@ -123,7 +123,8 @@ for constraint in [c1, c2, c3, c4, c5, c6]:
             constraint['y'],
             lw=2, 
             color=constraint['color'],
-            label=constraint['label1'])
+            label=constraint['label1'],
+            )
 
 
 plt.plot(x, 
