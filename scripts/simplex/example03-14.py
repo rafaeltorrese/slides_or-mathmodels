@@ -1,22 +1,31 @@
+# %% [markdown]
+# # Example 14
+# $$\max\, Z = −x_1 + 2x_2$$
+
+# $$\begin{align*}
+# 3x_1 − x_2 &\geq -3 \\
+# −0.3x_1 + 1.2x_2 &\leq 3\\
+# \end{align*}$$
+#%%
 import numpy as np
 import matplotlib.pyplot as plt
-
+# %%
 x = np.linspace(-10, 50, 20)
-
+# %%
 objective = {
-    'f': lambda z, x: (z + x) / 2,
-    'label': r'$\max\, Z = −x_1 + 2x_2$',
+    'f': lambda z, x: (z + x) / 4,
+    'label': r'$\max\, Z = −x_1 + 4x_2$',
     'domain': np.linspace(-5, 3 , 2),
     'color': 'magenta',
     'ls': '--',
 }
-
+# %%
 y1 = {
     'x': x, 
     'y': 3*x + 3,
     'color':'orange',
-    'label1': r'$3x_1 − x_2 = 3$',
-    'label2': r'$3x_1 − x_2 \geq 3$',
+    'label1': r'$3x_1 − x_2 = -3$',
+    'label2': r'$3x_1 − x_2 \geq -3$',
 }
 
 y2 = {
@@ -24,9 +33,9 @@ y2 = {
     'y': (3  + 0.3 * x) / 1.2,
     'color': 'green',
     'label1': r'$−0.3x_1 + 1.2x_2 = 3$',
-    'label2': r'$−0.3x_1 + 1.2x_2 \geq 3$',
+    'label2': r'$−0.3x_1 + 1.2x_2 \leq 3$',
 }
-
+# %%
 plt.figure(figsize=(10, 10))
 
 # ----- SUBPLOT -----

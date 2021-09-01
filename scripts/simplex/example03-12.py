@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Example 12
 Example 02.10-03 GuptaEbook
@@ -11,20 +10,21 @@ x1 + 2x2 >= 3
 
 x1,x2 >= 0
 """
+#%%
 import numpy as np
 import matplotlib.pyplot as plt
 # %matplotlib inline
-
+#%%
 # function domain
 x = np.linspace(0, 10, 20)
-
+#%%
 # constraints
 eq1 = ( x - 1) / 2  # x2 >=
 eq2 = ( 3 - x) / 2  # x2 >=
-
+#%%
 # z equation (objective function)
 zeq = lambda v, c: (c - 5*v) / 4  # Z = 5*x1 + 4*x2
-
+#%%
 # equations 
 equations_list = [(x ,eq1),
                   (x, eq2),
@@ -35,6 +35,7 @@ equations_label = [r"$x_1 - 2x_2 = 1$",
                    r"$x_1 + 2x_2 = 3$",
                    ]
 
+#%%
 plt.figure(figsize=(10,10))
 
 plt.axvline(0, color="0.4")
