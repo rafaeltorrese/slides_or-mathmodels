@@ -17,15 +17,15 @@ import matplotlib.pyplot as plt
 #%%
 # Domain
 x =np.linspace(0, 600, 200)
-
+#%%
 # Constraints
 eq1 = (3000 - 12*x) /  6   # x2 <=
 eq2 = (2000 -  4*x) / 10   # x2 <=  
 eq3 = ( 900 -  2*x) /  3   # x2 <=
-
+#%%
 # z equation  --> Z = 40x1 + 100x2
 zeq = lambda x1, c: (c - 40*x1) / 100
-
+#%%
 # 
 equations_list = [(x, eq1),
                   (x, eq2),
@@ -37,10 +37,9 @@ equations_label = [r"$12x_1 + 6x_2 = 3000$",
                    r"$4x_1 + 10x_2 = 2000$",
                    r"$2x_1 + 3x_2 = 900$",
                    ]   
-
+#%%
 # Plot
 plt.figure(figsize=(10,10))
-plt.figure("equals")
 plt.axvline(0, color="0.4")
 plt.axhline(0, color="0.4")
 
@@ -61,7 +60,7 @@ plt.xlim(-30, 600)
 plt.ylim(-30, 600)
 plt.legend(fontsize=10, loc="upper right")
 plt.show()
-
+#%%
 # coefficient matrix
 A = np.array([
     [12,  6],   # blue    0
@@ -107,10 +106,9 @@ for i in np.arange(0, 60, 10):
     print(vector.dot(np.array([40, 100])))
 # ------------------------------------------------
 
-
+#%%
 # Plot
 plt.figure(figsize=(10,10))
-plt.figure("equals")
 plt.axvline(0, color="0.4")
 plt.axhline(0, color="0.4")
 
