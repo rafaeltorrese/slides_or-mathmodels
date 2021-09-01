@@ -1,8 +1,7 @@
-#%%
+#%% [markdown]
 # # Example 11
 # $$\max\, Z = −x_1 + 2x_2$$
 # $$\begin{align*}
-# subject to
 # x 1 − x 2 &\leq −1 \\
 # −0.5x_1 + x_2 &\leq 2 \\
 # \end{align*}$$
