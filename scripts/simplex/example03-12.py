@@ -36,7 +36,6 @@ equations_label = [r"$x_1 - 2x_2 = 1$",
                    ]
 
 plt.figure(figsize=(10,10))
-plt.figure("equals")
 
 plt.axvline(0, color="0.4")
 plt.axhline(0, color="0.4")
