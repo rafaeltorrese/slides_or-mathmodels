@@ -28,3 +28,7 @@ main.pdf
 env
 # For Mac
 .DS_Store
+
+
+# for vscode
+.vscode
