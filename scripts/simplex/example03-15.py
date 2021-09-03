@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 # %matplotlib inline
 
 # function domain
-x = np.linspace(0, 60, 60)
+x = np.linspace(-10, 60, 60)
 
 # equations
 eq1 = ( 9   + 2*x ) / 3   # x2 <=
@@ -45,8 +45,8 @@ for z in np.linspace(20, 100, 4):
 plt.fill_between(x, eq1, eq1 - 20, facecolor="blue", alpha=0.4)
 plt.fill_between(x, eq2, eq2 + 20, facecolor="orange", alpha=0.4)
 #
-plt.xlim(-2, 50)
-plt.ylim(-2, 50)
+plt.xlim(-2, 20)
+plt.ylim(-2, 20)
 plt.legend(fontsize=15, loc="upper right")
 plt.title("Infeasible Solution")
 plt.show()
