@@ -1,0 +1,56 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{figs/}}
+\title{Sensitivity Analysis}
+
+\AtBeginSection[] % Do nothing for \section* %
+{
+\begin{frame}<beamer> 
+  \frametitle{Agenda}
+  \tableofcontents[currentsection] 
+\end{frame}
+}
+
+
+\begin{document}
+% ==============================
+\begin{frame}
+  \maketitle
+\end{frame}
+
+
+\begin{frame}{Agenda}
+  \tableofcontents
+\end{frame}
+% ==============================
+
+\section{What Is Sensitivity Analysis in L.P.?}
+\label{sec:sensitivityintro}
+
+
+\begin{frame}{Sensitivity Analysis}
+  \begin{itemize} \justifying \parskip4mm
+    \item<only@1> It is desirable to study how the current optimal solution changes when the parameters of the problem get changed. In these problems this inoformation may be more important than the single result provided by the optimal solution.
+    \item<only@1> After attaining the optimal solution, one may discover that \alert{a wrong value of a cost coefficient was used or a particular variable or constratint was ommited} or one or more of tight-hand constants used were wrong.
+    \item<only@1> The changes in parameters of the problem may be \alert{discrete or continuous}. The study of the effect of \alert{discrete changes in parameters on the optimal solution} is called the \alert{sensitivity analysis} or \alert{post optimality analysis}, while continuous changes in parameters is called \alert{parametric programming}.
+    \item<only@2> The changes in the parameters of a linear programming problem include:%
+          \begin{enumerate} \justifying
+            \item Changes in the right-hand side of the constraints or availability of resources ($b_i$)
+            \item Changes in the cost/profit coefficients or cost / profit contribution per unit of decision variables ($c_j$).
+            \item Addition of new variables
+            \item Changes in the coefficients of constraints or consumption of resources per unit of decision variables $a_{ij}$.
+            \item Addition of new constraints.
+            \item Deletion of variables.
+            \item Deletion of constraints.
+          \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+
+\input{right-hand-changes}
+\input{changes-cost-profit}
+\input{addition-new-variable}
+\input{changes-coefficients-constraints}
+\input{addition-new-constraint}
+\input{deletion-variable}
+\input{deletion-constraint}
+\end{document}

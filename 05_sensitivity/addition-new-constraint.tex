@@ -1,12 +1,12 @@
-
+% !TEX = slides.tex
 \section{Addition of a New Constraint}
 \label{sec:addition-new-constraint}
 
 \begin{frame}{Addition of a New Constraint}
   \begin{itemize} \justifying \parskip4mm
-  \item Addition of a new constraint may o may not affect the feasibility of the current optimal solution.
-  \item It is sufficient to check whether new constraint is satified by the current optimal solution or not.
-  \item If it is satisfied, the inclusion of the constraint has no effect on the current optimal solution \emph{i.e.,} it remains feasible as well as optimal. If, however, the constraint is not satified, the current \alert{optimal solution becomes infeasible. Dual simplex metho is then used to find the new optimal solution.}
+    \item Addition of a new constraint may o may not affect the feasibility of the current optimal solution.
+    \item It is sufficient to check whether new constraint is satified by the current optimal solution or not.
+    \item If it is satisfied, the inclusion of the constraint has no effect on the current optimal solution \emph{i.e.,} it remains feasible as well as optimal. If, however, the constraint is not satified, the current \alert{optimal solution becomes infeasible. Dual simplex metho is then used to find the new optimal solution.}
   \end{itemize}
 \end{frame}
 
@@ -14,55 +14,55 @@
   % Example 6.6-5.1 gupta ebook
   \begin{onlyenv}<1>
     \begin{enumerate}[a)] \justifying \parskip4mm
-  \item In example~\ref{example:6.6-2.1} an administrative constraint is added. Products $A, B$ and $C$ require 2, 3, and 2 hours of administrative services, while the total available administrative hours are 10. How does the optimal solution change?
-  \item \label{example08} If the total available administrative time is 4 hours, find the new optimal solution.
-  \end{enumerate}
+      \item In example~\ref{example:6.6-2.1} an administrative constraint is added. Products $A, B$ and $C$ require 2, 3, and 2 hours of administrative services, while the total available administrative hours are 10. How does the optimal solution change?
+      \item \label{example08} If the total available administrative time is 4 hours, find the new optimal solution.
+    \end{enumerate}
   \end{onlyenv}
 
 
-\begin{onlyenv}<2>
-        \[\max Z = 4x_1 +6x_2 +2x_3  \]
+  \begin{onlyenv}<2>
+    \[\max Z = 4x_1 +6x_2 +2x_3  \]
 
-  {\centering
+    {\centering
     subject to
 
     \vspace{3mm}
     \sysalign{r,r}%
     \sysdelim..%
-  \systeme[x_1x_2x_3]%
-  {
-    x_1 + x_2 + x_3  \leq 3@(manpower),
-    x_1 +4x_2 +7x_3 \leq 9@ (material),
-    2x_1 +3x_2 +2x_3 \leq 10@ (administrative)
-  }
+    \systeme[x_1x_2x_3]%
+    {
+      x_1 + x_2 + x_3  \leq 3@(manpower),
+      x_1 +4x_2 +7x_3 \leq 9@ (material),
+      2x_1 +3x_2 +2x_3 \leq 10@ (administrative)
+    }
 
-  $x_1, x_2, x_3 \geq 0$
-  \par}
+    $x_1, x_2, x_3 \geq 0$
+    \par}
 
-  Where   $x_1, x_2, x_3$ are the number of products $A, B$ and $C$ produced.
-\end{onlyenv}
+    Where   $x_1, x_2, x_3$ are the number of products $A, B$ and $C$ produced.
+  \end{onlyenv}
 
-\begin{onlyenv}<3>
-        \[\max Z = 4x_1 +6x_2 +2x_3  \]
+  \begin{onlyenv}<3>
+    \[\max Z = 4x_1 +6x_2 +2x_3  \]
 
-  {\centering
+    {\centering
     subject to
 
     \vspace{3mm}
     \sysalign{r,r}%
     \sysdelim..%
-  \systeme[x_1x_2x_3]%
-  {
-    x_1 + x_2 + x_3  \leq 3@(manpower),
-    x_1 +4x_2 +7x_3 \leq 9@ (material),
-    2x_1 +3x_2 +2x_3 \leq 4@ (administrative)
-  }
+    \systeme[x_1x_2x_3]%
+    {
+      x_1 + x_2 + x_3  \leq 3@(manpower),
+      x_1 +4x_2 +7x_3 \leq 9@ (material),
+      2x_1 +3x_2 +2x_3 \leq 4@ (administrative)
+    }
 
-  $x_1, x_2, x_3 \geq 0$
-  \par}
+    $x_1, x_2, x_3 \geq 0$
+    \par}
 
-  Where   $x_1, x_2, x_3$ are the number of products $A, B$ and $C$ produced.
-\end{onlyenv}
+    Where   $x_1, x_2, x_3$ are the number of products $A, B$ and $C$ produced.
+  \end{onlyenv}
 \end{frameExample}
 
 %%% Local Variables:
