@@ -88,7 +88,9 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
 
         print(f"Iteration {iteration}. {leaving_label} ---> {entering_label}")
         print(matrix,  "\n")
-        print("Solution", solution, f"\tZ: {cb.dot(rhs):0.2f}", "\n")
+        print("Solution", solution, f"\tZ: {cb.dot(rhs):0.2f}")
+        print(f'cj - zj: {net_evaluation}')
+        print(f'rhs vector {direction * rhs}', "\n")
 
         solutions.append(solution)
         fvalues.append(cb.dot(rhs))

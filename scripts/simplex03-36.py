@@ -14,8 +14,8 @@ from pprint import pprint
 import numpy as np
 np.set_printoptions(precision=3, suppress=True)
 
-from simplex_algorithm import simplex
-from twophase_method import twophase
+from auxfunc.simplex_algorithm import simplex
+from auxfunc.twophase_method import twophase
 
 cj = np.array([45, 40, 85, 65, 0, 0, 0, 1000, 1000, 1000], dtype=float)
 
@@ -35,10 +35,6 @@ b = np.array([
 
 M = simplex(matrix=A, rhs=b, z=cj, numxvars=4, direction=-1)
 
-
-for i,l in M:
-    print(i, l)
-    print()
 
 # sols2, z2 = twophase(matrix=A, rhs=b, z=cj, numxvars=4, direction=-1)
 
