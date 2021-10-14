@@ -1,12 +1,14 @@
+#%%
 import numpy as np
-
+import pandas as pd
+#%%
 def simplex(matrix, rhs, z, numxvars, direction=1):
     '''Simplex algorithm to solve linear programming problems
 
     Parameters
     ----------
     matrix: numpy ndarray
-        Matrix of coefficients in the left-hand side
+        Matrix of coefficients in the left-hand side in standard form
 
     rhs: numpy ndarray
         Right-hand side vector
@@ -26,7 +28,7 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
         Values of z (objective function)
 
     lastrows: numpy ndarray
-        Last rows of optimal table, this rows corresponde to Zj and cj - Zj
+        Last rows of optimal table, this rows correspond to Zj and cj - Zj
     '''
     print("="*10, "Simplex Method", "="*10)
 
@@ -89,6 +91,7 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
         print(f"Iteration {iteration}. {leaving_label} ---> {entering_label}")
         print(matrix,  "\n")
         print("Solution", solution, f"\tZ: {cb.dot(rhs):0.2f}")
+        print(f'zj: {zj}')
         print(f'cj - zj: {net_evaluation}')
         print(f'rhs vector {direction * rhs}', "\n")
 
@@ -98,4 +101,26 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
             print(f"Optimal solution found in {iteration} iterations")
             print((*zip(labels, np.round(solution, 3))))
 
-    return np.array(solutions), fvalues, np.vstack((zj, net_evaluation))
+    return pd.DataFrame(np.array(solutions), index=range(1, interation + 1), columns=labels), pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels)
+#%%
+if __name__ == '__main__':
+    LHS = np.array([
+    [1,  2],
+    [1,  1],
+    [1, -1],
+    [1, -2],
+])
+
+nconstraints, nvars = LHS.shape  # number of variables, only x variables
+
+I = np.eye(LHS.shape[0])
+print(I)
+M = np.hstack((LHS, I))
+print(A)
+
+B = np.array([10, 6, 2, 1])
+
+Z = np.array([2, 1])
+
+simplex(matrix=M, rhs=B, z=np.concatenate((Z, [0] * nconstraints)), numxvars=nvars, direction=1)
+#%%
