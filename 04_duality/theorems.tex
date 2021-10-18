@@ -69,7 +69,8 @@
 
 
 \begin{frameExample}{}{}
-  \[ \max Z = 5x_1 + 4x_2 \]
+  \begin{onlyenv}<1>
+      \[ \max Z = 5x_1 + 4x_2 \]
       {\centering
       s.t.%
 \vspace{4mm}
@@ -87,6 +88,25 @@
       \vspace{5mm}
       $x_1, x_2 \geq 0$
       \par}
+  \end{onlyenv}
+  \begin{onlyenv}<2>
+      \[ \min W = 24y_1 + 6y_2 + y_3 + 2y_4 \]
+      {\centering
+      s.t.%
+\vspace{4mm}
+      
+        \sysdelim..%
+        \sysalign{r,r}%
+        \systeme[y_1y_2y_3y_4]%
+        {%
+          6y_1 + y_2 - y_3   \geq 5,
+          4y_1 + 2y_2 + y_3 + y_4  \geq 4
+      }
+
+      \vspace{5mm}
+      $y_1, y_2, y_3, y_4 \geq 0$
+      \par}
+  \end{onlyenv}
 \end{frameExample}
   
 \begin{frame}{Correspondencia entre las Soluciones Primal--Dual}
