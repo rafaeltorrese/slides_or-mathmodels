@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 
+
 def simplex(matrix, rhs, z, numxvars, direction=1):
     '''Simplex algorithm to solve linear programming problems
 
@@ -47,6 +48,7 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
 
     solutions = []
     fvalues = []
+    basis = []
 
     labels = [f"x{i + 1}" for i in range(num_cols)]
 
@@ -86,10 +88,10 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
         solution[cb_index] = rhs  # basics
 
         iteration += 1
-
-        print(f"Iteration {iteration}. {leaving_label} ---> {entering_label}")
+        basis.append(entering_label)
+        print(f'Iteration {iteration}. {leaving_label} ---> {entering_label}')
         print(matrix,  "\n")
-        print("Solution", solution, f"\tZ: {cb.dot(rhs):0.2f}")
+        print(f'Solution {solution} \t Z: {cb.dot(rhs):0.2f}')
         print(f'cj - zj: {net_evaluation}')
         print(f'rhs vector {direction * rhs}', "\n")
 
@@ -98,21 +100,27 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
         if np.all(net_evaluation <= 0):
             print(f"Optimal solution found in {iteration} iterations")
             print((*zip(labels, np.round(solution, 3))))
+            print(basis)
+            print()
 
-    return pd.DataFrame(np.array(solutions), index=range(1, iteration + 1), columns=labels),  pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels)
+    return pd.DataFrame(np.array(solutions), index=range(1, iteration + 1), columns=labels),  pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels), pd.DataFrame(matrix, columns=labels)
+
 
 if __name__ == '__main__':
     Aprimal = [
-        [ 6, 4, 1, 0, 0, 0],
-        [ 1, 2, 0, 1, 0, 0],
+        [6, 4, 1, 0, 0, 0],
+        [1, 2, 0, 1, 0, 0],
         [-1, 1, 0, 0, 1, 0],
-        [ 0, 1, 0, 0, 0, 1],
+        [0, 1, 0, 0, 0, 1],
     ]
 
     bprimal = [24, 6, 1, 2]
 
-    Zvector = [5, 4, 0, 0, 0, 0 ]
+    Zvector = [5, 4, 0, 0, 0, 0]
 
     nvars = 2
 
-    simplex(matrix=Aprimal, rhs=bprimal, z=Zvector, numxvars=nvars, direction=1)
+    sols, lastrows, table = simplex(matrix=Aprimal, rhs=bprimal,
+                                    z=Zvector, numxvars=nvars, direction=1)
+
+    print(table)
