@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 def simplex(matrix, rhs, z, numxvars, direction=1):
     '''Simplex algorithm to solve linear programming problems
@@ -36,7 +37,7 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
 
     num_rows, num_cols = matrix.shape
 
-    onecols = np.where(matrix == 1)[1]
+    onecols = np.where(matrix == 1 & (np.abs(matrix).sum(axis=0) == 1))[1]
     cb_index = onecols[onecols >= numxvars]
     cb = z[cb_index]
 
@@ -98,4 +99,20 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
             print(f"Optimal solution found in {iteration} iterations")
             print((*zip(labels, np.round(solution, 3))))
 
-    return np.array(solutions), fvalues, np.vstack((zj, net_evaluation))
+    return pd.DataFrame(np.array(solutions), index=range(1, iteration + 1), columns=labels),  pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels)
+
+if __name__ == '__main__':
+    Aprimal = [
+        [ 6, 4, 1, 0, 0, 0],
+        [ 1, 2, 0, 1, 0, 0],
+        [-1, 1, 0, 0, 1, 0],
+        [ 0, 1, 0, 0, 0, 1],
+    ]
+
+    bprimal = [24, 6, 1, 2]
+
+    Zvector = [5, 4, 0, 0, 0, 0 ]
+
+    nvars = 2
+
+    simplex(matrix=Aprimal, rhs=bprimal, z=Zvector, numxvars=nvars, direction=1)
