@@ -1,4 +1,4 @@
-
+﻿
 \section{Duality Theorems}
 \label{sec:duality-theorems}
 
@@ -146,11 +146,30 @@ $y$&0.1&0.2&2.0\\
   \par}
 \end{onlyenv}
 
-% \min Z = 0.07x_1 + 0.05x_2
-% 01x_1  \geq 0.4
-% 0.1x_2 \geq 0.6
-% 0.1x_1 + 0.2x_2 \geq 2.0
-% 0.2x_1 + 0.1x_2 \geq 1.8
+  \begin{onlyenv}<3>
+      
+    \[    \min Z = 0.07x_1 + 0.05x_2\]
+
+  {\centering
+    subject to
+
+    \vspace{3mm}
+
+    \sysdelim..%
+    \sysalign{r,r}%
+    \systeme[x_1x_2]%
+    {
+      0.1x_1  \geq 0.4,
+      0.1x_2 \geq 0.6,
+      0.1x_1 + 0.2x_2 \geq 2.0,
+      0.2x_1 + 0.1x_2 \geq 1.8
+    }
+    
+    $x_1, x_2 \geq 0$
+  \par}
+  \end{onlyenv}
+
+
 \end{frameExample}
 
 
