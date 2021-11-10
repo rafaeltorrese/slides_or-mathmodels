@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 
-def simplex(matrix, rhs, z, numxvars, varlabel='x', direction=1):
+def simplex(matrix, rhs, z,  varlabel='x', direction=1):
     '''Simplex algorithm to solve linear programming problems
 
     Parameters
@@ -13,8 +13,6 @@ def simplex(matrix, rhs, z, numxvars, varlabel='x', direction=1):
     rhs: numpy ndarray
         Right-hand side vector
 
-    numxvars: int
-        Number of x variables
 
     direction: {+1 , -1}
         Use +1 for maximization and -1 for minimization.
@@ -124,6 +122,6 @@ if __name__ == '__main__':
     nvars = 2
 
     sols, lastrows, table, bsolution, cbindx = simplex(matrix=Aprimal, rhs=bprimal,
-                                                       z=Zvector, numxvars=nvars,  direction=1)
+                                                       z=Zvector,   direction=1)
 
     print(sols.loc['iter02'])
