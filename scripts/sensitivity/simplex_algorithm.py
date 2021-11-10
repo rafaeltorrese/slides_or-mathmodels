@@ -44,10 +44,9 @@ def simplex(matrix, rhs, z, numxvars, varlabel='x', direction=1):
 
     num_rows, num_cols = matrix.shape
 
-    onecols = np.where(matrix == 1 & (np.abs(matrix).sum(axis=0) == 1))[1]
-    cb_index = onecols[onecols >= numxvars]
+    # onecols = np.where(matrix == 1 & (np.abs(matrix).sum(axis=0) == 1))[0]
+    cb_index = np.where(np.abs(matrix).sum(axis=0) == 1)[0]
     cb = z[cb_index]
-
     zj = cb.dot(matrix)
 
     net_evaluation = direction * (z - zj)
@@ -112,12 +111,12 @@ def simplex(matrix, rhs, z, numxvars, varlabel='x', direction=1):
 
 
 if __name__ == '__main__':
-    Aprimal = [
+    Aprimal = np.array([
         [6, 4, 1, 0, 0, 0],
         [1, 2, 0, 1, 0, 0],
         [-1, 1, 0, 0, 1, 0],
         [0, 1, 0, 0, 0, 1],
-    ]
+    ])
 
     bprimal = [24, 6, 1, 2]
 
