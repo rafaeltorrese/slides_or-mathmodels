@@ -44,7 +44,6 @@ def simplex(matrix, rhs, z, numxvars, varlabel='x', direction=1):
 
     num_rows, num_cols = matrix.shape
 
-    # onecols = np.where(matrix == 1 & (np.abs(matrix).sum(axis=0) == 1))[0]
     cb_index = np.where(np.abs(matrix).sum(axis=0) == 1)[0]
     cb = z[cb_index]
     zj = cb.dot(matrix)
