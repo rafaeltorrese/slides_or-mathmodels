@@ -5,33 +5,26 @@ np.set_printoptions(formatter={'all': lambda x: str(Fraction(x).limit_denominato
 
 from simplex_algorithm import simplex
 
-A = np.array(
-    [
-        [8, 3, 4, 1, 1, 0, 0], 
-        [2, 6, 1, 5, 0, 1, 0],
-        [1, 4, 5, 2, 0, 0, 1],
+A = np.array([
+        [1, 1, 1,  1, 1, 0, 0], 
+        [6, 4, 2,  1, 0, 1, 0],
+        [2, 4, 9, 10, 0, 0, 1],
         ]
 )
 
-b = np.array([7, 3, 8])
+b = np.array([12, 90, 70])
 
-zvector = np.array([3, 4, 1, 7, 0, 0, 0])
+zvector = np.array([3, 4, 6, 10, 0, 0, 0])
 
 sols, lastrows, table, bsolution, cbindx = simplex(matrix=A, rhs=b,
                                                        z=zvector,   direction=1)
 
-labels = 'x1 x2 x3 x4 s1 s2 s3'.split()                                                       
+labels = 'x1 x2 x3 x4 s1 s2 s3'.split()
 label_basis = [labels[i] for i in cbindx]
-
+print(f'Basis: {label_basis}')
 print('Last Rows\n', lastrows, '\n')
-print(f'Basis: {label_basis}\n')
-print(bsolution.to_numpy(), '\n')
-
-print(zvector[cbindx])
-print(np.dot(bsolution.to_numpy(), zvector[cbindx]))
+print(bsolution, '\n')
 dirname = r'C:\Users\rafael.torrese\Documents'
-
-
 
 # table.to_excel(f'{dirname}\ex01.xlsx')
 
