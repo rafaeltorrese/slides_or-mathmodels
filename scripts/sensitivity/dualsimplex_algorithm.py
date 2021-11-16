@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 
-def dual_simplex(matrix, rhs, z, numxvars, varlabel='x'):
+def dual_simplex(matrix, rhs, z, varlabel='x'):
     '''Dual Simplex algorithm to solve linear programming problems
 
     Parameters
@@ -23,10 +23,8 @@ def dual_simplex(matrix, rhs, z, numxvars, varlabel='x'):
 
     num_rows, num_cols = matrix.shape
 
-    onecols = np.where(matrix == 1 & (np.abs(matrix).sum(axis=0) == 1))[1]
-    cb_index = onecols[onecols >= numxvars]
+    cb_index = np.where(matrix.sum(axis=0) == 1)[0]
     cb = z[cb_index]
-
     zj = cb.dot(matrix)
 
     net_evaluation = z - zj
@@ -35,6 +33,7 @@ def dual_simplex(matrix, rhs, z, numxvars, varlabel='x'):
 
     labels = [f"{varlabel}{i + 1}" for i in range(num_cols)]
     basis = [labels[i] for i in cb_index]
+
     iteration = 0
     if np.any(net_evaluation > 0):
         print("Method Fails")
@@ -94,7 +93,10 @@ def dual_simplex(matrix, rhs, z, numxvars, varlabel='x'):
         if np.all(net_evaluation <= 0) and np.all(rhs >= 0):
             print(f"Optimal solution found in {iteration} iterations")
             print(basis)
-            return pd.DataFrame(np.array(solutions), index=[f'iter{str(i).zfill(2)}' for i in range(1, iteration + 1)], columns=labels), pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels), pd.DataFrame(matrix, columns=labels, index=basis), pd.Series(rhs, index=basis)
+            return pd.DataFrame(np.array(solutions), index=[f'iter{str(i).zfill(2)}' for i in range(1, iteration + 1)], columns=labels),\
+                pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels),\
+                pd.DataFrame(matrix, columns=labels, index=basis),\
+                pd.Series(rhs, index=basis)
 
 
 if __name__ == '__main__':
@@ -109,6 +111,6 @@ if __name__ == '__main__':
     Z = [-24, -6, -1, -2, 0, 0]
 
     table, lastrows, table, rhs = dual_simplex(
-        matrix=A, rhs=b, z=Z, numxvars=4)
+        matrix=A, rhs=b, z=Z)
 
     print(rhs)
