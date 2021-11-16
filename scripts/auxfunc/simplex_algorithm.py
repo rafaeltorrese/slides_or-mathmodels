@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 
-def simplex(matrix, rhs, z, numxvars, direction=1):
+def simplex(matrix, rhs, z, direction=1):
     '''Simplex algorithm to solve linear programming problems
 
     Parameters
@@ -12,9 +12,6 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
 
     rhs: numpy ndarray
         Right-hand side vector
-
-    numxvars: int
-        Number of x variables
 
     direction: {+1 , -1}
         Use +1 for maximization and -1 for minimization.
@@ -38,20 +35,15 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
 
     num_rows, num_cols = matrix.shape
 
-    onecols = np.where(matrix == 1 & (np.abs(matrix).sum(axis=0) == 1))[1]
-    cb_index = onecols[onecols >= numxvars]
+    cb_index = np.where(matrix.sum(axis=0) == 1)[0]
     cb = z[cb_index]
 
     zj = cb.dot(matrix)
 
     net_evaluation = direction * (z - zj)
 
-    solutions = []
-    fvalues = []
-    basis = []
-
     labels = [f"x{i + 1}" for i in range(num_cols)]
-
+    basis = [labels[i] for i in cb_index]
     iteration = 0
     while np.any(net_evaluation > 0):
         solution = np.zeros_like(z)
@@ -88,22 +80,20 @@ def simplex(matrix, rhs, z, numxvars, direction=1):
         solution[cb_index] = rhs  # basics
 
         iteration += 1
-        basis.append(entering_label)
+        basis[leaving] = entering_label
         print(f'Iteration {iteration}. {leaving_label} ---> {entering_label}')
         print(matrix,  "\n")
         print(f'Solution {solution} \t Z: {cb.dot(rhs):0.2f}')
         print(f'cj - zj: {net_evaluation}')
         print(f'rhs vector {direction * rhs}', "\n")
 
-        solutions.append(solution)
-        fvalues.append(cb.dot(rhs))
         if np.all(net_evaluation <= 0):
             print(f"Optimal solution found in {iteration} iterations")
             print((*zip(labels, np.round(solution, 3))))
             print(basis)
             print()
 
-    return pd.DataFrame(np.array(solutions), index=range(1, iteration + 1), columns=labels),  pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels), pd.DataFrame(matrix, columns=labels)
+    return pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels), pd.DataFrame(matrix, index=basis, columns=labels)
 
 
 if __name__ == '__main__':
@@ -120,7 +110,7 @@ if __name__ == '__main__':
 
     nvars = 2
 
-    sols, lastrows, table = simplex(matrix=Aprimal, rhs=bprimal,
-                                    z=Zvector, numxvars=nvars, direction=1)
+    lastrows, table = simplex(matrix=Aprimal, rhs=bprimal,
+                              z=Zvector, direction=1)
 
     print(table)
