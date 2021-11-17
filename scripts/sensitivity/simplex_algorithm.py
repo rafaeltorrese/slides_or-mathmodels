@@ -104,7 +104,11 @@ def simplex(matrix, rhs, z,  varlabel='x', direction=1):
             print(f"Optimal solution found in {iteration} iterations")
             print(f'Z value: {zvalue}')
 
-            return pd.DataFrame(np.array(solutions), index=[f'iter{str(i).zfill(2)}' for i in range(1, iteration + 1)], columns=labels),  pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels), pd.DataFrame(matrix, columns=labels, index=basis), pd.Series(rhs, index=basis,  name='solution'), cb_index
+            return pd.DataFrame(np.array(solutions), index=[f'iter{str(i).zfill(2)}' for i in range(1, iteration + 1)], columns=labels),\
+                pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels),\
+                pd.DataFrame(matrix, columns=labels, index=basis),\
+                pd.Series(rhs, index=basis,  name='solution'),\
+                cb_index
 
 
 if __name__ == '__main__':
