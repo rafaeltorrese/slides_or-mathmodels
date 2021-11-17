@@ -23,7 +23,7 @@ def dual_simplex(matrix, rhs, z, varlabel='x'):
 
     num_rows, num_cols = matrix.shape
 
-    cb_index = np.where(matrix.sum(axis=0) == 1)[0]
+    cb_index = np.where((matrix == 1) & (matrix.sum(axis=0) == 1))[1]
     cb = z[cb_index]
     zj = cb.dot(matrix)
 
