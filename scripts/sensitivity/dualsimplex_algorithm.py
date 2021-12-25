@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 
 
-def dual_simplex(matrix, rhs, z, numxvars, varlabel='x'):
-    '''Simplex algorithm to solve linear programming problems
+def dual_simplex(matrix, rhs, z, varlabel='x'):
+    '''Dual Simplex algorithm to solve linear programming problems
 
     Parameters
     ----------
@@ -16,8 +16,6 @@ def dual_simplex(matrix, rhs, z, numxvars, varlabel='x'):
     numxvars: int
         Number of x variables
 
-    direction: {+1 , -1}
-        For maximization problems use +1 and for minimization problems use -1 instead.
     '''
     matrix = np.array(matrix, dtype=float)
     rhs = np.array(rhs, dtype=float)
@@ -25,10 +23,8 @@ def dual_simplex(matrix, rhs, z, numxvars, varlabel='x'):
 
     num_rows, num_cols = matrix.shape
 
-    onecols = np.where(matrix == 1 & (np.abs(matrix).sum(axis=0) == 1))[1]
-    cb_index = onecols[onecols >= numxvars]
+    cb_index = np.where((matrix == 1) & (matrix.sum(axis=0) == 1))[1]
     cb = z[cb_index]
-
     zj = cb.dot(matrix)
 
     net_evaluation = z - zj
@@ -36,6 +32,7 @@ def dual_simplex(matrix, rhs, z, numxvars, varlabel='x'):
     solutions = []
 
     labels = [f"{varlabel}{i + 1}" for i in range(num_cols)]
+    basis = [labels[i] for i in cb_index]
 
     iteration = 0
     if np.any(net_evaluation > 0):
@@ -46,6 +43,7 @@ def dual_simplex(matrix, rhs, z, numxvars, varlabel='x'):
         solution = np.zeros_like(z)
 
         leaving = rhs.argmin()   # leaving variables (index)
+        leaving_label = labels[cb_index[leaving]]
         key_row = matrix[leaving]
 
         if np.all(key_row >= 0):
@@ -56,6 +54,7 @@ def dual_simplex(matrix, rhs, z, numxvars, varlabel='x'):
                            out=np.full_like(z, np.inf), where=key_row < 0)
 
         entering = ratios.argmin()
+        entering_label = labels[entering]
 
         pivot = matrix[leaving, entering]
 
@@ -77,10 +76,11 @@ def dual_simplex(matrix, rhs, z, numxvars, varlabel='x'):
         net_evaluation = z - zj
 
         solution[cb_index] = rhs  # basics
+        basis[leaving] = entering_label
 
         iteration += 1
 
-        print(f"Iteration {iteration}")
+        print(f'Iteration {iteration}. {leaving_label} ---> {entering_label}')
         print(matrix,  "\n")
         print(f'Solution {solution} \t Z: {cb.dot(rhs):0.2f} \n')
 
@@ -92,8 +92,11 @@ def dual_simplex(matrix, rhs, z, numxvars, varlabel='x'):
 
         if np.all(net_evaluation <= 0) and np.all(rhs >= 0):
             print(f"Optimal solution found in {iteration} iterations")
-
-    return pd.DataFrame(matrix, columns=labels), pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels)
+            print(basis)
+            return pd.DataFrame(np.array(solutions), index=[f'iter{str(i).zfill(2)}' for i in range(1, iteration + 1)], columns=labels),\
+                pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels),\
+                pd.DataFrame(matrix, columns=labels, index=basis),\
+                pd.Series(rhs, index=basis)
 
 
 if __name__ == '__main__':
@@ -107,6 +110,7 @@ if __name__ == '__main__':
 
     Z = [-24, -6, -1, -2, 0, 0]
 
-    table, lastrows = dual_simplex(matrix=A, rhs=b, z=Z, numxvars=4)
+    table, lastrows, table, rhs = dual_simplex(
+        matrix=A, rhs=b, z=Z)
 
-    print(table)
+    print(rhs)

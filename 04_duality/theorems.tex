@@ -1,4 +1,4 @@
-
+﻿
 \section{Duality Theorems}
 \label{sec:duality-theorems}
 
@@ -69,7 +69,8 @@
 
 
 \begin{frameExample}{}{}
-  \[ \max Z = 5x_1 + 4x_2 \]
+  \begin{onlyenv}<1>
+      \[ \max Z = 5x_1 + 4x_2 \]
       {\centering
       s.t.%
 \vspace{4mm}
@@ -87,6 +88,26 @@
       \vspace{5mm}
       $x_1, x_2 \geq 0$
       \par}
+  \end{onlyenv}
+  \begin{onlyenv}<2>
+    Dual Formulation
+      \[ \min W = 24y_1 + 6y_2 + y_3 + 2y_4 \]
+      {\centering
+      s.t.%
+\vspace{4mm}
+      
+        \sysdelim..%
+        \sysalign{r,r}%
+        \systeme[y_1y_2y_3y_4]%
+        {%
+          6y_1 + y_2 - y_3   \geq 5,
+          4y_1 + 2y_2 + y_3 + y_4  \geq 4
+      }
+
+      \vspace{5mm}
+      $y_1, y_2, y_3, y_4 \geq 0$
+      \par}
+  \end{onlyenv}
 \end{frameExample}
   
 \begin{frame}{Correspondencia entre las Soluciones Primal--Dual}
@@ -125,11 +146,30 @@ $y$&0.1&0.2&2.0\\
   \par}
 \end{onlyenv}
 
-% \min Z = 0.07x_1 + 0.05x_2
-% 01x_1  \geq 0.4
-% 0.1x_2 \geq 0.6
-% 0.1x_1 + 0.2x_2 \geq 2.0
-% 0.2x_1 + 0.1x_2 \geq 1.8
+  \begin{onlyenv}<3>
+      
+    \[    \min Z = 0.07x_1 + 0.05x_2\]
+
+  {\centering
+    subject to
+
+    \vspace{3mm}
+
+    \sysdelim..%
+    \sysalign{r,r}%
+    \systeme[x_1x_2]%
+    {
+      0.1x_1  \geq 0.4,
+      0.1x_2 \geq 0.6,
+      0.1x_1 + 0.2x_2 \geq 2.0,
+      0.2x_1 + 0.1x_2 \geq 1.8
+    }
+    
+    $x_1, x_2 \geq 0$
+  \par}
+  \end{onlyenv}
+
+
 \end{frameExample}
 
 
@@ -205,6 +245,38 @@ $y$&0.1&0.2&2.0\\
   \item Determine the product mix that will maximize the total profit.
   \item From the final simplex table, write the solution to the dual and give the economic interpretation. 
   \end{enumerate}
+\end{frameExample}
+
+\begin{frameExample}{}{}
+  A company manufactures three products : tables, chairs and racks. The resource utilization, resource availability and profit/unit of each product are given below :
+
+
+  {\centering
+    \scalebox{0.6}{
+      \begin{tabular}{lrrrr}
+      \toprule
+        Product   & \multicolumn{1}{c}{Timber} & \multicolumn{1}{c}{Time in manufacturing} & \multicolumn{1}{c}{Time in finishing} & \multicolumn{1}{c}{Profit / Unit} \\
+                  & \multicolumn{1}{c}{(cubic feet)} &\multicolumn{1}{c}{department (hours)} &   \multicolumn{1}{c}{department (hours)}  &      \multicolumn{1}{c}{(\$)}         \\
+      \midrule
+      Table     & 10     & 7                     & 2                 & 12            \\
+      Chair     & 2      & 3                     & 4                 & 3             \\
+      Rack      & 1      & 2                     & 1                 & 1             \\
+      \midrule
+      Available & 100    & 77                    & 80                &              \\
+      \bottomrule
+      \end{tabular}
+    }
+  \par}
+
+\begin{enumerate}[i)]
+\item  Formulate itas a linear programming problem.
+\item  Write its dual.
+\item  Find the optimal solution to the given problem.
+\item  From the final optimal table, find the solution to the dual problem.
+\item  What are the shadow prices of the resources?
+\item  Give economic interpretation of the dual problem.
+\end{enumerate}
+  
 \end{frameExample}
 
 %%% Local Variables:

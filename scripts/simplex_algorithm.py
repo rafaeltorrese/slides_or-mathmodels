@@ -1,23 +1,20 @@
-#%%
 import numpy as np
 import pandas as pd
-<<<<<<< HEAD
-#%%
-def simplex(matrix, rhs, z, numxvars, direction=1):
-=======
 
 
-def simplex(matrix, rhs, z, direction=1):
->>>>>>> c07e6c4f2b46a6747ca4b089fb0e0f54f5fb12a9
+def simplex(matrix, rhs, z, numxvars, varlabel='x', direction=1):
     '''Simplex algorithm to solve linear programming problems
 
     Parameters
     ----------
     matrix: numpy ndarray
-        Matrix of coefficients in the left-hand side in standard form
+        Matrix of coefficients in the left-hand side
 
     rhs: numpy ndarray
         Right-hand side vector
+
+    numxvars: int
+        Number of x variables
 
     direction: {+1 , -1}
         Use +1 for maximization and -1 for minimization.
@@ -31,7 +28,7 @@ def simplex(matrix, rhs, z, direction=1):
         Values of z (objective function)
 
     lastrows: numpy ndarray
-        Last rows of optimal table, this rows correspond to Zj and cj - Zj
+        Last rows of optimal table, this rows corresponde to Zj and cj - Zj
     '''
     print("="*10, "Simplex Method", "="*10)
 
@@ -41,15 +38,20 @@ def simplex(matrix, rhs, z, direction=1):
 
     num_rows, num_cols = matrix.shape
 
-    cb_index = np.where(matrix.sum(axis=0) == 1)[0]
+    onecols = np.where(matrix == 1 & (np.abs(matrix).sum(axis=0) == 1))[1]
+    cb_index = onecols[onecols >= numxvars]
     cb = z[cb_index]
 
     zj = cb.dot(matrix)
 
     net_evaluation = direction * (z - zj)
 
-    labels = [f"x{i + 1}" for i in range(num_cols)]
+    solutions = []
+    fvalues = []
+
+    labels = [f"{varlabel}{i + 1}" for i in range(num_cols)]
     basis = [labels[i] for i in cb_index]
+
     iteration = 0
     while np.any(net_evaluation > 0):
         solution = np.zeros_like(z)
@@ -89,22 +91,18 @@ def simplex(matrix, rhs, z, direction=1):
         basis[leaving] = entering_label
         print(f'Iteration {iteration}. {leaving_label} ---> {entering_label}')
         print(matrix,  "\n")
-<<<<<<< HEAD
-        print("Solution", solution, f"\tZ: {cb.dot(rhs):0.2f}")
-        print(f'zj: {zj}')
-=======
         print(f'Solution {solution} \t Z: {cb.dot(rhs):0.2f}')
->>>>>>> c07e6c4f2b46a6747ca4b089fb0e0f54f5fb12a9
         print(f'cj - zj: {net_evaluation}')
         print(f'rhs vector {direction * rhs}', "\n")
 
+        solutions.append(solution)
+        fvalues.append(cb.dot(rhs))
         if np.all(net_evaluation <= 0):
             print(f"Optimal solution found in {iteration} iterations")
-            print((*zip(labels, np.round(solution, 3))))
-            print(basis)
-            print()
+            # print((*zip(labels, np.round(solution, 3))))
 
-    return pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels), pd.DataFrame(matrix, index=basis, columns=labels)
+            print()
+            return pd.DataFrame(np.array(solutions), index=[f'iter{str(i).zfill(2)}' for i in range(1, iteration + 1)], columns=labels),  pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels), pd.DataFrame(matrix, columns=labels, index=basis), pd.Series(rhs, index=basis), cb_index
 
 
 if __name__ == '__main__':
@@ -121,33 +119,7 @@ if __name__ == '__main__':
 
     nvars = 2
 
-    lastrows, table = simplex(matrix=Aprimal, rhs=bprimal,
-                              z=Zvector, direction=1)
+    sols, lastrows, table, bsolution, cbindx = simplex(matrix=Aprimal, rhs=bprimal,
+                                                       z=Zvector, numxvars=nvars,  direction=1)
 
-<<<<<<< HEAD
-    return pd.DataFrame(np.array(solutions), index=range(1, interation + 1), columns=labels), pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels)
-#%%
-if __name__ == '__main__':
-    LHS = np.array([
-    [1,  2],
-    [1,  1],
-    [1, -1],
-    [1, -2],
-])
-
-nconstraints, nvars = LHS.shape  # number of variables, only x variables
-
-I = np.eye(LHS.shape[0])
-print(I)
-M = np.hstack((LHS, I))
-print(A)
-
-B = np.array([10, 6, 2, 1])
-
-Z = np.array([2, 1])
-
-simplex(matrix=M, rhs=B, z=np.concatenate((Z, [0] * nconstraints)), numxvars=nvars, direction=1)
-#%%
-=======
-    print(table)
->>>>>>> c07e6c4f2b46a6747ca4b089fb0e0f54f5fb12a9
+    print(sols.loc['iter02'])
