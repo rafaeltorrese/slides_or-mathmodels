@@ -1,0 +1,109 @@
+\documentclass[spanish,letterpaper,11pt]{exam}
+
+
+% -------------------- Packages --------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{systeme}
+\usepackage{cancel}
+% -------------------- Definitions --------------------
+
+\newcommand{\tema}{Método Analítico}
+%
+\extrafootheight{-0.5in}
+\header%
+{Dr. Rafael Torres Escobar}% Left
+{INVESTIGACIÓN DE OPERACIONES -- MODELOS MATEMÁTICOS \\ \tema}% Center
+{Página \\ \thepage\ de \numpages} % Right
+\headrule
+\pointpoints{punto}{puntos}
+\author{Dr. Rafael Torres Escobar}
+%
+% \printanswers % comentar para mostrar respuestas
+% ================================================== 
+\begin{document}
+\begin{questions}
+    \question
+    Resolver por método analítico. Mostrar todos los sistemas de ecuaciones. Clasificar cada solución como básica, no-básica, factible e infactible según corresponda.
+
+\[ \max Z = 2x_1 + 3x_2\]
+{\centering
+  subject to
+
+  \sysalign{r,r}%
+  \sysdelim..%
+  \systeme[x_1x_2]%
+  {
+    x_1 + x_2 \leq 30,
+    x_2 \geq 3,
+    x_2 \leq 12,
+    x_1 - x_2 \geq 0,
+    x_1 \leq 20
+  }
+
+  $x_1, x_2 \geq 0$
+  \par}
+
+    \begin{solution}
+        
+        Standard form: 
+
+        \[ Z = 2x_1 + 3x_2\]
+        {\centering
+          subject to
+        
+          \sysalign{r,r}%
+          \sysdelim..%
+          \systeme[x_1x_2s_1s_2s_3_s_4s_5]%
+          {
+            x_1 + x_2 + s_1 = 30,
+            x_2 - s_2 = 3,
+            x_2 + s_3 = 12,
+            x_1 - x_2 - s_4 = 0,
+            x_1 + s_5 = 20
+          }
+        
+          $x_1, x_2, s_1, s_2, s_3, s_4, s_5 \geq 0$
+          \par}
+          
+          \begin{flalign*}
+              m & =  5\\
+              m + n & = 7\\
+              _{(m + n)}C_{m} & = \frac{7!}{5!2!} = \frac{7 \cdot 6}{2!} = 21
+          \end{flalign*}
+       Total number of  combinations: 
+    \end{solution}
+
+    \vspace{1cm}
+    \question
+    % EXAMPLE 2.6-1 (Production Allocation Problem} Gupta ebook
+  Una empresa produce tres productos. Estos productos se procesan en tres máquinas diferentes. El tiempo requerido para fabricar una unidad de cada uno de los tres productos y la capacidad diaria de las tres máquinas se detallan en la tabla a continuación.
+
+  {\centering
+      \begin{tabular}{ccccc}
+        \toprule
+        Máquina & \multicolumn{3}{l}{Tiempo por unidad (minutos)} & Capacidad       \\
+                &  Producto 1             &    Producto 2            &     Producto 3           & (Minutos / día) \\
+        \midrule
+        $M_1$   & 2             & 3              & 2              & 440             \\
+        $M_2$   & 4             & --             & 3              & 470             \\
+        $M_3$   & 2             & 5              & --             & 430\\
+        \bottomrule
+      \end{tabular}
+    \par}
+  
+
+   Se requiere determinar la cantidad diaria de unidades que se fabricarán para cada producto. El beneficio por unidad para el producto 1, 2 y 3 es de \$ 4, \$ 3 y \$ 6 respectivamente. Se supone que todas las cantidades producidas se consumen en el mercado. Formule el modelo matemático (L.P.) que maximizará la ganancia diaria. 
+   
+   \begin{itemize}
+       \item Resolver por método analítico. 
+       \item Expresar todos los sistemas de ecuaciones que intervienen. 
+       \item Clasificar soluciones como básicas, no básicas y factibles e infactibles.
+   \end{itemize}
+
+   \begin{solution}
+       
+   \end{solution}
+\end{questions}
+\end{document}
