@@ -29,7 +29,7 @@ env
 # For Mac
 .DS_Store
 
-
+*/activities/*.pdf
 # for vscode
 .vscode
 .code-workspace
