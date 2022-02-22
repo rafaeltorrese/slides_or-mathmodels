@@ -33,3 +33,5 @@ env
 # for vscode
 .vscode
 .code-workspace
+
+*.csv
