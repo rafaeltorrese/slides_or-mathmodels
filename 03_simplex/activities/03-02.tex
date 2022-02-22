@@ -104,6 +104,29 @@
 
    \begin{solution}
        
+    Standard form: 
+
+        \[ \max Z = 4x_1 + 3x_2 + 6x_3 + 0s_1 + 0s_2 + 0s_3\]
+        {\centering
+          subject to
+        
+          \sysalign{r,r}%
+          \sysdelim..%
+          \systeme[x_1x_2x_3s_1s_2s_3]%
+          {
+            2x_1 + 3x_2 + 2x_3 +  s_1 = 440,
+            4x_1 +      + 3x_3 +  s_2 = 470,
+            2x_1 + 5x_2        +  s_3 = 430,
+          }        
+          $x_1, x_2, x_3, s_1, s_2, s_3 \geq 0$
+          \par}
+          
+          \begin{flalign*}
+              m & =  3\\
+              m + n & = 6\\
+              _{(m + n)}C_{m} & = \frac{6!}{3!3!} = \frac{6 \cdot 5 \cdot 4 \cdot}{3!} = 20
+          \end{flalign*}
+       
    \end{solution}
 \end{questions}
 \end{document}
