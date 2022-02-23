@@ -20,7 +20,7 @@
 \pointpoints{punto}{puntos}
 \author{Dr. Rafael Torres Escobar}
 %
-% \printanswers % comentar para mostrar respuestas
+\printanswers % comentar para mostrar respuestas
 % ================================================== 
 \begin{document}
 \begin{questions}
@@ -72,7 +72,60 @@
               m + n & = 7\\
               _{(m + n)}C_{m} & = \frac{7!}{5!2!} = \frac{7 \cdot 6}{2!} = 21
           \end{flalign*}
-       Total number of  combinations: 
+
+
+          \begin{tabular}{rr}        
+          Number of basic feasibile solutions: &5\\
+          Number of basic infeasible solutions: &12\\
+          Number of singular systems: &4\\
+          \end{tabular}
+
+          The optimal solution is
+
+{
+  \centering
+  \begin{tabular}{lllll}
+    \toprule
+    $x_1$ & $x_2$ & $s_2$ & $s_4$ & $s_5$ \\
+     18 & 12 & 9 & 6 & 2 \\     
+    \bottomrule
+    \end{tabular}
+  \par
+}
+
+The maximum value of $z$ is: 72.0
+
+Feasible systems
+
+{
+  \centering
+  \begin{tabular}{lllll}
+    \toprule
+     $x_1$ & $x_2$ & $s_1$ & $s_2$ & $s_5$ \\
+     $x_1$ & $x_2$ & $s_1$ & $s_3$ & $s_4$ \\
+     $x_1$ & $x_2$ & $s_1$ & $s_3$ & $s_5$ \\
+     $x_1$ & $x_2$ & $s_2$ & $s_3$ & $s_4$ \\
+     $x_1$ & $x_2$ & $s_2$ & $s_4$ & $s_5$ \\
+    \bottomrule
+    \end{tabular}
+  \par
+}
+
+Singular Systems
+
+{
+  \centering
+  \begin{tabular}{lllll}
+    \toprule
+     $x_1$ & $x_2$ & $s_1$ & $s_4$ & $s_5$ \\
+     $x_1$ & $s_1$ & $s_2$ & $s_4$ & $s_5$ \\
+     $x_1$ & $s_1$ & $s_3$ & $s_4$ & $s_5$ \\
+     $x_2$ & $s_1$ & $s_2$ & $s_3$ & $s_4$ \\
+    \bottomrule
+    \end{tabular}
+  \par
+}
+
     \end{solution}
 
     \vspace{1cm}
@@ -117,8 +170,10 @@
             2x_1 + 3x_2 + 2x_3 +  s_1 = 440,
             4x_1 +      + 3x_3 +  s_2 = 470,
             2x_1 + 5x_2        +  s_3 = 430,
-          }        
+          }
+
           $x_1, x_2, x_3, s_1, s_2, s_3 \geq 0$
+          
           \par}
           
           \begin{flalign*}
@@ -126,7 +181,61 @@
               m + n & = 6\\
               _{(m + n)}C_{m} & = \frac{6!}{3!3!} = \frac{6 \cdot 5 \cdot 4 \cdot}{3!} = 20
           \end{flalign*}
-       
-   \end{solution}
+   
+
+          \begin{tabular}{rr}        
+            Number of basic feasibile solutions: &8\\
+            Number of basic infeasible solutions: &10\\
+            Number of singular systems: &2\\
+            \end{tabular}
+
+        The maximum value of $z$ is: 1066.667. The optimal solution is 
+
+        {\centering
+        \begin{tabular}{lll}
+          \toprule
+          $x_2$ & $x_3$ & $s_3$ \\
+          42.22 & 156.667 & 218.889\\ 
+          \bottomrule           
+        \end{tabular}
+        \par
+     } 
+                
+          Number of feasibile solutions: 8. 
+          
+          Feasible systems
+
+{
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+     $x_1$ & $x_2$ & $x_3$ \\
+     $x_1$ & $x_2$ & $s_1$ \\
+     $x_1$ & $s_1$ & $s_3$ \\
+     $x_2$ & $x_3$ & $s_2$ \\
+     $x_2$ & $x_3$ & $s_3$ \\
+     $x_2$ & $s_1$ & $s_2$ \\
+     $x_3$ & $s_1$ & $s_3$ \\
+     $s_1$ & $s_2$ & $s_3$ \\
+     \bottomrule
+    \end{tabular}
+  \par
+}
+
+   
+   Singular matrix with the following variables:
+
+   {
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+     $x_2$ & $s_1$ & $s_3$ \\
+     \midrule
+     $x_3$ & $s_1$ & $s_2$ \\
+    \bottomrule
+    \end{tabular}
+  \par{}
+}
+   \end{solution}   
 \end{questions}
 \end{document}
