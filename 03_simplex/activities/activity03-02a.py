@@ -1,5 +1,7 @@
 # %%
 from itertools import combinations
+from tabulate import tabulate
+
 import numpy as np
 from pprint import pprint
 # %%
@@ -40,12 +42,13 @@ z = np.array(
     ]
 )
 # %%
-labels = np.array('x1 x2 s1 s2 s3 s4 s5'.split())
-print(labels)
+labels = np.array('$x_1$ $x_2$ $s_1$ $s_2$ $s_3$ $s_4$ $s_5$'.split())
 # %%
 m, n = A.shape
 comb_list = tuple(combinations(range(n), m))
 total_combinations = len(comb_list)
+
+print('-' * 20)
 print(f'Number of equations: {m}')
 print(f'Number of variables: {n}')
 print(f'Number of combinations: {total_combinations}')
@@ -57,13 +60,6 @@ comblabels = labels_combination(
 # pprint(np.array(comblabels))
 
 # #%%
-
-# for vars in comb_list:
-#     print(labels[[*vars]])
-#     print(A[:, [*vars]], '\n')
-
-# %%
-
 vector_solution = np.zeros_like(z)
 feasible_solutions = []
 feasible_variables = []  # index of columns in matrix A
@@ -75,7 +71,9 @@ infeasible_variables = []  # index of columns in matrix A
 infeasbile_solutions = []
 infeasbile_labels = []
 # %%
-
+singular_list = []
+#%%
+print('-' * 20)
 for var in comb_list:
     variables = np.array(var)
     # print(labels[variables])
@@ -94,19 +92,47 @@ for var in comb_list:
         zvalues.append(zvalue)
     except np.linalg.LinAlgError as LA:
         print(f'{LA} with system {labels[variables]}')
+        singular_list.append(labels[variables])
     # print()
 
 
-num_infeasibles = len(infeasbile_labels)
-print(f'Number of infeasible solutions: {num_infeasibles}')
-
-print()
 num_feasible = len(feasible_labels)
+num_infeasibles = len(infeasbile_labels)
+num_singular = len(singular_list)
+
+print('-' * 20)
 print(f'Number of feasibile solutions: {num_feasible}')
-print(f'zvalues: {zvalues}')
-print('Feasible variables')
-idmax, zmax = max(enumerate(zvalues), key=lambda t: t[1])
-print(f'The maximum value of z is: {zmax}')
+print(f'Number of infeasible solutions: {num_infeasibles}')
+print(f'Number of singular systems: {num_singular}')
+
+print('-' * 20)
+idopt, zopt = max(enumerate(zvalues), key=lambda t: t[1])
+print(f'The maximum value of z is: {zopt} at index {idopt}')
+
+print('Optimal solution is: ')
 print(
-    f'The optimal solution is {feasible_solutions[idmax]}.  \nThe variables are {feasible_labels[idmax]}')
-pprint(np.array(feasible_labels).tolist())
+    tabulate(
+        [
+            feasible_labels[idopt],
+            feasible_solutions[idopt],            
+        ],
+        # tablefmt='latex'
+    )
+)
+print('-' * 20)
+print('Feasible systems')
+print(
+    tabulate(
+        np.array(feasible_labels).tolist(),
+        tablefmt='latex'
+    )
+)
+
+print('-' * 20)
+print('Singular Systems')
+print(
+    tabulate(
+        singular_list,
+        tablefmt='latex'
+    )
+)
