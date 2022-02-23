@@ -102,7 +102,11 @@ print(f'Number of infeasible solutions: {num_infeasibles}')
 
 print()
 num_feasible = len(feasible_labels)
-print(f'Number of feasbile solutions: {num_feasible}')
+print(f'Number of feasibile solutions: {num_feasible}')
 print(f'zvalues: {zvalues}')
 print('Feasible variables')
+idmax, zmax = max(enumerate(zvalues), key=lambda t: t[1])
+print(f'The maximum value of z is: {zmax}')
+print(
+    f'The optimal solution is {feasible_solutions[idmax]}.  \nThe variables are {feasible_labels[idmax]}')
 pprint(np.array(feasible_labels).tolist())
