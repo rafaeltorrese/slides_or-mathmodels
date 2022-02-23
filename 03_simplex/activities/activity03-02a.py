@@ -78,8 +78,8 @@ infeasbile_labels = []
 
 for var in comb_list:
     variables = np.array(var)
-    print(labels[variables])
-    print(np.delete(labels, variables))
+    # print(labels[variables])
+    # print(np.delete(labels, variables))
     try:
         basic_solution = np.linalg.solve(A[:, variables], b)
         if np.any(basic_solution < 0):
@@ -92,13 +92,6 @@ for var in comb_list:
         feasible_solutions.append(basic_solution)
         zvalue = z[variables].dot(basic_solution)
         zvalues.append(zvalue)
-
-        # print(f'Coefficients in objective function: {z[variables]}')
-
-        # print(f'Objective value: {zvalue}')
-        # vector_solution[~variables] = 0
-        # vector_solution[variables] = basic_solution
-        # print(vector_solution)
     except np.linalg.LinAlgError as LA:
         print(f'{LA} with system {labels[variables]}')
     # print()
