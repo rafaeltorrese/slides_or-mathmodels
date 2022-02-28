@@ -45,7 +45,7 @@ if __name__ == '__main__':
 
     
     
-    simplex(A=A, rhs=b, cj=zvector, direction=1)
+    basis_list = simplex(A=A, rhs=b, cj=zvector, direction=1)
     
 
 
