@@ -16,6 +16,7 @@ def simplex(A, rhs, cj, direction=1):
     iteration = 0
     basis = []
     row_index = [*range(num_equations)]
+    labels = [f'x_{i}' for i in range(1, num_variables + 1)]
     while np.any(net_profit > 0):
         ratios = np.full(num_equations, np.inf)
 
@@ -26,7 +27,7 @@ def simplex(A, rhs, cj, direction=1):
         leaving_idx = ratios.argmin()
 
         pivot = A[leaving_idx, entering_idx]
-        print(f'Leaving {leaving_idx}. Entering {entering_idx}')
+        print(f'Leaving {labels[cb_index[leaving_idx]]}. Entering {labels[entering_idx]}')
 
         if pivot != 1:
             A[leaving_idx] /=  pivot
@@ -36,7 +37,6 @@ def simplex(A, rhs, cj, direction=1):
         rows_index = [*range(num_equations)]
         rows_index.remove(leaving_idx)
         for i in rows_index:
-            # if i == leaving_idx: continue
             target  = -A[i, entering_idx]
             A[i] += target * A[leaving_idx]
             rhs[i] += target * rhs[leaving_idx]
