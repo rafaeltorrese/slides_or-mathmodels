@@ -25,27 +25,27 @@ def get_basis():
 if __name__ == '__main__':
 
     zvector = np.array(
-        [5, 4, 0, 0, 0, 0,]
+        [2, 1, 0, 0, 0, 0,]
     )
 
     A = np.array(
         [
-            [ 6,  4, 1, 0, 0, 0,],
-            [ 1,  2, 0, 1, 0, 0,],
-            [-1,  1, 0, 0, 1, 0,],
-            [ 0, -2, 0, 0, 0, 1,],
+            [ 1,  2, 1, 0, 0, 0,],
+            [ 1,  1, 0, 1, 0, 0,],
+            [ 1, -1, 0, 0, 1, 0,],
+            [ 1, -2, 0, 0, 0, 1,],
         ]
     )
 
     
 
     b = np.array(
-        [24, 6, 1, 2]
+        [10, 6, 2, 1]
     )
 
     
     
-    simplex(A=A, rhs=b, cj=zvector, direction=1)
+    basis_list = simplex(A=A, rhs=b, cj=zvector, direction=1)
     
 
 
