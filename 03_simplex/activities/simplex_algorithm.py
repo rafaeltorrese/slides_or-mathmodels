@@ -7,7 +7,7 @@ def simplex(A, rhs, cj, direction=1):
 
     num_equations, num_variables = A.shape
     
-    cb_index = np.nonzero(np.abs(A).sum(axis=0) == 1)[0]    
+    cb_index = np.nonzero((np.abs(A).sum(axis=0) == 1) & (A.sum(axis=0) == 1) )[0]    
     cb = cj[cb_index]
     
     zj = cb.dot(A)    
