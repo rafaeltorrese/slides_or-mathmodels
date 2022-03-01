@@ -46,7 +46,7 @@ if __name__ == '__main__':
     
     basis_list, A2, b2 = simplex(A=A1, rhs=b1, cj=z1, direction=-1)
 
-    basis2, A3, b3 = simplex(A=A2, rhs=b2, cj=z2, direction=-1, cbidx=basis_list[-1].tolist())
+    basis2, A3, b3 = simplex(A=A2, rhs=b2, cj=z2, direction=-1, cbidx=basis_list[-1])
     
 
 
