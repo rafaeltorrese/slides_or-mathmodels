@@ -1,15 +1,20 @@
 import numpy as np 
 
-def simplex(A, rhs, cj, direction=1):
+def simplex(A, rhs, cj, direction=1, cbidx=None):
     A = A.astype(float)
     rhs = rhs.astype(float)
     cj = cj.astype(float)
 
     num_equations, num_variables = A.shape
     
-    cb_index = np.nonzero((np.abs(A).sum(axis=0) == 1) & (A.sum(axis=0) == 1) )[0]    
+    if cbidx:
+        cb_index = cbidx
+    else:
+        cb_index = np.nonzero((np.abs(A).sum(axis=0) == 1) & (A.sum(axis=0) == 1) )[0]    
     cb = cj[cb_index]
     
+    print(f'Cb index {cb_index}')
+    print(f'Cb: {cb}')
     zj = cb.dot(A)    
     net_profit = direction * (cj - zj)
 
@@ -52,6 +57,4 @@ def simplex(A, rhs, cj, direction=1):
     
     
     print(f'Total iterations {len(np.array(basis).reshape((-1, num_equations)))}')
-    print(A)
-    print(np.array(basis).reshape((-1, num_equations)))
-    return np.array(basis).reshape((-1, num_equations))
+    return np.array(basis).reshape((-1, num_equations)), A, rhs
