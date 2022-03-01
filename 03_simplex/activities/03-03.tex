@@ -20,7 +20,7 @@
 \pointpoints{punto}{puntos}
 \author{Dr. Rafael Torres Escobar}
 %
-\printanswers % comentar para mostrar respuestas
+%\printanswers % comentar para mostrar respuestas
 % ================================================== 
 \begin{document}
 \begin{questions}
@@ -138,5 +138,62 @@
       $x_1 , x_2, s_1, s_2, s_3, s_4, A_3, A_4 \geq 0$
     \par}
    \end{solution}   
+
+   \vspace{5mm}
+   \question
+   Resolver el problema de la dieta con el método de las dos fases.
+
+   \[ \min Z = 45x_1 + 40x_2 + 85x_3 + 65x_4   \]
+
+    {\centering
+      s.t.  %
+      
+    
+      \sysdelim..\sysalign{r,r}%
+      \systeme[x_1x_2x_3x_4]%
+      {%
+        3x_1 + 4x_2 + 8x_3 + 6x_4 \geq  800,
+        2x_1 + 2x_2 + 7x_3 + 5x_4 \geq 200,
+        6x_1  +4x_2 + 7x_3 + 4x_4 \geq 700%
+      }
+
+    $x_1, x_2, x_3, x_4 \geq 0$
+  \par}
+
+  \begin{solution}
+    
+    \[ \min W = 0x_1 + 0x_2 + 0x_3 + 0x_4 - 0s_1 - 0s_2 - 0s_3  + A_1 + A_2 + A_3 \]
+
+    {\centering
+      s.t.  %
+      
+      \sysdelim..\sysalign{r,r}%
+      \systeme[x_1x_2x_3x_4s_1s_2s_3A_1A_2A_3]{%
+        3x_1 + 4x_2 + 8x_3 + 6x_4 - s_1 + A_1 = 800,
+        2x_1 + 2x_2 + 7x_3 + 5x_4 - s_2 + A_2 = 200,
+        6x_1  +4x_2 + 7x_3 + 4x_4 - s_3 + A_3 = 700, }
+
+    $x_1, x_2, x_3, x_4, s_1, s_2, s_3, A_1, A_2, A_3  \geq 0$
+  \par}
+
+
+  Phase I.
+
+  \[ \min W = A_1 + A_2 + A_3 \]
+
+    {\centering
+      s.t.
+    
+      \sysdelim..\sysalign{r,r}%
+      \systeme[x_1x_2x_3x_4s_1s_2s_3A_1A_2A_3]{%
+        3x_1 + 4x_2 + 8x_3 + 6x_4 - s_1 + A_1 = 800,
+        2x_1 + 2x_2 + 7x_3 + 5x_4 - s_2 + A_2 = 200,
+        6x_1  +4x_2 + 7x_3 + 4x_4 - s_3 + A_3 = 700, }
+    
+
+    $x_1, x_2, x_3, x_4, s_1, s_2, s_3, A_1, A_2, A_3  \geq 0$
+    \par}
+  \end{solution}
+
 \end{questions}
 \end{document}
