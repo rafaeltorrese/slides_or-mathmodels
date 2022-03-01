@@ -1,6 +1,6 @@
 import numpy as np 
 
-def simplex(A, rhs, cj, direction=1, cbidx=None):
+def simplex(A, rhs, cj, direction=1, cbidx=[]):
     A = A.astype(float)
     rhs = rhs.astype(float)
     cj = cj.astype(float)
