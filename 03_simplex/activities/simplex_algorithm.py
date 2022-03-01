@@ -1,6 +1,6 @@
 import numpy as np 
 
-def simplex(A, rhs, cj, direction=1, cbidx=[]):
+def simplex(A, rhs, cj, direction=1, cbidx=None):
     A = A.astype(float)
     rhs = rhs.astype(float)
     cj = cj.astype(float)
@@ -57,4 +57,4 @@ def simplex(A, rhs, cj, direction=1, cbidx=[]):
     
     
     print(f'Total iterations {len(np.array(basis).reshape((-1, num_equations)))}')
-    return np.array(basis).reshape((-1, num_equations)), A, rhs
+    return np.array(basis).reshape((-1, num_equations)).tolist(), A, rhs
