@@ -1,0 +1,90 @@
+\documentclass[spanish,letterpaper,11pt]{exam}
+
+
+% -------------------- Packages --------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{systeme}
+\usepackage{cancel}
+\usepackage[shortlabels]{enumitem}
+% -------------------- Definitions --------------------
+
+\newcommand{\tema}{Análisis de Sensibilidad}
+%
+\extrafootheight{-0.5in}
+\header%
+{Dr. Rafael Torres Escobar}% Left
+{INVESTIGACIÓN DE OPERACIONES -- MODELOS MATEMÁTICOS \\ \tema}% Center
+{Página \\ \thepage\ de \numpages} % Right
+\headrule
+\pointpoints{punto}{puntos}
+\author{Dr. Rafael Torres Escobar}
+%
+%\printanswers % comentar para mostrar respuestas
+% ================================================== 
+\begin{document}
+\begin{questions}
+    \question
+    Dado el siguiente modelo de programación lineal
+
+    \[ \max Z = -x_1 + 2x_2 - x_3 \]
+  
+{\centering
+\vspace{2mm}
+s.t.
+\vspace{2mm}
+
+\sysalign{r,r}%
+\sysdelim..%
+\systeme[x_1x_2x_3]%
+{
+  3x_1 + x_2 - x_3 \leq 10,
+  -x_1 + 4x_2 + x_3 \geq 6,
+  x_2 + x_3 \leq 4
+}
+
+\vspace{3mm}
+$x_1, x_2, x_3 \geq 0$
+\par}
+  
+\begin{enumerate}[a)] 
+    \item Encuentre la solución óptima.
+    \item Encuentre los rangos separados $b_1, b_2 $ y $b_3$ consistentes con la solución óptima.
+\end{enumerate}
+
+  
+\vspace{6mm}
+
+  \question
+  Dado el siguiente modelo de P.L.:
+
+  \[ \max Z = -x_1 + 2x_2 - x_3 \]
+
+  
+{\centering
+\vspace{2mm}
+s.t.
+\vspace{2mm}
+
+\sysalign{r,r}%
+\sysdelim..%
+\systeme[x_1x_2x_3]%
+{
+  3x_1 + x_2 - x_3 \leq 10,
+  -x_1 + 4x_2 + x_3 \geq 6,
+  x_2 + x_3 \leq 4 
+}
+
+\vspace{3mm}
+
+$x_1,x_2,x_3 \geq 0$
+\par}
+
+
+\begin{enumerate}[a)]
+    \item Determine el efecto de cambios discretos en $c_j \, (j = 1,2,\ldots,6)$ en la solución básica factible óptima.
+\end{enumerate}
+
+\end{questions}
+\end{document}
