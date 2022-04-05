@@ -1,0 +1,58 @@
+\documentclass[spanish,letterpaper,11pt]{exam}
+
+
+% -------------------- Packages --------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{systeme}
+\usepackage{cancel}
+\usepackage[shortlabels]{enumitem}
+% -------------------- Definitions --------------------
+
+\newcommand{\tema}{Análisis de Sensibilidad}
+%
+\extrafootheight{-0.5in}
+\header%
+{Dr. Rafael Torres Escobar}% Left
+{INVESTIGACIÓN DE OPERACIONES -- MODELOS MATEMÁTICOS \\ \tema}% Center
+{Página \\ \thepage\ de \numpages} % Right
+\headrule
+\pointpoints{punto}{puntos}
+\author{Dr. Rafael Torres Escobar}
+%
+%\printanswers % comentar para mostrar respuestas
+% ================================================== 
+\begin{document}
+\begin{questions}
+    \question
+Considere el siguiente problema:
+
+    \[ \max Z = 45x_1 +100x_2 +30x_3 + 50x_4 \]
+
+    {\centering
+    subject to
+    \vspace{2mm}
+    
+  \sysalign{r,r}%
+  \sysdelim..%
+  \systeme[x_1x_2x_3x_4]%
+  {
+    7x_1 + 10x_2 + 4x_3 + 9x_4 \leq 1200,
+    3x_1 +40x_2 +x_3 + x_4 \leq 800
+  }
+
+  \vspace{5mm}
+  $x_1, x_2, x_3,x_4 \geq 0$    
+  \par}
+
+  \begin{enumerate}
+    \item Si la nueva variable $x_5$ se agrega al problema con una columna $
+    \begin{bmatrix}
+      10\\10
+    \end{bmatrix}
+    $
+    y $c_5 = 120$ encuentra el cambio en la solución óptima.    
+  \end{enumerate}
+\end{questions}
+\end{document}
