@@ -159,5 +159,24 @@ if __name__ == '__main__':
 
     basis, main, sol = simplex(matrix=Aprimal, rhs=bprimal,
                                                        z=Zvector,  direction=1)
-
+    print()
     print(basis)
+    print(
+        '\n',
+        main.rename(
+            columns={
+                'x5': 's1',
+                'x6': 's2',
+                'x7': 's3',
+                'x8': 'A1',
+                'x9': 'A2',
+                'x10': 'A3',
+            },
+            #     inplace=True,
+        )
+    )
+    print(
+        '\n',
+        sol
+    )
+
