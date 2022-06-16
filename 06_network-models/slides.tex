@@ -79,6 +79,11 @@
   {\centering \includegraphics[scale=0.5]{cells.png}\par}
 \end{frame}
 
+\section{Formulation and Solution of Transportation Models}
+\label{sec:formulation-solution}
+
+
+
 \begin{frameExample}{Transportation Problem}{}
   % EXAMPLE 3.5-1 {Transportation Problem}
     \only<1>{
@@ -113,10 +118,49 @@ Each day the firm must fulfil the needs of its four distribution centres. Milk r
    \end{enumerate}
 
  }
+
+ \only<4>{%
+   {\centering \includegraphics[scale=0.5]{transportation-model.png}\par}
+ }
   
 \end{frameExample}
 
+\begin{frame}{North-West Corner Method (NWCM)}
 
+  \only<1>{%
+  \begin{enumerate}[(i)] \justifying
+  \item Start in the north-west (upper left) comer of the requirements table and compare the supply of plant 1 (call it $S_1$) with the requirement of distribution centre 1 (call it $D_1$).
+    \begin{enumerate}[a)]
+    \item If $D_1 < S_1$ i.e., if the amount required at D1 is less than the number of units available at $S_1$, set $x_{11}$ equal to $D_1$, find the balance supply and demand and proceed to cell (1, 2) (i.e., proceed horizontally).
+      \item If $D_1 = S_1$, set $x_{11}$ equal to $D_1$, compute the balance supply and demand and proceed to cell (2, 2) (i.e., proceed diagonally). Also make a zero allocation to the least cost cell in $S_1/D_1$
+      \item If $D_1 > S_1$, set $x_{11}$ equal to $S_1$, compute the balance supply and demand and proceed to cell (2, 1) (i.e., proceed vertically).
+    \end{enumerate}
+  \item Continue in this manner, step by step, away from the north-west comer until, finally, a value is reached in the south-east comer.
+  \end{enumerate}
+  }
 
+  
+\only<2>{  {\centering \includegraphics[scale=0.5]{northwestmethod.png}\par}}
+\end{frame}
 
+\begin{frame}{Row Minima Method}
+  This method consists in allocating as much as possible in the lowest cost cell of the first row so that either the capacity of the first plant is exhausted or the requirement at $j$-th distribution centre is satisfied or both. In case of tie among the cost, select arbitrarily. Three cases arise:
+  \begin{enumerate}[(i)]\justifying
+\item if the capacity of the first plant is completely exhausted, cross off the first row and proceed to the second row.
+\item if the requirement at jth distribution centre is satisfied, cross off the jth column and reconsider the first row with the remaining capacity.
+\item if the capacity of the first plant as well as the requirement at jth distribution centre are completely satisfied, make a zero allocation in the second lowest cost cell of the first row. Cross off the row as well as the jth column and move down to the second row.
+  \end{enumerate}
+
+  Continue the process for the resulting reduced transportation table until all the rim conditions (supply and requirement conditions) are satisfied.
+\end{frame}
+
+\begin{frame}{Column Minima Method}
+  This method consists in allocating as much as possible in the lowest cost cell of the first column so that either the demand of the first distribution centre is satisfied or the capacity of the ith plant is exhausted or both. In case of tie among the lowest cost cells in the column, select arbitrarily. Three cases arise:
+
+  \begin{enumerate}[(i)] \justifying
+\item if the requirement of the first distribution centre is satisfied, cross off the first column and move right to the second column. \item if the capacity of $i$-th plant is satisfied, cross off ith row and reconsider the first column with the remaining requirement. \item if the requirement of the first distribution centre as well as the capacity of the ith plant are completely satisfied, make a zero allocation in the second lowest cost cell of the first column. Cross off the column as well as the ith row and move right to the second column.
+  \end{enumerate}
+  
+Continue the process for the resulting reduced transportation table until all the rim conditions are satisfied.
+\end{frame}
 \end{document}
