@@ -4,30 +4,34 @@
 Una fábrica de papel produce rollos de papel utilizados para hacer cajas registradoras. Cada rollo de papel tiene una longitud de 100 m y se puede utilizar en anchos de 3, 4, 6 y 10 cm. El proceso de producción de la compañía da como resultado rollos de 24 cm de ancho. Por lo tanto, la empresa debe cortar su rollo de 24 cm al ancho deseado. Tiene seis alternativas básicas de corte de la siguiente manera:%
   }
 
-  \begin{onlyenv}<1>
-      {\centering
-    \scalebox{0.7}{%
-      \begin{tabular}{cccccc}
-        \toprule
-        Alternativas&\multicolumn{4}{c}{Ancho de los}&\\
-        de corte&\multicolumn{4}{c}{rollos (cm)}&Desperdicio (cm)\\
-        \cmidrule{2-5}
-                    &3&4&6&10&\\
-        \midrule[0.4pt]
-        1&4&3&--&--&--\\
-        2&--&3&2&--&--\\
-        3&1&1&1&1&1\\
-        4&--&--&2&1&2\\
-        5&--&4&1&--&2\\
-        6&3&2&1&--&1\\
-        \bottomrule
-      \end{tabular}
-    }% \scalebox
-% \includegraphics<1>[scale=0.5]{example_trim-loss_gupta}
+  \begin{onlyenv}<1>  
+      % --------------------
+    {\centering
+      \scalebox{0.7}{%
+        \begin{tabular}{cccccc}
+          \toprule
+          Alternativas&\multicolumn{4}{c}{Ancho de los}&\\
+          de corte&\multicolumn{4}{c}{rollos (cm)}&Desperdicio (cm)\\
+          \cmidrule{2-5}
+                      &3&4&6&10&\\
+          \midrule[0.4pt]
+          1&4&3&--&--&--\\
+          2&--&3&2&--&--\\
+          3&1&1&1&1&1\\
+          4&--&--&2&1&2\\
+          5&--&4&1&--&2\\
+          6&3&2&1&--&1\\
+          \bottomrule
+        \end{tabular}
+      }% \scalebox
+
 \par}
   \end{onlyenv}
-
-\only<2>{%
+%  \only<2>{%
+  \includegraphics<2>[scale=0.4]{roll.png}
+ % }
+  
+\only<3>{%
   La demanda mínima para los cuatro rollos es la siguiente:
   
 {\centering
