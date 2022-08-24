@@ -1,6 +1,7 @@
 \begin{frameExample}{Fluid Blending Problem}{}
   % Example 2.6-10 Gupta Ebook
-  An oil company produces two grades of gasoline $P$ and $Q$ which it sells at \$ 30, and \$ 40 per litre. The company can buy four different crude oils with the following constituents and costs:
+  \only<1>{%
+An oil company produces two grades of gasoline $P$ and $Q$ which it sells at \$ 30, and \$ 40 per litre. The company can buy four different crude oils with the following constituents and costs:
 
   {\centering
     \begin{tabular}{ccccc}
@@ -18,6 +19,34 @@
     \par}
 
   Gasoline $P$ must have at least 55 per cent of constituent $A$ and no more than 40 per cent of $C$. Gasoline $Q$ must not have more than 25 per cent of $C$. Determine how the crudes should be used to maximize the profit.
+  }
+
+  \only<2>{%
+    La decisión consiste en determinar la cantidad de crudo que se va a usar para cada tipo de gasolina. Las cantidades en litros se representan por la variable $x_{ij}$, en donde $i = \text{crudo } 1, 2, 3, 4$ y $j = \text{gasolina tipo } 1 \text{ y } 2$ respectivamente. Así tenemos que %
+
+    {\centering
+\begin{tabular}{r@{ : }l}
+  $x_{11}$ & cantidad en litros del crudo $1$ usado en gasolina tipo $P$\\
+  $x_{21}$ & cantidad en litros del crudo $2$ usado en gasolina tipo $P$\\
+  $\cdots$ & $\quad \quad \cdots$ $\quad \quad \cdots$ $\quad \quad \cdots$ $\quad \quad \cdots$\\
+  $\cdots$ & $\quad \quad \cdots$ $\quad \quad \cdots$ $\quad \quad \cdots$ $\quad \quad \cdots$\\
+  $x_{12}$ & cantidad en litros del crudo $1$ usado en gasolina tipo $Q$\\
+  $x_{22}$ & cantidad en litros del crudo $2$ usado en gasolina tipo $Q$\\
+  $\cdots$ & $\cdots$ $\quad \quad \cdots$ $\quad \quad \cdots$ $\quad \quad \cdots$ $\quad \quad \cdots$\\
+  $\cdots$ & $\cdots$ $\quad \quad \cdots$ $\quad \quad \cdots$ $\quad \quad \cdots$ $\quad \quad \cdots$
+    \end{tabular}
+    \par}
+}%
+\only<3>{  El objetivo es maximizar la ganancia neta \[\max Z = 30\sum_{i=1}^{4}x_{i1} + 40\sum_{i=1}^{4}x_{i2} - 20\sum_{j=1}^{2}x_{1j} -  22.50\sum_{j=1}^{2}x_{2j} - 25\sum_{j=1}^{2}x_{3j} - 27.50\sum_{j=1}^{2}x_{4j}\]
+  sujeto a
+
+  \begin{align*}
+    0.75x_{11} + 0.20x_{21} + 0.75x_{31} + 0.40x_{41} & \geq 0.55(x_{11} + x_{21} + x_{31} + x_{41} ) \\
+    0.10x_{11} + 0.50x_{21} + 0.20x_{31} + 0.50x_{41} & \leq 0.40(x_{11} + x_{21} + x_{31} + x_{41} ) \\
+    0.10x_{12} + 0.50x_{22} + 0.20x_{32} + 0.50x_{42} & \leq 0.25(x_{12} + x_{22} + x_{32} + x_{42} ) \\[5mm]
+    x_{11} , x_{21} , x_{31},x_{41}, x_{12} , x_{22} , x_{32},x_{42} & \geq 0
+  \end{align*}
+}
 \end{frameExample}
 
 
