@@ -2,10 +2,37 @@
   % Taha 02-02A-05
 \label{act:taha_02-02A-05}
   Una compañía fabrica dos productos, A y B. El volumen de ventas de A es por lo menos 80\% de las ventas totales de A y B. Sin embargo, la compañía no puede vender más de 100 unidades de A por día. Ambos productos utilizan una materia prima, cuya disponibilidad diaria máxima es de 240 lb. Las tasas de consumo de la materia prima son de 2 lb por unidad de A y de 4 lb por unidad de B. Las utilidades de A y B son de \$20 y \$50, respectivamente. Determine la combinación óptima de productos para la compañía.
+
+  \only<2>{
+  \begin{columns}[t]
+      \column{0.5\textwidth}
+      Modelo simplificado
+      
+      \[\max Z = 20x_1 + 50x_2\]
+
+\begin{align}
+0.20x_1 - 0.80x_2 &\geq 0\\
+x_1 &\leq 100\\
+2x_1 + 4x_2&\leq 240\\[3mm]
+x_1, x_2&\geq 0
+\end{align}
+%
+\column{0.5\textwidth}
+Modelo en forma canónica
+\[\max Z = 20x_1 + 50x_2\]
+
+\begin{align}
+-0.20x_1 + 0.80x_2 &\leq 0\\
+x_1 &\leq 100\\
+2x_1 + 4x_2&\leq 240\\[3mm]
+x_1, x_2&\geq 0
+\end{align}
+  \end{columns}
+  } % end only
 \end{frameact}
 
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../slides_linear-programming-intro"
+%%% TeX-master: "../slides"
 %%% End:
