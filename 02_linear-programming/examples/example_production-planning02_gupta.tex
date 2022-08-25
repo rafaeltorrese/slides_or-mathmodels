@@ -1,7 +1,7 @@
 \begin{frameExample}{Production Planning}{}
   % Example 2.6-11 Gupta ebook
   \only<1>{%
-A company manufacturing air coolers has, at present, firm orders of the next 6 months. The company can schedule its production over the next 6 months to meet orders on either regular or overtime basis. The order size and production costs over the next six months are as follows:%
+    Una empresa que fabrica enfriadores de aire, en la actualidad, tiene pedidos  para los próximos 6 meses. La empresa puede programar su producción durante los próximos 6 meses para cumplir con los pedidos de forma regular o en horas extra. El tamaño del pedido y los costos de producción durante los próximos seis meses son los siguientes:%
   }
 
   
@@ -30,13 +30,93 @@ A company manufacturing air coolers has, at present, firm orders of the next 6 m
   
 
   \only<2>{%
-    With 100 air coolers in stock at present, the company wishes to have at least 150 air coolers in stock at the end of 6 months. The regualr and overtime production in each month is not to exceed 600 and 400 units respectively. The inventory carrying cost for air coolers is \$12 per unit per month. Formulate the L.P. model to minimize the total cost.%
+    Con 100 enfriadores de aire en existencia en la actualidad, la empresa desea tener al menos 150 enfriadores de aire en existencia al final de los 6 meses. La producción regular y extraordinaria en cada mes no debe exceder las 600 y 400 unidades respectivamente. El costo de manejo de inventario para enfriadores de aire es de \$12 por unidad por mes. Formule el modelo de programación lineal (P.L.) para minimizar el costo total.%
   }
+
+  \only<3>{%
+    La decisión consiste en determinar el número de unidades de enfriadores que se van a producir en tiempo regular y tiempo extra además de considerar el número de unidades en inventario al final de cada mes.
+
+    Sea $x_{ij}$ el número de unidades fabricadas en el mes $j\, (j = 1, 2, \ldots, 6)$ en tiempo regular o extra $i, (i = 1, 2)$. Además sea $y_j$ el número de unidades en inventario al finalizar el mes $j\, (j = 1, 2, \ldots, 6)$.
+
+    El objetivo es minimizar el costo total (\alert{producir y tener en inventario})
+    \begin{flalign*}
+      \min Z  =\;\; & 40x_{11} + 42x_{12} + 41x_{13} + 45x_{14} + 39x_{15} + 40x_{16} + \\
+      & 52x_{21} + 50x_{22} + 53x_{23} + 50x_{24} + 45x_{25} + 43x_{26} + \\
+      & 12(y_{1} + y_{2} + y_{3} + y_{4} + y_{5} + y_{6} )\\
+    \end{flalign*}
+    % 
+    
+  }
+
+  \only<4>{%
+    Las restricciones son:
+
+    {
+      \centering
+      \begin{tabular}{rll}
+        para el primer mes & $100 + x_{11} + x_{21} - 640$ & $= y_1$\\
+        para el segundo mes & $y_1 + x_{12} + x_{22} - 660$ & $= y_2$\\
+        para el tercer mes & $y_2 + x_{13} + x_{23} - 700$ & $= y_3$\\
+        para el cuarto mes & $y_3 + x_{14} + x_{24} - 750$ & $= y_4$\\
+        para el quinto mes & $y_4 + x_{15} + x_{25} - 550$ & $= y_5$\\
+        para el sexto mes & $y_5 + x_{16} + x_{26} - 650$ & $= y_6$\\        
+      \end{tabular}
+      \par}
+  }
+  \only<5>{%
+    \begin{columns}[t]
+      \column{0.2\textwidth}
+      Restricción de tiempo regular
+\begin{align*}
+      x_{11} &\leq 600\\
+      x_{12} &\leq 600\\
+      \vdots &\leq 600\\
+      \vdots &\leq 600\\
+      x_{16} &\leq 600\\       
+    \end{align*}
+    \column{0.2\textwidth}
+    Restricción de tiempo extra
+\begin{align*}
+      x_{21} &\leq 400\\
+      x_{22} &\leq 400\\
+      \vdots &\leq 400\\
+      \vdots &\leq 400\\
+      x_{26} &\leq 400\\       
+\end{align*}
+\column{0.2\textwidth}
+Condición de no-negatividad
+\begin{align*}
+  x_{11} &\geq 0\\
+  x_{12} &\geq 0\\
+  \vdots &\geq 0\\
+  \vdots &\geq 0\\
+  x_{16} &\geq 0\\
+  \end{align*}
+  \column{0.2\textwidth}
+  Condición de no-negatividad
+\begin{align*}
+  x_{21} &\geq 0\\
+  x_{22} &\geq 0\\
+  \vdots &\geq 0\\
+  \vdots &\geq 0\\
+  x_{26} &\geq 0\\
+\end{align*}
+\column{0.2\textwidth}
+Condición de no-negatividad
+\begin{align*}
+  y_{1} &\geq 0\\
+  y_{2} &\geq 0\\
+  \vdots &\geq 0\\
+  \vdots &\geq 0\\
+  y_{6} &\geq 0\\
+  \end{align*}
+    \end{columns}    
+  }% end only
 \end{frameExample}
 
 
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../slides_linear-programming-intro"
+%%% TeX-master: "../slides"
 %%% End:
