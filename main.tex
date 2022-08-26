@@ -40,7 +40,10 @@
   positioning,
   calc,
   intersections}
-\graphicspath{{figs/}}
+\graphicspath{%
+  {02_linear-programming/figs}%
+  {03_simplex/figs}%
+}%
 % flowchart with tikz library
 \tikzstyle{startstop}=[rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!30]
 %
@@ -168,8 +171,8 @@ progressbar=frametitle%
 %\usetheme{Boadilla}
 
 \title{OPERATIONS RESEARCH.}
-%\subtitle{Operations Research. \\ Mathematical Models.} 
-\subtitle{Operations Research} 
+% \subtitle{Operations Research. \\ Mathematical Models.}
+%\subtitle{Operations Research} 
 
 % \institute{UNIVERSIDAD ANÁHUAC MÉXICO}
 \author{Rafael Torres Escobar, Ph.D.}
@@ -183,18 +186,20 @@ progressbar=frametitle%
 
 \begin{document}
 
-\begin{frame}
-  \maketitle
-\end{frame}
+% \begin{frame}
+%   \maketitle
+% \end{frame}
 
 
-\begin{frame}{Agenda}
-  \tableofcontents
-\end{frame}
+% \begin{frame}{Agenda}
+%   \tableofcontents
+% \end{frame}
  
-\begin{frame}
-  \maketitle
-\end{frame}
+% \begin{frame}
+%   \maketitle
+% \end{frame}
 
 
+\subfile{02_linear-programming/slides.tex}
+\subfile{03_simplex/slides.tex}
 \end{document}
