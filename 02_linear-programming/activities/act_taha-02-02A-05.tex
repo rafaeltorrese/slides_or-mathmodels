@@ -6,9 +6,20 @@
 
   \begin{onlyenv}<2>
       \begin{columns}[t]
-      \column{0.5\textwidth}
-      Modelo simplificado
-      
+      %
+      \column{0.3\textwidth}
+      Modelo      
+      \[\max Z = 20x_1 + 50x_2\]
+
+\begin{align*}
+x_1 &\geq 0.80(x_1 + x_2)\\
+x_1 &\leq 100\\
+2x_1 + 4x_2&\leq 240\\[3mm]
+x_1, x_2&\geq 0
+\end{align*}
+      %
+      \column{0.3\textwidth}
+      Modelo simplificado      
       \[\max Z = 20x_1 + 50x_2\]
 
 \begin{align*}
@@ -18,20 +29,19 @@ x_1 &\leq 100\\
 x_1, x_2&\geq 0
 \end{align*}
 %
-\column{0.5\textwidth}
+\column{0.3\textwidth}
 Modelo en forma canónica
-\[\max Z = 20x_1 + 50x_2\]
+\[\textcolor{red}{\max}\; Z = 20x_1 + 50x_2\]
 
 \begin{align*}
--0.20x_1 + 0.80x_2 &\leq 0\\
-x_1 &\leq 100\\
-2x_1 + 4x_2&\leq 240\\[3mm]
+-0.20x_1 + 0.80x_2 &\;\textcolor{red}{\leq}\; 0\\
+x_1 &\;\textcolor{red}{\leq}\; 100\\
+2x_1 + 4x_2&\;\textcolor{red}{\leq}\; 240\\[3mm]
 x_1, x_2&\geq 0
 \end{align*}
   \end{columns}
   \end{onlyenv}
 \end{frameact}
-
 
 %%% Local Variables:
 %%% mode: latex
