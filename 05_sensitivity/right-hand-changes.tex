@@ -12,8 +12,8 @@
 \end{frame}
 
 \begin{frameExample}{}{}
-
-  \begin{columns}
+  \begin{onlyenv}<1>
+      \begin{columns}
     \column{0.4\textwidth}
       $\max Z = 5x_1 + 12x_2 + 4x_3$
 
@@ -60,11 +60,33 @@ $
   \item Which resource should be increased and how much to achieve the best marginal increase in the value of the objective function?
   \end{enumerate}
   \end{columns}
+\end{onlyenv}
+\begin{onlyenv}<2>
+  La tabla óptima del problema se muestra a continuación, también puedes consultar en el \href{https://docs.google.com/spreadsheets/d/1c_EYB4K6b5I41TF0n74JOaoJKIATqnliQdcul8ult_E/edit?usp=sharing}{siguiente enlace ejemplo-01}
+
+  \begin{table}[!ht]
+    \centering
+    \begin{tabular}{lc|rrrrr|r}
+    \toprule
+      $\max$ & cj & 5 & 12 & 4 & 0 & -1000 & ~ \\
+      \midrule
+      $c_{\boldsymbol{B}}$ & basis & x1 & x2 & x3 & s1 & A2 & $\boldsymbol{b}$ \\
+      \midrule
+        12 & x2 & 0 & 1 & -   1/5    &    2/5    & -   1/5    &    8/5    \\ 
+      5 & x1 & 1 & 0 &    7/5    &    1/5    &    2/5    &    9/5    \\
+      \midrule
+        ~ & zj & 5 & 12 &   23/5    &   29/5    & -   2/5    &  141/5    \\ 
+      ~ & cj - zj & 0 & 0 & -   3/5    & -  29/5    & -4998/5 \\
+      \bottomrule
+    \end{tabular}
+\end{table}
+\end{onlyenv}
 \end{frameExample}
 
 
 \begin{frameExample}{}{}
-\begin{columns}
+  \begin{onlyenv}<1>
+    \begin{columns}
   \column{0.5\textwidth}
   Given the following L.P. Problem:
 
@@ -88,7 +110,29 @@ $
   \item Find the optimal solution.
   \item   Find the separate ranges $b_1, b_2 $ and $b_3$ consistent with the optimal solution.
   \end{enumerate}
-\end{columns}  
+\end{columns}
+  \end{onlyenv}
+
+\begin{onlyenv}<2>
+  Pueden consultar la siguiente tabla óptima en \href{https://docs.google.com/spreadsheets/d/1JT75Ab_TDRVXaCAAX_1QM6zrGAm2IP5p3ISB_nuJ5Zg/edit?usp=sharing}{este enlace: example-02}
+  \begin{table}[!ht]
+    \centering
+    \begin{tabular}{lc|rrrrrrr|r}
+\toprule    
+      $\max$ & ~ & -1 & 2 & -1 & 0 & 0 & 0 & -1000 & ~ \\
+      \midrule
+      $c_{\boldsymbol{B}}$ & basis & x1 & x2 & x3 & s1 & s2 & s3 & A2 & $\boldsymbol{b}$ \\
+      \midrule
+        0 & s1 & 3 & 0 & -2 & 1 & 0 & -1 & 0 & 6 \\ 
+        2 & x2 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 4 \\ 
+      0 & s2 & 1 & 0 & 3 & 0 & 1 & 4 & -1 & 10 \\
+      \midrule
+        ~ & zj & 0 & 2 & 2 & 0 & 0 & 2 & 0 & 8 \\ 
+      ~ & cj - zj & -1 & 0 & -3 & 0 & 0 & -2 & -1000 \\
+      \bottomrule
+    \end{tabular}
+\end{table}
+\end{onlyenv}
 \end{frameExample}
 
 
