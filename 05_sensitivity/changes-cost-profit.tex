@@ -71,7 +71,8 @@
 
 \begin{frameExample}{}{}
 
-      \begin{columns}
+  \begin{onlyenv}<1>
+          \begin{columns}
     \column{0.5\textwidth}
     Given the L.P. Problem:
 
@@ -97,7 +98,29 @@
 
     determine the effect of discrete changes in $c_j (j = 1,2,\ldots,6)$ on the optimal basic feasible solution.
   \end{columns}
+  \end{onlyenv}
 
+  \begin{onlyenv}<2>
+    La tabla óptima la pueden consultar en \href{https://docs.google.com/spreadsheets/d/1rYsOiQEihozZusyn8mMk6Czqx2KFfgoRonP8k8F_Qsk/edit?usp=sharing}{el siguiente enlace: example-04}.
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{ll|rrrrrrr|r}
+\toprule    
+      $\max$ & cj & -1 & 2 & -1 & 0 & 0 & 0 & -1000 & ~ \\
+      \midrule
+      $c_{\boldsymbol{B}}$ & basis & x1 & x2 & x3 & s1 & s2 & s3 & A2 & $\boldsymbol{b}$ \\
+      \midrule
+        0 & s1 & 3 & 0 & -2 & 1 & 0 & -1 & 0 & 6 \\ 
+      2 & x2 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 4 \\
+      0 & s2 & 1 & 0 & 3 & 0 & 1 & 4 & -1 & 10 \\
+            \midrule
+        ~ & zj & 0 & 2 & 2 & 0 & 0 & 2 & 0 & 8 \\ 
+      ~ & cj - zj & -1 & 0 & -3 & 0 & 0 & -2 & -1000 \\
+      \bottomrule
+    \end{tabular}
+\end{table}
+  \end{onlyenv}
 \end{frameExample}
 
 \begin{frameExample}{}{}
