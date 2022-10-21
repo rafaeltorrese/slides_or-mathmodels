@@ -1,0 +1,158 @@
+\begin{solution}
+  
+  Los rangos se determinan multiplicando la matriz inversa $B^{-1}$ por el vector $b + \Delta_i$ para cada $i = 1, 2, m$ en donde $m$ es el número de ecuaciones en formato estándar. Esto se expresa de la siguiente manera:
+
+  \[ \boldsymbol{B^{-1}} (\boldsymbol{b + \Delta}) \geq \boldsymbol{0}\]
+
+  Para cada $\Delta_i$ tenemos los siguiente los rangos $b_i$ se determinan de la siguiente forma
+
+  \begin{align*}
+    b_1 &= %
+          \begin{bmatrix}
+      1& 0& -1\\
+      0& 0& 1\\
+      0& -1& 4\\
+    \end{bmatrix}
+    \begin{bmatrix}
+      10 + \Delta_1\\
+    6\\
+    4\\
+  \end{bmatrix}\geq
+      \begin{bmatrix}
+      0\\
+    0\\
+    0\\
+  \end{bmatrix}
+    \\
+    b_2 & = %
+          \begin{bmatrix}
+      1& 0& -1\\
+      0& 0& 1\\
+      0& -1& 4\\
+    \end{bmatrix}
+    \begin{bmatrix}
+      10 \\
+    6 + \Delta_2\\
+    4\\
+  \end{bmatrix}\geq
+      \begin{bmatrix}
+      0\\
+    0\\
+    0\\
+  \end{bmatrix}
+    \\
+        b_3 & = %
+          \begin{bmatrix}
+      1& 0& -1\\
+      0& 0& 1\\
+      0& -1& 4\\
+    \end{bmatrix}
+    \begin{bmatrix}
+      10 \\
+    6 \\
+    4 + \Delta_3\\
+  \end{bmatrix}\geq
+      \begin{bmatrix}
+      0\\
+    0\\
+    0\\
+  \end{bmatrix}    
+  \end{align*}
+  
+  Al realizar la multiplicación de matrices para cada $\Delta_i$ tenemos lo siguiente
+
+  
+  \begin{flalign*}
+    \Delta_1 & = %
+    \begin{bmatrix}
+      6 + \Delta_1\\
+      4\\
+      10 \\
+    \end{bmatrix}\geq
+    \begin{bmatrix}
+      0\\
+    0\\
+    0\\
+  \end{bmatrix}\\
+  %
+  %
+  \Delta_2 & = %
+    \begin{bmatrix}
+      6 \\
+      4\\
+      10 - \Delta_2\\
+    \end{bmatrix}\geq
+    \begin{bmatrix}
+      0\\
+    0\\
+    0\\
+  \end{bmatrix}\\
+  %
+  %
+      \Delta_3 & = %
+    \begin{bmatrix}
+      6 - \Delta_3\\
+      4+ \Delta_3\\
+      10 + 4\Delta_3\\
+    \end{bmatrix}\geq
+    \begin{bmatrix}
+      0\\
+    0\\
+    0\\
+  \end{bmatrix}
+  %
+  %
+  \end{flalign*}
+
+  Para encontrar el primer rango $\Delta_1$ tenemos que 
+  \begin{flalign*}
+    6 + \Delta_1 & \geq 0\\
+    4 & \geq 0\\
+    10 & \geq 0\\
+  \end{flalign*}
+
+  por lo tanto tenemos que $\Delta_1 \geq -6$ así el rango es \[-6 \leq \Delta_1 \leq +\infty \] y sustituyendo el valor de $\Delta_1$ en $b_1$ encontramos que el rango para $b_1$ es
+
+  \begin{align*}
+    10 - 6 & \leq b_1 \leq 10 + \infty\\[2mm]
+    4 & \leq b_1 \leq +\infty
+  \end{align*}
+
+  %% Delta2
+    Para encontrar $\Delta_2$ hacemos lo mismo 
+  \begin{flalign*}
+    6  & \geq 0\\
+    4 & \geq 0\\
+    10 - \Delta_2& \geq 0\\
+  \end{flalign*}
+
+  por lo tanto tenemos $\Delta_2 \leq 10$ y su rango es \[-\infty \leq \Delta_2 \leq 10 \] y sustituyendo el valor de $\Delta_2$ en $b_2$ encontramos que el rango para $b_2$ es
+
+  \begin{align*}
+    6 - \infty & \leq b_2 \leq 6 + 10\\[2mm]
+    0 & \leq b_2 \leq 16
+  \end{align*}
+
+
+    %% Delta3
+    Para encontrar $\Delta_3$ tenemos lo siguiente
+  \begin{flalign*}
+    \Delta_3  & \leq 6\\
+    \Delta_3 & \geq -4\\
+    \Delta_3& \geq -\frac{5}{2}\\
+  \end{flalign*}
+
+  por lo tanto tenemos $\Delta_3 \geq -\frac{5}{2}$ y $\Delta_3 \leq 6$, su rango es \[-\frac{5}{2} \leq \Delta_3 \leq  6\] y sustituyendo el valor de $\Delta_3$ en $b_3$ encontramos que el rango para $b_3$ es
+
+  \begin{align*}
+    4 - \frac{5}{2} & \leq b_3 \leq 4 + 6\\[2mm]
+    \frac{3}{2} & \leq b_3 \leq 10
+  \end{align*}
+\end{solution}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "05-01"
+%%% End:
