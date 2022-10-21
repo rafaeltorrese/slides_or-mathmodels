@@ -1,0 +1,224 @@
+\begin{solution}
+
+  El problema es su forma estándar es
+
+  \[ \max Z = -x_1 + 2x_2 - x_3 + 0s_1 - 0s_2 + 0s_3 - MA_2\]
+  
+{\centering
+\vspace{2mm}
+s.t.
+\vspace{2mm}
+
+\sysalign{r,r}%
+\sysdelim..%
+\systeme[x_1x_2x_3s_1s_2s_3A_2]%
+{
+  3x_1 + x_2 - x_3 + s_1 = 10,
+  -x_1 + 4x_2 + x_3 - s_2 + A_2= 6,
+  x_2 + x_3 + s_3 = 4
+}
+
+\vspace{4mm}
+$x_1, x_2, x_3, s_1, s_2, s_3 \geq 0$
+\par}
+
+La tabla simplex inicial a partir del formato estándar es 
+
+{    \centering
+    \begin{tabular}{rcrrrrrrrr}
+\toprule    
+        $\max$ & $c_j$ & -1 & 2 & -1 & 0 & 0 & 0 & -1000 & ~ \\ \midrule
+        $c_{\boldsymbol{B}}$ & basis & $x_1$ & $x_2$ & $x_3$ & $s_1$ & $s_2$ & $s_3$ & $A_2$ & $\boldsymbol{b}$ \\ \midrule
+        0 & $s_1$ &  3 & 1 & -1 & 1 &  0 & 0 &  0 & 10 \\ 
+    -1000 & $A_2$ & -1 & 4 &  1 & 0 & -1 & 0 &  1 &  6\\ 
+        0 & $s_3$ &  0 & 1 &  1 & 0 &  0 & 1 &  0 &  4 \\ \midrule
+        ~ & $z_j$ & 1000 & -4000 & -1000 & 0 & 1000 & 0 & -1000 & -6000 \\ 
+        ~ & $c_j - z_j$ & -1001 & 4002 & 999 & 0 & -1000 & 0 & 0 \\ \toprule
+    \end{tabular} \par}
+
+
+\vspace{1cm}
+  La tabla óptima del problema se muestra a continuación 
+
+ 
+{    \centering
+    \begin{tabular}{lcrrrrrrrr}
+\toprule    
+        $\max$ & $c_j$ & -1 & 2 & -1 & 0 & 0 & 0 & -1000 & ~ \\ \midrule
+        $c_{\boldsymbol{B}}$ & basis & $x_1$ & $x_2$ & $x_3$ & $s_1$ & $s_2$ & $s_3$ & $A_2$ & $\boldsymbol{b}$ \\ \midrule
+        0 & $s_1$ & 3 & 0 & -2 & 1 & 0 & -1 & 0 & 6 \\ 
+        2 & $x_2$ & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 4 \\ 
+        0 & $s_2$ & 1 & 0 & 3 & 0 & 1 & 4 & -1 & 10 \\ \midrule
+        ~ & $z_j$ & 0 & 2 & 2 & 0 & 0 & 2 & 0 & 8 \\ 
+        ~ & $c_j - z_j$ & -1 & 0 & -3 & 0 & 0 & -2 & -1000 \\ \toprule
+    \end{tabular} \par}
+
+  De acuerdo a la tabla óptima, $s_1, x_2$ y $s_2$ forman la base del problema (ver columna \textbf{basis}). 
+
+  La matriz base se forma con los coeficientes $s_1, x_2$ y $s_2$ del problema, lo que nos da la siguiente matriz
+
+  $\boldsymbol{B} = %
+  \begin{bmatrix}
+    s1& x2& s2\\
+    1& 1& 0\\
+    0& 4& -1\\
+    0& 1& 0\\
+  \end{bmatrix}
+  $  
+
+  Para calcular una solución al problema se toma la matriz inversa de la matriz base $\boldsymbol{B^{-1}}$ y se multiplica por el nuevo vector $\boldsymbol{b}$, esto es, $\boldsymbol{B^{-1}}\cdot \boldsymbol{b}$. La matriz $\boldsymbol{B^{-1}}$ es
+
+  \[ \boldsymbol{B^{-1}} =%
+    \begin{bmatrix}
+    1& 1& 0\\
+    0& 4& -1\\
+    0& 1& 0\\
+  \end{bmatrix}^{-1} =%
+    \begin{bmatrix}
+      1& 0& -1\\
+      0& 0& 1\\
+      0& -1& 4\\
+    \end{bmatrix}
+  \]
+
+  
+  De esta manera si queremos saber el rango de cada uno de los lados derecho del probema, para cada elemento en el vector de lado derecho $\boldsymbol{b}$ se suma o resta una incremento $\Delta$. La suma o resta de una $\Delta$ depende del valor de las variables duales en la tabla óptima. El valor
+  de las variables duales en el problema se pueden obtener de la fila $z_j$
+
+  {    \centering
+    \begin{tabular}{lcrrrrrrrr}
+      ~ & ~ & $x_1$ & $x_2$ & $x_3$ & $s_1$ & $s_2$ & $s_3$ & $A_2$ & $\boldsymbol{b}$ \\ \midrule
+\toprule
+          ~ & $z_j$ & 0 & 2 & 2 & \cellcolor{yellow}0 & \cellcolor{yellow}0 & \cellcolor{yellow}2 & 0 & \cellcolor{green}8 \\ 
+      ~ & $c_j - z_j$ & -1 & 0 & -3 & 0 & 0 & -2 & -1000 \\ \toprule
+    \end{tabular}\par}
+
+  En la fila $z_j$ de la tabla óptima vemos que las columnas correspondientes a $s_1, s_2, s_3$ son los valores de las variables duales $y_!, y_2, y_3$ y todas son positivas, esto quiere decir que para determinar los rangos $b_1, b_2, b_3$ se suman incrementos $\Delta_1, \Delta_2, \Delta_3$ respectivamente.
+
+  Los rangos se determinan multiplicando la matriz inversa $B^{-1}$ por el vector $b + \Delta_i$ para cada $i = 1, 2, m$ en donde $m$ es el número de ecuaciones en formato estándar. Esto se expresa de la siguiente manera:
+
+  \[ \boldsymbol{B^{-1}} (\boldsymbol{b + \Delta}) \geq \boldsymbol{0}\]
+
+  Para cada $\Delta_i$ tenemos los siguiente los rangos $b_i$ se determinan de la siguiente forma
+
+  \begin{align*}
+    b_1 &= %
+          \begin{bmatrix}
+      1& 0& -1\\
+      0& 0& 1\\
+      0& -1& 4\\
+    \end{bmatrix}
+    \begin{bmatrix}
+      10 + \Delta_1\\
+    6\\
+    4\\
+  \end{bmatrix}\geq
+      \begin{bmatrix}
+      0\\
+    0\\
+    0\\
+  \end{bmatrix}
+    \\
+    b_2 & = %
+          \begin{bmatrix}
+      1& 0& -1\\
+      0& 0& 1\\
+      0& -1& 4\\
+    \end{bmatrix}
+    \begin{bmatrix}
+      10 \\
+    6 + \Delta_2\\
+    4\\
+  \end{bmatrix}\geq
+      \begin{bmatrix}
+      0\\
+    0\\
+    0\\
+  \end{bmatrix}
+    \\
+        b_3 & = %
+          \begin{bmatrix}
+      1& 0& -1\\
+      0& 0& 1\\
+      0& -1& 4\\
+    \end{bmatrix}
+    \begin{bmatrix}
+      10 \\
+    6 \\
+    4 + \Delta_3\\
+  \end{bmatrix}\geq
+      \begin{bmatrix}
+      0\\
+    0\\
+    0\\
+  \end{bmatrix}    
+  \end{align*}
+  
+  Al realizar la multiplicación de matrices para cada $\Delta_i$ tenemos lo siguiente
+
+  
+  \begin{flalign*}
+    \Delta_1 & = %
+    \begin{bmatrix}
+      6 + \Delta_1\\
+      4\\
+      10 \\
+    \end{bmatrix}\geq
+    \begin{bmatrix}
+      0\\
+    0\\
+    0\\
+  \end{bmatrix}\\
+  %
+  %
+  \Delta_2 & = %
+    \begin{bmatrix}
+      6 \\
+      4\\
+      10 - \Delta_2\\
+    \end{bmatrix}\geq
+    \begin{bmatrix}
+      0\\
+    0\\
+    0\\
+  \end{bmatrix}\\
+  %
+  %
+      \Delta_3 & = %
+    \begin{bmatrix}
+      6 - \Delta_3\\
+      4+ \Delta_3\\
+      10 + 4\Delta_3\\
+    \end{bmatrix}\geq
+    \begin{bmatrix}
+      0\\
+    0\\
+    0\\
+  \end{bmatrix}
+  %
+  %
+  \end{flalign*}
+
+  Para encontrar el primer rango $\Delta_1$ tenemos que 
+  \begin{flalign*}
+    6 + \Delta_1 & \geq 0\\
+    4 & \geq 0\\
+    10 & \geq 0\\
+  \end{flalign*}
+
+  por lo tanto tenemos que $\Delta_1 \geq -6$ así el rango es \[-6 \leq \Delta_1 \leq +\infty \] y sustituyendo el valor de $\Delta_1$ en $b_1$ encontramos que el rango para $b_1$ es
+
+  \begin{align*}
+    10 - 6 & \leq b_1 \leq 10 + \infty\\[2mm]
+    4 & \leq b_1 \leq +\infty
+  \end{align*}
+
+  
+\end{solution}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "05-01"
+%%% End:

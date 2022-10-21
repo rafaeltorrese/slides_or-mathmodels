@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{booktabs}
+\usepackage{colortbl}
 \usepackage{systeme}
 \usepackage{cancel}
 \usepackage[shortlabels]{enumitem}
@@ -21,7 +22,7 @@
 \pointpoints{punto}{puntos}
 \author{Dr. Rafael Torres Escobar}
 %
-%\printanswers % comentar para mostrar respuestas
+\printanswers % comentar para mostrar respuestas
 % ================================================== 
 \begin{document}
 \begin{questions}
@@ -49,9 +50,13 @@ $x_1, x_2, x_3 \geq 0$
 \par}
   
 \begin{enumerate}[a)] 
-    \item Encuentre la solución óptima.
-    \item Encuentre los rangos separados $b_1, b_2 $ y $b_3$ consistentes con la solución óptima.
+\item Encuentre la solución óptima.
+  \input{05-01_solution}
+\item Encuentre los rangos separados $b_1, b_2 $ y $b_3$ consistentes con la solución óptima.
 \end{enumerate}
+
+
+
 
   
 \vspace{6mm}
@@ -83,7 +88,7 @@ $x_1,x_2,x_3 \geq 0$
 
 
 \begin{enumerate}[a)]
-    \item Determine el efecto de cambios discretos en $c_j \, (j = 1,2,\ldots,6)$ en la solución básica factible óptima.
+    \item Determine el efecto de cambios discretos en $c_j \, (j = 1,2,\ldots,6)$ a partir de la solución óptima.
 \end{enumerate}
 
 \end{questions}
