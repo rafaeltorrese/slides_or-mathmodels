@@ -25,6 +25,8 @@ main.pdf
 .*doc*
 .*ppt*
 *.odt
+example*.xlsx
+example*.xls
 env
 # For Mac
 .DS_Store
@@ -35,4 +37,6 @@ env
 .code-workspace
 
 *.csv
+
+# data test
 data.py
