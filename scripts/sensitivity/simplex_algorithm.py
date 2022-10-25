@@ -1,8 +1,9 @@
 import numpy as np
 import pandas as pd
 
+from data import A, b, z
 
-def simplex(matrix, rhs, z,  varlabel='x', direction=1):
+def simplex(matrix, rhs, obj_coef,  varlabel='x', direction=1):
     '''Simplex algorithm to solve linear programming problems
 
     Parameters
@@ -38,15 +39,17 @@ def simplex(matrix, rhs, z,  varlabel='x', direction=1):
 
     matrix = np.array(matrix, dtype=float)
     rhs = np.array(rhs, dtype=float)
-    z = np.array(z, dtype=float)
+    obj_coef = np.array(obj_coef, dtype=float)
 
     num_rows, num_cols = matrix.shape
 
-    cb_index = np.where((matrix == 1) & (matrix.sum(axis=0) == 1))[1]
-    cb = z[cb_index]
+    # cb_index = np.where((matrix == 1) & (np.abs(matrix).sum(axis=0) == 1))[1]
+    cb_index = np.where((matrix == 1) & (np.abs(matrix).sum(axis=0) == 1))[1]
+    
+    cb = obj_coef[cb_index]
     zj = cb.dot(matrix)
 
-    net_evaluation = direction * (z - zj)
+    net_evaluation = direction * (obj_coef - zj)
 
     solutions = []
     fvalues = []
@@ -56,7 +59,7 @@ def simplex(matrix, rhs, z,  varlabel='x', direction=1):
 
     iteration = 0
     while np.any(net_evaluation > 0):
-        solution = np.zeros_like(z)
+        solution = np.zeros_like(obj_coef)
         entering = net_evaluation.argmax()  # entering variables (index)
         entering_label = labels[entering]
 
@@ -83,9 +86,9 @@ def simplex(matrix, rhs, z,  varlabel='x', direction=1):
         # ==================
         cb_index[leaving] = entering
 
-        cb = z[cb_index]
+        cb = obj_coef[cb_index]
         zj = cb.dot(matrix)
-        net_evaluation = direction * (z - zj)
+        net_evaluation = direction * (obj_coef - zj)
 
         solution[cb_index] = rhs  # basics
 
@@ -104,29 +107,20 @@ def simplex(matrix, rhs, z,  varlabel='x', direction=1):
             print(f"Optimal solution found in {iteration} iterations")
             print(f'Z value: {zvalue}')
 
-            return pd.DataFrame(np.array(solutions), index=[f'iter{str(i).zfill(2)}' for i in range(1, iteration + 1)], columns=labels),\
-                pd.DataFrame(np.vstack((zj, net_evaluation)), index=['zj', 'cj - zj'], columns=labels),\
-                pd.DataFrame(matrix, columns=labels, index=basis),\
-                pd.Series(rhs, index=basis,  name='solution'),\
-                cb_index
+            return (
+                pd.DataFrame(np.array(solutions), index=[f'iter{str(i).zfill(2)}' for i in range(1, iteration + 1)], columns=labels),  # solutions
+                pd.DataFrame(np.vstack((direction * zj, direction * net_evaluation)), index=['zj', 'cj - zj'], columns=labels),  # last rows
+                pd.DataFrame(matrix, columns=labels, index=basis),  # optimal body table
+                pd.Series(rhs, index=basis,  name='solution'),  # optimal solution
+                cb_index,  # index basic solution
+                )
 
 
 if __name__ == '__main__':
-    Aprimal = np.array([
-        [6, 4, 1, 0, 0, 0],
-        [1, 2, 0, 1, 0, 0],
-        [-1, 1, 0, 0, 1, 0],
-        [0, 1, 0, 0, 0, 1],
-    ])
+    sols, lastrows, table, bsolution, cbindx = simplex(matrix=A, rhs=b,
+                                                       obj_coef=z,   direction=-1)
 
-    bprimal = [24, 6, 1, 2]
-
-    Zvector = [5, 4, 0, 0, 0, 0]
-
-    nvars = 2
-
-    sols, lastrows, table, bsolution, cbindx = simplex(matrix=Aprimal, rhs=bprimal,
-                                                       z=Zvector,   direction=1)
-
-    print(sols.loc['iter02'])
+    print(f'Optimal solution \n{bsolution}\n')
+    # print(sols.loc['iter02'])
     print(table)
+    print(lastrows)
