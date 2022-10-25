@@ -35,3 +35,4 @@ env
 .code-workspace
 
 *.csv
+data.py
