@@ -121,6 +121,13 @@ if __name__ == '__main__':
                                                        obj_coef=z,   direction=-1)
 
     print(f'Optimal solution \n{bsolution}\n')
-    # print(sols.loc['iter02'])
-    print(table)
-    print(lastrows)
+    
+    optimal_table = pd.concat([table, bsolution], axis=1)
+    print('\nOptimal Table')
+    print(optimal_table)
+
+    optimal_table.to_excel(
+        r'C:\Users\rafael.torrese\Documents\anahuac\2022-03_agu-dec\operations-research\example2.xlsx'
+    )
+
+    
