@@ -28,6 +28,7 @@ main.pdf
 example*.xlsx
 example*.xls
 env
+.env
 # For Mac
 .DS_Store
 
