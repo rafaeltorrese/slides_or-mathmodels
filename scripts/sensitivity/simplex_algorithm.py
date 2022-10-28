@@ -1,7 +1,12 @@
+import os
+from dotenv import load_dotenv
 import numpy as np
 import pandas as pd
+from yaml import load
 
-from data import A, b, z
+from data import A, b, z, sense
+
+
 
 def simplex(matrix, rhs, obj_coef,  varlabel='x', direction=1):
     '''Simplex algorithm to solve linear programming problems
@@ -117,8 +122,11 @@ def simplex(matrix, rhs, obj_coef,  varlabel='x', direction=1):
 
 
 if __name__ == '__main__':
+    load_dotenv()
+    path_to_save = os.getenv(r'PATH_TO_SAVE')
+
     sols, lastrows, table, bsolution, cbindx = simplex(matrix=A, rhs=b,
-                                                       obj_coef=z,   direction=-1)
+                                                       obj_coef=z,   direction=sense)
 
     print(f'Optimal solution \n{bsolution}\n')
     
@@ -126,8 +134,6 @@ if __name__ == '__main__':
     print('\nOptimal Table')
     print(optimal_table)
 
-    optimal_table.to_excel(
-        r'C:\Users\rafael.torrese\Documents\anahuac\2022-03_agu-dec\operations-research\example2.xlsx'
-    )
+    optimal_table.to_excel(path_to_save)
 
     
