@@ -1,11 +1,27 @@
-\begin{frameExample}{Problema de la Dieta}{}
-  En un centro de nutrición de desea obtener la dieta de coste mínimo con unos determinados requisitos vitamínicos para un grupo de niños que van a asistir a campamentos de verano. El especialista estima que la dieta debe contener entre 26 y 32 unidades de vitamina $A$, al menos 25 unidades de vitamina $B$ y 30 de $C$, y, a los sumo, 14 de vitamina $D$. La tabla nos da el número de unidades de las distintas vitaminas por unidad de alimento consumido para seis alimentos elegidos, denominados 1, 2, 3, 4, 5, 6, así como su coste por unidad
-
+\documentclass[../../main.tex]{subfiles}
+\begin{document}
+\begin{frame}{Problema de la Dieta}{}
+  \only<1>{%
+  En un centro de nutrición de desea obtener la dieta de coste mínimo con unos determinados requisitos vitamínicos para un grupo de niños que van a asistir a campamentos de verano. El especialista estima que la dieta debe contener entre 26 y 32 unidades de vitamina $A$, al menos 25 unidades de vitamina $B$ y 30 de $C$, y, a lo sumo, 14 de vitamina $D$. La siguiente tabla nos da el número de unidades de las distintas vitaminas por unidad de alimento consumido para seis alimentos elegidos, denominados 1, 2, 3, 4, 5, 6, así como su coste por unidad
 
   Se desea construir un modelo de programación lineal para conocer la cantidad de cada alimento que hay que preparar y que satisfaga los requisitos propuestos con coste mínimo.
-\end{frameExample}
+  }
 
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "../slides"
-%%% End:
+  \only<2>{%
+  {    \centering
+    \begin{tabular}{c|cccc|c}
+\toprule
+      &\multicolumn{4}{c|}{Vitaminas}& costo por \\ 
+      Alimentos & A & B & C & D & unidad \\
+      \midrule
+      1 & 1 & 1 & 0 & 1 & 10 \\ 
+      2 & 1 & 2 & 1 & 0 & 14 \\ 
+      3 & 0 & 1 & 2 & 0 & 12 \\ 
+      4 & 3 & 1 & 0 & 1 & 18 \\ 
+      5 & 2 & 1 & 2 & 0 & 20 \\ 
+      6 & 1 & 0 & 2 & 1 & 16 \\
+      \bottomrule
+    \end{tabular} \par}
+}
+\end{frame}
+\end{document}
