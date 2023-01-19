@@ -33,6 +33,7 @@ env
 .DS_Store
 
 */activities/*.pdf
+*/models/*.pdf
 # for vscode
 .vscode
 .code-workspace
