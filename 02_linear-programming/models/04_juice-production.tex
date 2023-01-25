@@ -1,0 +1,56 @@
+\documentclass[../../main.tex]{subfiles}
+\captionsetup[table]{name=Tabla}
+\begin{document}
+\begin{frame}{Elaboración de Zumos}{}
+
+    Una empresa de alimentación produce zumos de pera; naranja, limón, tomate, manzana, además de otros dos tipos denominados $H$ y $G$ que son combinados de algunos de los anteriores. La disponibilidad de fruta para el periodo próximo, así como los costes de producción y los precios de venta paro los zumos, vienen dados en la Tabla~\ref{tbl:juice-info}
+    %
+            \begin{table}[!ht]
+        \caption{\label{tbl:juice-info}Información para elaboración de zumos.}
+    \centering
+    \scalebox{0.70}{%
+        \begin{tabular}{lrrr}
+      \toprule
+      ~ & Disponibilidad & Costo & Precio venta\\
+      Fruta & Máxima (kg) & (\$ / kg) & (\$ / L)\\
+      \midrule
+      Naranja ($N$)& 32,000 & 94 & 129\\
+      Pera& 25,000 & 87& 129\\
+      Limón ($L$)& 21,000& 73& 110\\
+      Tomate (T) & 18,000& 47 & 88\\
+      Manzana (M) & 27,000 & 68& 97\\
+      \bottomrule
+        \end{tabular}%
+      }
+    \end{table}
+    
+    
+  \end{frame}
+  
+\begin{frame}{Elaboración de Zumos}{}
+
+    Las especificaciones y precios de venta de los combinados vienen dados en la Tabla~\ref{tab:specifications}
+          \begin{table}
+    \caption{\label{tab:specifications}Especificación de zumos combinados.}
+    \centering
+    \scalebox{0.70}{%
+      \begin{tabular}{ccc}
+      \toprule
+      ~&~&Precio venta \\
+      Combinado&Especificación&(\$ / Ltr.)\\
+      \midrule
+      $H$&No más del 50\% de $M$& 100\\
+       &No más del 20\% de $P$&\\
+       &No menos del 10\% de $L$&\\
+      \midrule
+      $G$&40\% de $N$&120\\
+       &35\% de $L$& \\
+       &25\% de $P$&\\
+                     \bottomrule
+      \end{tabular}%
+    }
+  \end{table}
+
+      La demanda de los distintos zumos es grande, por lo que se espera vender toda la producción. Por cada kg de fruta, se produce un litro del correspondiente zumo. Determinar los niveles de producción de los siete zumos, de manera que se tenga beneficio máximo en el periodo entrante.%
+\end{frame}
+\end{document}
