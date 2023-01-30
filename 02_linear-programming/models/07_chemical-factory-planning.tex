@@ -1,0 +1,42 @@
+\documentclass[../../main.tex]{subfiles}
+\captionsetup[table]{name=Tabla}
+\begin{document}
+
+\begin{frame}{Planificación de una planta química}{}
+Una planta química fabrica tres sustancias $A$, $B$ y $C$, utilizando carbón como materia prima básica. La planta dispone de minas propias que pueden producir hasta 600 u por día de cárbón con coste de 2000 \$ por u. Si la compañia necesita más carbón, puede adquirirlo a un distribuidor con un coste de 5000 \$ por u. Además, utiliza en el proceso de producción agua, electricidad, gasóleo y mano de obra. La compañía eléctrica suministradora posee el siguiente sistema escalonado de tarifas
+
+
+La compañía de agua carga 7000 \$/u de agua utilizada por día hasta 900 unidades y 8500 \$/u por encima de 900 unidades. Compra qosóleo a 4900 \$/u, pero se restringe por motivos ecológicos al uso de 3000 unidades de gasóleo por día. Utilizando horario normal, la mano de obra disponible es de 750 horas sin coste. Puede conseguir hasta 220 horas extra con coste 15200 \$/hora. El resto de los datos del proceso de producción se dan en la Tabla~\ref{tab:data-process} que contiene las unidades necesarias para fabricar cada unidad de sustancia, así como sus precios de venta.
+
+
+\begin{itemize}
+\item 34,000 \$ / u para las primeras 2000 u (por día).
+\item 51,000 \$ / u para las primeras 800 u a partir de 2000 u
+\item 63,000 \$ / u a partir de 2800 u
+\end{itemize}
+  \end{frame}
+  \begin{frame}{Planificación de una planta química}{}
+    
+    \begin{table}
+      \caption{\label{tab:data-process}Datos para el proceso de producción.}
+      \centering
+      \begin{tabular}{rrrrrrc}
+        \toprule
+        Sust.&Carb.&Elec.&Agua&Gas&Horas&Benef. / $u$ ($\times 10^3$ \$ )\\
+        \midrule
+        $A$& 0.60 & 3.20 & 1.00 & 2.00 & 2.00& 290 para las primeras 85 y \\
+        &&&&&&240 para las posteriores\\
+        \midrule
+        $B$&0.90&2.50&0.26&2.40&3.00&320/u hasta un\\
+        &&&&&&máximo de 95 $u$\\
+        \midrule
+        $C$&1.20&4.00&1.70&3.00&2.00&380/$u$\\
+        \bottomrule
+      \end{tabular}
+
+    \end{table}
+
+    Formular un modelo de programación lineal que proporcione el plan de producción de beneficio máximo
+  
+\end{frame}
+\end{document}
