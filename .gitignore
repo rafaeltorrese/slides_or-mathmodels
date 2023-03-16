@@ -5,6 +5,8 @@
 *.out
 *.toc
 *.snm
+
+dualsimplex-algorithm.pdf
 slides.pdf
 slides*.pdf
 *.#
