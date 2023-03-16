@@ -1,0 +1,396 @@
+\documentclass[letter]{article}
+
+\title{Algoritmo Dual Simplex}
+
+
+\usepackage[english,spanish]{babel}
+\deactivatetilden
+\spanishdecimal{.}
+\addto\captionsspanish{\def\tablename{Tabla}}
+\addto\captionsspanish{\def\listtablename{\'Indice de tablas}}
+
+\usepackage[utf8]{inputenc}
+\usepackage{tgbonum}
+%\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb}
+
+\usepackage[utf8]{inputenc}
+\usepackage{import} % for \includefrom{path/to/file}{file}
+\usepackage{booktabs}
+\usepackage{verbatim}
+\usepackage{nicefrac}
+
+\usepackage{color} % para color en las letras
+\usepackage[table]{xcolor} % para color en las letras
+
+\usepackage{paralist} % para incluir listas dentro de texto (inline lists)
+
+
+\usepackage%
+[
+font=small,%
+labelfont=bf,%
+labelsep=endash,%
+tableposition=top,%
+skip=3pt%
+]{caption} % formato de los captions, puede escribirse solo small,bf, etc
+\usepackage{subcaption} % Figures and Tables side by side
+
+\usepackage[%
+protrusion=true,%
+expansion=true,%
+final,%
+babel%
+]{microtype}
+
+\usepackage{hyperref}
+
+\hypersetup{
+  breaklinks=true,%
+  colorlinks=true,%
+  linkcolor=red,%
+  citecolor=black,%
+  urlcolor=blue%
+}
+
+% For Algorithms
+\usepackage{algorithm}
+%\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+
+\usepackage{systeme}
+\renewcommand{\SYSeqnum}{\value{equation}}
+\sysautonum{(**)}
+
+\usepackage{graphicx}
+\graphicspath{
+  {figs/}%
+}
+
+\usepackage{tikz} % Tikz must be before ctable package, otherwise
+% LaTeX output error 
+\usepackage{etoolbox}
+\usetikzlibrary{shapes.geometric,arrows,decorations.pathreplacing}
+
+\usepackage{cleveref}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+A continuación explicaremos el algoritmo dual simplex. Usaremos el siguiente ejemplo:
+
+
+\begin{equation}\label{eq:objective}
+  \min Z = 2x_1 + 2x_2 + 4x_3
+\end{equation}
+
+
+{\centering
+s.a.
+\vspace{3mm}
+
+  \sysdelim..%
+  \sysalign{r,r}%
+  \systeme[x_1x_2x_3]{%
+      2x_1 + 3x_2 + 5x_3 \geq 2\gdef\c1{2},
+    3x_1 + x_2 + 7x_3  \leq 3,
+    x_1 + 4x_2 + 6x_3  \leq 5%
+}% systeme
+
+$ x_1, x_2, x_3  \geq 0$ \par}
+
+
+
+\section*{Problema en forma canónica}
+El primer paso es convertir el problema de programación lineal a la forma canónica de \textbf{un problema de maximización}. En la forma canónica:
+
+
+\begin{itemize}\parskip3mm
+\item los problemas de \textbf{minimización} tienen \textbf{todas} las restricciones en sentido $\geq$ 
+\item los problemas de \textbf{maximización} tienen \textbf{todas} las restricciones en sentido $\leq$
+\end{itemize}
+
+La función objetivo puede convertirse en un problema de maximización multiplicándola  por $-1$. De esta manera, la función objetivo~(\ref{eq:objective}) se expresa como:
+
+
+\[  \max G =  -Z = -2x_1 - 2x_2 - 4x_3\]
+
+Para pasar una restricción de $\boldsymbol{\leq}$ a $\boldsymbol{\geq}$ también multiplicamos por $-1$ a toda la restricción. En nuestro ejemplo solo se necesita cambiar el sentido de  la restricción~(\c1) para cumplir con la forma canónica de un problema de maximización. La restricción~(\c1) queda de la siguiente forma \[     -2x_1 - 3x_2 - 5x_3 \leq -2\] 
+
+\section*{Planteamiento del Problema}
+
+El problema de programación lineal de nuestro ejemplo como un problema de maximización se muestra a continuación
+
+\setcounter{equation}{0}
+
+\begin{equation}
+  \label{eq:obj2}
+  \max G =  -Z = -2x_1 - 2x_2 - 4x_3
+\end{equation}
+
+{\centering
+  s.t.
+
+\sysdelim..%
+\sysalign{r,r}%
+\systeme[x_1x_2x_3]{%
+    -2x_1 - 3x_2 - 5x_3 \leq -2,
+  3x_1 + x_2 + 7x_3  \leq 3,
+  x_1 + 4x_2 + 6x_3  \leq 5
+}% systeme
+
+\vspace{3mm}
+$    x_1, x_2, x_3  \geq 0$ \par}
+
+\section{Formato estándar}
+\label{sec:standard}
+Después de pasar el problema a su formato canónico de maximización se usa el formato estándar sumando las variables de holgura $S_i$. Nuestro ejemplo ahora se expresa de la siguiente forma.
+
+
+\setcounter{equation}{0}
+
+\begin{equation}
+  \label{eq:obj3}
+  \max G = -2x_1 - 2x_2 - 4x_3 + 0S_1  + S_2 + S_3
+\end{equation}
+
+{\centering
+  s.t.
+  \vspace{3mm}
+  
+\sysdelim..%
+\sysalign{r,r}%
+\systeme[x_1x_2x_3S_1S_2S_3]{%
+    -2x_1 - 3x_2 - 5x_3 + S_1 =  -2,
+  3x_1 + x_2 + 7x_3 + S_2  = 3,
+  x_1 + 4x_2 + 6x_3 + S_3 = 5%
+}% systeme
+
+\vspace{3mm}
+$    x_1, x_2, x_3, S_1, S_2, S_3  \geq 0$ \par}
+
+\section*{Tabla inicial dual simplex}
+\label{sec:initial-simplex}
+
+
+A partir del formato estándar la \textbf{tabla dual simplex} inicial se expresa de la siguiente forma
+
+
+
+\begin{table}[h]
+\caption{Tabla dual simplex inicial.}
+      \centering
+      \begin{tabular}{rrrrrrrrrr}
+        \toprule
+        $\max$&$c_j$&-2&-2&-4&0&0&0&\\
+        \midrule
+        $C_b$&Basis&$x_1$&$x_2$&$x_3$&$s_1$&$s_2$&$s_3$&$b$&\\
+        \midrule
+        0&\color{blue}$s_1$&-2&-3&-5&1&0&0&-& \\
+        0&$s_2$&3&1&7&0&1&0&3&\\
+        0&$s_3$&1&4&6&0&0&1&5&\\
+        \midrule
+              &$Z_j$&0&0&0&0&0&0&\cellcolor{yellow}\textbf{0}&\\
+              &$c_j - Z_j$&-2&-2&-4&0&0&0&\\
+        \bottomrule
+      \end{tabular}
+    \end{table}
+    
+
+
+    \begin{description}
+    \item[Paso 1.] Se calculan los elementos $c_j - Z_j$ para cada columns. Después, pueden surgir tres casos:
+  \begin{enumerate}  
+  \item  Si todos los elementos $c_j - Z_j$ son negativos o zero y todos los elementos $b_i$ (lado derecho) son no-negativos, la solución es factible y óptima.
+\item Si todos los elementos $c_j - Z_j$ son negativos o zero y al menos un elemento de $b_i$ es negativo, se procede al paso número 2
+\item  Si algún elemento de $c_j - Z_j$ es positivo, el algoritmo no funciona.
+  \end{enumerate}
+\item[Paso 2.] Selecciona la fila que contiene los $b_i$ más negativos. Esta fila se llama fila clave o fila pivote. La variable básica correspondiente sale de la base. Esto se llama condición de factibilidad dual
+\item[Paso 3.]  Mira los elementos de la fila clave.
+  \begin{enumerate}[a)]
+  \item  Si todos los elementos son no negativos, el problema no tiene solución factible.
+  \item  Si al menos un elemento es negativo, encuentre los ratios de los elementos correspondientes de la fila a estos elementos. \textbf{Ignorar ratios asociados con elementos positivos o cero de la fila clave}. Elige la menor de estas proporciones. La columna correspondiente es la columna clave y la variable asociada es la variable de entrada. A esto se le llama condición de óptimo dual. Marque el elemento clave o el elemento pivote.
+  \end{enumerate}
+\end{description}
+
+\begin{table}[h]
+\caption{Identificar variable de salida.}
+      \centering
+      \begin{tabular}{rrrrrrrrrr}
+        \toprule
+        $\max$&$c_j$&-2&-2&-4&0&0&0&\\
+        \midrule
+        $C_b$&Basis&$x_1$&$x_2$&$x_3$&$s_1$&$s_2$&$s_3$&$b$&\\
+        \midrule
+        0&\color{blue}$s_1$&-2&-3&-5&1&0&0&\cellcolor{blue!30}-2&\textrightarrow \\
+        0&$s_2$&3&1&7&0&1&0&3&\\
+        0&$s_3$&1&4&6&0&0&1&5&\\
+        \midrule
+              &$Z_j$&0&0&0&0&0&0&\cellcolor{yellow}\textbf{0}&\\
+              %&$c_j - Z_j$&-2&-2&-4&0&0&0&\\
+        \bottomrule
+      \end{tabular}
+    \end{table}
+    
+\begin{table}[h]
+\caption{Fila pivote.}
+    \centering
+    \begin{tabular}{rrrrrrrrrr}
+      \toprule
+      $\max$&$c_j$&-2&-2&-4&0&0&0&\\
+      \midrule
+      $C_b$&Basis&$x_1$&$\cellcolor{yellow}x_2$&$x_3$&$s_1$&$s_2$&$s_3$&$\pmb{b}$&\\
+      \midrule
+      0&$s_1$&\cellcolor{blue!30}-2&\cellcolor{blue!30}-3&\cellcolor{blue!30}-5&\cellcolor{blue!30}1&\cellcolor{blue!30}0&\cellcolor{blue!30}0&-2& key row\\
+      0&$s_2$&3&1&7&0&1&0&3&\\
+      0&$s_3$&1&4&6&0&0&1&5&\\
+      \midrule
+      &$Z_j$&0&0&0&0&0&0&\textbf{0}&\\
+      &$c_j - Z_j$&\cellcolor{blue!30}-2&\cellcolor{blue!30}-2&\cellcolor{blue!30}-4&\cellcolor{blue!30}0&\cellcolor{blue!30}0&\cellcolor{blue!30}0&\\
+      \bottomrule
+    \end{tabular}
+    \end{table}
+
+\section*{Iteraciones}
+\label{iterations}
+
+    
+    \begin{description}
+  \item[Step 4.] Calcule $c_j - Z_j$ donde $Z_j = \sum c_B a_{ij}$. Como todos $c_j - Z_j$ son negativos o cero y $b_1$ es negativo, la solución es óptima pero no factible.
+  \item[Step 5.] Como $b_1 = -2$, la primera fila es la fila clave y $s_1$ es la variable saliente.
+  \end{description}
+
+      \begin{table}[h]
+    \caption{Calculo de los ratios solo con valores negativos en fila pivote.}
+        \centering
+    \begin{tabular}{rrrrrrrrrr}
+      \toprule
+      $\max$&$c_j$&-2&-2&-4&0&0&0&\\
+      \midrule
+      $C_b$&Basis&$x_1$&$\cellcolor{yellow}x_2$&$x_3$&$s_1$&$s_2$&$s_3$&$\pmb{b}$&\\
+      \midrule
+      0&$s_1$&\cellcolor{blue!30}-2&\cellcolor{blue!30}-3&\cellcolor{blue!30}-5&1&0&0&-2& solo negativos\\
+      0&$s_2$&3&1&7&0&1&0&3&\\
+      0&$s_3$&1&4&6&0&0&1&5&\\
+      \midrule
+      &$Z_j$&0&0&0&0&0&0&\textbf{0}&\\
+      &$c_j - Z_j$&\cellcolor{blue!30}-2&\cellcolor{blue!30}-2&\cellcolor{blue!30}-4&0&0&0&\\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+  %%%
+  
+  \begin{description}
+  \item[Step 6.] Encuentre los elementos de los ratios de la fila $c_j - Z_j$, esto es dividir los elemeentos del vector $c_j - Z_j$ entre los elementos de la fila correspondiente a la variable de salida. Ignore las proporciones correspondientes a elementos positivos o cero para la fila clave. Las proporciones deseadas son: \[ \frac{-2}{-2} = 1 \quad\quad \frac{-2}{-3}=\frac{\color{blue}2}{\color{blue} 3} \quad\quad \frac{-4}{-5} = \frac{4}{5} \] Dado que $\frac{2}{3}$ es la proporción más pequeña, la columna $x_2$ es la columna clave ; $x_2$ es la variable entrante y $-3$ es el elemento clave.
+
+      \begin{table}[h]
+    \caption{Calculo de los ratios.}
+        \centering
+    \begin{tabular}{rrrrrrrrrr}
+      \toprule
+      $\max$&$c_j$&-2&-2&-4&0&0&0&\\
+      \midrule
+      $C_b$&Basis&$x_1$&$\cellcolor{yellow}x_2$&$x_3$&$s_1$&$s_2$&$s_3$&$\pmb{b}$&\\
+      \midrule
+      0&$s_1$&\cellcolor{blue!30}-2&\cellcolor{blue!30}-3&\cellcolor{blue!30}-5&1&0&0&-2& solo negativos\\
+      0&$s_2$&3&1&7&0&1&0&3&\\
+      0&$s_3$&1&4&6&0&0&1&5&\\
+      \midrule
+      &$Z_j$&0&0&0&0&0&0&\textbf{0}&\\
+            &$c_j - Z_j$&\cellcolor{blue!30}-2&\cellcolor{blue!30}-2&\cellcolor{blue!30}-4&0&0&0&\\
+      \midrule
+      &ratios&\cellcolor{green!30}1&\cellcolor{green!30}\nicefrac{2}{3}&\cellcolor{green!30}\nicefrac{4}{5}&0&0&0&\\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+    
+  \item[Step 7.] Reemplazar $s_1$ por $x_2$
+  \end{description}
+
+  
+    \begin{table}[h]
+      \caption{Localización del elemento pivote}
+  \centering     
+    \begin{tabular}{rrrrrrrrrr}
+      \toprule
+      $\max$&$c_j$&-2&-2&-4&0&0&0&\\
+      \midrule
+      $c_B$&Basis&$x_1$&$x_2$&$x_3$&$s_1$&$s_2$&$s_3$&$b$&\\
+      \midrule
+      -2&$x_2$&-2&\cellcolor{orange}-3&-5&1&0&0&-2&\\
+      0&$s_2$&3&1&7&0&1&0&3&\\
+      0&$s_3$&1&4&6&0&0&1&5&\\
+      \midrule
+      &$Z_j$&0&0&0&0&0&0&\textbf{0}&\\
+            &$c_j - Z_j$&-2&-2&-4&0&0&0&\\
+            &&&\textuparrow&&&&&\\
+      \bottomrule
+    \end{tabular}
+    \end{table}
+    
+
+    Aplicando Gauss-Jordan tenemos la primer iteración
+    
+
+    \begin{table}[h]
+      \caption{Primera Iteración aplicando algoritmo Dual Simplex}
+      \centering
+    \begin{tabular}{rrrrrrrrrr}
+      \toprule
+      $\max$&$c_j$&-2&-2&-4&0&0&0&\\
+      \midrule
+      $c_B$&Basis&$x_1$&$x_2$&$x_3$&$s_1$&$s_2$&$s_3$&$b$&\\
+      \midrule
+      -2&$x_2$&\nicefrac{2}{3}&1&\nicefrac{5}{3}&-\nicefrac{1}{3}&0&0&\nicefrac{2}{3}&\\
+      0&$s_2$&\nicefrac{7}{3}&0&\nicefrac{16}{3}&\nicefrac{1}{3}&1&0&\nicefrac{7}{3}&\\
+      0&$s_3$&-\nicefrac{5}{3}&0&-\nicefrac{2}{3}&\nicefrac{4}{3}&0&1&\nicefrac{7}{3}&\\
+      \midrule
+      &$Z_j$&-\nicefrac{4}{3}&-2&-\nicefrac{10}{3}&\nicefrac{2}{3}&0&0&\cellcolor{yellow}-\nicefrac{4}{3}&\\
+            &$c_j - Z_j$&-\nicefrac{2}{3}&0&-\nicefrac{2}{3}&-\nicefrac{2}{3}&0&0&\\
+            %&&&\multicolumn{6}{r}{Solución básica factible óptima}\\
+      \bottomrule
+    \end{tabular}
+    \end{table}
+
+
+
+        \begin{table}[h]
+      \caption{Solución aplicando algoritmo Dual Simplex}
+      \centering
+    \begin{tabular}{rrrrrrrrrr}
+      \toprule
+      $\max$&$c_j$&-2&-2&-4&0&0&0&\\
+      \midrule
+      $c_B$&Basis&$x_1$&$x_2$&$x_3$&$s_1$&$s_2$&$s_3$&$b$&\\
+      \midrule
+      -2&$x_2$&\nicefrac{2}{3}&1&\nicefrac{5}{3}&-\nicefrac{1}{3}&0&0&\cellcolor{cyan}\nicefrac{2}{3}&\\
+      0&$s_2$&\nicefrac{7}{3}&0&\nicefrac{16}{3}&\nicefrac{1}{3}&1&0&\cellcolor{cyan}\nicefrac{7}{3}&\\
+      0&$s_3$&-\nicefrac{5}{3}&0&-\nicefrac{2}{3}&\nicefrac{4}{3}&0&1&\cellcolor{cyan}\nicefrac{7}{3}&\\
+      \midrule
+      &$Z_j$&-\nicefrac{4}{3}&-2&-\nicefrac{10}{3}&\nicefrac{2}{3}&0&0&\cellcolor{yellow}-\nicefrac{4}{3}&\\
+            &$c_j - Z_j$&\cellcolor{cyan}-\nicefrac{2}{3}&\cellcolor{cyan}0&\cellcolor{cyan}-\nicefrac{2}{3}&\cellcolor{cyan}-\nicefrac{2}{3}&\cellcolor{cyan}0&\cellcolor{cyan}0&\\
+            &&&\multicolumn{6}{r}{Solución básica factible óptima}\\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+  
+    \section*{Solución óptima.}
+
+    Como todos los $c_j - Z_j$ son negativos o cero y todos los $b_i$ son positivos, la solución dada por la tabla es óptima. La solución óptima es:    
+    
+
+    \begin{table}[h]
+      \caption{Solución al problema}
+\centering
+   \begin{tabular}{cccc}
+     $x_1$&$x_2$&$x_3$& $\min Z$\\
+     \midrule
+     0&$\nicefrac{2}{3}$&0& $\cellcolor{yellow}\nicefrac{4}{3}$
+   \end{tabular}
+ \end{table}
+ 
+    
+
+\end{document}
