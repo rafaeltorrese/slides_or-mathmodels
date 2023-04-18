@@ -1,4 +1,4 @@
-\documentclass[../slides.tex]{subfiles}
+\documentclass[../main.tex]{subfiles}
 \title{Dynamic Programming}
 
 \AtBeginSection[] % Do nothing for \section* %
@@ -22,6 +22,38 @@
 \end{frame}
 % ==============================
 
+\begin{frameExample}{Problema de suavización del empleo}
+  %EJEMPLO 7.4-1
 
+\only<1>{  Una empresa ha dividido su área de marketing en tres zonas. La cantidad de ventas depende del número de vendedores en cada zona. La empresa ha estado recopilando datos sobre las ventas y los vendedores en cada área durante los últimos años. La información se resume en la Tabla 7.1. Para el próximo año, la empresa tiene solo nueve vendedores, y el problema es distribuir estos vendedores en tres zonas diferentes para que las ventas totales sean máximas.}
+
+
+  \begin{onlyenv}<2>
+    \begin{table}[h!]
+      \caption{Ganancias en miles de dólares}
+      \centering
+      \scalebox{0.7}{%
+      \begin{tabular}{cccc}
+        \toprule
+        No. de &Zona& Zona& Zona\\
+        vendedores& 1& 2& 3\\
+        \midrule
+        0&30&35&42\\
+        1&45&45&54\\
+        2&60&52&60\\
+        3&70&64&70\\
+        4&79&72&82\\
+        5&90&82&95\\
+        6&98&93&102\\
+        7&105&98&110\\
+        8&100&100&110\\
+        9&90&100&110\\
+        \toprule
+      \end{tabular}
+      }
+    \end{table}    
+  \end{onlyenv}
+  
+\end{frameExample}
 
 \end{document}
