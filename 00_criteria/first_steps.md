@@ -36,3 +36,6 @@ model = gp.Model(env=env)
 
 ```
 
+## Trabajo en Equipos
+
+Vamos a trabajar en equipos de tres integrantes. Solo un equipo tendrá 4 integrantes. El próximo lunes les pediré la lista de integrantes por de cada equipo. Ponerse de acuerdo entre ustedes caso contrario integraré los equipos.
