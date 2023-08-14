@@ -74,6 +74,8 @@ Contestar preguntas relacionadas con las secciones
 
 # Actividad. Lectura de la Metodología de la IO
 
+Del libro [Operations research de  Gupta, P. K., & Hira, D. S](https://drive.google.com/uc?id=1b3U_HRWaciFaB5DBY_yoll1UO129p3ZS&export=download),01 "Basics of Operations Research"   Leer las secciones y las subsecciones correspondienes:
+
 1.12 Phases Of Or Or Methodologv Of Or Or Or Approach Or How OR Works
 
 # Actividad. Lectura de los Modelos en IO
@@ -86,6 +88,8 @@ Leer sección 1.13 Models In OR
 Leer sección 1.18 Constructing The Model
 
 # Actividad. Exponer los tipos de modelos matemáticos
+Del libro [Operations research de  Gupta, P. K., & Hira, D. S](https://drive.google.com/uc?id=1b3U_HRWaciFaB5DBY_yoll1UO129p3ZS&export=download),01 "Basics of Operations Research"   Leer las secciones y las subsecciones correspondienes:
+
 Leer y exponer la sección 1.20 Types Of Mathematical Models
 
 # Actividad. Leer sbre el rol de las computadores en IO
