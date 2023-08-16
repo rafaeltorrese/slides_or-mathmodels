@@ -94,6 +94,8 @@ Leer y exponer la sección 1.20 Types Of Mathematical Models
 
 # Actividad. Leer sbre el rol de las computadores en IO
 
+Del libro [Operations research de  Gupta, P. K., & Hira, D. S](https://www.schandpublishing.com/books/tech-professional/mechanical-engineering/operations-research/9788121902816/)
+
 Leer sección 1.21 ROLE OF COMPUTERS IN OPERATIONS RESERACH
 
 # Actividad. Dificultades en la IO
