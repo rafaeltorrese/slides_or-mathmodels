@@ -1,0 +1,194 @@
+\documentclass[spanish,letterpaper,11pt]{exam}
+
+
+% -------------------- Packages --------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{systeme}
+\usepackage{cancel}
+% -------------------- Definitions --------------------
+
+\newcommand{\tema}{Método Analítico}
+%
+\extrafootheight{-0.5in}
+\header%
+{Dr. Rafael Torres Escobar}% Left
+{INVESTIGACIÓN DE OPERACIONES -- MODELOS MATEMÁTICOS \\ \tema}% Center
+{Página \\ \thepage\ de \numpages} % Right
+\headrule
+\pointpoints{punto}{puntos}
+\author{Dr. Rafael Torres Escobar}
+%
+\printanswers % comentar para mostrar respuestas
+% ================================================== 
+\begin{document}
+\begin{questions}
+    \question
+ChemLabs utiliza las materias primas $I$y $II$ para producir dos soluciones de limpieza doméstica, $A$ y $B$. Las disponibilidades diarias de las materias pr imas $I$y $II$ son de 150 y 145 unidades, respectivamente. Una unidad de solución $A$ consume .5 unidades de la materia prima $I$ y 0.6 unidades de la materia prima $II$, en tanto que una unidad de la solución $B$ consume 0.5 unidades de la materia prima $I$ y .4 unidades de la materia prima $II$. Las utilidades por unidad de las soluciones $A$ y $B$ son de \$8 y \$10, respectivamente. La demanda diaria de la solución $A$ es de entre 30 y 150 unidades, y la de la solución $B$ va de 40 a 200 unidades. Determine las cantidades de producción óptimas de $A$ y $B$
+
+
+
+\begin{solution}
+
+  MODELO
+
+  \[ \max Z = 8x_1 + 10x_2\]
+{\centering
+  subject to
+
+  \sysalign{r,r}%
+  \sysdelim..%
+  \systeme[x_1x_2]%
+  {
+    0.50x_1 + 0.50x_2 \leq 150,
+    0.60x_1 + 0.40x_2 \leq 145,
+    x_1 \geq 30,
+    x_1 \leq 150,
+    x_2 \geq 40,
+    x_2 \leq 200
+  }
+
+  $x_1, x_2 \geq 0$
+  \par}
+
+        
+  FORMA ESTÁNDARD 
+
+        \[ \max Z = 2x_1 + 3x_2 + 0s_1 + 0s_2 + 0s_3 + 0s_4 + 0s_5 + 0s_6 - MA_3 - MA_5\]
+        {\centering
+          subject to
+        
+          \sysalign{r,r}%
+          \sysdelim..%
+          \systeme[x_1x_2s_1s_2s_3_s_4s_5s_6A_3A_5]%
+          {
+            0.50x_1 + 0.50x_2 + s_1 = 150,
+            0.60x_1 + 0.40x_2 + s_2 = 145,
+            x_1 - s_3 + A_3 =  30,
+            x_1 + s_4  150,
+            x_2 - s_5 + A_5 =  40,
+            x_2 + s_6 = 200
+          }
+        
+          $x_1, x_2, s_1, s_2, s_3, s_4, s_5, s_6, A_3, A_5 \geq 0$
+          \par}
+
+        ALGORITMO SIMPLEX
+
+
+
+
+    \end{solution}
+
+    \vspace{1cm}
+    \question
+    % EXAMPLE 2.6-1 (Production Allocation Problem} Gupta ebook
+  Una empresa produce tres productos. Estos productos se procesan en tres máquinas diferentes. El tiempo requerido para fabricar una unidad de cada uno de los tres productos y la capacidad diaria de las tres máquinas se detallan en la tabla a continuación.
+
+  {\centering
+      \begin{tabular}{ccccc}
+        \toprule
+        Máquina & \multicolumn{3}{l}{Tiempo por unidad (minutos)} & Capacidad       \\
+                &  Producto 1             &    Producto 2            &     Producto 3           & (Minutos / día) \\
+        \midrule
+        $M_1$   & 2             & 3              & 2              & 440             \\
+        $M_2$   & 4             & --             & 3              & 470             \\
+        $M_3$   & 2             & 5              & --             & 430\\
+        \bottomrule
+      \end{tabular}
+    \par}
+  
+
+   Se requiere determinar la cantidad diaria de unidades que se fabricarán para cada producto. El beneficio por unidad para el producto 1, 2 y 3 es de \$ 4, \$ 3 y \$ 6 respectivamente. Se supone que todas las cantidades producidas se consumen en el mercado. Formule el modelo matemático (L.P.) que maximizará la ganancia diaria. 
+   
+   \begin{itemize}
+       \item Resolver por método analítico. 
+       \item Expresar todos los sistemas de ecuaciones que intervienen. 
+       \item Clasificar soluciones como básicas, no básicas y factibles e infactibles.
+   \end{itemize}
+
+   \begin{solution}
+       
+    Standard form: 
+
+        \[ \max Z = 4x_1 + 3x_2 + 6x_3 + 0s_1 + 0s_2 + 0s_3\]
+        {\centering
+          subject to
+        
+          \sysalign{r,r}%
+          \sysdelim..%
+          \systeme[x_1x_2x_3s_1s_2s_3]%
+          {
+            2x_1 + 3x_2 + 2x_3 +  s_1 = 440,
+            4x_1 +      + 3x_3 +  s_2 = 470,
+            2x_1 + 5x_2        +  s_3 = 430,
+          }
+
+          $x_1, x_2, x_3, s_1, s_2, s_3 \geq 0$
+          
+          \par}
+          
+          \begin{flalign*}
+              m & =  3\\
+              m + n & = 6\\
+              _{(m + n)}C_{m} & = \frac{6!}{3!3!} = \frac{6 \cdot 5 \cdot 4 \cdot}{3!} = 20
+          \end{flalign*}
+   
+
+          \begin{tabular}{rr}        
+            Number of basic feasibile solutions: &8\\
+            Number of basic infeasible solutions: &10\\
+            Number of singular systems: &2\\
+            \end{tabular}
+
+        The maximum value of $z$ is: 1066.667. The optimal solution is 
+
+        {\centering
+        \begin{tabular}{lll}
+          \toprule
+          $x_2$ & $x_3$ & $s_3$ \\
+          42.22 & 156.667 & 218.889\\ 
+          \bottomrule           
+        \end{tabular}
+        \par
+     } 
+                
+          Number of feasibile solutions: 8. 
+          
+          Feasible systems
+
+{
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+     $x_1$ & $x_2$ & $x_3$ \\
+     $x_1$ & $x_2$ & $s_1$ \\
+     $x_1$ & $s_1$ & $s_3$ \\
+     $x_2$ & $x_3$ & $s_2$ \\
+     $x_2$ & $x_3$ & $s_3$ \\
+     $x_2$ & $s_1$ & $s_2$ \\
+     $x_3$ & $s_1$ & $s_3$ \\
+     $s_1$ & $s_2$ & $s_3$ \\
+     \bottomrule
+    \end{tabular}
+  \par
+}
+
+   
+   Singular matrix with the following variables:
+
+   {
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+     $x_2$ & $s_1$ & $s_3$ \\
+     \midrule
+     $x_3$ & $s_1$ & $s_2$ \\
+    \bottomrule
+    \end{tabular}
+  \par{}
+}
+   \end{solution}   
+\end{questions}
+\end{document}
