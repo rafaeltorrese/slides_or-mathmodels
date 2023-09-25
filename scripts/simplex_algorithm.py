@@ -187,7 +187,7 @@ def simplex_algorithm_01(Matrix, sense=1):
     print(f'Optimal Solution Found. Iterations {iteration_id}')
     return iterations
 
-def simplex_algorithm_02(Matrix, z, initial_basics_index, sense=1):
+def simplex_algorithm_02(Matrix, z, basics_index, sense=1):
     'Reduced Costs Version'
     table = np.array(Matrix, dtype=float)
     cj = np.array(z, dtype=float)
@@ -195,10 +195,11 @@ def simplex_algorithm_02(Matrix, z, initial_basics_index, sense=1):
     iterations = {}
     iteration_id = 0
 
-    cb = cj[initial_basics_index]   
+    cb = cj[basics_index]   
     zj = cb.dot(table[:, :-1])
     net_evaluation_row = cj - zj
     solution_column = table[:, -1]  # last column of the Simplex Table
+    print(f'Initial Basic Variables {basics_index}')
     while np.any(sense *  net_evaluation_row > 0):
         iteration_id += 1
         
@@ -212,18 +213,21 @@ def simplex_algorithm_02(Matrix, z, initial_basics_index, sense=1):
         table = gauss_jordan(table, leaving, entering)        
         solution_column = table[:, -1]  # last column of the Simplex Table
 
-        cb[leaving] = cj[entering]   
+        print(f'Iteration: {iteration_id}. Leaving: {basics_index[leaving]}. Entering: {entering}.')
+        basics_index[leaving]  = entering
+        cb[leaving] = cj[entering]
+        print(f'Z: {cb.dot(solution_column)}')         
         zj = cb.dot(table[:, :-1])
-        net_evaluation_row = cj - zj
-
-        zvalue = cb.dot(solution_column)
-
-        print(f'Iteration: {iteration_id}. Leaving: {leaving}. Entering: {entering}. Z = {zvalue}')
+        net_evaluation_row = cj - zj        
+                
         name_table = f'iter{str(iteration_id).zfill(2)}'
-        net_evaluation_augmented = np.append(net_evaluation_row, zvalue).reshape(1, -1)
-        iterations[name_table] = np.concatenate([table, cb.dot(table).reshape(1,-1), net_evaluation_augmented])
+        iterations[name_table] = table
 
     print(f'Optimal Solution Found in {iteration_id} Iteration(s) ')
+    print('zj\n', zj)
+    print('cj - zj\n', cj - zj)
+    print()
+    print(f'Final Basic Variables: {basics_index}. Z = {cb.dot(solution_column)}')
     
     return iterations
 
@@ -241,17 +245,12 @@ if __name__ == '__main__':
 
     tables = simplex_algorithm_02(Matrix=Aprimal, 
                                   z=Zvector, 
-                                  initial_basics_index=[2, 3, 4, 5], 
+                                  basics_index=[2, 3, 4, 5], 
                                   sense=1,
                                   )
     
     print(tabulate(
         tables['iter02'],
-        headers='x1 x2 s1 s2 s3 s4 solution'.split(),
+        headers=enumerate('x1 x2 s1 s2 s3 s4 solution'.split()),
         tablefmt='github',
     ))
-
-    basic_labels_index = np.where(tables['iter02'][-2, :-1] == Zvector)[0]
-    label_variables = 'x1 x2 s1 s2 s3 s4'.split()
-    print([label_variables[basic] for basic in basic_labels_index])
-
