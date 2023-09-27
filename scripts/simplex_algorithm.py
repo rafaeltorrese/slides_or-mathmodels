@@ -161,10 +161,21 @@ pd.Series(np.append(rhs, zvalue), index=basic_labels + ['z'], name='Solution')
 
 def simplex_algorithm_01(Matrix, sense=1):
     'Taha Version'
-    table = np.array(Matrix)
+    table = np.array(Matrix, dtype=float)
+    num_rows, num_cols = table.shape
+    column_z = np.zeros(num_rows)
+    column_z[0] = 1
+    table = np.concatenate([column_z[:, np.newaxis], table], axis=1)
+
     iterations = {}
     iteration_id = 0
     objective_coefficients = sense * table[0, 1:-1]
+
+    basics_columns =  np.where(table[0, 1:-1] == 0)[0] + 1   # cast with original table
+    basics_rows = np.where(table[1:, basics_columns] == 1)[1]
+        
+    basics_index = [basics_columns[i] for i in basics_rows]
+    print(f'Initial Basics {basics_index}')
     while np.any(objective_coefficients < 0):
         iteration_id += 1
         solution_column = table[1:, -1]
@@ -172,12 +183,12 @@ def simplex_algorithm_01(Matrix, sense=1):
         entering  = objective_coefficients.argmin() + 1
         entering_column = table[1:, entering]
 
-        ratios = np.full_like(A[1:, -1], np.inf)
+        ratios = np.full_like(table[1:, -1], np.inf)
         np.divide(solution_column, entering_column, where=entering_column>0, out=ratios)
         leaving = ratios.argmin() + 1
 
-        print(f'Iteration: {iteration_id}. Leaving: {leaving}. Entering: {entering}')
-
+        print(f'Iteration: {iteration_id}. Leaving: {basics_index[leaving - 1]}. Entering: {entering}')
+        basics_index[leaving - 1] = entering
         table = gauss_jordan(table, leaving, entering)
         objective_coefficients = sense * table[0, 1:-1]
 
@@ -185,6 +196,7 @@ def simplex_algorithm_01(Matrix, sense=1):
         iterations[name_table] = table
 
     print(f'Optimal Solution Found. Iterations {iteration_id}')
+    print(f'Final Basics Variables {basics_index}')
     return iterations
 
 def simplex_algorithm_02(Matrix, z, basics_index, sense=1):
@@ -233,24 +245,31 @@ def simplex_algorithm_02(Matrix, z, basics_index, sense=1):
 
 if __name__ == '__main__':
     Aprimal = [
-        [6, 4,  1, 0, 0, 0, 24],
-        [1, 2,  0, 1, 0, 0, 6],
-        [-1, 1, 0, 0, 1, 0, 1],
-        [0,  1, 0, 0, 0, 1, 2],
+        [-5, -4,  0, 0, 0, 0,   0],
+        [6,  4,  1, 0, 0, 0,  24],
+        [1,  2,  0, 1, 0, 0,   6],
+        [-1,  1,  0, 0, 1, 0,   1],
+        [0,  1,  0, 0, 0, 1,   2],
     ]
-
-    bprimal = [24, 6, 1, 2]
 
     Zvector = [5, 4, 0, 0, 0, 0]    
 
-    tables = simplex_algorithm_02(Matrix=Aprimal, 
-                                  z=Zvector, 
-                                  basics_index=[2, 3, 4, 5], 
+    tables = simplex_algorithm_01(Matrix=Aprimal, 
+                                #   z=Zvector, 
+                                #   basics_index=[2, 3, 4, 5], 
                                   sense=1,
                                   )
     
+    print(tables.keys())
+
+    print(tabulate(
+        Aprimal,
+        headers=enumerate('x1 x2 s1 s2 s3 s4 solution'.split()),
+        tablefmt='github',
+    ))
+
     print(tabulate(
         tables['iter02'],
-        headers=enumerate('x1 x2 s1 s2 s3 s4 solution'.split()),
+        headers=enumerate('z x1 x2 s1 s2 s3 s4 solution'.split()),
         tablefmt='github',
     ))
