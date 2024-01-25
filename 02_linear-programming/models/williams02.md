@@ -4,24 +4,24 @@ Una fábrica de ingeniería fabrica siete productos (PROD 1 a PROD 7) en las sig
 
 
 | -                         | PROD1 | PROD2 | PROD3 | PROD4 | PROD5 | PROD6 | PROD7 |
-|---------------------------|-------|-------|-------|-------|-------|-------|-------|
-| Contribución al beneficio | 10    | 6     | 8     | 4     | 11    | 9     | 3     |
-| Rectificado               | 0.5   | 0.7   | –     | –     | 0.3   | 0.2   | 0.5   |
-| Taladrado vertical        | 0.1   | 0.2   | –     | 0.3   | –     | 0.6   | –     |
-| Perforación horizontal    | 0.2   | –     | 0.8   | –     | –     | –     | 0.6   |
-| Mandrinado                | 0.05  | 0.03  | –     | 0.07  | 0.1   | –     | 0.08  |
-| Cepillado                 | –     | –     | 0.01  | –     | 0.05  | –     | 0.05  |
+|---------------------------|------:|------:|------:|------:|------:|------:|------:|
+| Contribución al beneficio | 10.00 |  6.00 |  8.00 |  4.00 | 11.00 |  9.00 |  3.00 |
+| Rectificado               |  0.50 |  0.70 |     – |     – |  0.30 |  0.20 |  0.50 |
+| Taladrado vertical        |  0.10 |  0.20 |     – |  0.30 |     – |  0.60 |     – |
+| Perforación horizontal    |  0.20 |     – |  0.80 |     – |     – |     – |  0.60 |
+| Mandrinado                |  0.05 |  0.03 |     – |  0.07 |  0.10 |     – |  0.08 |
+| Cepillado                 |     – |     – |  0.01 |     – |  0.05 |     – |  0.05 |
 
 En el mes actual (enero) y los cinco meses siguientes, ciertas máquinas estarán fuera de servicio por mantenimiento. Estas máquinas serán las siguientes:
 
-| Mes     | Máquinas                              |
-|---------|---------------------------------------|
-| Enero   | 1 molinillo                           |
+|     Mes | Máquinas                              |
+|--------:|:--------------------------------------|
+|   Enero | 1 molinillo                           |
 | Febrero | 2 taladros horizontales               |
-| Marzo   | 1 barrenador                          |
-| Abril   | 1 taladro vertical                    |
-| Puede   | 1 Amoladora y 1 Taladro vertical      |
-| Junio   | 1 cepilladora y 1 taladro horizontal. |
+|   Marzo | 1 barrenador                          |
+|   Abril | 1 taladro vertical                    |
+|   Puede | 1 Amoladora y 1 Taladro vertical      |
+|   Junio | 1 cepilladora y 1 taladro horizontal. |
 
 
 
@@ -29,14 +29,14 @@ Existen limitaciones de marketing para cada producto en cada mes. Estos son
 dado en la siguiente tabla:
 
 
-| Mes     | 1   | 2    | 3   | 4   | 5    | 6   | 7   |
-|---------|-----|------|-----|-----|------|-----|-----|
-| Enero   | 500 | 1000 | 300 | 300 | 800  | 200 | 100 |
-| Febrero | 600 | 500  | 200 | 0   | 400  | 300 | 150 |
-| Marzo   | 300 | 600  | 0   | 0   | 500  | 400 | 100 |
-| Abril   | 200 | 300  | 400 | 500 | 200  | 0   | 100 |
-| Mayo    | 0   | 100  | 500 | 100 | 1000 | 300 | 0   |
-| Junio   | 500 | 500  | 100 | 300 | 1100 | 500 | 60  |
+| Mes     |   1 |    2 |   3 |   4 |    5 |   6 |   7 |
+|---------|----:|-----:|----:|----:|-----:|----:|----:|
+| Enero   | 500 | 1000 | 300 | 300 |  800 | 200 | 100 |
+| Febrero | 600 |  500 | 200 |   0 |  400 | 300 | 150 |
+| Marzo   | 300 |  600 |   0 |   0 |  500 | 400 | 100 |
+| Abril   | 200 |  300 | 400 | 500 |  200 |   0 | 100 |
+| Mayo    |   0 |  100 | 500 | 100 | 1000 | 300 |   0 |
+| Junio   | 500 |  500 | 100 | 300 | 1100 | 500 |  60 |
 
 
 Es posible almacenar hasta 100 unidades de cada producto a la vez a un coste de 0,5 £ por unidad al mes. Actualmente no hay stocks, pero se desea tener un stock de 50 de cada tipo de producto a finales de junio.
