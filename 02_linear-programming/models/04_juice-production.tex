@@ -52,5 +52,67 @@
   \end{table}
 
       La demanda de los distintos zumos es grande, por lo que se espera vender toda la producción. Por cada kg de fruta, se produce un litro del correspondiente zumo. Determinar los niveles de producción de los siete zumos, de manera que se tenga beneficio máximo en el periodo entrante.%
+    \end{frame}
+
+    \begin{frame}{Modelo}
+
+      Observemos que los recursos son las cinco clases de fruta, y que los productos son, además de los zumos obtenidos directamente de éstas, los dos combinados. Una posible definición de las variables de decisión consiste en considerar las posibles combinaciones recursos-productos. Así, se tendrán 11 variables de decisión que denotamos
+
+      \[X_{NN}, X_{NG}, XPP, XPH, XPG, XLL, XLH, XLG, XTT, XMM, XMH \]
+      
+donde $X_{NN}$ es la cantidad de naranjas utilizada para hacer zumo de naranja, $X_{NG}$ la cantidad de naranjas utilizadas para el combinado de zumo de tipo $G$, \textellipsis . Las restricciones se deben a:
+
 \end{frame}
+
+\begin{frame}
+  Limitaciones en la disponibilidad de recursos
+
+
+\begin{flalign*}
+X_{NN} + X_{NG} &\leq 32000\\
+XPP + XPH + XPG &\leq 25000\\
+XLL + XLH + XLG &\leq 21000\\
+XTT &\leq 18000\\
+XMM +XMH &\leq 27000
+\end{flalign*}
+\end{frame}
+
+\begin{frame}
+
+  Especificaciones para el combinado $H$
+
+\begin{flalign*}
+XMH &\leq .5 \cdot (XMH + XPH + XLH)\\
+XPH &\leq .2 \cdot (XMH + XPH +XLH)\\
+XLH &\geq .10 \cdot (XMH + XPH + XLH)
+\end{flalign*}
+
+
+Especificaciones para el combinado $G$
+
+\begin{flalign*}
+X_{NG} &= .40 (X_{NG} + XLG + XPG)\\
+XLG &= .35 (X_{NG} + XLG + XPG)\\
+XPG &= .25 (X_{NG} + XLG + XPG)
+\end{flalign*}
+
+No negatividad de las variables de decisión
+
+\end{frame}
+
+\begin{frame}
+
+Finalmente, observemos que la función objetivo representa. el beneficio neto B de la producción y es de la forma de maximización. Toma la expresión
+
+
+
+
+\begin{align*}
+  B = (129 - 94)X_{NN} -94X_{NG} + (125 - 87)XPP - 87XPH -87XPG & +\\
+  (110 - 73)XLL - 73XLH - 73XLG + (88 -47)XTT & + \\
+  (97 - 68)XMM - 68XMH + 100(XPH + XLH + XMH) & + \\
+  120(X_{NG} + XLG + XPG)  
+\end{align*}
+
+    \end{frame}
 \end{document}
