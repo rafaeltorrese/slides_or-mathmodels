@@ -20,7 +20,7 @@ En el mes actual (enero) y los cinco meses siguientes, ciertas máquinas estará
 | Febrero | 2 taladros horizontales               |
 |   Marzo | 1 barrenador                          |
 |   Abril | 1 taladro vertical                    |
-|   Puede | 1 Amoladora y 1 Taladro vertical      |
+|   Mayo | 1 Amoladora y 1 Taladro vertical      |
 |   Junio | 1 cepilladora y 1 taladro horizontal. |
 
 
