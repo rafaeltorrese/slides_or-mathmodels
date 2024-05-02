@@ -6,6 +6,7 @@
 *.toc
 *.snm
 
+*test*.pdf
 dualsimplex-algorithm.pdf
 slides.pdf
 slides*.pdf
@@ -45,3 +46,6 @@ env
 # data test
 data.py
 test.py
+*.doc*
+*.ppt*
+*.xls*
