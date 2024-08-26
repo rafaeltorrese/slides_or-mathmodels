@@ -14,8 +14,17 @@ paginate: true
 
 <p class="outstanding-title">Construcción de Modelos Matemáticos</p>
 
+# Agenda
 
-# 01 Destilación de Crudos
+1. [Destilación de Crudos](#destilacion-crudos)
+2. [Problema de la Dieta](#problema-de-la-dieta)
+3. [Producción de gasolinas](#produccion-de-gasolinas)
+4. [Elaboración de Zumos](#elaboracion-de-zumos)
+5. [Planificación de la producción](#planificacion-de-la-produccion)
+6. [Optimización de Mezclas en una Destilería](#mezclas-en-destileria)
+7. [Planificación de una planta química](#planificacion-planta-quimica)
+
+# 01 Destilación de Crudos <a name="destilacion-crudos"></a>
 
 Una compañía de petróleos produce en sus refinerías gasóleo ($G$), gasolina sin plomo ($P$) y gasolina súper ($S$) a partir de dos tipos de crudos,$C_1$ y $C_2$. Las refinerías están dotadas de dos tipos de tecnologías.
 
@@ -35,7 +44,7 @@ Los beneficios por unidad producida son
   La compañía desea conocer **cómo utilizar ambos procesos de destilación**, que se pueden realizar total o parcialmente, y los crudos para que el **beneficio sea el máximo**.
 
 
-# 02 Problema de la Dieta
+# 02 Problema de la Dieta <a name="problema-de-la-dieta"></a>
   
 En un centro de nutrición de desea obtener la dieta de coste mínimo con unos determinados requisitos vitamínicos para un grupo de niños que van a asistir a campamentos de verano. El especialista estima que la dieta debe contener entre 26 y 32 unidades de vitamina $A$, al menos 25 unidades de vitamina $B$ y 30 de $C$, y, a lo sumo, 14 de vitamina $D$. 
 
@@ -58,7 +67,7 @@ La siguiente tabla nos da el número de unidades de las distintas vitaminas por 
 
 
 
-# 03 Producción de gasolinas
+# 03 Producción de gasolinas <a name="produccion-de-gasolinas"></a>
 
 Una compañía de petróleos produce tres tipos de gosolinas: Súper, Normal y Euro. Se obtienen por mezcla de tres calidades de crudos ($A$,$B$,$C$) que contienen tres componentes (1,2,3). La participación de estos componentes en la composición de cada crudo se muestra en la Tabla 1 en porcentaje 
 
@@ -92,7 +101,7 @@ Las demandas de gasolina Súper y Normal son de 2,000 y 2,500 barriles diarios, 
 <img src="https://res.cloudinary.com/rafaeltorrese/image/upload/v1708524471/operations-research/02_linear-programming-introduction/03_gasoline-production.png" class="center" width="800" height="800"> 
 
 
-# 04 Elaboración de Zumos
+# 04 Elaboración de Zumos <a name="elaboracion-de-zumos"></a>
 
 Una empresa de alimentación produce zumos de pera; naranja, limón, tomate, manzana, además de otros dos tipos denominados $H$ y $G$ que son combinados de algunos de los anteriores. La disponibilidad de fruta para el periodo próximo, así como los costes de producción y los precios de venta paro los zumos, vienen dados en la Tabla 1.
 
@@ -133,7 +142,7 @@ $$X_{NN}, X_{NG}, X_{PP}, X_{PH}, X_{PG}, X_{LL}, X_{LH}, X_{LG}, X_{TT}, X_{MM}
 
 donde $X_{NN}$ es la cantidad de naranjas utilizada para hacer zumo de naranja, $X_{NG}$ la cantidad de naranjas utilizadas para el combinado de zumo de tipo $G, \textellipsis$.
 
-# 05 Planificación de la producción
+# 05 Planificación de la producción <a name="planificacion-de-la-produccion"></a>
 
 Una empresa produce filtros para monitores de ordenador formados por tres capas, una intermedia de calidad $A$ y otras dos exteriores de calidad $B$ que envuelven a la anterior. Ambas calidades se consiguen con diferentes mezclas de fibra de vidrio y resina de las que el fabricante dispone  por semana de 700 y 900 toneladas ($t$), respectivamente. 
 
@@ -178,7 +187,7 @@ $$
 
 <img src="https://res.cloudinary.com/rafaeltorrese/image/upload/v1708524471/operations-research/02_linear-programming-introduction/05_production-planning.png" class="center" width="1000" height="1000">
 
-# 06 Optimización de Mezclas en una Destilería
+# 06 Optimización de Mezclas en una Destilería <a name="mezclas-en-destileria"></a>
 
 Una destilería dispone de malta propia en cantidad de 200 barriles/día. Además, puede comprar malta de dos distribuidores $A$ y $B$, con costes de 1000 y 1200 \$/barril, en cantidades máximas de 300 y 500 barriles/día, respectivamente. 
 
@@ -196,7 +205,7 @@ La destilería desea satisfacer la demanda del producto de alta calidad, que es 
 
 Formular un modelo de programación lineal que de respuesta al problema de planificación planteado teniendo en cuenta las limitaciones en la producción y las exigencias de demanda y beneficio económico, suponiendo, además, que la venta de la mezcla está garantizada.
 
-# 07 Planificación de una planta química
+# 07 Planificación de una planta química <a name="planificacion-planta-quimica"></a>
 
 Una planta química fabrica tres sustancias $A$, $B$ y $C$, utilizando carb6n como materia prima básica. La planta dispone de minas propias que pueden producir hasta 600 u/día de carbón con coste de 2000 $/u. Si la compañía necesita más carbón, puede adquirirlo a un distribuidor con un coste de 5000 $/n. Además, utiliza en el proceso de producción agua, electricidad, gasóleo y mano de obra. La compañía eléctrica administradora posee el siguiente sistema escalonado de tarifas
 
