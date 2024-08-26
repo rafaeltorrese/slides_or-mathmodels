@@ -1,6 +1,6 @@
 ---
 marp: true
-title: "slides_crude-distillation"
+title: "model-crude-distillation"
 header: 'Construcción de Modelos'
 footer: 'Introducción a la Programación Lineal'
 author: Rafael Torres Escobar
