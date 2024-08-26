@@ -1,6 +1,6 @@
 ---
 marp: true
-title: "slides_modeling-examples"
+title: "slides-modeling-examples"
 header: 'Modelado Matemático'
 footer: 'Introducción a la Programación Lineal'
 author: Rafael Torres Escobar
