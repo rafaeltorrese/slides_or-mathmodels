@@ -20,7 +20,7 @@ paginate: true
 Una compañía de petróleos produce tres tipos de gosolinas: Súper, Normal y Euro. Se obtienen por mezcla de tres calidades de crudos ($A$,$B$,$C$) que contienen tres componentes (1,2,3). La participación de estos componentes en la composición de cada crudo se muestra en la Tabla 1 en porcentaje 
 
 
-
+Tabla 1: Composición de cada Crudo en Porcentajes
 | Crudos | 1  | 2  | 3  |
 |--------|----|----|----|
 | A      | 8  | 10 | 5  |
@@ -32,6 +32,7 @@ Una compañía de petróleos produce tres tipos de gosolinas: Súper, Normal y E
 
 y las especificaciones de los tres tipos de gasolina en la Tabla 2 (porcentaje):
 
+Tabla 2: Especificaciones en Porcentajes
 |        | 1         | 2         | 3         |
 |--------|-----------|-----------|-----------|
 | Super  | $\geq$ 60 | $\leq$ 25 | $\geq$ 10 |
