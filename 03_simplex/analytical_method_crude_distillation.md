@@ -1,6 +1,6 @@
 ---
 marp: true
-title: "analytical-method-example-crude-distillation"
+title: "slides-analytical-method-example-crude-distillation"
 header: 'Método Analítco'
 footer: 'Método Simplex'
 author: Rafael Torres Escobar
@@ -87,6 +87,48 @@ $$
 - Nos apoyaremos en [Geogebra](https://www.geogebra.org/) para la gráfica
 - Crear una cuenta en Geogebra para guardar las gráficas.
 - La gráfica la puedes consultar en este enlace: [Gráfica del Problema de Destilación De Crudos](https://www.geogebra.org/calculator/njyyua9d).
+
+---
+
+Pueden crear la gráfica en [Geogebra](https://www.geogebra.org/calculator) con las siguientes instruccines:
+
+- Para graficar las ecuaciones
+
+```text
+eq1: 7x + 10y  = 1400
+eq2: 12x + 8y  = 2000
+eq3: 8x + 10y  = 900
+eq4: 6x + 7y  = 300
+eq5: 5x + 4y  = 1700
+eq6: 5x + 4y  = 300
+```
+
+
+- Para graficar los puntos de intersección
+  
+```text
+O: Intersect(xAxis, yAxis)
+A: Intersect(eq3, xAxis)
+B: Intersect(eq2, xAxis)
+C: Intersect(eq2, eq1)
+D: Intersect(eq1, yAxis)
+E: Intersect(eq3, yAxis)
+```
+
+---
+
+- Para Graficar el espacio de soluciones
+
+```
+Feasible: polygon(A, B, C, D, E)
+```
+
+- Para graficar la función objetivo
+
+```
+z1: 103x + 110y = 13000
+z2: 103x + 110y = 18000
+```
 
 ## Conceptos
 
