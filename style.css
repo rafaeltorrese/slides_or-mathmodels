@@ -78,6 +78,19 @@ td {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
 }
 
+.outstanding-subtitle {
+    font-family: "Lucida Console";
+    font-size: 48px; /* Adjust the font size */
+    text-align: center;
+    font-weight: bold; /* Make the text bold */
+    color:  #068;
+    text-transform: capitalize; /* Convert text to uppercase */
+    letter-spacing: 2px; /* Increase letter spacing for emphasis */
+    line-height: 1.2; /* Set line height for readability */
+    margin-bottom: 20px; /* Add space at the bottom */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+}
+
 .new-section {
     border: 2px solid #007bff; /* Blue border */
     font-family: "Lucida Console";
