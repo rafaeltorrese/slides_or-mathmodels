@@ -1,6 +1,6 @@
 ---
 marp: true
-title: "slides-reddy"
+title: "slides-reddy-mikks-analtical-method"
 header: 'Método Gráfico'
 footer: 'Método Simplex'
 author: Rafael Torres Escobar
@@ -79,6 +79,7 @@ soluciones básicas
 
 Las soluciones están disponibles en el siguiente archivo: [reddy-mikks-analytical](https://docs.google.com/spreadsheets/d/1qJzrwWjYqAQBkCWNtAmCBN9Q5Ymp36oqd6Yj7_i5cDc/edit?usp=sharing)
 
+#### Soluciones Factibles
 
 | ID | 1  | 2  | 3  | 4  |
 |----|----|----|----|----|
@@ -88,13 +89,16 @@ Las soluciones están disponibles en el siguiente archivo: [reddy-mikks-analytic
 | 4  | x1 | s2 | s3 | s4 |
 | 5  | x2 | s1 | s2 | s4 |
 | 6  | s1 | s2 | s3 | s4 |
-| 7  | x1 | x2 | s1 | s4 |
+
 
 ---
 
 
+#### Soluciones Infactibles
+
 | ID | 1  | 2  | 3  | 4  |
 |----|----|----|----|----|
+| 7  | x1 | x2 | s1 | s4 |
 | 8  | x1 | x2 | s2 | s3 |
 | 9  | x1 | x2 | s2 | s4 |
 | 10 | x1 | s1 | s2 | s4 |
@@ -103,10 +107,25 @@ Las soluciones están disponibles en el siguiente archivo: [reddy-mikks-analytic
 | 13 | x2 | s1 | s3 | s4 |
 | 14 | x2 | s2 | s3 | s4 |
 
+----
+
+#### Sin Solución [(recta paralela)](https://math.libretexts.org/Bookshelves/Linear_Algebra/Fundamentals_of_Matrix_Algebra_(Hartman)/01%3A_Systems_of_Linear_Equations/1.04%3A_Existence_and_Uniqueness_of_Solutions)
 
 | ID | 1  | 2  | 3  | 4  |
 |----|----|----|----|----|
 | 15 | **x1** | **s1** | **s2** | **s3** |
+
+<br>
+
+El sistema es el siguiente, observar la última fila del sistema
+
+| x1 | s1 | s2 | s3 | b  |
+|----:|----|----|----|----:|
+| 6  | 0  | 0  | 0  | 24 |
+| 1  | 0  | 0  | 0  | 6  |
+| -1 | 0  | 0  | 0  | 1  |
+| **0**  | **0**  | **0**  | **0**  | **2**  |
+
 
 ## Método Gráfico
 
