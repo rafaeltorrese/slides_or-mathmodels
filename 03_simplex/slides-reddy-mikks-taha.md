@@ -144,5 +144,41 @@ z1: 5x + 4y = 10
 z2: 5x + 4y = 17
 ```
 
+# Programación con Python
+
+
+```python
+from itertools import combinations
+import numpy as np
+
+from pprint import pprint
+```
+
+```python
+def analytical(lhs, rhs, z):
+    A = np.array(lhs, dtype=float)
+    num_equations, num_variables = A.shape
+    print(f'Dimension of matrix A is: {A.shape}')
+
+    b = np.array(rhs, dtype=float).reshape((num_equations, -1))
+    c = np.array(z, dtype=float).reshape((-1, num_variables))
+```
+
+---
+
+```python
+left_hand = [
+    [ 6, 4, 1, 0, 0, 0],
+    [ 1, 2, 0, 1, 0, 0],
+    [-1, 1, 0, 0, 1, 0],
+    [ 0, 1, 0, 0, 0, 1],
+]
+
+right_hand = [24, 6, 1, 2]
+objective = [5, 4, 0, 0, 0, 0]
+
+analytical(lhs=left_hand, rhs=right_hand, z=objective)
+```
+
 ---
 <p class="outstanding-title">Método Gráfico</p>
