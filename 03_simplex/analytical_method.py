@@ -13,8 +13,7 @@ def analytical(lhs, rhs, z, labels, sense=1):
     
     print(f'Dimension of matrix A is: {A.shape}')
 
-    best_solution = {'z': sense * -np.inf}
-    
+    best_solution = {'z': sense * -np.inf}    
     list_basis = [*combinations(range(num_variables), num_equations)]
     print(f'Number of basic solutions: {len(list_basis)}')
 
