@@ -11,35 +11,45 @@ def get_feasible_solution():
     update_base()
     body = np.linalg.inv(base).dot(matrix)
 
-def optimal_condition_test(profit: np.ndarray) -> bool:
-    return np.all(profit <= 0)
+def optimal_condition_test(profit):
+    return  np.all(profit <= 0)
 
-def update_base(profit: np.ndarray, rhs: np.ndarray) -> None:
+def update_base() -> None:
     entering_index = profit.argmax()
     column_key = body[:, entering_index]
     ratios = np.full_like(rhs, np.inf)
     np.divide(rhs, column_key, where=column_key>0, out=ratios)
     leaving_index = ratios.argmin()
 
+    cb[leaving_index] = cj[entering]
     base[:, leaving_index] = body[:, entering_index]
 
-def get_profit(cj: np.ndarray, cb: np.ndarray, body: np.ndarray):
+def get_profit(cj, cb, body):
     return cj - cb.dot(body)
 
-def get_extreme_point():
-    pass
 
-def simplex(body: List[list], rhs: list, z: list, basics: list,  direction: int=1):
+def simplex(
+    body: List[list], 
+    rhs: list, 
+    cj: list, 
+    basics: list,  
+    direction: int=1
+    ):
+
     matrix = np.array(body, dtype=float)
     body = np.full_like(matrix, None)
-    num_equations, num_variables = matrix.shape
-
-    profit = get_profit() 
+    num_equations, num_variables = matrix.shape 
 
     rhs = np.array(rhs, dtype=float)
-    z = np.array(z, dtype=float)
+    cj = np.array(cj, dtype=float)
+    cb = cj[[*basics]]
+    print(cb)
 
-    base = body[:, basics]
+    profit = get_profit(cj, cb, body)
+    optimal = optimal_condition_test(profit)
+    print(optimal)
+
+    
 
 
 if __name__ == '__main__':
@@ -57,7 +67,7 @@ if __name__ == '__main__':
         4_800,
         ]
 
-    cd = [
+    c = [
         12,
         9, 
         0, 
@@ -66,4 +76,4 @@ if __name__ == '__main__':
         0,
     ]
 
-    simplex(A, b, c)
+    simplex(A, b, c, [2, 3, 4, 5])
