@@ -4,7 +4,7 @@ import numpy as np
 from pprint import pprint
 
 #%%
-def analytical(lhs, rhs, z, labels, sense=1):    
+def analytical(lhs: list, rhs: list, z: list, labels: list, sense:int=1) -> None:    
     A = np.array(lhs, dtype=float)
     num_equations, num_variables = A.shape
     b = np.array(rhs, dtype=float)
