@@ -160,11 +160,32 @@ Para este ejemplo se generarán 28 combinaciones que serán nuestros sistemas de
 
 # Algoritmo Simplex con Penalización 
 
-- El problema tiene algunas restricciones con desigualdades $\geq$
-- No existe una solución factible inicial.
-- Se Agreagan Variables artificiales $A_i$ cuando se restan variables de superávit $(- S_i)$
-- Los coeficientes de las variables artificiales $A_i$ son un número muy grande.
-- Para denotar un númer muy grandes se usa la letra $M$
+
++ Paso 1. Expresar el problema de programación lineal en forma estándar introduciendo variables de holgura. Estas variables **se suman** a los lados izquierdos de las restricciones de tipo ($\leq$) y **se restan** de las restricciones de tipo ($\geq$).
+
++ Paso 2. Añadir variables no negativas a los lados izquierdos de todas las restricciones de tipo inicial ($\geq$) o ($=$). Estas variables se denominan **variables artificiales**.
+
+---
+
+El propósito de introducir las variables artificiales es simplemente obtener una solución factible básica inicial. Sin embargo, tienen dos inconvenientes:
+
+1. Son ficticias, **no tienen significado físico** ni importancia económica y no tienen relevancia para el problema.
+2. Su introducción (adición) **viola la igualdad de restricciones** que ya se ha establecido en el paso 1.
+
+---
+
+- Se las denomina correctamente variables artificiales en contraposición a otras variables de decisión reales en el problema. 
+- Debemos **deshacernos de estas variables** y no debemos permitir que aparezcan en la solución final. 
+- A estas variables **se les asigna una penalización por unidad muy grande** en la función objetivo. 
+- Esta penalización se designa con **$- M$** para problemas de **maximización** y **$+ M$** para problemas de **minimización**, donde $M > 0$. 
+- El valor de $M$ es mucho **mayor que los coeficientes de costo de otras variables** y para los cálculos manuales no es necesario asignarle ningún valor específico.
+
+---
+
++ Paso 3. Resuelva el problema de programación lineal modificado mediante el método simplex. 
+  + Las variables artificiales son un artificio computacional. 
+  + Mantienen las ecuaciones iniciales en equilibrio y proporcionan un truco matemático para obtener una solución inicial. 
+  + Al tener un alto costo de penalización, se garantiza que no aparecerán en la solución final, es decir, **se reducirán a cero** cuando se optimice la función objetivo mediante el método simplex.
 
 ## Tabla Simplex Inicial
 
