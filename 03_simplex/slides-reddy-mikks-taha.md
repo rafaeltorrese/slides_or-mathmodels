@@ -150,18 +150,35 @@ z2: 5x + 4y = 17
 ```python
 from itertools import combinations
 import numpy as np
-
 from pprint import pprint
 ```
 
+---
+
 ```python
-def analytical(lhs, rhs, z):
+def analytical(lhs: list, rhs: list, z: list, labels: list, sense: int = 1) -> None:    
     A = np.array(lhs, dtype=float)
     num_equations, num_variables = A.shape
-    print(f'Dimension of matrix A is: {A.shape}')
+    b = np.array(rhs, dtype=float)
+    c = np.array(z, dtype=float)
 
-    b = np.array(rhs, dtype=float).reshape((num_equations, -1))
-    c = np.array(z, dtype=float).reshape((-1, num_variables))
+    labels = np.array(labels)
+    best_solution = {'z': sense * -np.inf}    
+    list_basis = [*combinations(range(num_variables), num_equations)]
+
+    print(f'Dimension of matrix A is: {A.shape}')
+    print(f'Number of basic solutions: {len(list_basis)}')
+
+    for columns in list_basis:
+        try:                 
+            base = A[:, [*columns]]            
+            x = np.linalg.solve(base, b)
+            # code here                  
+        except np.linalg.LinAlgError as e:
+            print(f'\nSystem {basic_labels} is {e}')
+
+    print('\nThe best solution is:')
+    pprint(best_solution)
 ```
 
 ---
@@ -177,7 +194,24 @@ left_hand = [
 right_hand = [24, 6, 1, 2]
 objective = [5, 4, 0, 0, 0, 0]
 
-analytical(lhs=left_hand, rhs=right_hand, z=objective)
+ analytical(
+        lhs=left_hand, 
+        rhs=right_hand, 
+        z=objective,
+        labels='x1 x2 s1 s2 s3 s4'.split(),
+        sense=+1
+    )
+```
+---
+
+```python
+{'s1': 0,
+ 's2': 0,
+ 's3': 2.5000000000000004,
+ 's4': 0.5000000000000002,
+ 'x1': 3.0,
+ 'x2': 1.4999999999999998,
+ 'z': 21.0}
 ```
 
 ---
