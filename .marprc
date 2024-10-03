@@ -14,4 +14,4 @@ preview: true
 watch: false
 server: false
 theme: "style.css"
-math: mathjx
+math: mathjax
