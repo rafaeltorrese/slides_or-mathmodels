@@ -187,23 +187,33 @@ El propósito de introducir las variables artificiales es simplemente obtener un
   + Mantienen las ecuaciones iniciales en equilibrio y proporcionan un truco matemático para obtener una solución inicial. 
   + Al tener un alto costo de penalización, se garantiza que no aparecerán en la solución final, es decir, **se reducirán a cero** cuando se optimice la función objetivo mediante el método simplex.
 
+
+
 ## Tabla Simplex Inicial
 
-Consultar el siguiente enlace: <a href="https://docs.google.com/spreadsheets/d/1DfNN4GuVrb8cRT7NEQTwDjOHUVKj4fvTAdjc-dK1aCE/edit?usp=sharing" target="_blank" alt="big M method">Simplex para Ejemplo de Destilación de Crudos</a>
 
 
-| Maximize  | cj      | 103      | 110      | 0  | 0  | 0       | 0       | 0  | 0       | -1.00E+05 | -1.00E+05 | -1.00E+05 |            |
-|-----------|---------|----------|----------|----|----|---------|---------|----|---------|-----------|-----------|-----------|------------|
-| Cb        | basis   | x1       | x2       | s1 | s2 | s3      | s4      | s5 | s6      | A3        | A4        | A6        | b          |
-| 0         | s1      | 7        | 10       | 1  | 0  | 0       | 0       | 0  | 0       | 0         | 0         | 0         | 1400       |
-| 0         | s2      | 12       | 8        | 0  | 1  | 0       | 0       | 0  | 0       | 0         | 0         | 0         | 2000       |
-| -1.00E+05 | A3      | 8        | 10       | 0  | 0  | **-1**  | 0       | 0  | 0       | **1**     | 0         | 0         | 900        |
-| -1.00E+05 | A4      | 6        | 7        | 0  | 0  | 0       | **-1**  | 0  | 0       | 0         | **1**     | 0         | 300        |
-| 0         | s5      | 5        | 4        | 0  | 0  | 0       | 0       | 1  | 0       | 0         | 0         | 0         | 1700       |
-| -1.00E+05 | A6      | 5        | 4        | 0  | 0  | 0       | 0       | 0  | **-1**  | 0         | 0         | **1**     | 300        |
-|           | zj      | -1900000 | -2100000 | 0  | 0  | 100000  | 100000  | 0  | 100000  | -100000   | -100000   | -100000   | -150000000 |
-|           | cj - zj | 1900103  | 2100110  | 0  | 0  | -100000 | -100000 | 0  | -100000 | 0.00E+00  | 0.00E+00  | 0.00E+00  | --         |
+| $\max Z$ | cj          | 103   | 110   | 0     | 0     | 0      | 0      | 0     | 0      | $-M$  | $-M$  | $-M$  |       |
+|----------|-------------|-------|-------|-------|-------|--------|--------|-------|--------|-------|-------|-------|------:|
+| $C_b$    | basis       | $x_1$ | $x_2$ | $s_1$ | $s_2$ | $s_3$  | $s_4$  | $s_5$ | $s_6$  | $A_3$ | $A_4$ | $A_6$ |   $b$ |
+|          | $s_1$       | 7     | 10    | 1     | 0     | 0      | 0      | 0     | 0      | 0     | 0     | 0     |  1400 |
+|          |             | 12    | 8     | 0     | 1     | 0      | 0      | 0     | 0      | 0     | 0     | 0     |  2000 |
+|          |             | 8     | 10    | 0     | 0     | **-1** | 0      | 0     | 0      | **1** | 0     | 0     |   900 |
+|          |             | 6     | 7     | 0     | 0     | 0      | **-1** | 0     | 0      | 0     | **1** | 0     |   300 |
+|          |             | 5     | 4     | 0     | 0     | 0      | 0      | 1     | 0      | 0     | 0     | 0     |  1700 |
+|          |             | 5     | 4     | 0     | 0     | 0      | 0      | 0     | **-1** | 0     | 0     | **1** |   300 |
+|          | $z_j$       |       |       |       |       |        |        |       |        |       |       |       | **?** |
+|          | $c_j - z_j$ | ?     | ?     | ?     | ?     | ?      | ?      | ?     | ?      | ?     | ?     | ?     |    -- |
 
+
+## Tabla Simplex Inicial
+
+Consultar el siguiente enlace para ejecutar el algoritmo: 
+
+
+<center>
+<a href="https://docs.google.com/spreadsheets/d/1DfNN4GuVrb8cRT7NEQTwDjOHUVKj4fvTAdjc-dK1aCE/edit?usp=sharing" target="_blank" alt="big M method">Simplex para Ejemplo de Destilación de Crudos</a>
+</center>
 
 ---
 
