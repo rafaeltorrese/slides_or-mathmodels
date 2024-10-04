@@ -83,7 +83,7 @@ $$
 $$x_1, x_2, S_1, S_2, S_3, S_4, S_5, S_6  \geq 0$$
 
 
-La gráfica la puedes consultar en este enlace: <a href="https://www.geogebra.org/calculator/njyyua9d" target="_blank" alt="plot">Gráfica del Problema de Destilación De Crudos</a>
+La gráfica está este enlace: <a href="https://www.geogebra.org/calculator/njyyua9d" target="_blank" alt="plot">Gráfica del Problema de Destilación De Crudos</a>
 
 
 
@@ -177,6 +177,9 @@ $$\min W = A_3 + A_4 + A_6$$
 |           | cj - zj | -19 | -21 | 0  | 0  | 1  | 1  | 0  | 1  | 0  | 0  | 0  | --   |
 
 
+## Tabla Simplex Inicial Fase I
+
+Consultar el siguiente enlace: <a href="https://docs.google.com/spreadsheets/d/1bweGkQ2UR7GTtNDsAnMKCwXScdR0Zw5YpyoqgoVZC3s/edit?usp=sharing" target="_blank" alt="big M method">Simplex para Ejemplo de Destilación de Crudos</a>
 
 ---
 
