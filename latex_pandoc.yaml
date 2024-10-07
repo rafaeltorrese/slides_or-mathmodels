@@ -1,0 +1,26 @@
+to: latex
+output-file: test.pdf
+standalone: true
+wrap: none
+toc: false
+toc-depth: 2
+number-sections: true
+filters:
+  - pandoc-crossref
+indented-code-classes:
+  - python
+variables:
+  title: "Planeación en una fábrica"
+  # author: "Investigación de Operaciones"
+  fontsize: 11pt
+  linkcolor: blue
+  urlcolor: red
+  urlstyle: tt
+  linestretch: 1.20
+  margin-left: 3.5cm
+  margin-right: 2cm
+  margin-top: 1.5cm
+  margin-bottom: 2cm
+  microtypeoptions:
+    - protrusion=true
+    - expansion

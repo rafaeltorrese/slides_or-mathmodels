@@ -1,0 +1,124 @@
+/* @theme style*/
+
+@import 'default';
+
+h1 {
+    text-transform: capitalize;
+    font-size: 40px; /* Larger font size for heading */
+    font-family: "Lucida Console";
+    color:  #069;
+    position: fixed;
+    top: 45px;
+    margin-bottom: 10px;
+
+}
+
+h2 {
+    font-size: 35px; /* Larger font size for heading */
+    font-family: "Lucida Console";
+    color: #0000ff; 
+    position: fixed;
+    top: 35px; 
+}
+
+p {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+li {
+    text-align: justify;
+}
+
+strong {
+    color: red;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+section {
+    position: top;
+}
+
+table {
+    width: 100%;
+    font-size: 25px;
+}
+
+th {
+    color: black;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+    font-size: 25px;
+}
+
+.outstanding-title {
+    font-family: "Lucida Console";
+    font-size: 58px; /* Adjust the font size */
+    text-align: center;
+    font-weight: bold; /* Make the text bold */
+    color: #ff5722; /* Set the text color */
+    color:  #069;
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 2px; /* Increase letter spacing for emphasis */
+    line-height: 1.2; /* Set line height for readability */
+    margin-bottom: 20px; /* Add space at the bottom */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+}
+
+.outstanding-subtitle {
+    font-family: "Lucida Console";
+    font-size: 48px; /* Adjust the font size */
+    text-align: center;
+    font-weight: bold; /* Make the text bold */
+    color:  #068;
+    text-transform: capitalize; /* Convert text to uppercase */
+    letter-spacing: 2px; /* Increase letter spacing for emphasis */
+    line-height: 1.2; /* Set line height for readability */
+    margin-bottom: 20px; /* Add space at the bottom */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+}
+
+.new-section {
+    border: 2px solid #007bff; /* Blue border */
+    font-family: "Lucida Console";
+    font-size: 38px; /* Adjust the font size */
+    text-align: center;
+    font-weight: bold; /* Make the text bold */
+    color:  #029;
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 2px; /* Increase letter spacing for emphasis */
+    line-height: 1.2; /* Set line height for readability */
+    margin-bottom: 30px; /* Add space at the bottom */
+}
+
+.definition-block {
+    border: 2px solid #007bff; /* Blue border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding inside the block */
+    margin-bottom: 20px; /* Bottom margin for spacing */
+}
+
+h3 {
+    text-transform: uppercase;
+    border: 2px solid #3cb371;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding inside the block */
+    margin-bottom: 10px; /* Bottom margin for spacing */
+    color: #0000ff; /* Blue color for heading */
+    font-size: 20px; /* Larger font size for heading */
+    margin-top: 0; /* Remove top margin for heading */
+}
+
