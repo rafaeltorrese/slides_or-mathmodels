@@ -1,6 +1,7 @@
 # .marprc.yaml
 allowLocalFiles: False
 options:
+  headingDivider: 2
   looseYAML: false
   markdown:
     breaks: false
