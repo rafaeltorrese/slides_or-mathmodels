@@ -22,6 +22,11 @@ h2 {
     top: 35px; 
 }
 
+h4 {
+    text-transform: capitalize;
+    font-family: "Lucida Console";
+}
+
 p {
     text-align: justify;
     text-justify: inter-word;
@@ -121,5 +126,13 @@ h3 {
     color: #0000ff; /* Blue color for heading */
     font-size: 20px; /* Larger font size for heading */
     margin-top: 0; /* Remove top margin for heading */
+}
+
+.columns {
+  display: flex;
+  justify-content: space-between;
+}
+.column {
+  width: 50%;
 }
 

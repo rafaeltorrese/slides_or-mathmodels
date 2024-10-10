@@ -50,3 +50,5 @@ test.py
 *.ppt*
 *.xls*
 input.tex
+
+*.webp
